@@ -1,8 +1,8 @@
 <?php
 ob_start();
 session_start();
-include __DIR__.'/../../../../includes/define.php';
-include __DIR__.'/../../../../classes/Class_Database.php';
+include '/../../includes/define.php';
+include '/../../classes/Class_Database.php';
 
 global $database;
 $database = new Database();
@@ -186,7 +186,10 @@ elseif($_GET['method']=='view')
 ?>
 <strong>Personal Information</strong>
 <hr>
-<div class="form-group">
+<style>
+.no-bottom-margin{ margin-bottom:0!important;}
+</style>
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Name:</label>
 	<div class="col-xs-8">
 	<?php
@@ -198,28 +201,28 @@ elseif($_GET['method']=='view')
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Professional Email:</label>
 	<div class="col-xs-8">
 		<?php echo ($emp_arr[0]['professional_email_id'] != '') ? $emp_arr[0]['professional_email_id'] : "-"; ?>
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Personal Email:</label>
 	<div class="col-xs-8">
 		<?php echo ($emp_arr[0]['personal_email_id'] != '') ? $emp_arr[0]['personal_email_id'] : "-"; ?>
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Designation:</label>
 	<div class="col-xs-8">
 		<?php echo ($emp_arr[0]['emp_designation'] != '') ? $emp_arr[0]['emp_designation'] : "-"; ?>
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Mobile No:</label>
 	<div class="col-xs-8">
 	<?php
@@ -234,7 +237,7 @@ elseif($_GET['method']=='view')
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">City:</label>
 	<div class="col-xs-8">
 		<?php
@@ -244,7 +247,7 @@ elseif($_GET['method']=='view')
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Age (yrs):</label>
 	<div class="col-xs-8 tooltips inline">
 		<?php			
@@ -254,14 +257,14 @@ elseif($_GET['method']=='view')
 	</div>
 </div>
 
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<label class="col-xs-4 control-label" style="padding-right: 0px; padding-top: 0px;">Height (cm):</label>
 	<div class="col-xs-8 tooltips inline">
 		<?php echo ($emp_arr[0]['emp_height'] != '') ? $emp_arr[0]['emp_height'] : "-"; ?>
 	</div>
 </div>
 <p>&nbsp;</p>
-<div class="form-group">
+<div class="form-group no-bottom-margin">
 	<div class="col-xs-12">
 	<table class="table table-bordered">
 		<thead>

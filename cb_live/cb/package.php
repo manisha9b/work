@@ -25,105 +25,8 @@ else
         <b>Health Packages</b>
       </h3>
       <div class="pull-right resright">
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- Messages: style can be found in dropdown.less-->
-            <li>
-              <a class="btn3 ask_Any" href="#">
-                <img src="dist/img/ask.png"> Ask me anything
-              </a>
-            </li>
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 10px;">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-danger">6</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 6 messages</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> Today</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 days</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 days</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>  
-      </div>
+<?php include_once('partials/askme.php')       ;?>
+	   </div>
 	  </div>
       <div class="clearfix"></div>
 	  <hr class="hrdivide">
@@ -132,11 +35,11 @@ else
 		  <section class="content">
 			<div class="col-md-12">
 			<div class="pull-right" style="margin-top: -10px;">
-				<span>Timeframe<span> : 
+				<!-- <span>Timeframe<span> : 
 				<select style="font-weight: bold;background: transparent;border:none;display: inline-block;width: 125px;height: auto;padding: 0 5px;">
 					<option>Last 6 months</option>
 					<option>Last 12 months</option>
-				</select>
+				</select> -->
 			</div>
             <div class="pt-20"></div>
             <div id="appointments" class="nav-tabs-custom mb-65">
@@ -144,18 +47,18 @@ else
                 <li class="active">
 				<div class="dropdown">
 					  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background: #3D4452;
-    padding:9.5px;border-radius: 0!important;">PURCHASED <span class="caret"></span></a>
-					  <ul class="dropdown-menu purchase_drop_down" style="width: 140%;">
+    padding:9.5px;border-radius: 0!important;">PURCHASED <!-- <span class="caret"></span> --></a>
+					 <!-- <ul class="dropdown-menu purchase_drop_down" style="width: 140%;">
 						<li><a href="#">Pre Employment</a></li>
 						<li><a href="#">Annual Checkup</a></li>
 						<li><a href="#">Package Type A</a></li>
 						<li><a href="#">Add Tabs</a></li>
-					  </ul>
+					  </ul> -->
 					</div>
 				
 				</li>
-                <li><a href="#tab_2-2" onclick="return hidesummary()" data-toggle="tab" aria-expanded="false">RECOMMENDED</a></li>
-                <li><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab">All</a></li>
+               <!-- <li><a href="#tab_2-2" onclick="return hidesummary()" data-toggle="tab" aria-expanded="false">RECOMMENDED</a></li>
+                <li><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab">All</a></li> -->
                 <li class="pull-right nohover1">
                   <!-- search form -->
                   <form action="#" method="get" class="sidebar-form1" style="display: inline-block;background: #FFFFFF;">
@@ -166,17 +69,16 @@ else
                   </form>
                   <!-- /.search form -->
                 </li>
-               <!-- <li class="pull-right dropdown nohover1">
+                <li class="pull-right dropdown nohover1">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Sort By <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sort By</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date &amp; Time</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Location</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Status</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="?sort=oldest">Oldest Date</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1"href="?sort=latest">Latest Date</a></li>
                   </ul>
-                </li> -->
+                </li> 
                 
               </ul>
 			  <?php
@@ -188,7 +90,7 @@ if(isset($_REQUEST['m']))
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
 				<div id="div-list">
-                  <table id="appttab" class="table table-appointment responsive-table">
+                  <table id="appttab" class="package_list table table-appointment responsive-table">
                     <tbody>
                       <tr style="background: transparent;">
                         <th>
@@ -211,7 +113,7 @@ if(isset($_REQUEST['m']))
 	for($i=0;$i<count($arr_ebh_pack);$i++)
 	{
 		//echo "<pre>";
-		//print_r($arr_ebh_pack[$i]);
+		
 		$package_nm				= $arr_ebh_pack[$i]['package_nm'];
 		$hsp_count				= $arr_ebh_pack[$i]['hsp_count'];
 		$cluster_package_id		= $arr_ebh_pack[$i]['cluster_package_id'];
@@ -306,7 +208,7 @@ if(isset($_REQUEST['m']))
 			$info_popover_provider	=	'<a class="text-info" style="cursor:pointer;" data-container="body" data-toggle="popover" data-placement="left" data-content="'.$provider_info_popover.'" data-title="<a href=# class=pull-right data-dismiss=popover>&times</a>'.$hsp_name.'"><i class="fa fa-information"></i> Know More </a>';
 */
 					  ?>
-                      <tr onclick="viewsummay()">
+                      <tr >
                         <td width="200" class="table_area">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
@@ -331,11 +233,13 @@ if(isset($_REQUEST['m']))
                           <div class="col-sm-4">
                             <div class="row">
 							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 150px;" class="floatleft" alt="">
+							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> </div>
                           </div>
                           <div class="col-sm-7">
                             <b><?php echo $hsp_name;?></b> <br>
                             <?php echo $hsp_address;?>
+							
                           </div>
                         </td>
                         <td class="analytic_area table_area">                      
@@ -494,7 +398,7 @@ $form_action =  "portal/invite.php";
               </div>
               </div>
             </section>
-          <section class="content">
+         <!-- <section class="content">
 			<div class="col-sm-12 wow bounceInLeft" style="padding-left: 0;" data-wow-delay="0.2s">
 				<h4 class="" style="text-align:center;font-weight:bold">
 				  Recommended
@@ -638,15 +542,14 @@ $form_action =  "portal/invite.php";
 			  </div>
             </div>
           </section>
-          <div class="clearfix"></div>
-		  <section class="content" style="margin-top:45px;">
+         -->
+		 <div class="clearfix"></div>
+		  <!-- <section class="content" style="margin-top:45px;">
 			<div class="final">
 			<div class="col-md-12">
         <div class="col-sm-8 pt-20 wow bounceInLeft" style="padding-left: 0px; visibility: visible; animation-delay: 0.2s; animation-name: bounceInLeft;" data-wow-delay="0.2s">
           <div class="box-layout1">
-            <!-- Content Header (Page header) -->
             
-            <!-- Main content -->
             <section id="smartwatch" class="content">
               <div class="col-sm-12" style="padding: 0;">
                                 
@@ -677,7 +580,7 @@ $form_action =  "portal/invite.php";
         <div class="col-sm-4 pt-20 wow bounceInRight">
           <div class="box-layout1">
             <!-- Main content -->
-            <section class="content health_package_title">
+            <!-- <section class="content health_package_title">
 				<h1>DID YOU <br>KNOW?</h1>
 				<p>7 out of 10 people</p>
 				<span>believe that being healthy<br>
@@ -689,7 +592,7 @@ keeps one more focussed and <br> productiev at work</span>
         <div class="clearfix"></div>
       </div>
 			
-			</section>
+			</section> -->
           <!-- /.content -->
         </div>
       </div>  
@@ -699,6 +602,13 @@ keeps one more focussed and <br> productiev at work</span>
 
   
 </div>
+<div class="modal fade" id="view_hsp" role="dialog">
+	<div class="modal-dialog modal-lg" style="width:70%">
+		<div class="modal-content" id="hsp_content">
+			
+		</div>
+	</div>
+</div>
 <!-- ./wrapper -->
 <?php include_once('partials/footer.php'); ?>
 <script src="dist/js/bootstrap-datepicker.min.js"></script>
@@ -707,6 +617,7 @@ keeps one more focussed and <br> productiev at work</span>
 
 <script>
   $(document).ready(function(){
+	  		
     // input 1 styles
     $(".input__1 input, .textarea__1 textarea").focus(function(){
       if($(this).parent().hasClass("input__1"))

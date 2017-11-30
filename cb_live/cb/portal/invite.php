@@ -241,11 +241,11 @@ if($_POST['clusterpkg'] == 'fileupload')
 			}
 			*/
 			
-			$redirect_page	=	HTTP_SERVER."health_package2.php?m=isend";			
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend";			
 		}
 		else
 		{
-			$redirect_page	=	HTTP_SERVER."health_package2.php";
+			$redirect_page	=	HTTP_SERVER."package.php";
 		}		
 		header("location: ".$redirect_page);
 
@@ -487,7 +487,7 @@ elseif($_POST['clusterpkg'] == 'newemp')
 			
 		}
 
-	$redirect_page	=	HTTP_SERVER."health_package2.php?m=isend";
+	$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 	header("location:".$redirect_page);
 }
 elseif($_POST['clusterpkg'] == 'empfromlist')
@@ -537,11 +537,11 @@ elseif($_POST['clusterpkg'] == 'empfromlist')
 					fclose($err_log);					
 				}
 			}
-			$redirect_page	=	HTTP_SERVER."health_package2.php?m=isend";
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 		}
 		else
 		{
-			$redirect_page	=	HTTP_SERVER."health_package2.php?m=isend_err";
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend_err";
 		}
 
 	}	
@@ -589,7 +589,7 @@ else
 		}
 	}
 	
-	$redirect_page	=	HTTP_SERVER."health_package2.php?m=isend";
+	$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 	header("location:".$redirect_page);	
 }
 //echo json_encode($data);

@@ -17,6 +17,7 @@
 <script src="dist/js/wow.min.js"></script>
 <script src="dist/js/jquery.dataTables.min.js"></script>
 <script src="dist/js/dataTables.bootstrap.min.js"></script>
+<script src="dist/js/jquery.maskedinput.min.js"></script>
 <script>
   new WOW().init();
 </script>

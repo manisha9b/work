@@ -2124,6 +2124,7 @@ class Database {
 			a.personal_email_id,
 			a.emp_designation,
 			b.city_name,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,a.emp_dob,'') as dob,
 			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,DATE_FORMAT(a.emp_dob,'%d %b %Y'),'') as emp_dob,
 			if(a.anniversary_date<>'0000-00-00' or a.anniversary_date is not null,DATE_FORMAT(a.anniversary_date,'%d %b %Y'),'') as anniversary_date,
 			a.mobile_no,
@@ -2139,7 +2140,107 @@ class Database {
 		$this->select($sql);
         return $this->result;
 	}
+	public function getClusterEmpDetails($clusterId,$emp_id)
+	{
+		unset($this->result);
+		if($emp_id != ''){
+			$where_qry = " and a.emp_id ='".$emp_id."'";
+		}
+		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
+		$sql="SELECT a.emp_id,
+if(rp.bp_status = '' and rp.bs_status='' and rp.bmi_status ='' ,'',
+if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
+		if(rp.bp_status = 'UH' or rp.bs_status='UH' or rp.bmi_status ='UH','UH','H'))) as health,
+			a.salutation,
+			a.first_name,
+			a.middle_name,
+			a.last_name,
+			if(a.middle_name<>'' or a.middle_name is not null, concat(a.salutation,' ',tcase(a.first_name),' ',tcase(a.middle_name),' ',tcase(a.last_name)), concat(a.salutation,' ',tcase(a.first_name),' ',tcase(a.last_name))) as emp_name,
+			a.professional_email_id,
+			a.personal_email_id,
+			a.emp_designation,
+			b.city_name,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,a.emp_dob,'') as dob,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,DATE_FORMAT(a.emp_dob,'%d %b %Y'),'') as emp_dob,
+			if(a.anniversary_date<>'0000-00-00' or a.anniversary_date is not null,DATE_FORMAT(a.anniversary_date,'%d %b %Y'),'') as anniversary_date,
+			a.mobile_no,
+			c.date_of_birth,
+			c.photo,
+			c.photo_thumb,
+			c.blood_group
+		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id
+		
+		left join tbl_appointments ap on ap.ebh_customer_id = c.ebh_customer_id 
+		left join (select r.appointment_id,r.bmi_category,r.bp_category,r.bs_result,
+				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
+					if(r.bp_category='Normal Blood pressure range' , 'H', 
+				if (r.bp_category='Lower than Normal'
+					or r.bp_category='Prehypertension'
+					or r.bp_category='Stage 1 Hypertension'
+					or r.bp_category='Stage 2 Hypertension'
+					 ,'UH','')) as bp_status,
+				if(r.bs_result='Normal' , 'H', 
+					if (r.bs_result='Prediabetes'
+					or r.bs_result='Diabetes'
+					,'UH','')) as bs_status 
+				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
+				
+				left join cities b on b.id = a.city where a.cluster_id='".$clusterId."' ".$where_qry;
 
+		$this->select($sql);
+        return $this->result;
+	}
+	
+public function getClusterEmpCount($clusterId)
+	{
+		
+		unset($this->result);
+		
+		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
+		 $sql="SELECT count(1) as count,
+if(rp.bp_status = '' and rp.bs_status='' and rp.bmi_status ='' ,'',
+if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
+		if(rp.bp_status = 'UH' or rp.bs_status='UH' or rp.bmi_status ='UH','UH','H'))) as health
+		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id		
+		left join tbl_appointments ap on ap.ebh_customer_id = c.ebh_customer_id 
+		left join (select r.appointment_id,r.bmi_category,r.bp_category,r.bs_result,
+				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
+					if(r.bp_category='Normal Blood pressure range' , 'H', 
+				if (r.bp_category='Lower than Normal'
+					or r.bp_category='Prehypertension'
+					or r.bp_category='Stage 1 Hypertension'
+					or r.bp_category='Stage 2 Hypertension'
+					 ,'UH','')) as bp_status,
+				if(r.bs_result='Normal' , 'H', 
+					if (r.bs_result='Prediabetes'
+					or r.bs_result='Diabetes'
+					,'UH','')) as bs_status 
+				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
+				 where a.cluster_id='".$clusterId."' group by health ";
+
+		$this->select($sql);
+		$result = $this->result;
+		//print_R($result);	
+		$returnArr['healthy'] = 0;
+		$returnArr['unhealthy'] = 0;
+		$returnArr['total'] = 0;
+		foreach($result as $key=>$val){
+			switch($val['health']){
+				case 'H':$returnArr['healthy'] = $val['count'];
+						$returnArr['total'] += $val['count'];
+				break;
+				case 'UH':$returnArr['unhealthy'] = $val['count'];
+						$returnArr['total'] += $val['count'];
+				break;
+				default:$returnArr['total'] += $val['count'];
+					
+			}
+		}
+        return $returnArr;
+	}
+	
 	public function getClusterUserEmp($clusterId,$cluster_user_id,$emp_id)
 	{
 		unset($this->result);
@@ -3212,6 +3313,16 @@ public function getControllerAction($default) {
             return '';
         }
     }
+	function ageCalculator($dob){
+    if(!empty($dob)){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime('today');
+        $age = $birthdate->diff($today)->y;
+        return $age;
+    }else{
+        return 0;
+    }
+}
 }
 
 ?>

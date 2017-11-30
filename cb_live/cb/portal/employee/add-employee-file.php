@@ -1,9 +1,9 @@
 <?php
 ob_start();
 session_start();
-include_once '../../../../includes/define.php';
-include '../../../../classes/Class_Database.php';
-include '../../../../classes/PHPExcel/IOFactory.php';
+include_once '../../includes/define.php';
+include '../../classes/Class_Database.php';
+include '../../classes/PHPExcel/IOFactory.php';
 
 global $database;
 $database=new Database();
@@ -16,8 +16,8 @@ $created_on	=	date("Y-m-d H:i:s");
 
 if(!empty($_FILES['fileupload']['name']))
 {
-	$uploaddir		=	'../../../media/cluster-emp-excel/';
-	$live_url		=	HTTP_SERVER.'/media/cluster-emp-excel/';
+	$uploaddir		=	'../../../app/portal/media/cluster-emp-excel/';
+	$live_url		=	EBH_HTTP_SERVER.'/media/cluster-emp-excel/';
 	$ext			=	$database->findexts($file['name']);
 	$file_name		=	$database->uploadFile('fileupload', $uploaddir.$file_name);
 	if(file_exists($uploaddir.$file_name))
@@ -155,7 +155,7 @@ if(!empty($_FILES['fileupload']['name']))
 			echo"<hr>
 			<p>Added ".$ok."/".$arrayCount." rows...</p>
 			<p>&nbsp;</p>
-			<p><a href=\"".HTTP_SERVER."portal/cindex.php?page=my_employees\" class=\"btn btn-danger\" id=\"alert-dismiss\">Close</a></p>
+			<p><a href=\"".HTTP_SERVER."employee.php\" class=\"btn btn-danger\" id=\"alert-dismiss\">Close</a></p>
 			</div>\n";
 		}
         else
@@ -165,7 +165,7 @@ if(!empty($_FILES['fileupload']['name']))
 			<hr>
 			<p>Added ".$ok."/".$arrayCount." rows...</p>
 			<p>&nbsp;</p>
-			<p><a href=\"".HTTP_SERVER."portal/cindex.php?page=my_employees\" class=\"btn btn-success\" id=\"alert-dismiss\">OK</a></p>
+			<p><a href=\"".HTTP_SERVER."employee.php\" class=\"btn btn-success\" id=\"alert-dismiss\">OK</a></p>
 			</div>\n";
 		}
 	}

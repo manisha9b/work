@@ -255,7 +255,7 @@ $(document).ready(function() {
         },
         submitHandler: function(form) {
 			$.ajax({
-				url: '/app/portal/modules/cluster-dashboard/employee/add-employee-file.php',
+				url: 'portal/employee/add-employee-file.php',
 				type: 'POST',
 				//data: $("#add_employee_file").serialize(),
 				data: new FormData($('#add_employee_file')[0]),
@@ -358,8 +358,8 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
-	/*$("#contact_landline_input").mask("+91 99 9999 9999");
-	$("#contact_mobile_input").mask("+91 9999999999");*/
+	$("#contact_landline_input").mask("+91 99 9999 9999");
+	$("#contact_mobile_input").mask("+91 9999999999");
 });
 
 $(document).ready(function(){
@@ -389,7 +389,7 @@ $(document).ready(function(){
 function openEditModal(emp_id){
 	$('#edit_employee_form').html('<p class="text-center text-muted"><i class="fa fa-rotate-right fa-spin fa-4x"></i></p>');
 		$.ajax({
-			url: '/app/portal/modules/cluster-dashboard/employee/emp_modal.php?id='+emp_id+'&method=edit',
+			url: 'portal/employee/emp_modal.php?id='+emp_id+'&method=edit',
 			success: function(response) {
                      $('#edit_employee_form').html(response);
 				}
@@ -400,7 +400,7 @@ function openEditModal(emp_id){
 function openViewModal(emp_id){
 	$('#view_employee_form').html('<p class="text-center text-muted"><i class="fa fa-rotate-right fa-spin fa-4x"></i></p>');
 		$.ajax({
-			url: '/app/portal/modules/cluster-dashboard/employee/emp_modal.php?id='+emp_id+'&method=view',
+			url: 'portal/employee/emp_modal.php?id='+emp_id+'&method=view',
 			success: function(response) {
                      $('#view_employee_form').html(response);
 				}
@@ -411,7 +411,7 @@ function openViewModal(emp_id){
 function openPkgModal(id){
 	$('#pkg_table').html('<p class="text-center text-muted"><i class="fa fa-rotate-right fa-spin fa-4x"></i></p>');
 		$.ajax({
-			url: '/app/portal/modules/cluster-dashboard/employee/pkg.info.php?id='+id+'',
+			url: 'portal/employee/pkg.info.php?id='+id+'',
 			success: function(response) {
                      $('#pkg_table').html(response);
 				}
@@ -540,6 +540,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+	
 	 /* $('#reportsdatatables').DataTable({
 		  "sPaginationType": "bootstrap",
 		  'lengthChange'      : false,
@@ -559,7 +560,14 @@ $(document).ready(function(){
 	$('#reportsdatatables_info').css('padding','10px');
 	$('.dataTables_paginate ').css('padding','10px');
 	$('#search_name').keyup(function(){
-		rtable.fnFilter($(this).val());
+		rtable.fnFilter($(this).val());	
+
+	/*$('#reportsdatatables_filter').hide();
+	$('#reportsdatatables_length').hide();
+	$('#reportsdatatables_info').css('padding','10px');
+	$('.dataTables_paginate ').css('padding','10px');
+	$('#search_name').keyup(function(){
+		ptable.fnFilter($(this).val());
 		/*$('#excel_btn').attr('data-filter-name', $(this).val());
  		$('#reset_btn').show();*/
 	});
@@ -724,10 +732,21 @@ $(document).ready(function(){
 		endDate: 'useCurrent',
 		autoclose: true
 	});
-	/*$("#dobdate").mask("9999-99-99");
-	$("#mobile_no").mask("9999999999");*/
+	$("#dobdate").mask("9999-99-99");
+	$("#mobile_no").mask("9999999999");
 });
 
 $(document).ready(function(){
 	 $('.select2').select2();
 });
+function showHsp(cpid){
+			$.ajax({
+				url: 'portal/show_hsp.php',
+				type: 'post',
+				data: 'cpid='+cpid,
+				success: function(response) {
+					$('#hsp_content').html(response);
+					$('#view_hsp').modal('show');
+				}
+			});
+}

@@ -2,8 +2,8 @@
 ob_start();
 session_start();
 
-include_once '../../../includes/define.php';
-include '../../../classes/Class_Database.php';
+include_once '../includes/define.php';
+include '../classes/Class_Database.php';
 
 global $database;
 $database = new Database();
@@ -20,7 +20,7 @@ $arr_hsp	=	$database->getEbhClusterPackageHSPDetails($cluster_package_id);
 				<h4 class="modal-title"><?php echo $arr_hsp[0]['package_nm']?></h4>
 			</div>
 			<div class="modal-body" id="close_form">
-			<table class="table table-condensed" style="margin:20px;width:98%">
+			<table class="table table-condensed" id="hsp_list" style="margin:20px;width:98%">
 			  <thead>
 				<tr>
 		
@@ -28,7 +28,7 @@ $arr_hsp	=	$database->getEbhClusterPackageHSPDetails($cluster_package_id);
 				
 				  <th style="width:150px;" class="text-center" >HSP</th>      
 				  <th  class="text-center">Address</th>
-				  <th  class="text-center">Available Branches</th>
+				  <th style="width:250px;" class="text-center">Available Branches</th>
 				  
 				 </tr>
 			</thead>
@@ -66,7 +66,7 @@ echo "</pre>";*/
 			?>
 	
 				<td ><?php echo ($i+1)?></td>
-				<td ><img src="<?php echo HTTP_SERVER."portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""></td>
+				<td ><img src="<?php echo EBH_HTTP_SERVER."app/portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""></td>
 				<td><?php echo $hsp_address_info;?></td>
 				<td><?php echo $provider_info_popover;?></td>
 				
@@ -76,3 +76,6 @@ echo "</pre>";*/
 			</tbody>
 			</table>
 			</div>
+			<script>
+			
+			</script>

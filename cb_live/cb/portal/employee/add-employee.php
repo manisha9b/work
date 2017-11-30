@@ -1,8 +1,8 @@
 <?php
 	ob_start();
 	session_start();
-	include_once '../../../../includes/define.php';
-	include '../../../../classes/Class_Database.php';
+	include_once '/../../includes/define.php';
+	include '/../../classes/Class_Database.php';
 
 	global $database;
 	$database = new Database();
@@ -84,7 +84,7 @@ if(empty($emp_id))
 		"cluster_id, salutation, first_name, middle_name, last_name, emp_designation, professional_email_id, personal_email_id, mobile_no, emp_dob, emp_height, city, is_active, created_by, created_on");
 
 		//$response_html = "success";
-		$redirect_url = "/portal/cindex.php?page=my_employees&m=aemp";
+		$redirect_url = "employee.php?m=aemp";
 	}
  }
 else
@@ -104,7 +104,7 @@ else
 		"modified_on" => $modified_on)," emp_id='".$emp_id."'");
 
 		//$response_html = "update_success";
-		$redirect_url = "/portal/cindex.php?page=my_employees&m=uemp";
+		$redirect_url = "employee.php?m=uemp";
  }
 		//echo $response_html;
 		header('location: '.HTTP_SERVER.$redirect_url);

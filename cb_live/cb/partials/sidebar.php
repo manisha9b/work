@@ -33,7 +33,7 @@
           </a>
         </li>
         <li>
-          <a href="health_package2.php">
+          <a href="package.php">
             <i class="fa ion-ios-medkit-outline"></i> <span>Health Packages</span>
           </a>
         </li>
