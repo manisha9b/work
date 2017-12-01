@@ -1,4 +1,6 @@
-<?php include_once('partials/header.php'); ?>
+<?php include_once('partials/header.php'); 
+
+?>
  <style>
 	#containercircle {
   margin: 20px;
@@ -93,7 +95,7 @@ svg {
   <?php
 $arr_count = $database->getDashboardCount($clusterId);
 /*echo "<pre>";
-print_R($arr_cluster);
+print_R($arr_count);
 echo "</pre>";//die;*/
 ?>
     <!-- Content Header (Page header) -->
@@ -118,22 +120,22 @@ echo "</pre>";//die;*/
 		<div class="col-md-12">
 		  <h4><b>Quick Summary</b></h4><br>
 		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12">
+		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
-				<span class="info-box-text"><?php echo $arr_count['package_count']?> Health Package(s)</span>
+				<span class="info-box-text"><?php echo $arr_count['total_packages']?> Health Package(s)</span>
 				<span class="info-box-number">Purchase</span>
 			</div>
 			<!-- /.info-box-content -->
 			</div>		
 		</div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
-				  <span class="info-box-text"><?php echo $arr_count['employee_count']?> Employees</span>
+				  <span class="info-box-text"><?php echo $arr_count['total_employees']?> Employees</span>
 				  <span class="info-box-number">Onboarded</span>
 				</div>
             <!-- /.info-box-content -->
@@ -141,11 +143,11 @@ echo "</pre>";//die;*/
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-text">5 Reports</span>
+					<span class="info-box-text"><?php echo $arr_count['total_report_available']?> Reports</span>
 					<span class="info-box-number">Health Index</span>
 				</div>
             <!-- /.info-box-content -->
@@ -153,15 +155,15 @@ echo "</pre>";//die;*/
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+       <!--  <div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-red add_tab_top"><i class="fa fa-plus"></i></span>
 				<div class="info-box-content">
 					<span class="info-box-text mt-10">Add Tabs</span>
 				</div>
-			<!-- /.info-box-content -->
+			
 			</div>
-          <!-- /.info-box -->
+        
         </div>
         <!-- /.col -->
       </div>
@@ -480,7 +482,7 @@ echo "</pre>";//die;*/
 							Males
 						</div>
 						<div class="age">
-							50
+							<?php echo $arr_count['male_employee']?>
 						</div>
 						</div>
 						<div class="ratio_percent"><img src="images/average.png"></div>
@@ -492,7 +494,7 @@ echo "</pre>";//die;*/
 							Females
 						</div>
 						<div class="age">
-							28
+							<?php echo $arr_count['male_employee']?>
 						</div>
 						</div>
 						<div class="ratio_percent"><img src="images/average2.png" style="    margin-left:-22px;"></div>

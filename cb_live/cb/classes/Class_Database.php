@@ -2140,11 +2140,11 @@ class Database {
 		$this->select($sql);
         return $this->result;
 	}
-	public function getClusterEmpDetails($clusterId,$emp_id)
+	public function getClusterEmpDetails($clusterId,$only_health = 0)
 	{
 		unset($this->result);
-		if($emp_id != ''){
-			$where_qry = " and a.emp_id ='".$emp_id."'";
+		if($only_health == 1){
+			$where_qry = " and a.health !='";
 		}
 		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
 		$sql="SELECT a.emp_id,
@@ -3284,13 +3284,64 @@ public function getclusterEbhEmployeeCount($cluster_id)
 		$this->select($sql);
         return $this->result;
 	}
+/*public function getclusterEbhEmployeeCount($cluster_id)
+	{
+		
+		unset($this->result);
+		$sql = "select count(1) as employee_count  from tbl_cluster_employee e where e.cluster_id=".$cluster_id;
+		$this->select($sql);
+        return $this->result;
+	}*/
 
 public function getDashboardCount($cluster_id){
-	$package_count = $this->getclusterEbhPackageCount($cluster_id);
+	/*$package_count = $this->getclusterEbhPackageCount($cluster_id);
 	$employee_count = $this->getclusterEbhEmployeeCount($cluster_id);
 	$result['package_count'] 	= $package_count[0]['package_count'] ;
-	$result['employee_count'] 		= $employee_count[0]['employee_count'] ;
-	return $result;
+	$result['employee_count'] 		= $employee_count[0]['employee_count'] ;*/
+	unset($this->result);
+	$sql = " SELECT 
+a.cluster_id,
+cluster_pack.total_packages,
+cluster_emp.total_employees,
+cluster_emp.male_employee,
+cluster_emp.female_employee,
+cluster_report.total_report_available
+from tbl_clusters as a
+left join 
+(
+	select 
+	x.cluster_id, count(x.cluster_package_id) as total_packages
+	from tbl_cluster_packages as x where x.cluster_id=".$cluster_id."
+	group by x.cluster_id 
+) as cluster_pack on a.cluster_id = cluster_pack.cluster_id
+left join 
+(
+	select 
+	x.cluster_id, 
+	count(x.emp_id) as total_employees, 
+	sum(if(x.salutation in ('Mr.'),1,0)) as male_employee,
+	sum(if(x.salutation in ('Ms.','Mrs.'),1,0)) as female_employee
+	from tbl_cluster_employee as x  where x.cluster_id=".$cluster_id."
+	group by x.cluster_id
+) as cluster_emp on a.cluster_id = cluster_emp.cluster_id
+left join 
+(
+	SELECT
+	e.cluster_id,count(b.appointment_id) as total_report_available
+	FROM tbl_appointments as b 
+	LEFT JOIN tbl_ebh_customer as c on b.ebh_customer_id = c.ebh_customer_id 
+	LEFT JOIN tbl_ebh_pc_packages as d on b.ebh_package_id = d.ebh_package_id
+	LEFT JOIN tbl_cluster_employee as e on c.ebh_customer_id = e.ebh_customer_id
+	LEFT JOIN tbl_clusters as f on e.cluster_id = f.cluster_id
+	where b.is_report_uploaded=1 and e.cluster_id=".$cluster_id."
+	GROUP BY e.cluster_id
+) as cluster_report on a.cluster_id = cluster_report.cluster_id
+where a.cluster_id=".$cluster_id."
+group by a.cluster_id
+";
+$this->select($sql);
+       
+	return $this->result[0];
 }
 
 public function getControllerAction($default) {

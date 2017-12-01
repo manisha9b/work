@@ -80,18 +80,29 @@ include_once('partials/askme.php');
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12" data-toggle="modal" data-target="#myModal">
-          <div class="info-box box5 add_tab_new">
-            <span class="info-box-icon icon4"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+		  <div class="col-md-3 col-sm-6 col-xs-12"  data-toggle="modal" data-target="#myModal">
+          <div class="info-box box4 bg-yellow">
+            <span class="info-box-icon icon4"><i class="ion ion-person-add"></i></span>
 
-            <div class="info-box-content text">
-              <span class="info-box-text text2">ADD TAB</span>
-              
+            <div class="info-box-content">
+              <span class="info-box-text text2 text-white clr_effect1"></span>
+              <span class="info-box-number text-white" style="margin-top:15px;">ADD NEW EMPLOYEE</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
+        <!-- <div class="col-md-3 col-sm-6 col-xs-12" data-toggle="modal" data-target="#myModal">
+          <div class="info-box box5 add_tab_new">
+            <span class="info-box-icon icon4"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+
+            <div class="info-box-content text">
+              <span class="info-box-text text2">ADD EMPLOYEE</span>
+              
+            </div>
+           
+          </div>
+        </div> -->
         <!-- /.col -->
 		</div>
       </div>  

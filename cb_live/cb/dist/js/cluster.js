@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 		$('#div-list').addClass('hidden');
 		$('#invite_employee').removeClass('hidden');
-		$(document).scrollTo('#appointments');
+		$(document).scrollTo('.content-header');
 		
 	});
 

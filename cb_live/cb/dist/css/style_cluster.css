@@ -5476,9 +5476,38 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .fa .fa-info-cart{background-image:url("images/logo/ebh_cart.png")}
 
 .health_goal_area .box {padding:35px!important;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);}
-
-
 @media screen and (max-width:1366px){
-	
-	
+.sex_ratio .text-uppercase {
+   font-size: 13px!important;
+}
+
+.male_Area {
+   display: inline-block!important;
+}
+
+.male_Area img {
+   width: 40px;
+   margin-right: 10px;
+}
+
+.person_info {
+   display: inline-block!important;
+   vertical-align: middle!important;
+}
+
+.ratio_percent {
+   text-align: center;
+   display: inline-block;
+   width: 61%!important;
+}
+
+.ratio_percent img {
+   width: 70%!important;
+}
+
+.male_Area img {
+   width: 40px!important;
+   margin-right: 10px;
+}
+
 }
