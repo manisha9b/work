@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>EBH | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/style_cluster.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="dist/css/animate.css">
-  <link rel="stylesheet" href="plugins/swiper/swiper.css">
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-  <!-- daterange picker -->
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <!--<link rel="stylesheet" href="plugins/datepicker/datepicker3.css">-->
-  <link rel="stylesheet" href="plugins/materialize/materialize.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  
-  <style>
+<?php include_once('partials/header.php'); ?>
+ <style>
 	#containercircle {
   margin: 20px;
   width: 200px;
@@ -115,290 +85,26 @@ svg {
 
 
   </style>
-</head>
-<body id="home" class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="./" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src="images/logo/EBH-small.png" alt="EasyByHealth" style="max-width: 100%;" /></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="images/logo/EBH.png" alt="EasyByHealth" style="max-width: 90%;" /></span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form1" style="display: inline-block;">
-        <div class=" inner-addon left-addon">
-          <i class="fa fa-search"></i>
-          <input type="text" name="q" class="form-control" placeholder="Type To Search">
-        </div>
-      </form>
-      <!-- /.search form -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-		<li>
-          <a href="#"> <i class="fa fa-user-o" aria-hidden="true"></i> <span>Hi Priyanka</span></a>
-          </li>
-		  
-          <li>
-            <a href="#">About EBH</a>
-          </li>
-          <li>
-            <a href="#">How it Works</a>
-          </li>
-          <li class="nohover">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-facebook"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nohover">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-instagram"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nohover nav-space">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-twitter"></i>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="image" style="padding-top:25px;">
-          <img src="images/dr.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="clearfix clear"></div>
-        <div class="info">
-          <p>Digital Republik</p>
-        </div>
-        <div class="prof cluster_progress_bar">
-          <div class="progress xs1 mb-0" style="height:3px;margin:0;">
-            <!-- Change the css width attribute to simulate progress -->
-            <div class="progress-bar progress-bar-cgreen" style="width: 80%;height:3px;margin:0;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-		  <div class="clearfix"></div>
-          <div class="progresscomplete mb-10" style="margin-top: 9px;white-space: normal;">80% complete profile</div>
-          <p style="color: #b7bbc2;">
-            Digital Republik Pvt.Ltd<br/>
-            Mumbai
-          </p>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="active">
-          <a href="cluster_dashboard.html">
-            <i class="fa fa-th-large"></i> <span>Health Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="health_package.html">
-            <i class="fa ion-ios-medkit-outline"></i> <span>Health Packages</span>
-          </a>
-        </li>
-        <li>
-          <a href="employee_information.html">
-            <i class="fa fa-address-card-o"></i> <span>Employees</span>
-          </a>
-        </li>
-        <li>
-          <a href="my-family.html">
-            <i class="fa fa-heartbeat"></i> <span>Health Index</span>
-          </a>
-        </li>
-		<li>
-          <a href="#">
-            <i class="fa fa-calendar"></i> <span>Appointments</span>
-          </a>
-        </li>
-		<li>
-          <a href="#">
-            <i class="fa fa-file-text-o"></i> <span>Reports</span>
-          </a>
-        </li>
-        <div class="nav-divider"></div>        
-        <li>
-          <a class="disable">
-            <i class="fa ion-ios-list"></i> <span>Worth Reading</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-shield"></i> <span>Diet Plan</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-heartbeat"></i> <span>Fitness Services</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-user"></i> <span>Nutritionists</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-heart"></i> <span>Health Equipments</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-file-text"></i> <span>Pharmacy & Chemists</span>
-          </a>
-        </li>
-        <!--<li>
-          <a class="disable">
-            <i class="fa fa-gift"></i> <span>Rewards</span>
-          </a>
-        </li>-->
-        <div class="nav-divider"></div>
-        <li>
-          <a href="my-profile.html">
-            <i class="fa fa-user"></i> <span>Company Profile</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-info-circle"></i> <span>About EBH</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
 
+  <!-- Left side column. contains the logo and sidebar -->
+ 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+  <?php
+$arr_count = $database->getDashboardCount($clusterId);
+echo "<pre>";
+print_R($arr_cluster);
+echo "</pre>";//die;
+?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
 		<div class="col-md-12">
 		  <h3 class="pull-left">
-			<b>Digital Republik Health Dashboard</b>
+			<b> <?php echo $arr_cluster['cluster_business_name']?> Dashboard</b>
 		  </h3>
 		  <div class="pull-right resright">
-			<div class="navbar-custom-menu">
-			  <ul class="nav navbar-nav">
-				<!-- Messages: style can be found in dropdown.less-->
-				<li>
-				  <a class="btn3 ask_Any" href="#">
-					<img src="dist/img/ask.png"> Ask me anything
-				  </a>
-				</li>
-				<li class="dropdown messages-menu">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 10px;" aria-expanded="false">
-					<i class="fa fa-bell-o"></i>
-					<span class="label label-danger">6</span>
-				  </a>
-				  <ul class="dropdown-menu">
-					<li class="header">You have 6 messages</li>
-					<li>
-					  <!-- inner menu: contains the actual data -->
-					  <ul class="menu">
-						<li><!-- start message -->
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 5 mins</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<!-- end message -->
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 hours</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> Today</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> Yesterday</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 days</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 days</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-					  </ul>
-					</li>
-					<li class="footer"><a href="#">See All Messages</a></li>
-				  </ul>
-				</li>
-			  </ul>
-			</div>  
-		  </div>
+		  <?php include_once('partials/askme.php'); ?>
+			 </div>
 	  </div>
       <div class="clearfix"></div>
 	  <hr class="hrdivide" />
@@ -416,7 +122,7 @@ svg {
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
-				<span class="info-box-text">1 Health Package(s)</span>
+				<span class="info-box-text"><?php echo $arr_count['package_count']?> Health Package(s)</span>
 				<span class="info-box-number">Purchase</span>
 			</div>
 			<!-- /.info-box-content -->
@@ -427,7 +133,7 @@ svg {
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
-				  <span class="info-box-text">78 Employees</span>
+				  <span class="info-box-text"><?php echo $arr_count['employee_count']?> Employees</span>
 				  <span class="info-box-number">Onboarded</span>
 				</div>
             <!-- /.info-box-content -->
@@ -468,25 +174,7 @@ svg {
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
-			<div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Area Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="line-chart-gen" style="height: 250px; width: 627px;" width="627" height="250"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-		  <!-- Line chart -->
-          <div class="box box-primary">
+			    <div class="box box-primary">
             <div class="box-header with-border">
               <i class="fa fa-bar-chart-o"></i>
 
@@ -563,7 +251,7 @@ svg {
                     <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
                   </div>
                   <div class="box-body">
-                  <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"><canvas class="flot-base" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 16px; text-align: center;">Mar</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 75px; text-align: center;">Apr</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 133px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 193px; text-align: center;">Jun</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 254px; text-align: center;">Jul</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 307px; text-align: center;">June</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 120px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 7px; text-align: right;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 60px; left: 1px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 30px; left: 1px; text-align: right;">150</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">200</div></div></div><canvas class="flot-overlay" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas></div>
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
@@ -618,7 +306,7 @@ svg {
               </div>
       </div>
       <!-- /.row -->
-      <div class="row">
+     <!-- <div class="row">
         <div class="col-sm-12">
           <div class="configure" style="padding-top: 10px;margin-bottom: 5px;margin-top: 50px;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);">
             <div class="pull-left re_arrange_dashboard">
@@ -630,9 +318,9 @@ svg {
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div>
+      </div> -->
       <!-- /.row -->
-      <div class="row wow bounceInleft" data-wow-delay="0.8s">
+      <!-- <div class="row wow bounceInleft" data-wow-delay="0.8s">
         <div class="col-sm-12">
           <div class="configure digonalsection pt-0 pb-0">
             <div class="col-md-5 padding0 pt-20 pb-20">
@@ -663,7 +351,7 @@ svg {
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div>
+      </div> -->
       <!-- /.row -->
     <div class="row pt-20">		
         <div class="employe_health_area">
@@ -828,7 +516,7 @@ svg {
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<div id="container"></div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b>10,000</b></h5>
+						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $dataArr['goal']['steos'];?></span></b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>STEPS / DAY</b></h5>
 						<h4 class="mb-10 text-center date">By Jan 2018</h4>
 					</div>
@@ -843,38 +531,26 @@ svg {
 					  <span>67</span>%
 					</div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b>7.5 Hrs</b></h5>
+						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $dataArr['goal']['sleep'];?></span> Hrs</b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>SLEEP / Night</b></h5>
 						<h4 class="mb-10 text-center date">By Jan 2018</h4>
 					</div>
                 </div>
               </div>
-			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
+			     
+			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;cursor:pointer;" onClick="openGoalForm();">
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<span class="add_new_tab"><i class="fa fa-plus"></i></span>
-					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"><b>ADD A GOAL</b></h5>
+					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>ADD A GOAL</b></h5>
                   
                 </div>
               </div>
-			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
-					<span class="add_new_tab"><i class="fa fa-plus"></i></span>
-					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"><b>ADD A GOAL</b></h5>
-                  
-                </div>
-              </div>
-			  <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
-					<div id="containercircle1"></div>
-					  <h5 class="mt-20 text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"><b>ADD A GOAL</b></h5>
-                  <h4 class="mb-10 text-center date">By Jan 2018</h4>
-                </div>
-              </div>
+			
               <!-- /.col -->              
             </div>
             <div class="swiper-pagination3"></div>
-            <div class="swiper-button-next packages_next3"></div>
-            <div class="swiper-button-prev packages_prev3"></div>
+           <!-- <div class="swiper-button-next packages_next3"></div>
+            <div class="swiper-button-prev packages_prev3"></div> -->
           </div>
         </div>  
       </div>
@@ -1135,18 +811,71 @@ svg {
     <div class="clearfix"></div>
   </div>
 </div>
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- AdminLTE for Wow purposes -->
-<script src="dist/js/wow.min.js"></script>
+	    <div class="modal fade" id="goal_form_div">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add Your Goals</h4>
+              </div><form name="goal-form" id="goal-form" method="post" action="">
+			  <input type="hidden" name="action"  id="goal_action" value="save_goal" />
+			  <input type="hidden" name="cluster_id"  id="cluster_id" value="<?php echo $clusterId ?>" />
+              <div class="modal-body">
+			<!--  <form id="goal_form" name="goal_form" action="">
+			   <input type="hidden" name="action"  id="goal_action" value="save_goal" />
+                <div class="row">
+               <div class="row"> 
+				  
+					<div class="form-group">
+					
+						<div class="col-sm-8">
+							
+								 <input type="text" name="steps" class="form-control input-sm pull-right" id="steps" placeholder="Steps/Day"  />
+							
+						</div>
+					</div>
+						</div>
+						<div class="row"> 
+						<div class="col-sm-8">
+							<div class="form-group">
+								<input type="text" name="sleep" class="form-control input-sm pull-right" id="sleep" placeholder="Sleep/Night"  />
+							</div>
+						</div>
+					
+					
+					
+						</div>
+					
+					
+				</div>
+				</form> -->
+				
+    <div id="login_message_div"></div>
+			<input type="hidden" name="ajaxlogin" value="on">
+      <div class="form-group has-feedback">
+	  <input type="text" name="steps" class="form-control " id="steps" placeholder="Steps/Day" required />
+        
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" name="sleep" class="form-control " id="sleep" placeholder="Sleep/Night"  required />
+      </div>
+    
+   
+              </div>
+              <div class="modal-footer">
+               <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+			   <button type="submit" class="btn btn btn-warning"  >Save</button>
+<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+              </div> </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+  
+<?php include_once('partials/footer.php'); ?>
 <!-- FLOT CHARTS -->
 <script src="plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -1155,7 +884,6 @@ svg {
 <script src="plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script src="plugins/flot/jquery.flot.categories.min.js"></script>
-<!-- bootstrap datepicker -->
 <!--<script src="plugins/datepicker/bootstrap-datepicker.js"></script>-->
 <script src="plugins/swiper/swiper.js"></script>
 <!-- Page script -->
@@ -1164,10 +892,29 @@ svg {
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 
 <script>
-  new WOW().init();
-</script>
-<script>
   $(document).ready(function() {
+	  
+	$("#goal-form").validate({        
+		rules:{            
+			required:{
+				required:true
+			},
+		},        
+		errorClass: "help-inline text-white",        
+		errorElement: "span",        
+		highlight:function(element, errorClass, validClass) {            
+		$(element).parents('.form-group').addClass('has-error');        
+		},        unhighlight: function(element, errorClass, validClass) {            
+		$(element).parents('.form-group').removeClass('has-error');            
+		$(element).parents('.form-group').addClass('has-success');        
+		},		
+		submitHandler: function() {			
+			saveGoal();
+			  $('#goal_form_div').modal('hide');
+   $('input[type="text"], textarea').val('');
+			return false;		
+		}    
+	});
     //Date picker
     /*$('#datepicker11,#datepicker2,#datepicker3').datepicker({
       autoclose: true
@@ -1197,54 +944,11 @@ svg {
         $('body').addClass('modal-open');
       }
     }
-	 //LINE randomly generated data
-/*
-    var sin = [], cos = []
-    for (var i = 0; i < 14; i += 0.5) {
-      sin.push([i, Math.sin(i)])
-      cos.push([i, Math.cos(i)])
-    }
-    var line_data61 = {
-      data : sin,
-      color: '#3c8dbc'
-    }
-    var line_data62 = {
-      data : cos,
-      color: '#00c0ef'
-    }
-    $.plot('#line-chart-6', [line_data61, line_data62], {
-      grid  : {
-        hoverable  : true,
-        borderColor: '#f3f3f3',
-        borderWidth: 1,
-        tickColor  : '#f3f3f3'
-      },
-      series: {
-        shadowSize: 0,
-        lines     : {
-          show: true
-        },
-        points    : {
-          show: true
-        }
-      },
-      lines : {
-        fill : true,
-        color: ['#3c8dbc', '#f56954']
-      },
-      yaxis : {
-        show: true
-      },
-      xaxis : {
-        show: true
-      }
-    })
     /*
      * LINE CHART 1
      * ----------
      */
-	 
-	  var line_data2 = {
+	   var line_data2 = {
       data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 150.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
       color: "#bad0d2"
     };
@@ -1342,12 +1046,12 @@ svg {
      */
     //LINE randomly generated data
     var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
       color: "#31b3bf"
     };
     var line_data21 = {
       data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
-      color: "#ccafaa"
+      color: "#dd4b39"
     };
     $.plot("#line-chart2", [line_data2,line_data21], {
       grid: {
@@ -1368,7 +1072,7 @@ svg {
       },
       lines: {
         fill: true,
-        color: ["#31b3bf", "#ccafaa"]
+        color: ["#31b3bf", "#f56954"]
       },
       yaxis: {
         show: true,
@@ -1648,6 +1352,12 @@ svg {
 </script>
 <script>
   $(document).ready(function(){
+	  
+	 
+
+jQuery.validator.addMethod("bponly", function(value, element) {
+  return this.optional(element) || /(1)(\d\d)(\/)(\d\d)/.test(value);
+}, "Please enter correct Blood Pressure");
     // input 1 styles
     $(".input__1 input, .textarea__1 textarea").focus(function(){
       if($(this).parent().hasClass("input__1"))
@@ -1908,6 +1618,29 @@ bar.text.style.fontSize = '2rem';
 
 bar.animate(0.68);  // Number from 0.0 to 1.0
 
+</script>
+<script>
+  function openGoalForm(){
+	   $('#goal_form_div').modal('show');
+   }  
+   function saveGoal(){
+	   	   $('#goal_form_div').modal('show');
+		   alert("t--"+$('#goal-form').serialize());
+	   	$.ajax({				
+		url: 'operation.php',				
+		type: 'POST',				
+		dataType: 'json',				
+		async: false,				
+		data: $('#goal-form').serialize(),				
+		success: function(response) {	
+alert("t"+response);
+			
+			$('#steps_goal').html(response.steps);
+			$('#sleep_goal').html(response.sleep);
+			
+		}
+	})
+   }
 </script>
 </body>
 </html>

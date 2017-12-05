@@ -480,28 +480,10 @@ svg {
             </div>
             <div class="box-body">
               <div class="chart">
-                <canvas id="line-chart-gen" style="height: 250px; width: 627px;" width="627" height="250"></canvas>
+                <canvas id="areaChart" style="height: 250px; width: 627px;" width="627" height="250"></canvas>
               </div>
             </div>
             <!-- /.box-body -->
-          </div>
-		  <!-- Line chart -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <i class="fa fa-bar-chart-o"></i>
-
-              <h3 class="box-title">Line Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div id="line-chart-6" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body-->
           </div>
 		  </div>
             <div class="swiper-wrapper pt-20">
@@ -563,7 +545,7 @@ svg {
                     <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
                   </div>
                   <div class="box-body">
-                  <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"><canvas class="flot-base" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 16px; text-align: center;">Mar</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 75px; text-align: center;">Apr</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 133px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 193px; text-align: center;">Jun</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 254px; text-align: center;">Jul</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 307px; text-align: center;">June</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 120px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 7px; text-align: right;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 60px; left: 1px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 30px; left: 1px; text-align: right;">150</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">200</div></div></div><canvas class="flot-overlay" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas></div>
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
@@ -1197,90 +1179,10 @@ svg {
         $('body').addClass('modal-open');
       }
     }
-	 //LINE randomly generated data
-/*
-    var sin = [], cos = []
-    for (var i = 0; i < 14; i += 0.5) {
-      sin.push([i, Math.sin(i)])
-      cos.push([i, Math.cos(i)])
-    }
-    var line_data61 = {
-      data : sin,
-      color: '#3c8dbc'
-    }
-    var line_data62 = {
-      data : cos,
-      color: '#00c0ef'
-    }
-    $.plot('#line-chart-6', [line_data61, line_data62], {
-      grid  : {
-        hoverable  : true,
-        borderColor: '#f3f3f3',
-        borderWidth: 1,
-        tickColor  : '#f3f3f3'
-      },
-      series: {
-        shadowSize: 0,
-        lines     : {
-          show: true
-        },
-        points    : {
-          show: true
-        }
-      },
-      lines : {
-        fill : true,
-        color: ['#3c8dbc', '#f56954']
-      },
-      yaxis : {
-        show: true
-      },
-      xaxis : {
-        show: true
-      }
-    })
     /*
      * LINE CHART 1
      * ----------
      */
-	 
-	  var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 150.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-      color: "#bad0d2"
-    };
-    var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 180.5], ["Mar", 100.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
-      color: "#ccafaa"
-    };
-    $.plot("#line-chart-6", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-       
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#bad0d2", "#ccafaa"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
     //LINE randomly generated data
     var line_data1 = {
       data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
@@ -1342,12 +1244,12 @@ svg {
      */
     //LINE randomly generated data
     var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
       color: "#31b3bf"
     };
     var line_data21 = {
       data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
-      color: "#ccafaa"
+      color: "#dd4b39"
     };
     $.plot("#line-chart2", [line_data2,line_data21], {
       grid: {
@@ -1368,7 +1270,7 @@ svg {
       },
       lines: {
         fill: true,
-        color: ["#31b3bf", "#ccafaa"]
+        color: ["#31b3bf", "#f56954"]
       },
       yaxis: {
         show: true,
