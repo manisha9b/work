@@ -50,7 +50,7 @@ else
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  
+  <script src="d3.min.js"></script><script src="dist/DotMatrix.css"></script><script src="dist/DotMatrix.js"></script>
  </head>
 <body id="home" class="hold-transition skin-blue sidebar-mini">
 <?php 

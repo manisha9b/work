@@ -179,6 +179,12 @@ else
                 </li> -->
                 
               </ul>
+			  <?php
+if(isset($_REQUEST['m']))
+ {
+	echo $database->show_alert($_REQUEST['m']);
+ }
+?>
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
 				<div id="div-list">
@@ -468,7 +474,7 @@ $form_action =  "portal/invite.php";
 			<div class="panel-heading text-primary"> <span class="panel-title">Guidelines</span> </div>
 			<div class="panel-body">
 			 <ul style="line-height:200%;">
-				   <li><a style="color:#0000ff" href="<? echo HTTP_SERVER; ?>portal/modules/cluster-dashboard/employee/bulkimport.xlsx">Download</a> Employee Import Format. </li>
+				   <li><a style="color:#0000ff" href="<? echo HTTP_SERVER; ?>portal/employee/bulkimport.xlsx">Download</a> Employee Import Format. </li>
 				   <li>Please do not change or edit columns heading</li>
 				   <li>System will not accept records without email-id</li>
 				   <li>Leave the columns blank incase no data available</li>
@@ -698,6 +704,7 @@ keeps one more focussed and <br> productiev at work</span>
 <script src="dist/js/bootstrap-datepicker.min.js"></script>
 
 <script src="dist/js/cluster.js"></script>
+
 <script>
   $(document).ready(function(){
     // input 1 styles

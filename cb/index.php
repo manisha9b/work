@@ -37,10 +37,13 @@ if(isset($_SESSION['cluster_type']) && isset($_SESSION['user_id']) && $_SESSION[
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Easy Buy Health</b></a>
+   
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
+    <div class="login-logo">
+		<img src="images/logo/EBH.png" alt="EasyByHealth" style="max-width: 90%;">
+	</div>
     <p class="login-box-msg">Sign in to start your session</p>
 
    <form name="login-form" id="login-form" method="post" action="">
@@ -63,23 +66,14 @@ if(isset($_SESSION['cluster_type']) && isset($_SESSION['user_id']) && $_SESSION[
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
+
+        <div class="col-sm-12 sign_in_btn">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
-    <!-- /.social-auth-links -->
-
-    <a href="#">I forgot my password</a><br>
     <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
 
   </div>

@@ -1,1 +1,4 @@
-<p>2017-11-27 15:20:36 Ms. Test  Test - The package is already utilized by the employee</p>
+<p>2017-11-27 19:39:35 <strong>Mrs. TestB  lastB</strong> - Added to Package</p>
+<p>2017-11-27 19:39:35 <strong>Mrs. TestB  lastB</strong> - The Invitation has been sent to the employee</p>
+<p>2017-11-27 19:39:39 <strong>Mrs. Testd  lastB</strong> - Added to Package</p>
+<p>2017-11-27 19:39:40 <strong>Mrs. Testd  lastB</strong> - The Invitation has been sent to the employee</p>

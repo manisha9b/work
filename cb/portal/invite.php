@@ -3,10 +3,10 @@ ob_start();
 session_start();
 include_once '../includes/define.php';
 include '../classes/Class_Database.php';
-/*include '../../../classes/class_google_api.php';
-include('../../../classes/upload_class.php');
-include('../../../classes/imageresizer.class.php');
-include '../../../classes/PHPExcel/IOFactory.php';*/
+include '../../app/classes/class_google_api.php';
+include('../../app/classes/upload_class.php');
+include('../../app/classes/imageresizer.class.php');
+include '../../app/classes/PHPExcel/IOFactory.php';
 
 global $database;
 $database=new Database();
@@ -36,7 +36,7 @@ $cluster_id				=	$_POST['cluster_id'];
 	$hr_email_id			= $arr_cluster[0]['hr_email_id'];
 	$hr_mobile_no			= $arr_cluster[0]['hr_mobile_no'];
 /*END */
-
+print_R($_POST);//die;
 
 if($_POST['clusterpkg'] == 'fileupload')
 {
@@ -45,8 +45,8 @@ if($_POST['clusterpkg'] == 'fileupload')
 	
 	if(!empty($_FILES['fileupload']['name']))
 	{
-		$uploaddir 		= 	'../../media/cluster-emp-excel/';
-		$live_url		=	HTTP_SERVER.'member/media/cluster-emp-excel/';
+		$uploaddir 		= 	'../../app/portal/media/cluster-emp-excel/';
+		$live_url		=	EBH_HTTP_SERVER.'member/media/cluster-emp-excel/';
 		$ext			=	$database->findexts($file['name']);
 		$file_name		=	$database->uploadFile('fileupload', $uploaddir.$file_name);
 		
@@ -241,11 +241,11 @@ if($_POST['clusterpkg'] == 'fileupload')
 			}
 			*/
 			
-			$redirect_page	=	HTTP_SERVER."/health_package2.php?m=isend";			
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend";			
 		}
 		else
 		{
-			$redirect_page	=	HTTP_SERVER."portal/health_package2.php";
+			$redirect_page	=	HTTP_SERVER."package.php";
 		}		
 		header("location: ".$redirect_page);
 
@@ -454,7 +454,8 @@ elseif($_POST['clusterpkg'] == 'newemp')
 		$emp_id = mysql_insert_id();
 
 		$emp_dup = $database->is_duplicate("cluster_id", "tbl_cluster_employee_pack", " cluster_package_id='".$cluster_package_id."' and emp_id='".$emp_id."'");
-				
+			
+			
 		if(empty($emp_dup))
 		{
 			$arr_emp	=	$database->getClusterEmp($cluster_id,$emp_id);
@@ -483,9 +484,10 @@ elseif($_POST['clusterpkg'] == 'newemp')
 			$err_log=fopen("error_logs/error-log.txt", 'a+');
 			fputs($err_log, "<p>".date('Y-m-d H:i:s')." ".$arr_emp[0]['emp_name']." - The package is already utilized by the employee</p>");
 			fclose($err_log);
+			
 		}
 
-	$redirect_page	=	HTTP_SERVER."portal/cindex.php?m=isend";
+	$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 	header("location:".$redirect_page);
 }
 elseif($_POST['clusterpkg'] == 'empfromlist')
@@ -535,11 +537,11 @@ elseif($_POST['clusterpkg'] == 'empfromlist')
 					fclose($err_log);					
 				}
 			}
-			$redirect_page	=	HTTP_SERVER."portal/cindex.php?m=isend";
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 		}
 		else
 		{
-			$redirect_page	=	HTTP_SERVER."portal/cindex.php?m=isend_err";
+			$redirect_page	=	HTTP_SERVER."package.php?m=isend_err";
 		}
 
 	}	
@@ -564,9 +566,9 @@ else
 			$mobile_no = $arr_emp[0]['mobile_no'];
 
 			//Insert record in tbl_cluster_employee_pack
-			$database->insert("tbl_cluster_employee_pack",
-			array($cluster_id,$cluster_package_id,$emp_id,$created_by,$created_on),
-			"cluster_id,cluster_package_id,emp_id,created_by,created_on");
+			//$database->insert("tbl_cluster_employee_pack",
+			//array($cluster_id,$cluster_package_id,$emp_id,$created_by,$created_on),
+			//"cluster_id,cluster_package_id,emp_id,created_by,created_on");
 			
 			//Code to send email to Employee
 			include 'send-sms.php';
@@ -587,7 +589,7 @@ else
 		}
 	}
 	
-	$redirect_page	=	HTTP_SERVER."portal/cindex.php?m=isend";
+	$redirect_page	=	HTTP_SERVER."package.php?m=isend";
 	header("location:".$redirect_page);	
 }
 //echo json_encode($data);

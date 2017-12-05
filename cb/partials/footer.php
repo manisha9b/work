@@ -1,7 +1,7 @@
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="dist/js/validate.js"></script>
-
+<script src="dist/js/jquery.scrollTo.js"></script>
 <!--
  Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -15,7 +15,9 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE for Wow purposes -->
 <script src="dist/js/wow.min.js"></script>
-
+<script src="dist/js/jquery.dataTables.min.js"></script>
+<script src="dist/js/dataTables.bootstrap.min.js"></script>
+<script src="dist/js/jquery.maskedinput.min.js"></script>
 <script>
   new WOW().init();
 </script>

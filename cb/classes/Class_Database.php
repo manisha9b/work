@@ -576,7 +576,7 @@ class Database {
         //date_default_timezone_set('Etc/UTC');
 
         date_default_timezone_set('Asia/Calcutta');
-        require_once DOC_ROOT . 'phpmailer/PHPMailerAutoload.php';
+        require_once  '../../phpmailer/PHPMailerAutoload.php';
         //Create a new PHPMailer instance
         $mail = new PHPMailer;
         //$mail =	clone $mail;
@@ -1647,8 +1647,8 @@ class Database {
 		unset($this->result);
 
 
-		 $sql="SELECT b.name,b.logo,a.price_per_unit,d.package_nm
-				FROM tbl_cluster_packages_hsp a
+		 $sql="SELECT b.name,b.logo,a.price_per_unit,tcase(d.package_nm) AS package_nm,d.sales_price_type,
+			c.package_unit,c.price_per_unit, c.total_price,c.cluster_contribution				FROM tbl_cluster_packages_hsp a
 				LEFT JOIN tbl_hsps b ON a.hsp_id=b.id
 				LEFT JOIN tbl_cluster_packages c ON c.cluster_package_id=a.cluster_package_id
 				LEFT JOIN tbl_ebh_pc_packages d ON d.ebh_package_id=c.package_id
@@ -2124,17 +2124,125 @@ class Database {
 			a.personal_email_id,
 			a.emp_designation,
 			b.city_name,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,a.emp_dob,'') as dob,
 			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,DATE_FORMAT(a.emp_dob,'%d %b %Y'),'') as emp_dob,
 			if(a.anniversary_date<>'0000-00-00' or a.anniversary_date is not null,DATE_FORMAT(a.anniversary_date,'%d %b %Y'),'') as anniversary_date,
-			a.mobile_no
+			a.mobile_no,
+			c.date_of_birth,
+			c.photo,
+			c.photo_thumb,
+			c.blood_group
 		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id
 		left join cities b on b.id = a.city
 		WHERE cluster_id='".$clusterId."' ".$where_qry;
 
 		$this->select($sql);
         return $this->result;
 	}
+	public function getClusterEmpDetails($clusterId,$health_type = '',$limit = '')
+	{
+		unset($this->result);
+		if($health_type == 'H'){
+			$where_qry = " and rp.bs_status!='UH' and rp.bp_status !='UH' and rp.bmi_status !='UH' and rp.bmi_status !=''";
+		}elseif($health_type == 'UH'){
+			$where_qry = " and (rp.bs_status='UH' or rp.bp_status ='UH' or rp.bmi_status ='UH')";
+		}
+		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
+		$sql="SELECT a.emp_id,rp.bs_status,rp.bp_status,rp.bmi_status, rp.bmi_category,rp.bp_category,rp.bs_result,
+if(rp.bp_status = '' and rp.bs_status='' and rp.bmi_status ='' ,'',
+if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
+		if(rp.bp_status = 'UH' or rp.bs_status='UH' or rp.bmi_status ='UH','UH','H'))) as health,
+			a.salutation,
+			a.first_name,
+			a.middle_name,
+			a.last_name,
+			if(a.middle_name<>'' or a.middle_name is not null, concat(a.salutation,' ',tcase(a.first_name),' ',tcase(a.middle_name),' ',tcase(a.last_name)), concat(a.salutation,' ',tcase(a.first_name),' ',tcase(a.last_name))) as emp_name,
+			a.professional_email_id,
+			a.personal_email_id,
+			a.emp_designation,
+			b.city_name,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,a.emp_dob,'') as dob,
+			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,DATE_FORMAT(a.emp_dob,'%d %b %Y'),'') as emp_dob,
+			if(a.anniversary_date<>'0000-00-00' or a.anniversary_date is not null,DATE_FORMAT(a.anniversary_date,'%d %b %Y'),'') as anniversary_date,
+			a.mobile_no,
+			c.date_of_birth,
+			c.photo,
+			c.photo_thumb,
+			c.blood_group
+		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id
+		
+		left join tbl_appointments ap on ap.ebh_customer_id = c.ebh_customer_id 
+		left join (select r.appointment_id,r.bmi_category,r.bp_category,r.bs_result,
+				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
+					if(r.bp_category='Normal Blood pressure range' , 'H', 
+				if (r.bp_category='Lower than Normal'
+					or r.bp_category='Prehypertension'
+					or r.bp_category='Stage 1 Hypertension'
+					or r.bp_category='Stage 2 Hypertension'
+					 ,'UH','')) as bp_status,
+				if(r.bs_result='Normal' , 'H', 
+					if (r.bs_result='Prediabetes'
+					or r.bs_result='Diabetes'
+					,'UH','')) as bs_status 
+				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
+				
+				left join cities b on b.id = a.city where a.cluster_id='".$clusterId."' ".$where_qry.' '.$limit;
 
+		$this->select($sql);
+        return $this->result;
+	}
+	
+public function getClusterEmpCount($clusterId)
+	{
+		
+		unset($this->result);
+		
+		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
+		 $sql="SELECT count(1) as count,
+if(rp.bp_status = '' and rp.bs_status='' and rp.bmi_status ='' ,'',
+if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
+		if(rp.bp_status = 'UH' or rp.bs_status='UH' or rp.bmi_status ='UH','UH','H'))) as health
+		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id		
+		left join tbl_appointments ap on ap.ebh_customer_id = c.ebh_customer_id 
+		left join (select r.appointment_id,r.bmi_category,r.bp_category,r.bs_result,
+				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
+					if(r.bp_category='Normal Blood pressure range' , 'H', 
+				if (r.bp_category='Lower than Normal'
+					or r.bp_category='Prehypertension'
+					or r.bp_category='Stage 1 Hypertension'
+					or r.bp_category='Stage 2 Hypertension'
+					 ,'UH','')) as bp_status,
+				if(r.bs_result='Normal' , 'H', 
+					if (r.bs_result='Prediabetes'
+					or r.bs_result='Diabetes'
+					,'UH','')) as bs_status 
+				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
+				 where a.cluster_id='".$clusterId."' group by health ";
+
+		$this->select($sql);
+		$result = $this->result;
+		//print_R($result);	
+		$returnArr['healthy'] = 0;
+		$returnArr['unhealthy'] = 0;
+		$returnArr['total'] = 0;
+		foreach($result as $key=>$val){
+			switch($val['health']){
+				case 'H':$returnArr['healthy'] = $val['count'];
+						$returnArr['total'] += $val['count'];
+				break;
+				case 'UH':$returnArr['unhealthy'] = $val['count'];
+						$returnArr['total'] += $val['count'];
+				break;
+				default:$returnArr['total'] += $val['count'];
+					
+			}
+		}
+        return $returnArr;
+	}
+	
 	public function getClusterUserEmp($clusterId,$cluster_user_id,$emp_id)
 	{
 		unset($this->result);
@@ -3178,13 +3286,64 @@ public function getclusterEbhEmployeeCount($cluster_id)
 		$this->select($sql);
         return $this->result;
 	}
+/*public function getclusterEbhEmployeeCount($cluster_id)
+	{
+		
+		unset($this->result);
+		$sql = "select count(1) as employee_count  from tbl_cluster_employee e where e.cluster_id=".$cluster_id;
+		$this->select($sql);
+        return $this->result;
+	}*/
 
 public function getDashboardCount($cluster_id){
-	$package_count = $this->getclusterEbhPackageCount($cluster_id);
+	/*$package_count = $this->getclusterEbhPackageCount($cluster_id);
 	$employee_count = $this->getclusterEbhEmployeeCount($cluster_id);
 	$result['package_count'] 	= $package_count[0]['package_count'] ;
-	$result['employee_count'] 		= $employee_count[0]['employee_count'] ;
-	return $result;
+	$result['employee_count'] 		= $employee_count[0]['employee_count'] ;*/
+	unset($this->result);
+	$sql = " SELECT 
+a.cluster_id,
+cluster_pack.total_packages,
+cluster_emp.total_employees,
+cluster_emp.male_employee,
+cluster_emp.female_employee,
+cluster_report.total_report_available
+from tbl_clusters as a
+left join 
+(
+	select 
+	x.cluster_id, count(x.cluster_package_id) as total_packages
+	from tbl_cluster_packages as x where x.cluster_id=".$cluster_id."
+	group by x.cluster_id 
+) as cluster_pack on a.cluster_id = cluster_pack.cluster_id
+left join 
+(
+	select 
+	x.cluster_id, 
+	count(x.emp_id) as total_employees, 
+	sum(if(x.salutation in ('Mr.'),1,0)) as male_employee,
+	sum(if(x.salutation in ('Ms.','Mrs.'),1,0)) as female_employee
+	from tbl_cluster_employee as x  where x.cluster_id=".$cluster_id."
+	group by x.cluster_id
+) as cluster_emp on a.cluster_id = cluster_emp.cluster_id
+left join 
+(
+	SELECT
+	e.cluster_id,count(b.appointment_id) as total_report_available
+	FROM tbl_appointments as b 
+	LEFT JOIN tbl_ebh_customer as c on b.ebh_customer_id = c.ebh_customer_id 
+	LEFT JOIN tbl_ebh_pc_packages as d on b.ebh_package_id = d.ebh_package_id
+	LEFT JOIN tbl_cluster_employee as e on c.ebh_customer_id = e.ebh_customer_id
+	LEFT JOIN tbl_clusters as f on e.cluster_id = f.cluster_id
+	where b.is_report_uploaded=1 and e.cluster_id=".$cluster_id."
+	GROUP BY e.cluster_id
+) as cluster_report on a.cluster_id = cluster_report.cluster_id
+where a.cluster_id=".$cluster_id."
+group by a.cluster_id
+";
+$this->select($sql);
+       
+	return $this->result[0];
 }
 
 public function getControllerAction($default) {
@@ -3207,6 +3366,106 @@ public function getControllerAction($default) {
             return '';
         }
     }
+	function ageCalculator($dob){
+    if(!empty($dob)){
+        $birthdate = new DateTime($dob);
+        $today   = new DateTime('today');
+        $age = $birthdate->diff($today)->y;
+        return $age;
+    }else{
+        return 0;
+    }
+}
+
+function getDashboardData($clusterId){
+unset($this->result);
+	$weight_sql = "SELECT  monthname(a.recorded_on) as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,
+
+				if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) )  as  gender1
+				from tbl_ebh_customer_health_readings as a
+				left join tbl_ebh_customer as b on a.ebh_customer_id = b.ebh_customer_id 
+				left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
+				where  c.cluster_id=".$clusterId." and a.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) and bmi>0 group by gender1, month(a.recorded_on)";
+	//AND y.cluster_id=".$clusterId."
+	// c.cluster_id=".$clusterId." and
+		$this->select($weight_sql);
+		$result['weight'] = $this->result;
+		$sugar_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.ppbs))  as avg_ppbs, round(AVG(x.fbs)) as avg_fbs
+		FROM 	tbl_ebh_customer_health_readings x
+		JOIN tbl_cluster_employee Y ON x.ebh_customer_id=y.ebh_customer_id
+		WHERE x.fbs>0 AND x.ppbs>0 and x.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) AND y.cluster_id=".$clusterId."
+		GROUP BY MONTH(x.recorded_on);";
+			unset($this->result);
+		$this->select($sugar_sql);
+		$result['sugar'] = $this->result;
+		$bp_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.systolic)) as avg_systolic, round(AVG(x.diastolic)) as avg_diastolic
+		FROM 	tbl_ebh_customer_health_readings x
+		JOIN tbl_cluster_employee Y ON x.ebh_customer_id=y.ebh_customer_id
+		WHERE x.systolic>0 AND x.diastolic>0  and x.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) AND y.cluster_id=".$clusterId."
+		GROUP BY MONTH(x.recorded_on)";
+			unset($this->result);
+		$this->select($bp_sql);
+		$result['bp'] = $this->result;
+	return $result;
+       
+}
+function getDashboardChart($clusterId){
+	$data = $this->getDashboardData($clusterId);
+	$result = array();
+	
+	foreach($data['weight'] as $key=>$value){
+		if($value['gender1']!=''){
+			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_bmi'];
+			//[["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+			$bmi_chart[$value['gender1']][] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
+		}
+	}
+	$result['chart']['male_bmi_chart'] = '['.implode(', ',$bmi_chart['Male']).']';
+	$result['chart']['female_bmi_chart'] = '['.implode(', ',$bmi_chart['Female']).']';
+	$avg_fbs = 0;
+	$avg_ppbs = 0;
+	$avg_systolic = 0;
+	$avg_diastolic = 0;
+	$n_sugar = 0;
+	$n_bp = 0;
+	foreach($data['sugar'] as $key=>$value){
+			$result['sugar'][$value['recording_month']]['ppbs'] = $value['avg_ppbs'];
+			$result['sugar'][$value['recording_month']]['fbs'] = $value['avg_fbs'];
+			$ppbs_chart[] = '["'.$value['recording_month'].'", '.$value['avg_ppbs'].']' ;
+			$fbs_chart[] = '["'.$value['recording_month'].'", '.$value['avg_fbs'].']' ;
+			$avg_fbs += $value['avg_fbs'];
+			$avg_ppbs += $value['avg_ppbs'];
+			$n_sugar++;
+	}
+	$result['chart']['ppbs_chart'] = '['.implode(', ',$ppbs_chart).']';
+	$result['chart']['fbs_chart'] = '['.implode(', ',$fbs_chart).']';
+	if($n_sugar>0){
+		$result['chart']['avg_fbs'] = round($avg_fbs/$n_sugar) ;
+		$result['chart']['avg_ppbs'] = round($avg_ppbs/$n_sugar) ;
+	}
+	foreach($data['bp'] as $key=>$value){
+			$result['bp'][$value['recording_month']]['ppbs'] = $value['avg_systolic'];
+			$result['bp'][$value['recording_month']]['fbs'] = $value['avg_diastolic'];
+			$systolic_chart[] = '["'.$value['recording_month'].'", '.$value['avg_systolic'].']' ;
+			$diastolic_chart[] = '["'.$value['recording_month'].'", '.$value['avg_diastolic'].']';
+			$avg_systolic += $value['avg_systolic'];
+			$avg_diastolic += $value['avg_diastolic'];
+			$n_bp++;
+	}
+	$result['chart']['systolic_chart'] = '['.implode(', ',$systolic_chart).']';
+	$result['chart']['diastolic_chart'] = '['.implode(', ',$diastolic_chart).']';
+	if($n_bp>0){
+		$result['chart']['avg_systolic'] = round($avg_systolic/$n_bp) ;
+		$result['chart']['avg_diastolic'] = round($avg_diastolic/$n_bp) ;
+	}
+	return $result;
+}
+public function getClusterGoal($clusterId){
+	  $sql = "select * from tbl_cluster_goal where cluster_id =".$clusterId;
+		unset($this->result);
+		$this->select($sql);
+		return $this->result;
+}
 }
 
 ?>

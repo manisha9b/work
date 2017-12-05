@@ -5426,4 +5426,11 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 .total_entry{color:#818175;}
 .mb-65{margin-bottom:65px;}
+.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
+.emp_action_btn .dropdown-menu{right:0!important;left: unset;}
 
+@media screen and (max-width:1366px){
+	
+	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
+	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}
+}

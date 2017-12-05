@@ -1,10 +1,11 @@
 <?php
 $message;
-define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/work/cb/');//local
+define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/easybuyhealth/cb/');//local
+define('EBH_HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/easybuyhealth/');//local
 //define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/ebh-console/');//live
 
 define("IMG_PATH",HTTP_SERVER."administrator/");
-define("WEBSITE_URL","http://localhost/work/cb");
+define("WEBSITE_URL","http://localhost/easybuyhealth/cb");
 define("EBH_WEBSITE_URL","http://localhost/easybuyhealth/app/portal/");
 
 define("MODULE_PATH",HTTP_SERVER."portal/modules/");
@@ -16,7 +17,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'easybuyh_livedb');
 
-define('DOC_ROOT',$_SERVER['DOCUMENT_ROOT']."/work/cb/");
+define('DOC_ROOT',$_SERVER['DOCUMENT_ROOT']."/easybuyhealth/cb/");
 
 define("WRONG_PASSWORD","Invalid Login Credentials");
 
