@@ -366,30 +366,30 @@ echo "</pre>";//die;*/
             <div class="box-body profileimg">
              <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="name" style=""><strong>Suresh Gaikwad</strong></span>
 			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
+					Healthy Lifestyle
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
+				<a class="pull-right" style="top:0px;">31 yrs</a>
                 <hr>
 			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong>John Fernandes</strong></span>
 			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
+					Good Sugar Level
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
+				<a class="pull-right" style="top:0px;">33 yrs</a>
                 <hr>
 			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="name" style=""><strong>Santosh Salunke</strong></span>
 			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
+					Excellent Vitamin D
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
+				<a class="pull-right" style="top:0px;">39 yrs</a>
                 <hr>
 			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
               
@@ -410,30 +410,30 @@ echo "</pre>";//die;*/
             <div class="box-body profileimg">
              <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="name" style=""><strong>Rajesh Singhal</strong></span>
 			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
+					Overweight.
+              </span>
+			  </span>
+				<a class="pull-right" style="top:0px;">26 yrs</a>
+                <hr>
+			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
+			  <span class="profile_info" style="">
+			  <span class="name" style=""><strong>Karlye Gomes</strong></span>
+			  <span class="info" style="display:block">
+					Pre-diabetes.
               </span>
 			  </span>
 				<a class="pull-right" style="top:0px;">28 yrs</a>
                 <hr>
 			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="name" style=""><strong>Sameer Arora</strong></span>
 			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
+					cholesterol level bit high!
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
-                <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
-			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
-              </span>
-			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
+				<a class="pull-right" style="top:0px;">42 yrs</a>
                 <hr>
 			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
               
@@ -475,8 +475,8 @@ echo "</pre>";//die;*/
 			<div class="">
 				<div class="box box-solid sex_ratio">
 					<h5 class="margin0 text-uppercase"><b>SEX RATIO</b></h5>
-					  <div class="male_Area mt-20">
-						<img src="images/male.png"></i>
+					  <div class="male_Area mt-20 mob-mt10">
+						<img src="images/male.png" class="male_icon"></i>
 						<div class="person_info">
 						<div class="name">
 							Males
@@ -485,10 +485,66 @@ echo "</pre>";//die;*/
 							<?php echo $arr_count['male_employee']?>
 						</div>
 						</div>
-						<div class="ratio_percent"><img src="images/average.png"></div>
+						<div class="ratio_percent total_percent">
+							<a href="#" class="show_digit">
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<div id="show_percent" style="display:none">100%</div>
+							</a>
+							
+						</div>
+						<div class="ratio_percent">
+												
+						</div>
 					  </div>
 					  <div class="male_Area mt-10">
-						<img src="images/female.png"></i>
+						<img src="images/female.png" class="female_icon"></i>
 						<div class="person_info">
 						<div class="name">
 							Females
@@ -1644,5 +1700,21 @@ alert("t"+response);
 	})
    }
 </script>
+
+<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    d3.tsv("/data/example_data.tsv", function (data) {
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(90, 35, 480, 325)
+      myChart.addCategoryAxis("x", ["Channel", "Price Tier"]);
+      myChart.addCategoryAxis("y", "Owner");
+      myChart.addSeries("Price Tier", dimple.plot.bubble);
+      myChart.addLegend(240, 10, 330, 20, "right");
+      myChart.draw();
+    });
+  </script>
+
+
 </body>
 </html>

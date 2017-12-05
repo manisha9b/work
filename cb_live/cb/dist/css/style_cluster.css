@@ -5144,6 +5144,56 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .reporttitle2{margin-top: 5px;margin-bottom: 5px;}
 .allarticle{padding-top: 25px;}
 .bandspace{margin-top: 10px;}
+
+.circle_percentage{width: 10px;
+    height: 10px;
+    background-color: #39acbf;
+    border-radius: 50%;
+	margin-right: 5px;
+    float: left;
+	margin-top:5px;
+	
+}
+.total_percent{cusor:pointer}
+.show_digit:hover #show_percent{display:block!important;color:#39acbf;font-size:14px;}
+@media screen and (min-width:1366px){
+	
+.sex_ratio .text-uppercase {
+   font-size: 13px!important;
+}
+
+.male_Area {
+   display: inline-block;
+}
+
+.male_Area .male_icon {
+   width: 25px!important;
+   margin-right: 10px;
+}
+
+.male_Area .female_icon{width: 25px!important;}
+.mob-mt10{margin-top:10px;}
+.person_info {
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.ratio_percent {
+   text-align: center;
+   display: inline-block;
+   width: 61%;
+}
+
+.ratio_percent img {
+   width: 70%;
+}
+
+.male_Area img {
+   width: 40px;
+   margin-right: 10px;
+}
+
+}
 @media screen and (max-width: 1280px){
   .gresult{font-size: 15px;}
   .gsmallresult{font-size: 12px;}
@@ -5406,7 +5456,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .male_Area  .age{display:block;font-size: 20px;}
 .person_info{display:inline-block;vertical-align:middle;}
 .male_Area img{width:40px;margin-right: 10px;}
-.ratio_percent{text-align: center;display:inline-block;}
+.ratio_percent{text-align: center;display:inline-block; vertical-align: middle; margin-left: 25px;}
 .ratio_percent img{width:70%;}
 
 
@@ -5476,38 +5526,5 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .fa .fa-info-cart{background-image:url("images/logo/ebh_cart.png")}
 
 .health_goal_area .box {padding:35px!important;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);}
-@media screen and (max-width:1366px){
-.sex_ratio .text-uppercase {
-   font-size: 13px!important;
-}
 
-.male_Area {
-   display: inline-block!important;
-}
 
-.male_Area img {
-   width: 40px;
-   margin-right: 10px;
-}
-
-.person_info {
-   display: inline-block!important;
-   vertical-align: middle!important;
-}
-
-.ratio_percent {
-   text-align: center;
-   display: inline-block;
-   width: 61%!important;
-}
-
-.ratio_percent img {
-   width: 70%!important;
-}
-
-.male_Area img {
-   width: 40px!important;
-   margin-right: 10px;
-}
-
-}
