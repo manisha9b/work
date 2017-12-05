@@ -710,7 +710,11 @@ else
 </div>
 
 <?php include_once('partials/footer.php'); ?>
-
+<script>
+$(function () {
+	   $('.employee_menu').addClass('active');
+});
+</script>
 <script src="dist/js/bootstrap-datepicker.min.js"></script>
 <script src="dist/js/cluster.js"></script>
 </body>

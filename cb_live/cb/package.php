@@ -10,6 +10,7 @@ else
 {
 	$arr_ebh_pack	=	$database->getclusterEbhPackageDetail($clusterId);
 }
+//print_R($arr_ebh_pack);
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -209,7 +210,7 @@ if(isset($_REQUEST['m']))
 */
 					  ?>
                       <tr >
-                        <td width="200" class="table_area">
+                        <td width="100" class="table_area">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
                           <div class="pt-10">
@@ -218,10 +219,10 @@ if(isset($_REQUEST['m']))
 							</div>
 						  </div>
                         </td>
-                        <td class="table_area">
+                        <td  width="300" class="table_area">
                          <b><?php echo $package_nm;?></b>
 						  <div class="package_opt">
-                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a>
+                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->
@@ -232,7 +233,7 @@ if(isset($_REQUEST['m']))
                         <td class="wherecenter table_area">
                           <div class="col-sm-4">
                             <div class="row">
-							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 150px;" class="floatleft" alt="">
+							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> </div>
                           </div>
@@ -243,8 +244,9 @@ if(isset($_REQUEST['m']))
                           </div>
                         </td>
                         <td class="analytic_area table_area">                      
-                          <img src="dist/img/analytics.png">
-						  <span class="text-uppercase analytic_img">+25%</span>
+                          <div class="chart-responsive">
+                    <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="130"></canvas>
+                  </div>
                         </td>
                       </tr>
 <?php  } } ?>
@@ -593,6 +595,29 @@ keeps one more focussed and <br> productiev at work</span>
       </div>
 			
 			</section> -->
+			<!--  <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieChart26" height="150"></canvas>
+                  </div>
+                
+                </div>
+              
+              </div>
+           
+            </div>		  <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="chart-responsive">
+                    <canvas id="pieChart27" height="150"></canvas>
+                  </div>
+                 
+                </div>
+              
+              </div>
+             
+            </div>
           <!-- /.content -->
         </div>
       </div>  
@@ -609,14 +634,83 @@ keeps one more focussed and <br> productiev at work</span>
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="view_package_summary" role="dialog">
+	<div class="modal-dialog modal-md" style="width:70%">
+		<div class="modal-content" id="package_summary">
+			
+		</div>
+	</div>
+</div>
 <!-- ./wrapper -->
 <?php include_once('partials/footer.php'); ?>
 <script src="dist/js/bootstrap-datepicker.min.js"></script>
 
 <script src="dist/js/cluster.js"></script>
+<script src="dist/js/chart.js"></script>
 
 <script>
-  $(document).ready(function(){
+  $(function () {
+	   $('.package_menu').addClass('active');
+      // -------------
+  // - PIE CHART -
+  // -------------
+  // Get context with jQuery - using jQuery's .get() method.
+
+  var pieOptions     = {
+    // Boolean - Whether we should show a stroke on each segment
+    segmentShowStroke    : true,
+    // String - The colour of each segment stroke
+    segmentStrokeColor   : '#fff',
+    // Number - The width of each segment stroke
+    segmentStrokeWidth   : 1,
+    // Number - The percentage of the chart that we cut out of the middle
+    percentageInnerCutout: 50, // This is 0 for Pie charts
+    // Number - Amount of animation steps
+    animationSteps       : 100,
+    // String - Animation easing effect
+    animationEasing      : 'easeOutBounce',
+    // Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate        : true,
+    // Boolean - Whether we animate scaling the Doughnut from the centre
+    animateScale         : false,
+    // Boolean - whether to make the chart responsive to window resizing
+    responsive           : true,
+    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+    maintainAspectRatio  : false,
+    // String - A legend template
+    legendTemplate       : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
+    // String - A tooltip template
+    tooltipTemplate      : '<%=value %> <%=label%> '
+  };
+  // Create pie or douhnut chart
+  // You can switch between pie and douhnut using the method below.
+  <?php foreach($arr_ebh_pack as $key=>$val){?>
+    
+   pieChartCanvas = $('#pieChart<?php echo $val['cluster_package_id']?>').get(0).getContext('2d');
+  var pieChart<?php echo $val['cluster_package_id']?>       = new Chart(pieChartCanvas);
+ 
+  var PieData<?php echo $val['cluster_package_id']?>        = [
+    {
+      value    : <?php  echo $val['visited']?>,
+      color    : '#f56954',
+      highlight: '#f56954',
+      label    : 'Utilized '
+    },
+    {
+      value    : <?php  echo ($val['package_unit']-$val['visited'])?>,
+      color    : '#00a65a',
+      highlight: '#00a65a',
+      label    : 'Remaining '
+    },
+    
+  ];
+ 
+  pieChart<?php echo $val['cluster_package_id']?>.Doughnut(PieData<?php echo $val['cluster_package_id']?>, pieOptions);
+  <?php } ?>
+  // -----------------
+  // - END PIE CHART -
+  // -----------------
+
 	  		
     // input 1 styles
     $(".input__1 input, .textarea__1 textarea").focus(function(){

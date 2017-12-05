@@ -1647,8 +1647,8 @@ class Database {
 		unset($this->result);
 
 
-		 $sql="SELECT b.name,b.logo,a.price_per_unit,d.package_nm
-				FROM tbl_cluster_packages_hsp a
+		 $sql="SELECT b.name,b.logo,a.price_per_unit,tcase(d.package_nm) AS package_nm,d.sales_price_type,
+			c.package_unit,c.price_per_unit, c.total_price,c.cluster_contribution				FROM tbl_cluster_packages_hsp a
 				LEFT JOIN tbl_hsps b ON a.hsp_id=b.id
 				LEFT JOIN tbl_cluster_packages c ON c.cluster_package_id=a.cluster_package_id
 				LEFT JOIN tbl_ebh_pc_packages d ON d.ebh_package_id=c.package_id
@@ -2140,14 +2140,16 @@ class Database {
 		$this->select($sql);
         return $this->result;
 	}
-	public function getClusterEmpDetails($clusterId,$only_health = 0)
+	public function getClusterEmpDetails($clusterId,$health_type = '',$limit = '')
 	{
 		unset($this->result);
-		if($only_health == 1){
-			$where_qry = " and a.health !='";
+		if($health_type == 'H'){
+			$where_qry = " and rp.bs_status!='UH' and rp.bp_status !='UH' and rp.bmi_status !='UH' and rp.bmi_status !=''";
+		}elseif($health_type == 'UH'){
+			$where_qry = " and (rp.bs_status='UH' or rp.bp_status ='UH' or rp.bmi_status ='UH')";
 		}
 		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
-		$sql="SELECT a.emp_id,
+		$sql="SELECT a.emp_id,rp.bs_status,rp.bp_status,rp.bmi_status, rp.bmi_category,rp.bp_category,rp.bs_result,
 if(rp.bp_status = '' and rp.bs_status='' and rp.bmi_status ='' ,'',
 if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 		if(rp.bp_status = 'UH' or rp.bs_status='UH' or rp.bmi_status ='UH','UH','H'))) as health,
@@ -2186,7 +2188,7 @@ if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 					,'UH','')) as bs_status 
 				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
 				
-				left join cities b on b.id = a.city where a.cluster_id='".$clusterId."' ".$where_qry;
+				left join cities b on b.id = a.city where a.cluster_id='".$clusterId."' ".$where_qry.' '.$limit;
 
 		$this->select($sql);
         return $this->result;
@@ -3373,6 +3375,96 @@ public function getControllerAction($default) {
     }else{
         return 0;
     }
+}
+
+function getDashboardData($clusterId){
+unset($this->result);
+	$weight_sql = "SELECT  monthname(a.recorded_on) as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,
+
+				if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) )  as  gender1
+				from tbl_ebh_customer_health_readings as a
+				left join tbl_ebh_customer as b on a.ebh_customer_id = b.ebh_customer_id 
+				left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
+				where  c.cluster_id=".$clusterId." and a.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) and bmi>0 group by gender1, month(a.recorded_on)";
+	//AND y.cluster_id=".$clusterId."
+	// c.cluster_id=".$clusterId." and
+		$this->select($weight_sql);
+		$result['weight'] = $this->result;
+		$sugar_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.ppbs))  as avg_ppbs, round(AVG(x.fbs)) as avg_fbs
+		FROM 	tbl_ebh_customer_health_readings x
+		JOIN tbl_cluster_employee Y ON x.ebh_customer_id=y.ebh_customer_id
+		WHERE x.fbs>0 AND x.ppbs>0 and x.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) AND y.cluster_id=".$clusterId."
+		GROUP BY MONTH(x.recorded_on);";
+			unset($this->result);
+		$this->select($sugar_sql);
+		$result['sugar'] = $this->result;
+		$bp_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.systolic)) as avg_systolic, round(AVG(x.diastolic)) as avg_diastolic
+		FROM 	tbl_ebh_customer_health_readings x
+		JOIN tbl_cluster_employee Y ON x.ebh_customer_id=y.ebh_customer_id
+		WHERE x.systolic>0 AND x.diastolic>0  and x.recorded_on  > DATE_SUB(now(), INTERVAL 6 MONTH) AND y.cluster_id=".$clusterId."
+		GROUP BY MONTH(x.recorded_on)";
+			unset($this->result);
+		$this->select($bp_sql);
+		$result['bp'] = $this->result;
+	return $result;
+       
+}
+function getDashboardChart($clusterId){
+	$data = $this->getDashboardData($clusterId);
+	$result = array();
+	
+	foreach($data['weight'] as $key=>$value){
+		if($value['gender1']!=''){
+			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_bmi'];
+			//[["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+			$bmi_chart[$value['gender1']][] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
+		}
+	}
+	$result['chart']['male_bmi_chart'] = '['.implode(', ',$bmi_chart['Male']).']';
+	$result['chart']['female_bmi_chart'] = '['.implode(', ',$bmi_chart['Female']).']';
+	$avg_fbs = 0;
+	$avg_ppbs = 0;
+	$avg_systolic = 0;
+	$avg_diastolic = 0;
+	$n_sugar = 0;
+	$n_bp = 0;
+	foreach($data['sugar'] as $key=>$value){
+			$result['sugar'][$value['recording_month']]['ppbs'] = $value['avg_ppbs'];
+			$result['sugar'][$value['recording_month']]['fbs'] = $value['avg_fbs'];
+			$ppbs_chart[] = '["'.$value['recording_month'].'", '.$value['avg_ppbs'].']' ;
+			$fbs_chart[] = '["'.$value['recording_month'].'", '.$value['avg_fbs'].']' ;
+			$avg_fbs += $value['avg_fbs'];
+			$avg_ppbs += $value['avg_ppbs'];
+			$n_sugar++;
+	}
+	$result['chart']['ppbs_chart'] = '['.implode(', ',$ppbs_chart).']';
+	$result['chart']['fbs_chart'] = '['.implode(', ',$fbs_chart).']';
+	if($n_sugar>0){
+		$result['chart']['avg_fbs'] = round($avg_fbs/$n_sugar) ;
+		$result['chart']['avg_ppbs'] = round($avg_ppbs/$n_sugar) ;
+	}
+	foreach($data['bp'] as $key=>$value){
+			$result['bp'][$value['recording_month']]['ppbs'] = $value['avg_systolic'];
+			$result['bp'][$value['recording_month']]['fbs'] = $value['avg_diastolic'];
+			$systolic_chart[] = '["'.$value['recording_month'].'", '.$value['avg_systolic'].']' ;
+			$diastolic_chart[] = '["'.$value['recording_month'].'", '.$value['avg_diastolic'].']';
+			$avg_systolic += $value['avg_systolic'];
+			$avg_diastolic += $value['avg_diastolic'];
+			$n_bp++;
+	}
+	$result['chart']['systolic_chart'] = '['.implode(', ',$systolic_chart).']';
+	$result['chart']['diastolic_chart'] = '['.implode(', ',$diastolic_chart).']';
+	if($n_bp>0){
+		$result['chart']['avg_systolic'] = round($avg_systolic/$n_bp) ;
+		$result['chart']['avg_diastolic'] = round($avg_diastolic/$n_bp) ;
+	}
+	return $result;
+}
+public function getClusterGoal($clusterId){
+	  $sql = "select * from tbl_cluster_goal where cluster_id =".$clusterId;
+		unset($this->result);
+		$this->select($sql);
+		return $this->result;
 }
 }
 

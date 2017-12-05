@@ -750,3 +750,14 @@ function showHsp(cpid){
 				}
 			});
 }
+function showPackageSummary(cpid){
+			$.ajax({
+				url: 'portal/package_summary.php',
+				type: 'post',
+				data: 'cpid='+cpid,
+				success: function(response) {
+					$('#package_summary').html(response);
+					$('#view_package_summary').modal('show');
+				}
+			});
+}

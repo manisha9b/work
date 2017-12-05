@@ -94,9 +94,17 @@ svg {
   <div class="content-wrapper">
   <?php
 $arr_count = $database->getDashboardCount($clusterId);
-/*echo "<pre>";
-print_R($arr_count);
-echo "</pre>";//die;*/
+$chartdata = $database->getDashboardChart($clusterId);
+$emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
+$emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
+
+$charts = $chartdata['chart'];
+$goal_arr = $database->getClusterGoal($clusterId);
+//$database->getclusterEbhPackageList($cluster_id);
+//echo "<pre>";
+//print_R($arr_count);
+//print_R($goal_arr);
+//echo "</pre>";//die;
 ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -253,7 +261,7 @@ echo "</pre>";//die;*/
                     <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
                   </div>
                   <div class="box-body">
-                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"><canvas class="flot-base" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 16px; text-align: center;">Mar</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 75px; text-align: center;">Apr</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 133px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 193px; text-align: center;">Jun</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 254px; text-align: center;">Jul</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 181px; top: 133px; left: 307px; text-align: center;">June</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 120px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 7px; text-align: right;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 60px; left: 1px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 30px; left: 1px; text-align: right;">150</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">200</div></div></div><canvas class="flot-overlay" width="333" height="150" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 333px; height: 150px;"></canvas></div>
+                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"></div>
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
@@ -277,7 +285,7 @@ echo "</pre>";//die;*/
                   </div>
                   <div class="box-header with-border">
                     <div class="pre-header">
-                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
+                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
                     </div>
                     <div>
                       <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
@@ -363,40 +371,42 @@ echo "</pre>";//die;*/
 		</div>
 		   <div class="box">            
             <!-- /.box-header -->
+		
             <div class="box-body profileimg">
+				<?php foreach($emp_arr['healty'] as $row){ 
+				
+				if((!empty($row['dob']))){
+					$age = $database->ageCalculator($row['dob']). ' Yrs';
+				}
+				$report ='';
+				if($row['bmi_status']=='H'){
+						$report[] = "BMI: ".$row['bmi_category'];
+					}
+					if($row['bp_status']=='H'){
+						$report[] = "Blood Pressure: ".$row['bp_category'];
+					}
+					if($row['bs_status']=='H'){
+						$report[] = "Blood Sugar: ".$row['bs_result'];
+					}
+					$report = implode(', ',$report);
+				?>
              <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>Suresh Gaikwad</strong></span>
+			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
-					Healthy Lifestyle
+					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">31 yrs</a>
+				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
                 <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
-			  <span class="info" style="display:block">
-					Good Sugar Level
-              </span>
-			  </span>
-				<a class="pull-right" style="top:0px;">33 yrs</a>
-                <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>Santosh Salunke</strong></span>
-			  <span class="info" style="display:block">
-					Excellent Vitamin D
-              </span>
-			  </span>
-				<a class="pull-right" style="top:0px;">39 yrs</a>
-                <hr>
-			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-              
+				<?php } ?>
+		
+               <a href="employe.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
            
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+
         </div>
         </div>
 		
@@ -405,42 +415,45 @@ echo "</pre>";//die;*/
 			<div class="row">
 			  <h4 class="pull-left margin0"><strong>UnHealthy Employees</strong></h4>
 			</div>
-		   <div class="box"> 			
+		    <div class="box">            
             <!-- /.box-header -->
+		
             <div class="box-body profileimg">
+				<?php foreach($emp_arr['unhealty'] as $row){ 
+				
+				if((!empty($row['dob']))){
+					$age = $database->ageCalculator($row['dob']). ' Yrs';
+				}
+				$report_arr ='';
+				if($row['bmi_status']=='UH'){
+						$report_arr[] = "BMI: ".$row['bmi_category'];
+					}
+					if($row['bp_status']=='UH'){
+						$report_arr[] = "Blood Pressure: ".$row['bp_category'];
+					}
+					if($row['bs_status']=='UH'){
+						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
+					}
+					$report = implode(', ',$report_arr);
+					
+				?>
              <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>Rajesh Singhal</strong></span>
+			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
-					Overweight.
+					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;">26 yrs</a>
+				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
                 <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>Karlye Gomes</strong></span>
-			  <span class="info" style="display:block">
-					Pre-diabetes.
-              </span>
-			  </span>
-				<a class="pull-right" style="top:0px;">28 yrs</a>
-                <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>Sameer Arora</strong></span>
-			  <span class="info" style="display:block">
-					cholesterol level bit high!
-              </span>
-			  </span>
-				<a class="pull-right" style="top:0px;">42 yrs</a>
-                <hr>
-			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-              
+				<?php } ?>
+		
+               <a href="employe.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
            
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+
         </div>
         </div>
 		
@@ -550,7 +563,7 @@ echo "</pre>";//die;*/
 							Females
 						</div>
 						<div class="age">
-							<?php echo $arr_count['male_employee']?>
+							<?php echo $arr_count['female_employee']?>
 						</div>
 						</div>
 						<div class="ratio_percent"><img src="images/average2.png" style="    margin-left:-22px;"></div>
@@ -574,7 +587,7 @@ echo "</pre>";//die;*/
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<div id="container"></div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $dataArr['goal']['steos'];?></span></b></h5>
+						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>STEPS / DAY</b></h5>
 						<h4 class="mb-10 text-center date">By Jan 2018</h4>
 					</div>
@@ -589,7 +602,7 @@ echo "</pre>";//die;*/
 					  <span>67</span>%
 					</div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $dataArr['goal']['sleep'];?></span> Hrs</b></h5>
+						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>SLEEP / Night</b></h5>
 						<h4 class="mb-10 text-center date">By Jan 2018</h4>
 					</div>
@@ -951,7 +964,7 @@ echo "</pre>";//die;*/
 
 <script>
   $(document).ready(function() {
-	  
+	  $('.dashboard_menu').addClass('active');
 	$("#goal-form").validate({        
 		rules:{            
 			required:{
@@ -1007,11 +1020,11 @@ echo "</pre>";//die;*/
      * ----------
      */
 	   var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 150.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  <?php echo $charts['male_bmi_chart']?>,
       color: "#bad0d2"
     };
     var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 180.5], ["Mar", 100.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      data:  <?php echo $charts['female_bmi_chart']?>,
       color: "#ccafaa"
     };
     $.plot("#line-chart-6", [line_data2,line_data21], {
@@ -1104,11 +1117,11 @@ echo "</pre>";//die;*/
      */
     //LINE randomly generated data
     var line_data2 = {
-      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  <?php echo $charts['ppbs_chart']?>,
       color: "#31b3bf"
     };
     var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      data:  <?php echo $charts['fbs_chart']?>,
       color: "#dd4b39"
     };
     $.plot("#line-chart2", [line_data2,line_data21], {
@@ -1167,11 +1180,48 @@ echo "</pre>";//die;*/
      * ----------
      */
     //LINE randomly generated data
+	 var line_data2 = {
+      data:  <?php echo $charts['systolic_chart']?>,
+      color: "#31b3bf"
+    };
+    var line_data21 = {
+      data:  <?php echo $charts['diastolic_chart']?>,
+      color: "#dd4b39"
+    };
+    $.plot("#line-chart3", [line_data2,line_data21], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#f56954"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
     var line_data3 = {
       data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
       color: "#31b3bf"
     };
-    $.plot("#line-chart3", [line_data3], {
+    $.plot("#line-chart33", [line_data3], {
       grid: {
         hoverable: true,
         borderColor: "#f3f3f3",
@@ -1683,7 +1733,7 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
    }  
    function saveGoal(){
 	   	   $('#goal_form_div').modal('show');
-		   alert("t--"+$('#goal-form').serialize());
+		  // alert("t--"+$('#goal-form').serialize());
 	   	$.ajax({				
 		url: 'operation.php',				
 		type: 'POST',				
@@ -1691,7 +1741,7 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
 		async: false,				
 		data: $('#goal-form').serialize(),				
 		success: function(response) {	
-alert("t"+response);
+//alert("t"+response);
 			
 			$('#steps_goal').html(response.steps);
 			$('#sleep_goal').html(response.sleep);

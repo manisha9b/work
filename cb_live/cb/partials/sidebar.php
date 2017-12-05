@@ -27,29 +27,29 @@
       <div class="divider"></div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="active">
+        <li class="dashboard_menu cb-menu">
           <a href="dashboard.php">
             <i class="fa fa-th-large"></i> <span>Health Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="package.php">
+        <li class="cb-menu package_menu">
+          <a   href="package.php">
             <i class="fa ion-ios-medkit-outline"></i> <span>Health Packages</span>
           </a>
         </li>
-        <li>
-          <a href="employee.php">
+        <li class="cb-menu employee_menu">
+          <a  href="employee.php">
             <i class="fa fa-address-card-o"></i> <span>Employees</span>
           </a>
         </li>
         <li>
-          <a href="my-family.html">
+          <a class="cb-menu" href="my-family.html">
             <i class="fa fa-heartbeat"></i> <span>Health Index</span>
           </a>
         </li>
 		<li>
           <a href="#">
-            <i class="fa fa-calendar"></i> <span>Appointments</span>
+            <i class="cb-menu" class="fa fa-calendar"></i> <span>Appointments</span>
           </a>
         </li>
 		<li>
