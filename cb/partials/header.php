@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php 
 session_start();
 include_once('includes/define.php');
@@ -21,6 +20,7 @@ else
 	$arr_cluster	=	$arr_cluster[0];	
 }
  ?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">

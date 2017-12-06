@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php 
 session_start();
 include_once('includes/define.php');
@@ -21,6 +20,7 @@ else
 	$arr_cluster	=	$arr_cluster[0];	
 }
  ?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -35,7 +35,7 @@ else
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/style_cluster.css">
+  <link rel="stylesheet" href="dist/css/style.css">
   <link rel="stylesheet" href="dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="dist/css/select2.css">
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">

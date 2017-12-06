@@ -36,6 +36,9 @@
           <li>
             <a href="#">How it Works</a>
           </li>
+          <li>
+            <a href="<?php echo HTTP_SERVER?>/scripts/logout_script.php">Sign Out</a>
+          </li>
           <li class="nohover">
             <a href="#">
               <div class="social">

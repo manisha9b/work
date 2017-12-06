@@ -14,10 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/style.css">
-  <link rel="stylesheet" href="easyWizard.css">
-	<link rel="stylesheet" href="css/easyWizard.css">
-	<script src="js/easyWizard.js"></script>
-
+  
   
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="dist/css/animate.css">
@@ -28,21 +25,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  
-  <script type="text/javascript">
-			function showHideDiv(ele) {
-				var srcElement = document.getElementById(ele);
-				if (srcElement != null) {
-					if (srcElement.style.display == "block") {
-						srcElement.style.display = 'none';
-					}
-					else {
-						srcElement.style.display = 'block';
-					}
-					return false;
-				}
-			}
-		</script>
 </head>
 <body id="home" class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -333,7 +315,7 @@
     
 	
     <!-- Main content -->
-    <section class="content mob_p0">
+    <section class="content">
 		
 		<div class="col-md-12">
 		<div class="pull-right">
@@ -347,9 +329,9 @@
 		<div class="col-md-12 mb-10">
 		  <h4><b>Summary</b></h4>
 		</div>
-		<div class="row mb-10 mob_mb35">
+		<div class="row mb-10">
 		<div class="col-md-12 company_summary">
-        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
@@ -362,7 +344,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
             <div class="info-box-content">
@@ -375,7 +357,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box4 evoucher_download">
             <span class="info-box-icon icon3 text-white"><i class="fa fa-download"></i></span></span>
 
@@ -389,7 +371,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
+        <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box4 unhealthy_employee">
             <span class="info-box-icon icon3"><img src="images/ecg_icon.png" width="35"></span>
 
@@ -403,7 +385,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-		<div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
+		<div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box4 report_present">
             <span class="info-box-icon icon3 text-white"><i class="fa fa-file-text-o"></i></span></span>
 
@@ -422,18 +404,14 @@
 	  
 		
 		<div class="col-md-12 mt-20 purchase_pack">
-			<div class="row">
-			<div class="col-md-6 mb-10">
-				<h4><b>Purchased Packages</b></h4>
-			</div>
-			<div class="col-md-6">
-				<div class="pagination">
+			<div class="pagination">
 				<span>1-2 of 18</span>
-				  <a href="#"><</a>
-				  <a href="#">></a>
-				</div>
+			  <a href="#"><</a>
+			  <a href="#">></a>
 			</div>
-			<div class="clearfix"></div>
+			
+			<div class="mb-10">
+				<h4><b>Purchased Packages</b></h4>
 			</div>
 			<div id="appointments" class="nav-tabs-custom mb-65">
 			<div class="tab-content">
@@ -467,7 +445,7 @@
                         <td class="table_area">
                          <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act" value="Show/Hide" onClick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -503,7 +481,7 @@
                         <td class="package_area table_area">
                           <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act" value="Show/Hide" onClick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -539,7 +517,7 @@
                         <td class="table_area">
                           <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act" value="Show/Hide" onClick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -571,13 +549,10 @@
 		</div>
 		
 		
-		
-		<div class="col-md-12 employee_summary" id="divMsg" style="display:none;">
 		<div class="col-md-12  employee_summary">
 			<div class="col-md-6 p0">
 				<div class="pagination check_box_drop download_icon">
-				
-				<a href="#" class="dropdown_setting dropdown-toggle" data-toggle="dropdown" style="margin-right:5px;">
+				<a href="#" class="dropdown_setting dropdown-toggle" data-toggle="dropdown" style="margin-right:10px;">
 					<input type="checkbox" id="checkAll" name="subscribe" value="newsletter">	
 					<span class="caret"></span>
 				</a>
@@ -594,10 +569,10 @@
 				<div class="pagination download_icon">
 					<a href="#"><i class="fa fa-download" aria-hidden="true"></i></a>
 				</div>
-				<div class="pagination left_align_pagination">
+				<div class="pagination">
 					<a href="#"><i class="fa fa-folder" aria-hidden="true"></i><span class="caret"></span></a>
 				</div>
-				<div class="pagination left_align_pagination">
+				<div class="pagination">
 					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i><span class="caret"></span></a>
 				</div>
 			</div>
@@ -606,11 +581,11 @@
 				<span>1-9 of 32</span>
 				<a href="#"><</a>
 				<a href="#">></a>
-				<a href="#" class="dropdown_setting" data-toggle="dropdown" style="margin-left:10px;"><i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span></a>
+				<a href="#" class="dropdown_setting " data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span></a>
 				</div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
+		<div class="col-md-12 employee_summary">			
 		<div id="appointments" class="nav-tabs-custom employee_info">
 		<ul class="nav nav-tabs">
             <li class="active">
@@ -654,9 +629,8 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 	   <div class="box no-border">
             
             <!-- /.box-header -->
-            <div class="box-body table-responsive emp_detail ">
-				<div class="table-responsive">
-              <table class="table table-hover employee_details_area">
+            <div class="box-body table-responsive no-padding emp_detail">
+              <table class="table table-hover">
                 <tbody>
 				<tr class="employee_table employee_heading">
 				 <th> </th>
@@ -669,105 +643,16 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 				 
                 </tr>
                 <tr class="emp_info_data">
-					<td class="info">
-						<input type="checkbox" id="test1" />
-						<label for="test1"></label>
-					</td>
+					<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
                   <td class="info">Danish Rao</td>
                   <td class="info">Business Developement</td>
                   <td class="info">Suburban Diagnostics Andheri</td>
 				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-
-		<div class="col-md-12 test_complete box-body">
-			<div class="text-center"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-			<div class="nav-tabs-custom wizard-content">
-            <ul class="nav nav-tabs">
-				<li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a></li>
-				<li class="com_sent"><a href="#comm_sent" data-toggle="tab" aria-expanded="false" class="border_two">COMMUNICATION SENT</a></li>
-				<li class="lin_clik"><a href="#link_click" data-toggle="tab" aria-expanded="false" class="border_three">LINK CLICKED</a></li>
-				<li class="app_send"><a href="#app_sent" data-toggle="tab" aria-expanded="false" class="border_four">APPOINTMENT SENT</a></li>
-				<li class="test_complet"><a href="#test_done" data-toggle="tab" aria-expanded="false" class="border_five">TEST DONE</a></li>
-				<li class="report_complete"><a href="#report_receiv" data-toggle="tab" aria-expanded="false" class="border_six">REPORTS RECEIVED</a></li>
-            </ul>
-            <div class="tab-content">
-				<div class="tab-pane on_board active " id="emp_on_board">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">2nd Oct,</b> Monday <br>11.30AM</span>
-					</div> 
-					<div class="clearfix"></div>					
-				</div>             
-				<div class="tab-pane com_sent clr_orange" id="comm_sent">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">14 Oct</b>,Thursday <br>2.15PM</span>
-					</div>
-				</div>
-				<div class="tab-pane lin_clik" id="link_click">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">18 Oct,</b> Wednesday <br>11.20AM</span>
-					</div>
-				</div>
-				<div class="tab-pane app_send" id="app_sent">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>
-					</div>
-				</div>
-				<div class="tab-pane test_complet" id="test_done">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>
-					</div>
-				</div>
-				<div class="tab-pane report_complete" id="report_receiv">
-					<div class="user-block">                                       
-						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>
-					</div>
-				</div>
-              <!-- /.tab-pane -->             
-            </div>
-          </div>
-		  <div class="clearfix"></div>
-		  <div class="col-md-12 p0 employee_profile">
-			<div class="col-md-8">
-			<div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span></div>
-			<br>
-			<div class="employee_file ">
-				<ul>
-					<li class="blue_clr"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</li>
-					<li class="blue_clr"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> APPOINTMENT HISTORY</li>
-					<li class="green_clr"><i class="fa fa-download" aria-hidden="true"></i> ARCHIEVE</li>
-					<li class="green_clr"><i class="fa fa-envelope-o" aria-hidden="true"></i> SEND MESSAGE</li>
-					<li class="grey_clr"><i class="fa fa-file-text-o" aria-hidden="true"></i> VIEW REPORT</li>
-				</ul>
-			</div>
-			</div>
-			<div class="col-md-4 p0">
-				<div class="time_limit">
-					<div class="start_to_end">
-						<span class="number">6</span>
-						<span class="number_of_days">
-							<span class="day">DAYS</span>
-							<span class="">Start to finish</span>
-						</span>						
-					</div>					
-					<div class="company_avg">
-						<span class="number">4</span>
-						<span class="number_of_days">
-							<span class="day">DAYS</span>
-							<span>Company Avg</span>
-						</span>
-					</div>
-					<div class="caret_down"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-				</div>
-			</div>			
-		  </div>
-		</div>	
+				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>	
                 </tr>
                 <tr class="emp_info_data">
-					<td class="info">
-						<input type="checkbox" id="test2"/>
-						<label for="test2"></label>
-					</td>
+					<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
                   <td class="info">Anisha Peters</td>
                   <td class="info" >Design & Visualisation</td>
@@ -776,10 +661,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
                   <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
                 </tr>
                 <tr class="emp_info_data">
-					<td class="info">
-						<input type="checkbox" id="test3"/>
-						<label for="test3"></label>
-					</td>
+					<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
                   <td class="info">Danish Rao</td>
                   <td class="info">Business Developement</td>
@@ -789,10 +671,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
                   
                 </tr>
                 <tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test4"/>
-					<label for="test4"></label>
-				</td>
+				<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
                   <td class="info">Anisha Peters</td>
                   <td class="info" >Design & Visualisation</td>
@@ -802,10 +681,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
                   
                 </tr>
 				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test5"/>
-					<label for="test5"></label>
-				</td>
+				<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
                   <td class="info">Danish Rao</td>
                   <td class="info">Business Developement</td>
@@ -815,14 +691,9 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
                   
                 </tr>
 				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test6"/>
-					<label for="test6"></label>
-				</td>
-                  <td  class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>
-                  <td class="info">Anisha Peters
-					<span class="app_scheduled">Scheduled</span>
-				  </td>
+				<td class="info"><input type="checkbox" id="checkItem"></td>
+                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
+                  <td class="info">Anisha Peters</td>
                   <td class="info" >Design & Visualisation</td>
                   <td class="info">Metropolis Clinic Lower Parel</td>
 				  <td class="info">RBC Test</td>
@@ -830,10 +701,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 				 
                 </tr>
 				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test7" />
-					<label for="test7"></label>
-				</td>
+				<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
                   <td class="info">Danish Rao</td>
                   <td class="info">Business Developement</td>
@@ -843,10 +711,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 				  
                 </tr>
 				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test8" />
-					<label for="test8"></label>
-				</td>
+				<td class="info"><input type="checkbox" id="checkItem"></td>
                   <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
                   <td class="info">Anisha Peters</td>
                   <td class="info" >Design & Visualisation</td>
@@ -854,36 +719,9 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 				  <td class="info">RBC Test</td>
                   <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
                   
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test7" />
-					<label for="test7"></label>
-				</td>
-                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
-                  <td class="info">Danish Rao</td>
-                  <td class="info">Business Developement</td>
-                  <td class="info">Suburban Diagnostics Andheri</td>
-				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-				  
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info">
-					<input type="checkbox" id="test6">
-					<label for="test6"></label>
-				</td>
-                  <td class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>
-                  <td class="info">Anisha Peters</td>
-                  <td class="info">Design &amp; Visualisation</td>
-                  <td class="info">Metropolis Clinic Lower Parel</td>
-				  <td class="info">RBC Test</td>
-                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-				 
                 </tr>
               </tbody>
-			  </table>
-			
+			  </table>	
 				<div class="box-header employee_pagination mt-20 pt-20 pb-20">
 					<div class="col-md-12 total_entry">
 					<tr>
@@ -906,20 +744,25 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 					</tr>
 					</div>
 				</div>
-				</div>
 			</div>
 	   </div>
-	   
-	   
-	   <div class="row">
-          <div class="col-md-6 employee_chart_area">		  
+			  </div>
+      
+      <!-- /.row -->
+    
+     <div class="row pt-20">		
+        <div class="col-md-12 employee_region">
+          <div class="col-md-6">
+		  
 		   <div class="nav-tabs-custom ">
             <ul class="nav nav-tabs">
               <li class=""><a href="#region" data-toggle="tab" aria-expanded="false">TOP REGIONS</a></li>
               <li  class="active"><a href="#hsp" data-toggle="tab" aria-expanded="false">TOP HSP'S</a></li>              
             </ul>
             <div class="tab-content">
-              <div class="tab-pane" id="region"> 
+              <div class="tab-pane" id="region">
+                <!-- Post -->
+                <div class="post">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
                         <span class="username">
@@ -927,7 +770,14 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
                           <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                         </span>
                     <span class="description">Posted 5 photos - 5 days ago</span>
-                  </div>                 
+                  </div>
+                  <!-- /.user-block -->
+               
+                  <!-- /.row -->
+
+                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                </div>
+                <!-- /.post -->
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane active" id="hsp">
@@ -943,58 +793,25 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
         </div>
 		
 		
-		<div class="col-md-6 test_undertaken_employees">
+		<div class="col-md-6">
 			
 		   <div class="box undertaken_employees"> 
 				<div class="box-header with-border">
 			  <h4 class="pull-left margin0"><strong>TEST UNDERTAKEN BY EMPLOYEES</strong></h4>
 			</div>
             <!-- /.box-header -->
-            <div class="box-body profileimg">
-             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
-			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
-              </span>
-			  </span>
-				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
-                <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
-			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
-              </span>
-			  </span>
-				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
-                <hr>
-			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
-			  <span class="profile_info" style="">
-			  <span class="name" style=""><strong>John Fernandes</strong></span>
-			  <span class="info" style="display:block">
-					Lorem Ipsum is simply dummy text
-              </span>
-			  </span>
-				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
-                <hr>
-			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-              
-           
-            <!-- /.box-body -->
-          </div>
+           <div class="box-body">
+              <div id="bar-chart" style="height: 300px;"></div>
+            </div>
           <!-- /.box -->
         </div>
         </div>
       </div>
-	</div><!--employee-show-hide-area-ended-here-->
-     <div class="row pt-20">		
-        
       <!-- /.row -->
     </div>
         <!-- /.col -->
-  </div>
-</section>
+      </div>
+    </section>
     <!-- /.content -->
 
   </div>
@@ -1028,287 +845,51 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 <script src="plugins/swiper/swiper.js"></script>
 <!-- Page script -->
 <script src="plugins/materialize/materialize.js"></script>
+<script src="../../dist/js/demo.js"></script>
+<script src="bower_components/Flot/jquery.flot.js"></script>
+<script src="bower_components/Flot/jquery.flot.pie.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="bower_components/Flot/jquery.flot.categories.js"></script>
 <script>
-  new WOW().init();
-</script>
-<script>
-  $(document).ready(function() {
-    //Date picker
-    /*$('#datepicker11,#datepicker2,#datepicker3').datepicker({
-      autoclose: true
-    });*/
-    $('#datepicker,#datepicker2,#datepicker3,#datepicker4').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
-      today: 'Today',
-      clear: 'Clear',
-      close: 'Ok',
-      closeOnSelect: false // Close upon selecting a date,
-    });
-  });
   $(function () {
-    $('#datepicker').on('click', function () {
-      setTimeout(addnew,1500);
-    });
-    function addnew(){
-      $('#prevbp').css("display", "block")
-    }
-    $('#addbloodsugar').on('click', function () {
-      $('#bloodsugar').modal('show');
-      setTimeout(checksugar,500);
-    });
-    function checksugar(){
-      if($('#bloodsugar').hasClass('in')){
-        $('body').addClass('modal-open');
-      }
-    }
     /*
-     * LINE CHART 1
-     * ----------
+     * Flot Interactive Chart
+     * -----------------------
      */
-    //LINE randomly generated data
-    var line_data1 = {
-      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart", [line_data1], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 70, to: 70} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
+    // We use an inline data source in the example, usually data would
+    // be fetched from a server
+    var data = [], totalPoints = 100
+
+    function getRandomData() {
+
+      if (data.length > 0)
+        data = data.slice(1)
+
+      // Do a random walk
+      while (data.length < totalPoints) {
+
+        var prev = data.length > 0 ? data[data.length - 1] : 50,
+            y    = prev + Math.random() * 10 - 5
+
+        if (y < 0) {
+          y = 0
+        } else if (y > 100) {
+          y = 100
         }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.9
-    }).appendTo("body");
-    $("#line-chart").bind("plothover", function (event, pos, item) {
 
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip").hide();
+        data.push(y)
       }
 
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 2
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data2 = {
-      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-      color: "#31b3bf"
-    };
-    var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
-      color: "#dd4b39"
-    };
-    $.plot("#line-chart2", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip2"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart2").bind("plothover", function (event, pos, item) {
 
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip2").hide();
+      // Zip the generated y values with the x values
+      var res = []
+      for (var i = 0; i < data.length; ++i) {
+        res.push([i, data[i]])
       }
 
-    });*/
-    /* END LINE CHART */
-    /* END LINE CHART */
-    /*
-     * LINE CHART 3
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data3 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart3", [line_data3], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 4
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data4 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart4", [line_data4], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * BAR CHART
-     * ---------
-     */
-
-    var bar_data = {
+      return res
+    } 
+     var bar_data = {
       data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
       color: "#43ce5a"
     };
@@ -1340,225 +921,12 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
      * ---------
      */
 
-    var bar_data2 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#ff6184"
-    };
-    $.plot("#bar-chart2", [bar_data2], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data3 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart3", [bar_data3], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data4 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart4", [bar_data4], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-  });
   
-</script>
-<script>
-  $(document).ready(function(){
-    // input 1 styles
-    $(".input__1 input, .textarea__1 textarea").focus(function(){
-      if($(this).parent().hasClass("input__1"))
-        $(this).prev().removeClass("input__1_blurred").addClass("input__1_focused");
-      else if($(this).parent().hasClass("textarea__1"))
-        $(this).prev().removeClass("textarea__1_blurred").addClass("textarea__1_focused");
-
-      $(this).prev().parent().css({
-        borderBottom : "1px solid #43ce5a"
-      });
-    });
-    $(".input__1 input, .textarea__1 textarea").blur(function(){
-      if($(this).val() === ""){
-        if($(this).parent().hasClass("input__1"))
-          $(this).prev().addClass("input__1_blurred").removeClass("input__1_focused");
-        else if($(this).parent().hasClass("textarea__1"))
-          $(this).prev().addClass("textarea__1_blurred").removeClass("textarea__1_focused");
-        $(this).prev().parent().css({
-          borderBottom : "1px solid #95989c"
-        });
-      }
-    });
-  });
-  $(window).load(function() {
-    var swiper = new Swiper('.graph-container', {
-      slidesPerView: 3,
-      nextButton: '.packages_next',
-      prevButton: '.packages_prev',
-      // init: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 2,
-          spaceBetween: 0,
-        },
-        800: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 0,
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        }
-      }
-    });
-    var swiper2 = new Swiper('.graph-container2', {
-      slidesPerView: 3,
-      nextButton: '.packages_next2',
-      prevButton: '.packages_prev2',
-      // init: false,
-      pagination: {
-        el: '.swiper-pagination2',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 2,
-          spaceBetween: 0,
-        },
-        800: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 0,
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        }
-      }
-    });
-    var swiper3 = new Swiper('.graph-container3', {
-      slidesPerView: 5,
-      nextButton: '.packages_next3',
-      prevButton: '.packages_prev3',
-      // init: false,
-      pagination: {
-        el: '.swiper-pagination3',
-        clickable: true,
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 0,
-        },
-        800: {
-          slidesPerView: 3,
-          spaceBetween: 0,
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 0,
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-        }
-      }
-    });
-  });
-  
+    
    $("#checkAll").click(function () {
      $('input:checkbox').not(this).prop('checked', this.checked);
- });
+ });});
+    
 </script>
-<script>
-$(document).ready(function() {
-        $('#showmenu').click(function() {
-                $('.slidingDiv').slideToggle("");
-        });
-		
-		$("#myModal").wizard();
-
-    });
-	
-</script>
-
-
 </body>
 </html>

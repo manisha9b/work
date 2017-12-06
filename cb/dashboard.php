@@ -186,10 +186,17 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<div class="col-md-12">
 			    <div class="box box-primary">
             <div class="box-header with-border">
-              <i class="fa fa-bar-chart-o"></i>
+             
 
-              <h3 class="box-title">Line Chart</h3>
-
+             
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase"><b>AVG. WEIGHT / AVG. BMI</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+                    <h2 class="box-title pull-left"><?php echo $charts['avg_weight'].' / '.$charts['avg_bmi']?><span style="font-weight: normal;"> </span></h2>
+                      <div class=" pull-right" style="margin-left: 15px;">
+                        <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 12% -->
+                      </div>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -206,9 +213,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <div class="blue-band-home">
+                  <!--  <div class="blue-band-home">
                     Sample
-                  </div>
+                  </div> -->
                   <div class="box-header with-border">
                     <div class="pre-header" style="margin: 8px 0;">
                       <h5 class="margin0 text-uppercase"><b>AVG. CHOLESTEROL</b></h5>
@@ -244,21 +251,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <div class="blue-band-home">
+                  <!--  <div class="blue-band-home">
                     Sample
-                  </div>
+                  </div> -->
                   <div class="box-header with-border">
                     <div class="pre-header">
                       <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
                     </div>
                     <div>
-                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
+                      <h2 class="box-title pull-left"><?php echo $charts['avg_fbs'].' / '.$charts['avg_ppbs']?><span style="font-weight: normal;"> <span style="font-weight: normal;">mgdl</span></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
-                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
+                       <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 16% -->
                       </div>
                     </div>
                     <div class="clearfix"></div>
-                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
+                   <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
                   </div>
                   <div class="box-body">
                     <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"></div>
@@ -280,21 +287,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <div class="blue-band-home">
+                 <!--  <div class="blue-band-home">
                     Sample
-                  </div>
+                  </div> -->
                   <div class="box-header with-border">
                     <div class="pre-header">
                       <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
                     </div>
                     <div>
-                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
+                      <h2 class="box-title pull-left"><?php echo $charts['avg_systolic'].' / '.$charts['avg_diastolic']?><span style="font-weight: normal;">  <span style="font-weight: normal;">mmHg</span></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
                         <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
                       </div>
                     </div>
                     <div class="clearfix"></div>
-                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
+                    <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
                   </div>
                   <div class="box-body">
                     <div id="line-chart3" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
@@ -1688,7 +1695,7 @@ bar.animate(1.0);  // Number from 0.0 to 1.0
     easing: "swing",
     step: function(p) {
       $bar.css({
-        transform: "rotate("+ (14+(p*1.8)) +"deg)", // 100%=180Â° so: Â° = % * 1.8
+        transform: "rotate("+ (14+(p*1.8)) +"deg)", // 100%=180¡Æ so: ¡Æ = % * 1.8
         // 45 is to add the needed rotation to have the green borders at the bottom
       });
       $val.text(p|0);
