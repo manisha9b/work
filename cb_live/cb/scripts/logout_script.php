@@ -38,12 +38,12 @@ if($ref_id!="")
 if($_SESSION['web-login']==1)
 {
 	//$redirect_page="https://www.easybuyhealth.com/accounts/".$_SESSION['client'];
-	$redirect_page="".HTTP_SERVER;
+	$redirect_page=HTTP_SERVER;
 }
 else
 {
 	//$redirect_page =HTTP_SERVER;
-	$redirect_page=HTTP_SERVER;
+    $redirect_page=HTTP_SERVER;
 }
 session_unset();
 session_destroy();
