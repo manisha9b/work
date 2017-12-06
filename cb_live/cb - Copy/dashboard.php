@@ -230,7 +230,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
                        <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?> has high cholestrol</h5>
+                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of Digital Republik has high cholestrol</h5>
                       </div>
                     </div>
                   </div>
@@ -267,7 +267,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left">
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
                       </div>
                     </div>
                   </div>
@@ -303,7 +303,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left" />
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
                       </div>
                     </div>
                   </div>
@@ -389,9 +389,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
 						$report[] = "Blood Sugar: ".$row['bs_result'];
 					}
 					$report = implode(', ',$report);
-					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				?>
-             <img src="<?php echo $photo?>" class="img-circle" style="">
+             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
@@ -402,7 +401,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 <hr>
 				<?php } ?>
 		
-               <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+               <a href="employe.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
            
             <!-- /.box-body -->
           </div>
@@ -436,10 +435,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
 						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
 					}
 					$report = implode(', ',$report_arr);
-					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 					
 				?>
-             <img src="<?php echo $photo?>" class="img-circle" style="">
+             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
@@ -450,7 +448,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 <hr>
 				<?php } ?>
 		
-               <a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+               <a href="employe.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
            
             <!-- /.box-body -->
           </div>

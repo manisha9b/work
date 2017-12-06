@@ -1,17 +1,10 @@
 <?php 
 include_once('partials/header2.php'); 
 unset($arr_ebh_pack);
-  $health = '';
-  if(isset($_GET['health']) && ($_GET['health']=='H' || $_GET['health']=='UH')){
-	  $health = $_GET['health'];
-  }
-$arr_emp	=	$database->getClusterEmpDetails($clusterId,$health);
-  //ini_set("display_errors", "1");
-  //error_reporting(E_ALL);
-
+$arr_emp	=	$database->getClusterEmpDetails($clusterId);
+  ini_set("display_errors", "1");
+  error_reporting(E_ALL);
 $arr_emp_count	=	$database->getClusterEmpCount($clusterId);
-$emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
-$emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
 //print_R($arr_emp_count);//die;
 ?>
 
@@ -292,36 +285,34 @@ else
 		?>
             <!-- /.box-header -->
             <div class="box-body profileimg">
-			<?php foreach($emp_arr['healty'] as $row){ 
-				
-				if((!empty($row['dob']))){
-					$age = $database->ageCalculator($row['dob']). ' Yrs';
-				}
-				$report ='';
-				if($row['bmi_status']=='H'){
-						$report[] = "BMI: ".$row['bmi_category'];
-					}
-					if($row['bp_status']=='H'){
-						$report[] = "Blood Pressure: ".$row['bp_category'];
-					}
-					if($row['bs_status']=='H'){
-						$report[] = "Blood Sugar: ".$row['bs_result'];
-					}
-					$report = implode(', ',$report);
-					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
-				?>
-              <img src="<?php echo $photo?>" class="img-circle" style="">
+             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
-					<?php echo $report; ?>
+					<!-- Lorem Ipsum is simply dummy text -->
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
                 <hr>
-				<?php } ?>
-			
-			 <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
+			  <span class="profile_info" style="">
+			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="info" style="display:block">
+					<!-- Lorem Ipsum is simply dummy text -->
+              </span>
+			  </span>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
+                <hr>
+			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
+			  <span class="profile_info" style="">
+			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="info" style="display:block">
+					<!-- Lorem Ipsum is simply dummy text -->
+              </span>
+			  </span>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
+                <hr>
+			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
               
            
             <!-- /.box-body -->
@@ -340,37 +331,34 @@ else
             <!-- /.box-header -->
 		
             <div class="box-body profileimg">
-             <?php foreach($emp_arr['unhealty'] as $row){ 
-				
-				if((!empty($row['dob']))){
-					$age = $database->ageCalculator($row['dob']). ' Yrs';
-				}
-				$report_arr ='';
-				if($row['bmi_status']=='UH'){
-						$report_arr[] = "BMI: ".$row['bmi_category'];
-					}
-					if($row['bp_status']=='UH'){
-						$report_arr[] = "Blood Pressure: ".$row['bp_category'];
-					}
-					if($row['bs_status']=='UH'){
-						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
-					}
-					$report = implode(', ',$report_arr);
-					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
-					
-				?>
-             <img src="<?php echo $photo?>" class="img-circle" style="">
+             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
 			  <span class="info" style="display:block">
-					<?php echo $report; ?>
+					<!-- Lorem Ipsum is simply dummy text -->
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
                 <hr>
-				<?php } ?>
-			 
-			 <a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
+			  <span class="profile_info" style="">
+			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="info" style="display:block">
+					<!-- Lorem Ipsum is simply dummy text -->
+              </span>
+			  </span>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
+                <hr>
+			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">
+			  <span class="profile_info" style="">
+			  <span class="name" style=""><strong>John Fernandes</strong></span>
+			  <span class="info" style="display:block">
+					<!-- Lorem Ipsum is simply dummy text -->
+              </span>
+			  </span>
+				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>
+                <hr>
+			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
               
            
             <!-- /.box-body -->
