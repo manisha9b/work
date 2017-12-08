@@ -210,7 +210,7 @@ if(isset($_REQUEST['m']))
 */
 					  ?>
                       <tr >
-                        <td width="100" class="table_area">
+                        <td width="150" class="table_area">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
                           <div class="pt-10">
@@ -220,7 +220,7 @@ if(isset($_REQUEST['m']))
 						  </div>
                         </td>
                         <td  width="300" class="table_area">
-                         <b><?php echo $package_nm;?></b>
+                         <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
 						  <div class="package_opt">
                             <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
@@ -231,17 +231,10 @@ if(isset($_REQUEST['m']))
                         </td>
 						
                         <td class="wherecenter table_area">
-                          <div class="col-sm-4">
-                            <div class="row">
+                         
 							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
-							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> </div>
-                          </div>
-                          <div class="col-sm-7">
-                            <b><?php echo $hsp_name;?></b> <br>
-                            <?php echo $hsp_address;?>
-							
-                          </div>
+							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
                         </td>
                         <td class="analytic_area table_area">                      
                           <div class="chart-responsive">

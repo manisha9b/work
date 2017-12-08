@@ -18,7 +18,7 @@
   
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="dist/css/animate.css">
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">	
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -331,7 +331,7 @@
 		</div>
 		<div class="row mb-10">
 		<div class="col-md-12 company_summary">
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
@@ -344,7 +344,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
             <div class="info-box-content">
@@ -357,7 +357,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box4 evoucher_download">
             <span class="info-box-icon icon3 text-white"><i class="fa fa-download"></i></span></span>
 
@@ -371,7 +371,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box4 unhealthy_employee">
             <span class="info-box-icon icon3"><img src="images/ecg_icon.png" width="35"></span>
 
@@ -385,7 +385,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-		<div class="col-md-3 col-sm-6 col-xs-12">
+		<div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box4 report_present">
             <span class="info-box-icon icon3 text-white"><i class="fa fa-file-text-o"></i></span></span>
 
@@ -445,7 +445,7 @@
                         <td class="table_area">
                          <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act" value="Show/Hide" onclick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -481,7 +481,7 @@
                         <td class="package_area table_area">
                           <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act" value="Show/Hide" onClick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -517,7 +517,7 @@
                         <td class="table_area">
                           <b>Comprehensive Health<br> Checkup</b>
 						  <div class="package_opt">
-                            <a href="#" class="appointment-act"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                            <a href="#" class="appointment-act" value="Show/Hide" onClick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                             <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a>
@@ -547,268 +547,9 @@
                 </div>
 			</div>
 		</div>
-		
-		
-		<div class="col-md-12  employee_summary">
-			<div class="col-md-6 p0">
-				<div class="pagination check_box_drop download_icon">
-				<a href="#" class="dropdown_setting dropdown-toggle" data-toggle="dropdown" style="margin-right:10px;">
-					<input type="checkbox" id="checkAll" name="subscribe" value="newsletter">	
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					  <li><a href="#">All</a></li>
-					  <li><a href="#">None</a></li>
-					  <li><a href="#">Add Tab</a></li>
-				</ul>
-				</div>
-				
-				<div class="pagination download_icon" style="margin-right:5px;">
-					<a href="#"><i class="fa fa-repeat" aria-hidden="true"></i></a>
-				</div>
-				<div class="pagination download_icon">
-					<a href="#"><i class="fa fa-download" aria-hidden="true"></i></a>
-				</div>
-				<div class="pagination">
-					<a href="#"><i class="fa fa-folder" aria-hidden="true"></i><span class="caret"></span></a>
-				</div>
-				<div class="pagination">
-					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i><span class="caret"></span></a>
-				</div>
-			</div>
-			<div class="col-md-6 p0">
-				<div class="pagination pagination_right">
-				<span>1-9 of 32</span>
-				<a href="#"><</a>
-				<a href="#">></a>
-				<a href="#" class="dropdown_setting " data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span></a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 employee_summary">			
-		<div id="appointments" class="nav-tabs-custom employee_info">
-		<ul class="nav nav-tabs">
-            <li class="active">
-				<div class="dropdown">
-				  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background:#04092f;
-padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></span></a>
-				  <ul class="dropdown-menu purchase_drop_down employee_dropdown" style="width: 140%;">
-					<li><a href="#">Pre Employment</a></li>
-					<li><a href="#">Annual Checkup</a></li>
-					<li><a href="#">Package Type A</a></li>
-					<li><a href="#">Add Tabs</a></li>
-				  </ul>
-				</div>				
-			</li>
-                <li class="upcoming"><a href="#tab_2-2" onclick="return hidesummary()" data-toggle="tab" aria-expanded="false" style="padding:12.5px;">UPCOMING</a></li>
-                <li class="all"><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab" style="padding:12.5px;">All</a></li>
-				<li class="pull-right dropdown nohover1 sort_by_btn">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    Sort By <span class="caret" style="margin-left: 85px;"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sort By</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date &amp; Time</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Location</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Status</a></li>
-                  </ul>
-                </li>
-                <li class="pull-right nohover1">
-                  <!-- search form -->
-                  <form action="#" method="get" class="employee_search sidebar-form1" style="display: inline-block;border-bottom: 1px solid #ccc;">
-                    <div class=" inner-addon left-addon">
-                      <i class="fa fa-search"></i>
-                      <input type="text" name="q" class="form-control" placeholder="Search">
-                    </div>
-                  </form>
-                  <!-- /.search form -->
-                </li>
-                                
-            </ul>
-	</div>
-	   <div class="box no-border">
-            
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding emp_detail">
-              <table class="table table-hover">
-                <tbody>
-				<tr class="employee_table employee_heading">
-				 <th> </th>
-				 <th> </th>
-                  <th>FILL NAME</th>
-                  <th>DEPARTMENT <span class="caret"></span></th>
-                  <th>WHERE <span class="caret"></span> </th>
-                  <th>TEST</th>
-                  <th>STATUS</th>			  
-				 
-                </tr>
-                <tr class="emp_info_data">
-					<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
-                  <td class="info">Danish Rao</td>
-                  <td class="info">Business Developement</td>
-                  <td class="info">Suburban Diagnostics Andheri</td>
-				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>	
-                </tr>
-                <tr class="emp_info_data">
-					<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                  <td class="info">Anisha Peters</td>
-                  <td class="info" >Design & Visualisation</td>
-                  <td class="info">Metropolis Clinic Lower Parel</td>
-				  <td class="info">RBC Test</td>
-                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                </tr>
-                <tr class="emp_info_data">
-					<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
-                  <td class="info">Danish Rao</td>
-                  <td class="info">Business Developement</td>
-                  <td class="info">Suburban Diagnostics Andheri</td>
-				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  
-                </tr>
-                <tr class="emp_info_data">
-				<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                  <td class="info">Anisha Peters</td>
-                  <td class="info" >Design & Visualisation</td>
-                  <td class="info">Metropolis Clinic Lower Parel</td>
-				  <td class="info">RBC Test</td>
-                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
-                  <td class="info">Danish Rao</td>
-                  <td class="info">Business Developement</td>
-                  <td class="info">Suburban Diagnostics Andheri</td>
-				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                  <td class="info">Anisha Peters</td>
-                  <td class="info" >Design & Visualisation</td>
-                  <td class="info">Metropolis Clinic Lower Parel</td>
-				  <td class="info">RBC Test</td>
-                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-				 
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				  
-                  <td class="info">Danish Rao</td>
-                  <td class="info">Business Developement</td>
-                  <td class="info">Suburban Diagnostics Andheri</td>
-				  <td class="info">CBC Test</td>				
-				  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-				  
-                </tr>
-				<tr class="emp_info_data">
-				<td class="info"><input type="checkbox" id="checkItem"></td>
-                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                  <td class="info">Anisha Peters</td>
-                  <td class="info" >Design & Visualisation</td>
-                  <td class="info">Metropolis Clinic Lower Parel</td>
-				  <td class="info">RBC Test</td>
-                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  
-                </tr>
-              </tbody>
-			  </table>	
-				<div class="box-header employee_pagination mt-20 pt-20 pb-20">
-					<div class="col-md-12 total_entry">
-					<tr>
-					<td>Showing 8 out of 34 entries</td>
-					  <td></td>
-					  <td></td>
-					  <td></td>
-					  <td></td>
-					  <td></td>
-					  <td></td>
-					  <td>
-					<ul class="pagination pagination-sm no-margin pull-right">
-						<li><a href="#">«</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">»</a></li>
-					</ul>
-					</td>				
-					</tr>
-					</div>
-				</div>
-			</div>
-	   </div>
-			  </div>
       
       <!-- /.row -->
-    
-     <div class="row pt-20">		
-        <div class="col-md-12 employee_region">
-          <div class="col-md-6">
-		  
-		   <div class="nav-tabs-custom ">
-            <ul class="nav nav-tabs">
-              <li class=""><a href="#region" data-toggle="tab" aria-expanded="false">TOP REGIONS</a></li>
-              <li  class="active"><a href="#hsp" data-toggle="tab" aria-expanded="false">TOP HSP'S</a></li>              
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane" id="region">
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Adam Jones</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Posted 5 photos - 5 days ago</span>
-                  </div>
-                  <!-- /.user-block -->
-               
-                  <!-- /.row -->
-
-                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                </div>
-                <!-- /.post -->
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane active" id="hsp">
-                <!-- The timeline -->
-                <div class="box-body">
-					<img src="images/map.png">
-				</div>
-              </div>
-              <!-- /.tab-pane -->             
-            </div>
-            <!-- /.tab-content -->
-          </div>
-        </div>
-		
-		
-		<div class="col-md-6">
-			
-		   <div class="box undertaken_employees"> 
-				<div class="box-header with-border">
-			  <h4 class="pull-left margin0"><strong>TEST UNDERTAKEN BY EMPLOYEES</strong></h4>
-			</div>
-            <!-- /.box-header -->
-           <div class="box-body">
-              <div id="bar-chart" style="height: 300px;"></div>
-            </div>
-          <!-- /.box -->
-        </div>
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
+		<div class="col-md-12 employee_summary" id="divMsg">		<div class="col-md-12  employee_summary">			<div class="col-md-6 p0">				<div class="pagination check_box_drop download_icon">								<a href="#" class="dropdown_setting dropdown-toggle" data-toggle="dropdown" style="margin-right:5px;">					<input type="checkbox" id="checkAll" name="subscribe" value="newsletter">						<span class="caret"></span>				</a>				<ul class="dropdown-menu">					  <li><a href="#">All</a></li>					  <li><a href="#">None</a></li>					  <li><a href="#">Add Tab</a></li>				</ul>				</div>								<div class="pagination download_icon" style="margin-right:5px;">					<a href="#"><i class="fa fa-repeat" aria-hidden="true"></i></a>				</div>				<div class="pagination download_icon">					<a href="#"><i class="fa fa-download" aria-hidden="true"></i></a>				</div>				<div class="pagination left_align_pagination">					<a href="#"><i class="fa fa-folder" aria-hidden="true"></i><span class="caret"></span></a>				</div>				<div class="pagination left_align_pagination">					<a href="#"><i class="fa fa-tag" aria-hidden="true"></i><span class="caret"></span></a>				</div>			</div>			<div class="col-md-6 p0">				<div class="pagination pagination_right">				<span>1-9 of 32</span>				<a href="#"><</a>				<a href="#">></a>				<a href="#" class="dropdown_setting" data-toggle="dropdown" style="margin-left:10px;"><i class="fa fa-cog" aria-hidden="true"></i><span class="caret"></span></a>				</div>			</div>		</div>		<div class="clearfix"></div>		<div id="appointments" class="nav-tabs-custom employee_info">		<ul class="nav nav-tabs">            <li class="active">				<div class="dropdown">				  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background:#04092f;padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></span></a>				  <ul class="dropdown-menu purchase_drop_down employee_dropdown" style="width: 140%;">					<li><a href="#">Pre Employment</a></li>					<li><a href="#">Annual Checkup</a></li>					<li><a href="#">Package Type A</a></li>					<li><a href="#">Add Tabs</a></li>				  </ul>				</div>							</li>                <li class="upcoming"><a href="#tab_2-2" onclick="return hidesummary()" data-toggle="tab" aria-expanded="false" style="padding:12.5px;">UPCOMING</a></li>                <li class="all"><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab" style="padding:12.5px;">All</a></li>				<li class="pull-right dropdown nohover1 sort_by_btn">                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">                    Sort By <span class="caret" style="margin-left: 85px;"></span>                  </a>                  <ul class="dropdown-menu">                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sort By</a></li>                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date &amp; Time</a></li>                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Location</a></li>                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Status</a></li>                  </ul>                </li>                <li class="pull-right nohover1">                  <!-- search form -->                  <form action="#" method="get" class="employee_search sidebar-form1" style="display: inline-block;border-bottom: 1px solid #ccc;">                    <div class=" inner-addon left-addon">                      <i class="fa fa-search"></i>                      <input type="text" name="q" class="form-control" placeholder="Search">                    </div>                  </form>                  <!-- /.search form -->                </li>                                            </ul>	</div>	   <div class="box no-border">                        <!-- /.box-header -->            <div class="box-body table-responsive emp_detail ">				<div class="table-responsive">              <table class="table table-hover employee_details_area">                <tbody>				<tr class="employee_table employee_heading">				 <th> </th>				 <th> </th>                  <th>FILL NAME</th>                  <th>DEPARTMENT <span class="caret"></span></th>                  <th>WHERE <span class="caret"></span> </th>                  <th>TEST</th>                  <th>STATUS</th>			  				                 </tr>                <tr class="emp_info_data">					<td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td>                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				                    <td class="info">Danish Rao</td>                  <td class="info">Business Developement</td>                  <td class="info">Suburban Diagnostics Andheri</td>				  <td class="info">CBC Test</td>								  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>			                </tr>                <tr class="emp_info_data">					<td class="info">						<input type="checkbox" id="test2"/>						<label for="test2"></label>					</td>                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>                  <td class="info">Anisha Peters</td>                  <td class="info" >Design & Visualisation</td>                  <td class="info">Metropolis Clinic Lower Parel</td>				  <td class="info">RBC Test</td>                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>                </tr>                <tr class="emp_info_data">					<td class="info">						<input type="checkbox" id="test3"/>						<label for="test3"></label>					</td>                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				                    <td class="info">Danish Rao</td>                  <td class="info">Business Developement</td>                  <td class="info">Suburban Diagnostics Andheri</td>				  <td class="info">CBC Test</td>								  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>                                  </tr>                <tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test4"/>					<label for="test4"></label>				</td>                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>                  <td class="info">Anisha Peters</td>                  <td class="info" >Design & Visualisation</td>                  <td class="info">Metropolis Clinic Lower Parel</td>				  <td class="info">RBC Test</td>                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>                                  </tr>				<tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test5"/>					<label for="test5"></label>				</td>                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				                    <td class="info">Danish Rao</td>                  <td class="info">Business Developement</td>                  <td class="info">Suburban Diagnostics Andheri</td>				  <td class="info">CBC Test</td>								  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>                                  </tr>				<div class="clearfix"></div>				<tr class="emp_info_data" data-toggle="modal" data-target="#health_checkup_status">									<td class="info">						<input type="checkbox" id="test6"/>						<label for="test6"></label>					</td>					  <td  class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>					  <td class="info">Anisha Peters						<span class="app_scheduled">Scheduled</span>					  </td>					  <td class="info" >Design & Visualisation</td>					  <td class="info">Metropolis Clinic Lower Parel</td>					  <td class="info">RBC Test</td>					  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>				                 </tr>								<tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test7" />					<label for="test7"></label>				</td>                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				                    <td class="info">Danish Rao</td>                  <td class="info">Business Developement</td>                  <td class="info">Suburban Diagnostics Andheri</td>				  <td class="info">CBC Test</td>								  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>				                  </tr>				<tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test8" />					<label for="test8"></label>				</td>                  <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>                  <td class="info">Anisha Peters</td>                  <td class="info" >Design & Visualisation</td>                  <td class="info">Metropolis Clinic Lower Parel</td>				  <td class="info">RBC Test</td>                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>                                  </tr>				<tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test7" />					<label for="test7"></label>				</td>                  <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>				                    <td class="info">Danish Rao</td>                  <td class="info">Business Developement</td>                  <td class="info">Suburban Diagnostics Andheri</td>				  <td class="info">CBC Test</td>								  <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>				                  </tr>				<tr class="emp_info_data">				<td class="info">					<input type="checkbox" id="test6">					<label for="test6"></label>				</td>                  <td class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>                  <td class="info">Anisha Peters</td>                  <td class="info">Design &amp; Visualisation</td>                  <td class="info">Metropolis Clinic Lower Parel</td>				  <td class="info">RBC Test</td>                  <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>				                 </tr>              </tbody>			  </table>							<div class="box-header employee_pagination mt-20 pt-20 pb-20">					<div class="col-md-12 total_entry">					<tr>					<td>Showing 8 out of 34 entries</td>					  <td></td>					  <td></td>					  <td></td>					  <td></td>					  <td></td>					  <td></td>					  <td>					<ul class="pagination pagination-sm no-margin pull-right">						<li><a href="#">«</a></li>						<li><a href="#">1</a></li>						<li><a href="#">2</a></li>						<li><a href="#">3</a></li>						<li><a href="#">»</a></li>					</ul>					</td>									</tr>					</div>				</div>				</div>			</div>	   </div>	   	   	   <div class="row">          <div class="col-md-6 employee_chart_area">		  		   <div class="nav-tabs-custom ">            <ul class="nav nav-tabs">              <li class=""><a href="#region" data-toggle="tab" aria-expanded="false">TOP REGIONS</a></li>              <li  class="active"><a href="#hsp" data-toggle="tab" aria-expanded="false">TOP HSP'S</a></li>                          </ul>            <div class="tab-content">              <div class="tab-pane" id="region">                   <div class="user-block">                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">                        <span class="username">                          <a href="#">Adam Jones</a>                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>                        </span>                    <span class="description">Posted 5 photos - 5 days ago</span>                  </div>                               </div>              <!-- /.tab-pane -->              <div class="tab-pane active" id="hsp">                <!-- The timeline -->                <div class="box-body">					<img src="images/map.png">				</div>              </div>              <!-- /.tab-pane -->                         </div>            <!-- /.tab-content -->          </div>        </div>						<div class="col-md-6 test_undertaken_employees">					   <div class="box undertaken_employees"> 				<div class="box-header with-border">			  <h4 class="pull-left margin0"><strong>TEST UNDERTAKEN BY EMPLOYEES</strong></h4>			</div>            <!-- /.box-header -->            <div class="box-body profileimg">             <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                <hr>			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                <hr>			 <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                <hr>			 <a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>                                     <!-- /.box-body -->          </div>          <!-- /.box -->        </div>        </div>      </div>	</div><!--employee-show-hide-area-ended-here-->     <div class="row pt-20">		              <!-- /.row -->    </div>
         <!-- /.col -->
       </div>
     </section>
@@ -818,7 +559,7 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
 
   
 </div>
-<!-- ./wrapper -->
+<!-- ./wrapper --> <!-- Modal -->  <div class="modal fade" id="health_checkup_status">    <div class="modal-dialog" style="width: 70%;">          <!-- Modal content-->      <div class="modal-content">        <div class="modal-header">          <button type="button" class="close" data-dismiss="modal">&times;</button>          <h4 class="modal-title">Modal Header</h4>        </div>        <div class="modal-body">          <div class="col-md-12 test_complete box-body">			<div class="text-center"><i class="fa fa-caret-down" aria-hidden="true"></i></div>			<div class="nav-tabs-custom wizard-content">            <ul class="nav nav-tabs">				<li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a></li>				<li class="com_sent"><a href="#comm_sent" data-toggle="tab" aria-expanded="false" class="border_two">COMMUNICATION SENT</a></li>				<li class="lin_clik"><a href="#link_click" data-toggle="tab" aria-expanded="false" class="border_three">LINK CLICKED</a></li>				<li class="app_send"><a href="#app_sent" data-toggle="tab" aria-expanded="false" class="border_four">APPOINTMENT SENT</a></li>				<li class="test_complet"><a href="#test_done" data-toggle="tab" aria-expanded="false" class="border_five">TEST DONE</a></li>				<li class="report_complete"><a href="#report_receiv" data-toggle="tab" aria-expanded="false" class="border_six">REPORTS RECEIVED</a></li>            </ul>            <div class="tab-content">				<div class="tab-pane on_board active " id="emp_on_board">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">2nd Oct,</b> Monday <br>11.30AM</span>					</div> 					<div class="clearfix"></div>									</div>             				<div class="tab-pane com_sent clr_orange" id="comm_sent">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">14 Oct</b>,Thursday <br>2.15PM</span>					</div>				</div>				<div class="tab-pane lin_clik" id="link_click">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">18 Oct,</b> Wednesday <br>11.20AM</span>					</div>				</div>				<div class="tab-pane app_send" id="app_sent">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>				<div class="tab-pane test_complet" id="test_done">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>				<div class="tab-pane report_complete" id="report_receiv">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>              <!-- /.tab-pane -->                         </div>          </div>		  <div class="clearfix"></div>		  <div class="col-md-12 p0 employee_profile">			<div class="col-md-8">			<div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span></div>			<br>			<div class="employee_file ">				<ul>					<li class="blue_clr"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</li>					<li class="blue_clr"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> APPOINTMENT HISTORY</li>					<li class="green_clr"><i class="fa fa-download" aria-hidden="true"></i> ARCHIEVE</li>					<li class="green_clr"><i class="fa fa-envelope-o" aria-hidden="true"></i> SEND MESSAGE</li>					<li class="grey_clr"><i class="fa fa-file-text-o" aria-hidden="true"></i> VIEW REPORT</li>				</ul>			</div>			</div>			<div class="col-md-4 p0">				<div class="time_limit">					<div class="start_to_end">						<span class="number">6</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span class="">Start to finish</span>						</span>											</div>										<div class="company_avg">						<span class="number">4</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span>Company Avg</span>						</span>					</div>					<div class="caret_down"><i class="fa fa-caret-down" aria-hidden="true"></i></div>				</div>			</div>					  </div>		</div>		<div class="clearfix"></div>        </div>        <div class="modal-footer">          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        </div>      </div>          </div>  </div>
 
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -926,7 +667,6 @@ padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></sp
    $("#checkAll").click(function () {
      $('input:checkbox').not(this).prop('checked', this.checked);
  });});
-    
-</script>
+</script><script>$(document).ready(function() {	$('#showmenu').click(function() {			$('.slidingDiv').slideToggle("");	});	});	</script>
 </body>
 </html>

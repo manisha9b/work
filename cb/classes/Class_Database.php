@@ -3505,12 +3505,55 @@ where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
 }
 function getAvgBPCountGroupByGender($clusterId){
 	 $sql = "SELECT 
-a.reading, 
+a.reading,a.cat_id, 
 count(b.ebh_customer_id) as total_cnt,
 sum(if(c.salutation in('Mr.'),1,0)) as male_count,
 sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
 from view_blood_pressure as a 
 left join tbl_ebh_customer_health_readings as b on BINARY  a.`bp_result`= BINARY b.`bp_category`
+left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
+where c.cluster_id = $clusterId
+GROUP BY a.reading;	";;
+		unset($this->result);
+		$this->select($sql);
+		
+		return $this->result;
+}
+
+function getAvgBMICountGroupByGenderforChart($clusterId){
+	 $sql = "SELECT 
+\"Male\" as gender,
+sum(if(a.bmi_category='Normal',1,0)) as normal_bmi,
+sum(if(a.bmi_category='Underweight',1,0)) as underwght_bmi,
+sum(if(a.bmi_category='Overweight',1,0)) as overwght_bmi
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mr.') 
+
+UNION ALL 
+
+SELECT 
+\"Female\" as gender,
+sum(if(a.bmi_category='Normal',1,0)) as normal_bmi,
+sum(if(a.bmi_category='Underweight',1,0)) as underwght_bmi,
+sum(if(a.bmi_category='Overweight',1,0)) as overwght_bmi
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.');";;
+		unset($this->result);
+		$this->select($sql);
+		 
+		return $this->result;
+}
+function getAvgBMICountGroupByGender($clusterId){
+	 $sql = "SELECT 
+a.reading, a.cat_id, 
+count(b.ebh_customer_id) as total_cnt,
+sum(if(c.salutation in('Mr.'),1,0)) as male_count,
+sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
+
+from view_bmi as a 
+left join tbl_ebh_customer_health_readings as b on BINARY  a.`bmi_result`= BINARY b.`bmi_category`
 left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
 where c.cluster_id = $clusterId
 GROUP BY a.reading;	";;
@@ -3526,9 +3569,17 @@ function getDashboardChart($clusterId){
 	foreach($gender_wise_bp_chart as $key=>$value){
 			$returnArr['bp'][$value['gender']] = $value['normal_bp'].','.$value['high_bp'].','.$value['low_bp'];
 		}
-	echo "<pre>";
+		
+		//BMI
+			$gender_wise_bp_chart = $this->getAvgBMICountGroupByGenderforChart($clusterId);
+	$returnArr['bmi']['table'] = $this->getAvgBMICountGroupByGender($clusterId);
+	$returnArr['bmi']['label'] = "'Normal','Underweight', 'Overweight'";
+	foreach($gender_wise_bp_chart as $key=>$value){
+			$returnArr['bmi'][$value['gender']] = $value['normal_bmi'].','.$value['underwght_bmi'].','.$value['overwght_bmi'];
+		}
+	/*echo "<pre>";
 	print_R($returnArr);
-	echo "</pre>";
+	echo "</pre>";*/
 	return $returnArr;
 }
 }

@@ -49,7 +49,7 @@
         </li>
 		<li>
           <a href="#">
-            <i class="cb-menu" class="fa fa-calendar"></i> <span>Appointments</span>
+            <i class="cb-menu fa fa-calendar"></i> <span>Appointments</span>
           </a>
         </li>
 		<li>

@@ -27,7 +27,7 @@
     text-align: center;
     color: #fff}
 	
-	.progress{
+.progress{
   position: relative;
   margin: 4px;
   float:left;
@@ -185,10 +185,13 @@ $goal_arr = $database->getClusterGoal($clusterId);
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			 <!-- BAR CHART -->
-          <div class="box box-success">
+			 	
+			  <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">AVG. WEIGHT / AVG. BMI</h3>
-
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>Blood Pressure Observations</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -196,21 +199,39 @@ $goal_arr = $database->getClusterGoal($clusterId);
               </div>
             </div>
             <div class="box-body">
-			<div class="row">
-                <div class="col-md-8">
+                <div class="row">
+                <div class="col-md-4">
+              <div class="chart">
+                <canvas id="barChart" style="height:250px"></canvas>
+              </div>
+              </div>
+               <div class="col-md-4">
 				  <div class="chart">
-					<canvas id="barChart" style="height:230px"></canvas>
+					<canvas id="chart-area" style="height:230px"></canvas>
 				  </div>
               </div>
 			  <div class="col-md-4">
-                 <table class="table table-striped">
-				 <tr>
+                 <table class="table table-bordered">
+				 <tr class="bg-blue text-white">
                  
                   <th>Reading</th>
                   <th>Male</th>
                   <th>Female</th>
                 </tr>
-				 <?php foreach($chartdata['bp']['table'] as $key=>$value) { ?>
+				 <?php 
+				     $high_bp_count = 0;
+				     $low_bp_count = 0;
+				 foreach($chartdata['bp']['table'] as $key=>$value) { 
+				     
+				if($value['cat_id']==2 || $value['cat_id']==3 || $value['cat_id']==4 ){
+				    $high_bp_count +=$value['total_cnt'];
+				}
+				if($value['cat_id']==5){
+				    $low_bp_count +=$value['total_cnt'];
+				}
+			
+				 
+				 ?>
                 
                 <tr>
                   
@@ -220,130 +241,104 @@ $goal_arr = $database->getClusterGoal($clusterId);
                   </td>
                   <td><?php echo $value['female_count']?></td>
                 </tr>
-				 <?php } ?>
+				 <?php }
+				 $high_bp_per = ($high_bp_count>0)?round(($high_bp_count/$arr_count['total_employees'])*100):0;
+				 $low_bp_per = ($low_bp_count>0)?round(($low_bp_count/$arr_count['total_employees'])*100):0;
+				 ?>
                 
                 
-              </table>
-          
+              </table> 
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bp_per?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bp_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> has <span class="text-danger">Low Blood Pressure Levels</span></h5>
                 </div>
-		    </div>
+                </div>
             </div>
             <!-- /.box-body -->
           </div>
-			    
+         
+           
+          
+               
 		  </div>
-            <div class="swiper-wrapper pt-20">
-              <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
-                <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <!--  <div class="blue-band-home">
-                    Sample
-                  </div> -->
-                  <div class="box-header with-border">
-                    <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase"><b>AVG. CHOLESTEROL</b></h5>
+           
+      </div>
+      <div class="swiper-container graph-container">
+			<div class="col-md-12">
+			 <!-- BAR CHART -->
+			 	
+			  <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>BMI Observations</b></h5>
                       <!--<a href="#" class="btn2">BMI</a>-->
                     </div>
-                    <div>
-                      <h2 class="box-title pull-left">160-189<span style="font-weight: normal;">mg /dL </span></h2>
-                      <div class=" pull-right" style="margin-left: 15px;">
-                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 12%
-                      </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <h4 class="box-title-sm" style="padding-left: 0px;">100<span style="font-weight: normal;">avg </span></h4>
-                  </div>
-                  <div class="box-body">
-                    <div id="line-chart" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
-                    <div class="clearfix"></div>
-                    <div class="pre-header mb-0">
-                      <div style="min-height: 58px;padding-top: 10px;">
-                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
-                       <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?> has high cholestrol</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-body-->
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-4">
+              <div class="chart">
+                <canvas id="barChart_bmi" style="height:250px"></canvas>
+              </div>
+              </div>
+               <div class="col-md-4">
+				  <div class="chart">
+					<canvas id="chart-area_bmi" style="height:230px"></canvas>
+				  </div>
+              </div>
+			  <div class="col-md-4">
+                 <table class="table table-bordered">
+				 <tr class="bg-blue text-white">
+                 
+                  <th>Reading</th>
+                  <th>Male</th>
+                  <th>Female</th>
+                </tr>
+				 <?php 
+				     $high_bmi_count = 0;
+				     $low_bmi_count = 0;
+				 foreach($chartdata['bmi']['table'] as $key=>$value) { 
+				     
+				if($value['cat_id']==2 ){
+				    $high_bmi_count +=$value['total_cnt'];
+				}
+				if($value['cat_id']==3){
+				    $low_bmi_count +=$value['total_cnt'];
+				}
+			
+				 
+				 ?>
+                
+                <tr>
                   
+                  <td> <?php echo $value['reading']?></td>
+                  <td>
+                      <?php echo $value['male_count']?>
+                  </td>
+                  <td><?php echo $value['female_count']?></td>
+                </tr>
+				 <?php }
+				 $high_bmi_per = ($high_bmi_count>0)?round(($high_bmi_count/$arr_count['total_employees'])*100):0;
+				 $low_bmi_per = ($low_bmi_count>0)?round(($low_bmi_count/$arr_count['total_employees'])*100):0;
+				 ?>
+                
+                
+              </table> 
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bmi_per?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> are  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bmi_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> are <span class="text-danger">Underweight</span></h5>
                 </div>
-                <!-- /.box -->
-
-              </div>
-              <!-- /.col -->
-              <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
-                <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <!--  <div class="blue-band-home">
-                    Sample
-                  </div> -->
-                  <div class="box-header with-border">
-                    <div class="pre-header">
-                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
-                    </div>
-                    <div>
-                      <h2 class="box-title pull-left"><?php echo $charts['avg_fbs'].' / '.$charts['avg_ppbs']?><span style="font-weight: normal;"> <span style="font-weight: normal;">mgdl</span></h2>
-                      <div class=" pull-right" style="margin-left: 15px;">
-                       <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 16% -->
-                      </div>
-                    </div>
-                    <div class="clearfix"></div>
-                   <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
-                  </div>
-                  <div class="box-body">
-                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"></div>
-                    <div class="clearfix"></div>
-                    <div class="pre-header mb-0">
-                      <div style="min-height: 58px;padding-top: 10px;">
-                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left">
-                      <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-body-->
                 </div>
-                <!-- /.box -->
-
-              </div>
-              <!-- /.col -->
-              <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
-                <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
-                 <!--  <div class="blue-band-home">
-                    Sample
-                  </div> -->
-                  <div class="box-header with-border">
-                    <div class="pre-header">
-                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
-                    </div>
-                    <div>
-                      <h2 class="box-title pull-left"><?php echo $charts['avg_systolic'].' / '.$charts['avg_diastolic']?><span style="font-weight: normal;">  <span style="font-weight: normal;">mmHg</span></h2>
-                      <div class=" pull-right" style="margin-left: 15px;">
-                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
-                      </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
-                  </div>
-                  <div class="box-body">
-                    <div id="line-chart3" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
-                    <div class="clearfix"></div>
-                    <div class="pre-header mb-0">
-                      <div style="min-height: 58px;padding-top: 10px;">
-                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left" />
-                      <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-body-->
-                </div>
-                <!-- /.box -->
-
-              </div>
-              <!-- /.col -->
-              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+         
+           
+          
+               
+		  </div>
+           
       </div>
       <!-- /.row -->
      <!-- <div class="row">
@@ -1069,7 +1064,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
       datasets: [
         {
           label               : 'Male',
-          fillColor           : 'rgba(210, 214, 222, 1)',
+          fillColor           : '#00c0ef',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
           pointStrokeColor    : '#c1c7d1',
@@ -1134,7 +1129,107 @@ $goal_arr = $database->getClusterGoal($clusterId);
     }
 
     barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
+    
+     barChart.Bar(barChartData, barChartOptions)
+    ///bmi chart
+    var areaChartData_bmi = {
+      labels  : [<?php echo $chartdata['bmi']['label']?>],
+      datasets: [
+        {
+          label               : 'Male',
+          fillColor           : '#00c0ef',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [<?php echo $chartdata['bmi']['Male']?>]
+        },
+        {
+          label               : 'Female',
+          fillColor           : '#00a65a',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [<?php echo $chartdata['bmi']['Female']?>]
+        }
+      ]
+    }
+    var barChartCanvas_bmi          = $('#barChart_bmi').get(0).getContext('2d')
+    var barChart_bmi                = new Chart(barChartCanvas_bmi)
+     var barChartData_bmi                     = areaChartData_bmi
+    barChart_bmi.Bar(barChartData_bmi, barChartOptions)
+    window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+    var pieData = [
+        <?php 
+         $colorarray[4]['color'] = "#4D5360";
+        $colorarray[4]['highlight'] = "#616774";
+        $colorarray[0]['color'] = "#F7464A";
+        $colorarray[0]['highlight'] = "#FF5A5E";
+        $colorarray[1]['color'] = "#46BFBD";
+        $colorarray[1]['highlight'] = "#5AD3D1";
+        $colorarray[2]['color'] = "#FDB45C";
+        $colorarray[2]['highlight'] = "#FFC870";
+         $colorarray[3]['color'] = "#949FB1";
+        $colorarray[3]['highlight'] = "#A8B3C5";
+        /*
+        
+        color:"#F7464A",
+					highlight: "#FF5A5E"
+        color: "#46BFBD",
+					highlight: "#5AD3D1",
+					color: "#FDB45C",
+					highlight: "#FFC870",*/
+        foreach($chartdata['bp']['table'] as $key=>$value) { 
+            
+            
+            ?>
+				{
+					value: <?php echo $value['total_cnt']?>,
+					color:"<?php echo $colorarray[$key]['color']?>",
+					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					label: "<?php echo $value['reading']?>"
+				},
+				<?php } ?>
+		
+
+			];
+var pieData2 = [
+        <?php 
+        
+        foreach($chartdata['bmi']['table'] as $key=>$value) { 
+            
+            
+            ?>
+				{
+					value: <?php echo $value['total_cnt']?>,
+					color:"<?php echo $colorarray[$key+1]['color']?>",
+					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					label: "<?php echo $value['reading']?>"
+				},
+				<?php } ?>
+		
+
+			];
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myPie = new Chart(ctx).Pie(pieData);
+					var ctx2 = document.getElementById("chart-area_bmi").getContext("2d");
+			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
+				window.myDoughnut = new Chart(ctx2).Doughnut(pieData2, {
+					responsive:true
+				});
+			};
   })
 </script>
 <script>
@@ -1349,6 +1444,7 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
     });
   </script>
 
+  
 
 </body>
 </html>
