@@ -340,6 +340,85 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		  </div>
            
       </div>
+            <div class="swiper-container graph-container">
+			<div class="col-md-12">
+			 <!-- BAR CHART -->
+			 	
+			  <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>Blood Sugar Observations</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-4">
+              <div class="chart">
+                <canvas id="barChart_bs" style="height:250px"></canvas>
+              </div>
+              </div>
+               <div class="col-md-4">
+				  <div class="chart">
+					<canvas id="chart-area_bs" style="height:230px"></canvas>
+				  </div>
+              </div>
+			  <div class="col-md-4">
+                 <table class="table table-bordered">
+				 <tr class="bg-blue text-white">
+                 
+                  <th>Reading</th>
+                  <th>Male</th>
+                  <th>Female</th>
+                </tr>
+				 <?php 
+				     $pre_diabetic_count = 0;
+				     $diabetic_count = 0;
+				 foreach($chartdata['bs']['table'] as $key=>$value) { 
+				     
+				if($value['cat_id']==2 ){
+				    $pre_diabetic_count +=$value['total_cnt'];
+				}
+				if($value['cat_id']==3){
+				    $diabetic_count +=$value['total_cnt'];
+				}
+			
+				 
+				 ?>
+                
+                <tr>
+                  
+                  <td> <?php echo $value['reading']?></td>
+                  <td>
+                      <?php echo $value['male_count']?>
+                  </td>
+                  <td><?php echo $value['female_count']?></td>
+                </tr>
+				 <?php } 
+				 $pre_diabetic_count = ($pre_diabetic_count>0)?round(($pre_diabetic_count/$arr_count['total_employees'])*100):0;
+				 $diabetic_count = ($diabetic_count>0)?round(($diabetic_count/$arr_count['total_employees'])*100):0;
+				 ?>
+                
+                
+              </table> 
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $pre_diabetic_count?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> are  <span class="text-danger">Prediabetic</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $diabetic_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> are <span class="text-danger">Diabetic</span></h5>
+                </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+         
+           
+          
+               
+		  </div>
+           
+      </div>
       <!-- /.row -->
      <!-- <div class="row">
         <div class="col-sm-12">
@@ -1161,6 +1240,39 @@ $goal_arr = $database->getClusterGoal($clusterId);
     var barChart_bmi                = new Chart(barChartCanvas_bmi)
      var barChartData_bmi                     = areaChartData_bmi
     barChart_bmi.Bar(barChartData_bmi, barChartOptions)
+	
+	//Blood sugar
+	 
+    var areaChartData_bs = {
+      labels  : [<?php echo $chartdata['bs']['label']?>],
+      datasets: [
+        {
+          label               : 'Male',
+          fillColor           : '#00c0ef',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [<?php echo $chartdata['bs']['Male']?>]
+        },
+        {
+          label               : 'Female',
+          fillColor           : '#00a65a',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [<?php echo $chartdata['bs']['Female']?>]
+        }
+      ]
+    }
+    var barChartCanvas_bs          = $('#barChart_bs').get(0).getContext('2d')
+    var barChart_bs                = new Chart(barChartCanvas_bs)
+     var barChartData_bs                     = areaChartData_bs
+    barChart_bs.Bar(barChartData_bs, barChartOptions)
+	//end Blood sugar
     window.chartColors = {
 	red: 'rgb(255, 99, 132)',
 	orange: 'rgb(255, 159, 64)',
@@ -1221,12 +1333,34 @@ var pieData2 = [
 		
 
 			];
+			var pieData3 = [
+        <?php 
+        
+        foreach($chartdata['bs']['table'] as $key=>$value) { 
+            
+            
+            ?>
+				{
+					value: <?php echo $value['total_cnt']?>,
+					color:"<?php echo $colorarray[$key+1]['color']?>",
+					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					label: "<?php echo $value['reading']?>"
+				},
+				<?php } ?>
+		
+
+			];
 			window.onload = function(){
 				var ctx = document.getElementById("chart-area").getContext("2d");
-				window.myPie = new Chart(ctx).Pie(pieData);
+				window.myPie = new Chart(ctx).Doughnut(pieData);
 					var ctx2 = document.getElementById("chart-area_bmi").getContext("2d");
 			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
 				window.myDoughnut = new Chart(ctx2).Doughnut(pieData2, {
+					responsive:true
+				})	
+				var ctx3 = document.getElementById("chart-area_bs").getContext("2d");
+			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
+				window.myDoughnut = new Chart(ctx3).Doughnut(pieData3, {
 					responsive:true
 				});
 			};
