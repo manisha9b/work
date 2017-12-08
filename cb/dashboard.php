@@ -98,7 +98,7 @@ $chartdata = $database->getDashboardChart($clusterId);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
 
-$charts = $chartdata['chart'];
+//$charts = $chartdata['chart'];
 $goal_arr = $database->getClusterGoal($clusterId);
 //$database->getclusterEbhPackageList($cluster_id);
 //echo "<pre>";
@@ -184,19 +184,11 @@ $goal_arr = $database->getClusterGoal($clusterId);
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
-			    <div class="box box-primary">
+			 <!-- BAR CHART -->
+          <div class="box box-success">
             <div class="box-header with-border">
-             
+              <h3 class="box-title">AVG. WEIGHT / AVG. BMI</h3>
 
-             
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase"><b>AVG. WEIGHT / AVG. BMI</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-                    <h2 class="box-title pull-left"><?php echo $charts['avg_weight'].' / '.$charts['avg_bmi']?><span style="font-weight: normal;"> </span></h2>
-                      <div class=" pull-right" style="margin-left: 15px;">
-                        <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 12% -->
-                      </div>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -204,10 +196,41 @@ $goal_arr = $database->getClusterGoal($clusterId);
               </div>
             </div>
             <div class="box-body">
-              <div id="line-chart-6" style="height: 300px;"></div>
+			<div class="row">
+                <div class="col-md-8">
+				  <div class="chart">
+					<canvas id="barChart" style="height:230px"></canvas>
+				  </div>
+              </div>
+			  <div class="col-md-4">
+                 <table class="table table-striped">
+				 <tr>
+                 
+                  <th>Reading</th>
+                  <th>Male</th>
+                  <th>Female</th>
+                </tr>
+				 <?php foreach($chartdata['bp']['table'] as $key=>$value) { ?>
+                
+                <tr>
+                  
+                  <td> <?php echo $value['reading']?></td>
+                  <td>
+                      <?php echo $value['male_count']?>
+                  </td>
+                  <td><?php echo $value['female_count']?></td>
+                </tr>
+				 <?php } ?>
+                
+                
+              </table>
+          
+                </div>
+		    </div>
             </div>
-            <!-- /.box-body-->
+            <!-- /.box-body -->
           </div>
+			    
 		  </div>
             <div class="swiper-wrapper pt-20">
               <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
@@ -956,21 +979,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
         </div>
   
 <?php include_once('partials/footer.php'); ?>
-<!-- FLOT CHARTS -->
+<!-- FLOT CHARTS 
 <script src="plugins/flot/jquery.flot.min.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+ FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized 
 <script src="plugins/flot/jquery.flot.resize.min.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+ FLOT PIE PLUGIN - also used to draw donut charts 
 <script src="plugins/flot/jquery.flot.pie.min.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="plugins/flot/jquery.flot.categories.min.js"></script>
+ FLOT CATEGORIES PLUGIN - Used to draw bar charts 
+<script src="plugins/flot/jquery.flot.categories.min.js"></script> -->
 <!--<script src="plugins/datepicker/bootstrap-datepicker.js"></script>-->
 <script src="plugins/swiper/swiper.js"></script>
 <!-- Page script -->
 <script src="plugins/materialize/materialize.js"></script>
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
-<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 
+<script src="dist/js/chart.js"></script>
 <script>
   $(document).ready(function() {
 	  $('.dashboard_menu').addClass('active');
@@ -1024,448 +1047,95 @@ $goal_arr = $database->getClusterGoal($clusterId);
         $('body').addClass('modal-open');
       }
     }
-    /*
-     * LINE CHART 1
-     * ----------
-     */
-	   var line_data2 = {
-      data:  <?php echo $charts['male_bmi_chart']?>,
-      color: "#bad0d2"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['female_bmi_chart']?>,
-      color: "#ccafaa"
-    };
-    $.plot("#line-chart-6", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-       
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#bad0d2", "#ccafaa"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //LINE randomly generated data
-    var line_data1 = {
-      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart", [line_data1], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 70, to: 70} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.9
-    }).appendTo("body");
-    $("#line-chart").bind("plothover", function (event, pos, item) {
 
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 2
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data2 = {
-      data:  <?php echo $charts['ppbs_chart']?>,
-      color: "#31b3bf"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['fbs_chart']?>,
-      color: "#dd4b39"
-    };
-    $.plot("#line-chart2", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip2"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart2").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip2").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /* END LINE CHART */
-    /*
-     * LINE CHART 3
-     * ----------
-     */
-    //LINE randomly generated data
-	 var line_data2 = {
-      data:  <?php echo $charts['systolic_chart']?>,
-      color: "#31b3bf"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['diastolic_chart']?>,
-      color: "#dd4b39"
-    };
-    $.plot("#line-chart3", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    var line_data3 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart33", [line_data3], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 4
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data4 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart4", [line_data4], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * BAR CHART
-     * ---------
-     */
-
-    var bar_data = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#43ce5a"
-    };
-    $.plot("#bar-chart", [bar_data], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-            
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * bar-chart2
-     * ---------
-     */
-
-    var bar_data2 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#ff6184"
-    };
-    $.plot("#bar-chart2", [bar_data2], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data3 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart3", [bar_data3], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data4 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart4", [bar_data4], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
+    
   });
   
+</script>
+<script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+
+    var areaChartData = {
+      labels  : [<?php echo $chartdata['bp']['label']?>],
+      datasets: [
+        {
+          label               : 'Male',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [<?php echo $chartdata['bp']['Male']?>]
+        },
+        {
+          label               : 'Female',
+          fillColor           : 'rgba(60,141,188,0.9)',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [<?php echo $chartdata['bp']['Female']?>]
+        }
+      ]
+    }
+
+   
+
+
+
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartData
+    barChartData.datasets[1].fillColor   = '#00a65a'
+    barChartData.datasets[1].strokeColor = '#00a65a'
+    barChartData.datasets[1].pointColor  = '#00a65a'
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+	   multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+	  
+    }
+
+    barChartOptions.datasetFill = false
+    barChart.Bar(barChartData, barChartOptions)
+  })
 </script>
 <script>
   $(document).ready(function(){
@@ -1586,102 +1256,7 @@ jQuery.validator.addMethod("bponly", function(value, element) {
   });
 </script>
 
-<script>
-	// progressbar.js@1.0.0 version is used
-// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
 
-var bar = new ProgressBar.SemiCircle(containercircle, {
-  strokeWidth:10,
-  color: '#FFEA82',
-  trailColor: '#eee',
-  trailWidth: 1,
-  easing: 'easeInOut',
-  duration: 1400,
-  svgStyle: null,
-  text: {
-    value: '',
-    alignToBottom: false
-  },
-  from: {color: '#FFEA82'},
-  to: {color: '#21bcc1'},
-  // Set default step function for all animate calls
-  step: (state, bar) => {
-    bar.path.setAttribute('stroke', state.color);
-    var value = Math.round(bar.value() * 10000);
-    if (value === 0) {
-      bar.setText('');
-    } else {
-      bar.setText(value);
-    }
-
-    bar.text.style.color = state.color;
-  }
-});
-bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-bar.text.style.fontSize = '2rem';
-
-bar.animate(1.0);  // Number from 0.0 to 1.0
-
-
-    $( document ).ready(function() { // 6,32 5,38 2,34
-        $("#test-circle").circliful({
-            animation: 1,
-            animationStep: 5,
-            foregroundBorderWidth: 15,
-            backgroundBorderWidth: 15,
-            percent: 38,
-            textSize: 28,
-            textStyle: 'font-size: 12px;',
-            textColor: '#666',
-            multiPercentage: 1,
-            percentages: [10, 20, 30]
-        });
-        $("#test-circle2").circliful({
-            animation: 0,
-            animationStep: 6,
-            foregroundBorderWidth: 5,
-            backgroundColor: "none",
-            fillColor: '#eee',
-            percent: 50,
-            iconColor: '#3498DB',
-            icon: 'f206',
-            iconSize: '40',
-            iconPosition: 'middle'
-        });
-        $("#test-circle3").circliful({
-            animation: 1,
-            animationStep: 6,
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 1,
-            percent: 88,
-            iconColor: '#3498DB',
-            icon: 'f004',
-            iconSize: '40',
-            iconPosition: 'middle'
-        });
-        $("#test-circle4").circliful({
-            animation: 1,
-            animationStep: 1,
-            start: 2,
-            showPercent: 1,
-            backgroundColor: '#000',
-            foregroundColor: '#A8C64A',
-            fontColor: '#000',
-            multiPercentage: 1,
-            text: 'No Kids',
-            foregroundBorderWidth: 15,
-            backgroundBorderWidth: 15,
-        });
-        $("#test-circle5").circliful({
-          animationStep: 5,
-          foregroundBorderWidth: 5,
-          backgroundBorderWidth: 15,
-          percent: 80,
-          halfCircle: 1,
-        });
-    });
-
-</script>
 
 <script>
 	$(".progress").each(function(){

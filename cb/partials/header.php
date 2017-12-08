@@ -39,6 +39,8 @@ else
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="dist/css/animate.css">
   <link rel="stylesheet" href="plugins/swiper/swiper.css">
+  
+
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
   <!-- daterange picker -->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -50,7 +52,7 @@ else
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script src="d3.min.js"></script><script src="dist/DotMatrix.css"></script><script src="dist/DotMatrix.js"></script>
+ <!--  <script src="dist/js/d3.min.js"></script><link src="dist/css/DotMatrix.css"><script src="dist/js/DotMatrix.js"></script> -->
  </head>
 <body id="home" class="hold-transition skin-blue sidebar-mini">
 <?php 

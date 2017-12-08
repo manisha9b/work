@@ -3377,7 +3377,7 @@ public function getControllerAction($default) {
     }
 }
 
-function getDashboardData($clusterId){
+function getDashboardDataOld($clusterId){
 unset($this->result);
 	$weight_sql = "SELECT  monthname(a.recorded_on) as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
 
@@ -3409,7 +3409,7 @@ unset($this->result);
 	return $result;
        
 }
-function getDashboardChart($clusterId){
+function getDashboardChartOld($clusterId){
 	$data = $this->getDashboardData($clusterId);
 	$result = array();
 	$avg_bmi = 0;
@@ -3477,6 +3477,59 @@ public function getClusterGoal($clusterId){
 		unset($this->result);
 		$this->select($sql);
 		return $this->result;
+}
+
+
+function getAvgBPCountGroupByGenderforChart($clusterId){
+	 $sql = "SELECT 
+\"Male\" as gender,
+sum(if(a.bp_level='High',1,0)) as high_bp,
+sum(if(a.bp_level='Normal',1,0)) as normal_bp,
+sum(if(a.bp_level='Low',1,0)) as low_bp
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mr.') 
+UNION ALL 
+SELECT 
+\"Female\" as gender,
+sum(if(a.bp_level='High',1,0)) as high_bp,
+sum(if(a.bp_level='Normal',1,0)) as normal_bp,
+sum(if(a.bp_level='Low',1,0)) as low_bp
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
+		unset($this->result);
+		$this->select($sql);
+		
+		return $this->result;
+}
+function getAvgBPCountGroupByGender($clusterId){
+	 $sql = "SELECT 
+a.reading, 
+count(b.ebh_customer_id) as total_cnt,
+sum(if(c.salutation in('Mr.'),1,0)) as male_count,
+sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
+from view_blood_pressure as a 
+left join tbl_ebh_customer_health_readings as b on BINARY  a.`bp_result`= BINARY b.`bp_category`
+left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
+where c.cluster_id = $clusterId
+GROUP BY a.reading;	";;
+		unset($this->result);
+		$this->select($sql);
+		
+		return $this->result;
+}
+function getDashboardChart($clusterId){
+	$gender_wise_bp_chart = $this->getAvgBPCountGroupByGenderforChart($clusterId);
+	$returnArr['bp']['table'] = $this->getAvgBPCountGroupByGender($clusterId);
+	$returnArr['bp']['label'] = "'Normal','High BP', 'Low BP'";
+	foreach($gender_wise_bp_chart as $key=>$value){
+			$returnArr['bp'][$value['gender']] = $value['normal_bp'].','.$value['high_bp'].','.$value['low_bp'];
+		}
+	echo "<pre>";
+	print_R($returnArr);
+	echo "</pre>";
+	return $returnArr;
 }
 }
 
