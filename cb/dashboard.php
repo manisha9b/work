@@ -12,7 +12,7 @@
 
 .progressbar-text{font-size:3rem!important;color:rgb(15, 14, 14)!important;}
 .swiper-slide .box .date{color:#717171;font-size:14px;}
-.health_goal_area{color:#ccc;width:24%!important;}
+
 .health_goal_area .box-solid{border:none!important;padding:15px;height: 250px;}
 .add_new_tab{display: block;
     background: #67c100 !important;
@@ -47,7 +47,7 @@
 .bar{
   position: absolute;
   top: 10px; left: 0;
-  width:100%; height:270px; /* full circle! */
+  width:100%; height:265px; /* full circle! */
   border-radius: 50%;
   box-sizing: border-box;
   border:25px solid #eee;     /* half gray, */
@@ -83,8 +83,62 @@ svg {
 
 .health_goal_info .value{font-size:35px;}
 
+/* .disabled:hover { 
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border:1px solid #25729a; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family:arial, helvetica, sans-serif; 
+    padding: 10px 10px 10px 10px; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    text-align: center; 
+    color: #FFFFFF; 
+    background-color: #3093c7;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
+    background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+} */
 
+.disabled {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
 
+@media screen and (max-width:1366px){
+	.bar{
+  position: absolute;
+  top: 10px; left: 0;
+  width:100%; height:212px; /* full circle! */
+  border-radius: 50%;
+  box-sizing: border-box;
+  border:25px solid #eee;     /* half gray, */
+ border-bottom-color: #58d76c;
+    border-right-color: #58d76c;
+}
+}
+
+@media only screen and (max-width: 320px){
+	
+	.bar{position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height:310px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border:30px solid #eee;
+    border-bottom-color: #58d76c;
+    border-right-color: #58d76c;}
+	
+}
+	
+	
 
   </style>
 
@@ -662,7 +716,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 												
 						</div>
 					  </div>
-					  <div class="male_Area female_area mt-10">
+					  <div class="male_Area female_area">
 						<img src="images/female.png" class="female_icon"></i>
 						<div class="person_info">
 						<div class="name">
@@ -672,7 +726,60 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<?php echo $arr_count['female_employee']?>
 						</div>
 						</div>
-						<div class="ratio_percent"><img src="images/average2.png" style="    margin-left:-22px;"></div>
+						<div class="ratio_percent total_percent female_ratio">
+							<a href="#" class="show_digit">
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<div id="show_percent" style="display:none">100%</div>
+							</a>
+						
+						</div>
 					  </div>
                 </div>
 			</div>
@@ -687,15 +794,16 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		<div class="clearfix"></div>
         <div id="graph3" class="package-container">
           <div class="swiper-container graph-container3">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper disabled">
               <!-- /.col -->
-              <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
+              <div class="col-dm-4 disabled wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<div id="container"></div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
+						<!-- <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>STEPS / DAY</b></h5>
-						<h4 class="mb-10 text-center date">By Jan 2018</h4>
+						<h4 class="mb-10 text-center date">By Jan 2018</h4>-->
+						<h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
 					</div>
                 </div>
               </div>
@@ -708,17 +816,18 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					  <span>67</span>%
 					</div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
+						<!-- <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>SLEEP / Night</b></h5>
-						<h4 class="mb-10 text-center date">By Jan 2018</h4>
+						<h4 class="mb-10 text-center date">By Jan 2018</h4> -->
+						<h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
 					</div>
                 </div>
               </div>
 			     
-			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;cursor:pointer;" onClick="openGoalForm();">
+			   <div class="col-dm-4 disabled wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<span class="add_new_tab"><i class="fa fa-plus"></i></span>
-					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>ADD A GOAL</b></h5>
+					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
                   
                 </div>
               </div>

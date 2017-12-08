@@ -240,7 +240,7 @@ $bg_color="cursor:pointer;";
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
                         </td>
                         <td class="analytic_area table_area" style="padding-bottom:0;">                      
-                          <div class="chart-responsive">
+                          <div class="chart-responsive" style="text-align: center;">
                     <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="130"></canvas>
                   </div>
                         </td>

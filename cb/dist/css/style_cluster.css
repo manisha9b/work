@@ -5145,6 +5145,8 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .allarticle{padding-top: 25px;}
 .bandspace{margin-top: 10px;}
 
+.female_ratio_per .circle_percentage{background-color:#cc286c!important;}
+
 .circle_percentage{width: 10px;
     height: 10px;
     background-color: #39acbf;
@@ -5161,6 +5163,10 @@ border: 1px solid #ccc;
 position: absolute;
 border-radius: 20px;
 padding: 5px;}
+
+
+.health_goal_area{color:#ccc;width:24%!important;}
+
 @media screen and (min-width:1366px){
 	
 .sex_ratio .text-uppercase {
@@ -5197,7 +5203,7 @@ padding: 5px;}
    width: 40px;
    margin-right: 10px;
 }
-.female_area .ratio_percent{margin-left:15px;}
+.female_area .ratio_percent{margin-left:11px;}
 
 }
 @media screen and (max-width: 1280px){
@@ -5210,6 +5216,44 @@ padding: 5px;}
   .social-connect .col-sm-6:nth-child(2n){padding-left: 10px;}
   #plannow .col-md-4:first-child{width: 20%;}
   #plannow .col-md-4.last{width: 40%;}
+  
+  .sex_ratio .text-uppercase {
+   font-size: 13px!important;
+}
+
+.male_Area {
+   display: inline-block;
+}
+
+.male_Area .male_icon {
+   width: 25px!important;
+   margin-right: 10px;
+}
+
+.male_Area .female_icon{width: 25px!important;}
+.mob-mt10{margin-top:10px;}
+.person_info {
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.ratio_percent {
+   text-align: center;
+   display: inline-block;
+   width: 60%;
+}
+
+.ratio_percent img {
+   width: 70%;
+}
+
+.male_Area img {
+   width: 40px;
+   margin-right: 10px;
+}
+.female_area .ratio_percent{margin-left:11px;}
+
+}
 }
 @media screen and (min-width: 1024px) and (max-width: 1280px){
   .reporttitle{margin-bottom: 0;}
@@ -5333,6 +5377,12 @@ padding: 5px;}
   .final .col-sm-6{padding-left:0;padding-right: 0;}
   .datepicker {z-index: 99999999;}
   .rescenter {text-align: center;width: 100%;float: none;}
+  
+  .health_goal_area{width:100%!important;margin-left:0px!important;}
+  
+  .content{padding-right:0px!important;padding-left:0px!important;}
+  #graph3{padding:15px!important;}
+  
 }
 @media screen and (max-width: 480px){
   .navbar.navbar-static-top{padding: 0;}
@@ -5346,6 +5396,7 @@ padding: 5px;}
 @media screen and (max-width: 320px){
   .resright{margin-top: 15px; float: left !important;}
   #disp-table .col-md-11{padding:0;}
+  
 }
 /*INPUTS*/
 .input__1, .textarea__1,.select__1{
@@ -5539,3 +5590,6 @@ padding: 5px;}
     cursor: not-allowed!important;
     background-color: #fff;
     border-color: #ddd;}
+	
+	
+

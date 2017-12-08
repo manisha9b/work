@@ -3618,16 +3618,62 @@ function getDashboardChart($clusterId){
 			$returnArr['bmi'][$value['gender']] = $value['normal_bmi'].','.$value['underwght_bmi'].','.$value['overwght_bmi'];
 		}
 		//BS
-			$gender_wise_bs_chart = $this->getAvgBSCountGroupByGenderforChart($clusterId);
+	$gender_wise_bs_chart = $this->getAvgBSCountGroupByGenderforChart($clusterId);
 	$returnArr['bs']['table'] = $this->getAvgBSCountGroupByGender($clusterId);
 	$returnArr['bs']['label'] = "'Normal','Prediabetic', 'Diabetic'";
 	foreach($gender_wise_bs_chart as $key=>$value){
-			$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
+		//	$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
+		$returnArr =	$this->checkSampleData('BS',$value,'bar',$returnArr);
+				/*if(empty($value['normal']) && empty($value['pre_diabetic']) && empty($value['diabetic'])){
+			    	$returnArr['bs'][$value['gender']] = "10,5,2";
+			    	$returnArr['bs']['sample'] = "1";
+			}*/
 		}
-	/*echo "<pre>";
+
+	
+/*	echo "<pre>";
 	print_R($returnArr);
 	echo "</pre>";*/
 	return $returnArr;
+}
+function checkSampleData($type,$data,$chart_type,$returnArr){
+    
+    switch($type){
+        case'BS': 
+                switch($chart_type){
+                    case 'bar':
+                            if(empty($data['normal']) && empty($data['pre_diabetic']) && empty($data['diabetic'])){  
+                               // echo "I am here"
+			    	                $returnArr['bs'][$data['gender']] = "10,5,2";
+			    	                $returnArr['bs']['bar_sample'] = "1";
+		            	}  else{
+		            	    	$returnArr['bs'][$data['gender']] = $data['normal'].','.$data['pre_diabetic'].','.$data['diabetic'];
+		            	};
+		            	$table[0]['reading'] =  'Normal';
+                        $table[0]['cat_id'] =  1;
+                        $table[0]['total_cnt'] =  20;
+                        $table[0]['male_count'] =  9;
+                        $table[0]['female_count'] =  13;
+                        $table[1]['reading'] =  'Prediabeties';
+                        $table[1]['cat_id'] =  2;
+                        $table[1]['total_cnt'] =  10;
+                        $table[1]['male_count'] =  9;
+                        $table[1]['female_count'] =  6;
+                        $table[2]['reading'] =  'Diabeties';
+                        $table[2]['cat_id'] =  3;
+                        $table[2]['total_cnt'] =  4;
+                        $table[2]['male_count'] =  3;
+                        $table[2]['female_count'] =  4;
+                        $returnArr['bs']['table'] = $table;
+		            	break;
+	            	
+                }
+            break;
+    }
+  /*  echo "<pre>";
+	print_R($returnArr);
+	echo "</pre>";die;*/
+    return $returnArr;
 }
 }
 
