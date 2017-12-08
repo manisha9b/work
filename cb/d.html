@@ -509,17 +509,9 @@ svg {
                   <th>Female</th>
                 </tr>
 				                 
-                <tr>
-                  
-                  <td> Lower than Normal</td>
-                  <td>
-                      0                  </td>
-                  <td>1</td>
-                </tr>
-				                 
                 
               </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b>0%</b></span> of Cerner PP General Corp has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;">1%</span> of Cerner PP General Corp has <span class="text-danger">Low Blood Pressure Levels</span></h5>
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b>0%</b></span> of Cerner PP General Corp has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;">0%</span> of Cerner PP General Corp has <span class="text-danger">Low Blood Pressure Levels</span></h5>
                 </div>
                 </div>
             </div>
@@ -569,17 +561,9 @@ svg {
                   <th>Female</th>
                 </tr>
 				                 
-                <tr>
-                  
-                  <td> Overweight</td>
-                  <td>
-                      0                  </td>
-                  <td>1</td>
-                </tr>
-				                 
                 
               </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b>3%</b></span> of Cerner PP General Corp are  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;">0%</span> of Cerner PP General Corp are <span class="text-danger">Underweight</span></h5>
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b>0%</b></span> of Cerner PP General Corp are  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;">0%</span> of Cerner PP General Corp are <span class="text-danger">Underweight</span></h5>
                 </div>
                 </div>
             </div>
@@ -1282,7 +1266,7 @@ svg {
 
 
     var areaChartData = {
-      labels  : ['Normal','High BP', 'Low BP'],
+      labels  : [],
       datasets: [
         {
           label               : 'Male',
@@ -1292,7 +1276,7 @@ svg {
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [,,]
+          data                : []
         },
         {
           label               : 'Female',
@@ -1302,7 +1286,7 @@ svg {
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [0,0,1]
+          data                : []
         }
       ]
     }
@@ -1355,7 +1339,7 @@ svg {
      barChart.Bar(barChartData, barChartOptions)
     ///bmi chart
     var areaChartData_bmi = {
-      labels  : ['Normal','Underweight', 'Overweight'],
+      labels  : [],
       datasets: [
         {
           label               : 'Male',
@@ -1365,7 +1349,7 @@ svg {
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [,,]
+          data                : []
         },
         {
           label               : 'Female',
@@ -1375,7 +1359,7 @@ svg {
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [0,0,1]
+          data                : []
         }
       ]
     }
@@ -1393,23 +1377,11 @@ svg {
 	grey: 'rgb(201, 203, 207)'
 };
     var pieData = [
-        				{
-					value: 1,
-					color:"#F7464A",
-					highlight: "#FF5A5E",
-					label: "Lower than Normal"
-				},
-						
+        		
 
 			];
 var pieData2 = [
-        				{
-					value: 1,
-					color:"#46BFBD",
-					highlight: "#FF5A5E",
-					label: "Overweight"
-				},
-						
+        		
 
 			];
 			window.onload = function(){

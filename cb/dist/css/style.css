@@ -5432,6 +5432,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 
 /*Appointment-page css*/
+#health_checkup_status .modal-dialog{width:70%;}
 .table>tbody>tr.info>td, .table>tbody>tr.info>th, .table>tbody>tr>td.info, .table>tbody>tr>th.info, .table>tfoot>tr.info>td, .table>tfoot>tr.info>th, .table>tfoot>tr>td.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>thead>tr.info>th, .table>thead>tr>td.info, .table>thead>tr>th.info{background-color:none!important}
 .table-hover>tbody>tr.info:hover>td, .table-hover>tbody>tr.info:hover>th, .table-hover>tbody>tr:hover>.info, .table-hover>tbody>tr>td.info:hover, .table-hover>tbody>tr>th.info:hover{background-color:none!important;}
 .table>tbody>tr.info>td, .table>tbody>tr.info>th, .table>tbody>tr>td.info, .table>tbody>tr>th.info, .table>tfoot>tr.info>td, .table>tfoot>tr.info>th, .table>tfoot>tr>td.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>thead>tr.info>th, .table>thead>tr>td.info, .table>thead>tr>th.info{background-color:none!important}
@@ -5955,8 +5956,8 @@ label:hover:before {
 	
 	/*appointment-page*/
 	
-	.test_complete{box-shadow: 0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23);top: 67%;position: absolute;
-    width: 100%; background: #ffff;  /* margin-left: 0px; */  margin: -8px;z-index:1;padding-left: 100px;padding-right: 75px;}
+	.test_complete{/* box-shadow: 0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23);top: 67%;position: absolute; */
+    width: 100%; background: #ffff;  /* margin-left: 0px; */  margin: -8px;z-index:1;/* padding-left: 100px;padding-right: 75px; */}
 	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
 	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}
 	.company_summary .info-box{min-height: 134px!important;}
@@ -6081,7 +6082,7 @@ label:hover:before {
 .employee_profile .col-md-8{padding:0px;}
 .time_limit{width:auto!Important;}
 .time_limit .start_to_end{padding-right: 10px;}
-.test_complete .nav-tabs-custom > .nav-tabs > li.lin_clik a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.app_send a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.test_complet a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.com_sent a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.on_board a::after{margin-top: 12px!important;margin-left: -283px!important;}
+.test_complete .nav-tabs-custom > .nav-tabs > li.lin_clik a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.app_send a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.test_complet a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.com_sent a::after,.test_complete .nav-tabs-custom > .nav-tabs > li.on_board a::after{margin-top: 12px!important;margin-left: -148px!important;}
 .current_status{font-size: 16px!important;}
 .profile_person{font-size: 16px!important;}
 .profile_pic img{width: 20px!important;}
@@ -6124,5 +6125,18 @@ label:hover:before {
 	.mob_p0{padding:0px;}
 	.mob_mb35{margin-bottom:35px;}
 	.mb-65{margin-bottom:0px;}
+	
+	#health_checkup_status .modal-dialog{width:100%;}
+	.test_complete .nav-tabs-custom > .nav-tabs > li{width:100%;}
+	.test_complete .nav-tabs-custom > .nav-tabs > li.on_board a::after {
+			margin-top: 12px !important;
+			margin-left: -383px !important;
+	}
 
 }
+
+
+.disable{color: #777;
+    cursor: not-allowed!important;
+    background-color: #fff;
+    border-color: #ddd;}

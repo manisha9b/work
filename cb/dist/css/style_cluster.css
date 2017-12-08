@@ -5155,7 +5155,12 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 	
 }
 .total_percent{cusor:pointer}
-.show_digit:hover #show_percent{display:block!important;color:#39acbf;font-size:14px;}
+.show_digit:hover #show_percent{display:block!important;color:#39acbf;font-size:14px;color: #000;
+background: #fff;
+border: 1px solid #ccc;
+position: absolute;
+border-radius: 20px;
+padding: 5px;}
 @media screen and (min-width:1366px){
 	
 .sex_ratio .text-uppercase {
@@ -5181,7 +5186,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .ratio_percent {
    text-align: center;
    display: inline-block;
-   width: 61%;
+   width: 60%;
 }
 
 .ratio_percent img {
@@ -5192,6 +5197,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
    width: 40px;
    margin-right: 10px;
 }
+.female_area .ratio_percent{margin-left:15px;}
 
 }
 @media screen and (max-width: 1280px){
@@ -5528,3 +5534,8 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .health_goal_area .box {padding:35px!important;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);}
 
 
+
+.swiper-wrapper{color: #777;
+    cursor: not-allowed!important;
+    background-color: #fff;
+    border-color: #ddd;}

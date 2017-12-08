@@ -3562,6 +3562,46 @@ GROUP BY a.reading;	";;
 		
 		return $this->result;
 }
+function getAvgBSCountGroupByGenderforChart($clusterId){
+	 $sql = "SELECT 
+\"Male\" as gender,a.bs_result,
+sum(if(a.bs_result='Normal',1,0)) as normal,
+sum(if(a.bs_result='Prediabetes',1,0)) as pre_diabetic,
+sum(if(a.bs_result='Diabetes',1,0)) as diabetic
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mr.') 
+UNION ALL 
+SELECT 
+\"Female\" as gender,a.bs_result,
+sum(if(a.bs_result='Normal',1,0)) as normal,
+sum(if(a.bs_result='Prediabetes',1,0)) as pre_diabetic,
+sum(if(a.bs_result='Diabetes',1,0)) as diabetic
+from tbl_ebh_customer_health_readings as a
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
+		unset($this->result);
+		$this->select($sql);
+		
+		return $this->result;
+}
+function getAvgBSCountGroupByGender($clusterId){
+	 $sql = "SELECT 
+a.reading,a.cat_id, 
+count(b.ebh_customer_id) as total_cnt,
+sum(if(c.salutation in('Mr.'),1,0)) as male_count,
+sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
+from view_blood_sugar as a 
+left join tbl_ebh_customer_health_readings as b on BINARY  a.`bs_result`= BINARY b.bs_result
+left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
+where c.cluster_id = $clusterId
+GROUP BY a.reading	";;
+		unset($this->result);
+		$this->select($sql);
+		
+		return $this->result;
+}
+
 function getDashboardChart($clusterId){
 	$gender_wise_bp_chart = $this->getAvgBPCountGroupByGenderforChart($clusterId);
 	$returnArr['bp']['table'] = $this->getAvgBPCountGroupByGender($clusterId);
@@ -3576,6 +3616,13 @@ function getDashboardChart($clusterId){
 	$returnArr['bmi']['label'] = "'Normal','Underweight', 'Overweight'";
 	foreach($gender_wise_bp_chart as $key=>$value){
 			$returnArr['bmi'][$value['gender']] = $value['normal_bmi'].','.$value['underwght_bmi'].','.$value['overwght_bmi'];
+		}
+		//BS
+			$gender_wise_bs_chart = $this->getAvgBSCountGroupByGenderforChart($clusterId);
+	$returnArr['bs']['table'] = $this->getAvgBSCountGroupByGender($clusterId);
+	$returnArr['bs']['label'] = "'Normal','Prediabetic', 'Diabetic'";
+	foreach($gender_wise_bs_chart as $key=>$value){
+			$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
 		}
 	/*echo "<pre>";
 	print_R($returnArr);

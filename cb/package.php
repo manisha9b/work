@@ -12,6 +12,11 @@ else
 }
 //print_R($arr_ebh_pack);
 ?>
+<style>
+    .table_area{
+        padding-bottom:0!important;
+    }
+</style>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="col-sm-12">
@@ -91,7 +96,7 @@ if(isset($_REQUEST['m']))
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
 				<div id="div-list">
-                  <table id="appttab" class="package_list table table-appointment responsive-table">
+                  <table id="appttab" class="package_list table table-appointment2 responsive-table">
                     <tbody>
                       <tr style="background: transparent;">
                         <th>
@@ -114,7 +119,11 @@ if(isset($_REQUEST['m']))
 	for($i=0;$i<count($arr_ebh_pack);$i++)
 	{
 		//echo "<pre>";
-		
+		if ($i % 2) {
+$bg_color="background:#f4f4f4;cursor:pointer;";
+} else {
+$bg_color="cursor:pointer;";
+}
 		$package_nm				= $arr_ebh_pack[$i]['package_nm'];
 		$hsp_count				= $arr_ebh_pack[$i]['hsp_count'];
 		$cluster_package_id		= $arr_ebh_pack[$i]['cluster_package_id'];
@@ -209,8 +218,8 @@ if(isset($_REQUEST['m']))
 			$info_popover_provider	=	'<a class="text-info" style="cursor:pointer;" data-container="body" data-toggle="popover" data-placement="left" data-content="'.$provider_info_popover.'" data-title="<a href=# class=pull-right data-dismiss=popover>&times</a>'.$hsp_name.'"><i class="fa fa-information"></i> Know More </a>';
 */
 					  ?>
-                      <tr >
-                        <td width="150" class="table_area">
+                      <tr style="<?php echo $bg_color?>">
+                        <td width="150" class="table_area" style="padding-bottom:0;">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
                           <div class="pt-10">
@@ -219,28 +228,33 @@ if(isset($_REQUEST['m']))
 							</div>
 						  </div>
                         </td>
-                        <td  width="300" class="table_area">
+                        <td  width="300" class="table_area" style="padding-bottom:0;">
                          <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
-						  <div class="package_opt">
-                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
-                           <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
-                            <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
-                            <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->
-                           
-                          </div>
+						
                         </td>
 						
-                        <td class="wherecenter table_area">
+                        <td class="wherecenter table_area" style="padding-bottom:0;">
                          
 							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
                         </td>
-                        <td class="analytic_area table_area">                      
+                        <td class="analytic_area table_area" style="padding-bottom:0;">                      
                           <div class="chart-responsive">
                     <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="130"></canvas>
                   </div>
                         </td>
+                      </tr>
+                     <tr style="<?php echo $bg_color?>">
+                          <td colspan="4" align="center" style="border:0;padding-top:0">
+                              
+                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
+                           <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
+                            <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
+                            <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->
+                           
+                        
+                          </td>
                       </tr>
 <?php  } } ?>
 					  </tbody>

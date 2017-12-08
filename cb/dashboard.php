@@ -583,7 +583,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 												
 						</div>
 					  </div>
-					  <div class="male_Area mt-10">
+					  <div class="male_Area female_area mt-10">
 						<img src="images/female.png" class="female_icon"></i>
 						<div class="person_info">
 						<div class="name">
