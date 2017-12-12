@@ -473,6 +473,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		  </div>
            
       </div>
+	  <!-- sho my report data -->
+	  <?php include_once('my_Reports.php') ?>
+	  <!-- end of my report -->
       <!-- /.row -->
      <!-- <div class="row">
         <div class="col-sm-12">
@@ -1177,7 +1180,24 @@ $goal_arr = $database->getClusterGoal($clusterId);
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 
 <script src="dist/js/chart.js"></script>
+
 <script>
+		  $(document).ready(function(){
+			  //alert("d2");
+		  	$('#change_package').change(function(){
+				//alert("d");
+		$('#change_package option:selected').each(function(){
+		$('#last_package_statistics').html('<br /><br /><br /><p class="text-center text-muted"><i class="fa fa-rotate-right fa-spin fa-4x"></i></p><br /><br /><br />');
+			var id = $(this).val();
+        	$.ajax({
+			url: 'lps.php?package_id='+id,
+			success: function(response){
+					$('#last_package_statistics').html(response);
+				}
+			});
+		});
+	});
+	});
   $(document).ready(function() {
 	  $('.dashboard_menu').addClass('active');
 	$("#goal-form").validate({        
@@ -1475,6 +1495,7 @@ var pieData2 = [
 			};
   })
 </script>
+<?php include_once('reports_js.php'); ?>
 <script>
   $(document).ready(function(){
 	  
