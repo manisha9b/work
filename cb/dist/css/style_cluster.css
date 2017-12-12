@@ -5079,6 +5079,20 @@ a.btn2-lg:hover, #newappnt.btn2-lg:hover{background: #43ce5a;color: #FFFFFF;}
 .clr-g1{color: #827c7c;}
 .clr-g2{color: #f70b0b;}
 .fnt-small{font-size: 0.8em;vertical-align: bottom;}
+.cor_plans .blue-band-home{color: #FFFFFF;
+    font-size: 10px;
+    padding: 3px 10px;
+    background: #31b3bf;
+    position: absolute;top:48px!important;
+    top: 12px!important;
+    right: -10px!important;z-index:1;}
+.smoking_per .blue-band-home{color: #FFFFFF;
+    font-size: 10px;
+    padding: 3px 10px;
+    background: #31b3bf;
+    position: absolute;top:48px!important;
+    right: 4px!important;
+    z-index: 1!important;}
 .blue-band,.blue-band-home{color: #FFFFFF;font-size: 10px;padding: 3px 10px; background: #31b3bf;position: absolute;top: 10px;right: -10px;}
 .blue-band:after,.blue-band-home:after { content:'';position: absolute;top: 100%;right: 0; margin-left: 0px; width: 0;height: 0;border-top: solid 10px #147b85;border-right: solid 10px transparent;}
 #disp-table{display: table;float: none;width: 100%;}
@@ -5204,6 +5218,9 @@ padding: 5px;}
    margin-right: 10px;
 }
 .female_area .ratio_percent{margin-left:11px;}
+
+.employee_age{position:absolute;}
+.profileimg .profile_info{width:66%!important;margin-left: 2px!important;}
 
 }
 @media screen and (max-width: 1280px){
@@ -5474,7 +5491,7 @@ padding: 5px;}
 
 .profileimg img{width:16%;margin-right:5px;display: inline-block;}
 
-.profileimg .profile_info{margin-left:5px;display: inline-block;vertical-align: middle;}
+.profileimg .profile_info{margin-left:2px;display: inline-block;vertical-align: middle;width:70%;}
 .profile_info .name{display:block;}
 .profile_info .info{display:block;}
 
@@ -5505,7 +5522,7 @@ padding: 5px;}
 .healthy_result{padding:20px!important;}
 .healthy_result h5{font-size:16px;}
 
-.employe_health_area .box{box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);padding: 15px;}
+.employe_health_area .box{box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);padding: 15px;min-height: 180px}
 .sex_ratio .text-uppercase{font-size:16px}
 
 .male_Area {display:inline-block}

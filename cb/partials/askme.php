@@ -29,68 +29,8 @@
 						  </a>
 						</li>
 						<!-- end message -->
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 hours</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> Today</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> Yesterday</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 days</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
-						<li>
-						  <a href="#">
-							<div class="pull-left">
-							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-							</div>
-							<h4>
-							  Lorem Ipsum
-							  <small><i class="fa fa-clock-o"></i> 2 days</small>
-							</h4>
-							<p>Lorem Ipsum is simply dummy text</p>
-						  </a>
-						</li>
 					  </ul>
-					</li>
+					</li> 
 					<li class="footer"><a href="#">See All Messages</a></li>
 				  </ul>
 				</li>

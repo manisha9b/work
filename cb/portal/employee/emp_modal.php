@@ -1,14 +1,15 @@
 <?php
-ob_start();
+
+ob_start();ini_set("display_errors", "1");
+  error_reporting(E_ALL);
 session_start();
-include '/../../includes/define.php';
-include '/../../classes/Class_Database.php';
+include '../../includes/define.php';
+include '../../classes/Class_Database.php';
 
 global $database;
 $database = new Database();
 $database->connect();
 date_default_timezone_set('Asia/Calcutta');
-
 if(isset($_GET['id']) && !empty($_GET['id']))
 {
 	$emp_arr	=	$database->getTableForHsp('tbl_cluster_employee', "emp_id='".$_GET['id']."'");

@@ -624,7 +624,10 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="row">
 				<h4 class="pull-left margin0"><strong>Quick Stats</strong></h4>
 			</div> 
-			<div class="">
+			<div class="smoking_per">
+				<div class="blue-band-home">
+                    Coming Soon
+                  </div>
 				<div class="box box-solid healthy_result">
                   <h5 class="margin0 text-uppercase"><b>SMOKING</b></h5> 
                   <div class="progress xs1 mb-10 mt-10">
@@ -797,21 +800,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		<div class="clearfix"></div>
         <div id="graph3" class="package-container">
           <div class="swiper-container graph-container3">
-            <div class="swiper-wrapper disabled">
+            <div class="swiper-wrapper">
               <!-- /.col -->
-              <div class="col-dm-4 disabled wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
+              <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
+                <div class="box box-solid" style="border:1px solid #43ce5a">					
 					<div id="container"></div>
 					<div class="health_goal_info">
-						<!-- <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
+						 <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>STEPS / DAY</b></h5>
-						<h4 class="mb-10 text-center date">By Jan 2018</h4>-->
-						<h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
+						<h4 class="mb-10 text-center date">By Jan 2018</h4>
+						
 					</div>
                 </div>
               </div>
                <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.6s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
+                <div class="box box-solid" style="border:1px solid #43ce5a">					
 					<div class="progress">
 					  <div class="barOverflow">
 						<div class="bar"></div>
@@ -819,18 +822,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					  <span>67</span>%
 					</div>
 					<div class="health_goal_info">
-						<!-- <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
+						 <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>SLEEP / Night</b></h5>
-						<h4 class="mb-10 text-center date">By Jan 2018</h4> -->
-						<h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
+						<h4 class="mb-10 text-center date">By Jan 2018</h4> 
+						
 					</div>
                 </div>
               </div>
 			     
-			   <div class="col-dm-4 disabled wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
+			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
                 <div class="box box-solid" style="border:1px solid #43ce5a">
-					<span class="add_new_tab"><i class="fa fa-plus"></i></span>
-					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>Coming Soon</b></h5>
+					<div class="blue-band-home">
+                    Coming Soon
+                  </div>
+				<span class="add_new_tab"><i class="fa fa-plus"></i></span>
+					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"><b>ADD A GOAL</b></h5>
                   
                 </div>
               </div>
@@ -850,6 +856,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<h4 class="pull-left margin0"><strong>Corporate Diet Plans</strong></h4>
 			<div class="clearfix"></div><br/>
 			<div class="box box-solid">
+				<div class="blue-band-home">
+                    Coming Soon
+                  </div>
 				<div class="p-20">
 					<div class="mt-20">
 						<div class="col-sm-12">
@@ -899,6 +908,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<h4 class="pull-left margin0"><strong>Pick a challenge</strong></h4>
 			<div class="clearfix"></div><br/>
 			<div class="box box-solid">
+				<div class="blue-band-home">
+                    Coming Soon
+                  </div>
 				<div class="p-20 pick_challege_img">
 					<ul>
 						<h3>WEEK 1</h3>
@@ -922,6 +934,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<div class="clearfix"></div>
 			<br/>
 			<div class="box box-solid">
+				<div class="blue-band-home">
+                    Coming Soon
+                  </div>
 				<div class="col-md-12">
 					<div class="article">
 						<h4 class="mt-0"><span style="font-size:18px;1.5">How I Finally Got Serious <br>About My Health</span></h4>

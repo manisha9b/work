@@ -105,7 +105,7 @@ if(isset($_REQUEST['m']))
                         <th>
                           PACKAGE NAME
                         </th>
-                        <th>
+                        <th style="text-align:center;">
                           HSP
                         </th>
                         <th class="text-center">
@@ -216,10 +216,11 @@ $bg_color="cursor:pointer;";
 			}
 
 			$info_popover_provider	=	'<a class="text-info" style="cursor:pointer;" data-container="body" data-toggle="popover" data-placement="left" data-content="'.$provider_info_popover.'" data-title="<a href=# class=pull-right data-dismiss=popover>&times</a>'.$hsp_name.'"><i class="fa fa-information"></i> Know More </a>';
+			onClick="viewPackage(<?php echo $cluster_package_id ?>)
 */
 					  ?>
-                      <tr style="<?php echo $bg_color?>">
-                        <td width="150" class="table_area" style="padding-bottom:0;">
+                      <tr style="<?php echo $bg_color?>" >
+                        <td width="15%" class="table_area" style="padding-bottom:0;">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
                           <div class="pt-10">
@@ -228,25 +229,25 @@ $bg_color="cursor:pointer;";
 							</div>
 						  </div>
                         </td>
-                        <td  width="300" class="table_area" style="padding-bottom:0;">
+                        <td  width="30%" class="table_area" style="padding-bottom:0;">
                          <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
 						
                         </td>
 						
-                        <td class="wherecenter table_area" style="padding-bottom:0;">
+                        <td class="wherecenter table_area" style="padding-bottom:0;width:30%;text-align:center;">
                          
-							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
+							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width:30%;text-align:center" class="floatleft" alt="">
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
                         </td>
-                        <td class="analytic_area table_area" style="padding-bottom:0;">                      
+                        <td class="analytic_area table_area" style="padding-bottom:0;width:15%">                      
                           <div class="chart-responsive" style="text-align: center;">
-                    <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="130"></canvas>
+                    <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="20%"></canvas>
                   </div>
                         </td>
                       </tr>
                      <tr style="<?php echo $bg_color?>">
-                          <td colspan="4" align="center" style="border:0;padding-top:0">
+                          <td colspan="4" align="left" style="border:0;padding-top:0">
                               
                             <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
@@ -553,7 +554,7 @@ $form_action =  "portal/invite.php";
           </section>
          -->
 		 <div class="clearfix"></div>
-		  <!-- <section class="content" style="margin-top:45px;">
+		  <section class="content" style="margin-top:45px;">
 			<div class="final">
 			<div class="col-md-12">
         <div class="col-sm-8 pt-20 wow bounceInLeft" style="padding-left: 0px; visibility: visible; animation-delay: 0.2s; animation-name: bounceInLeft;" data-wow-delay="0.2s">
@@ -574,7 +575,8 @@ $form_action =  "portal/invite.php";
 						<a href="#" class="btn btn-primary btn-green cwhite start_btn">GET STARTED</a>
 							</div>
 							<div class=" col-md-7">
-						<a href="#" class="btn btn-block call_back_btn"><b>REQUEST A CALL BACK</b></a>
+								<a href="#" class="btn btn-block call_back_btn"><b>REQUEST A CALL BACK</b></a>
+								<div class="clearfix"></div>
 						</div>
 					  </div>
 					</div>
@@ -589,7 +591,7 @@ $form_action =  "portal/invite.php";
         <div class="col-sm-4 pt-20 wow bounceInRight">
           <div class="box-layout1">
             <!-- Main content -->
-            <!-- <section class="content health_package_title">
+           <section class="content health_package_title">
 				<h1>DID YOU <br>KNOW?</h1>
 				<p>7 out of 10 people</p>
 				<span>believe that being healthy<br>
@@ -601,7 +603,7 @@ keeps one more focussed and <br> productiev at work</span>
         <div class="clearfix"></div>
       </div>
 			
-			</section> -->
+			</section> 
 			<!--  <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
@@ -742,6 +744,17 @@ keeps one more focussed and <br> productiev at work</span>
       }
     });
   });
+  function viewPackage(cpid){
+			$.ajax({
+				url: 'portal/view_summary.php',
+				type: 'post',
+				data: 'cpid='+cpid,
+				success: function(response) {
+					$('#package_summary').html(response);
+					$('#view_package_summary').modal('show');
+				}
+			});
+}
 </script>
 </body>
 </html>

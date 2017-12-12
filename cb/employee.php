@@ -12,7 +12,9 @@ $arr_emp	=	$database->getClusterEmpDetails($clusterId,$health);
 $arr_emp_count	=	$database->getClusterEmpCount($clusterId);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
-//print_R($arr_emp_count);//die;
+//echo "<pre>";
+//print_R($arr_emp);//die;
+//echo "</pre>";
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -168,13 +170,13 @@ if(isset($_REQUEST['m']))
                 <thead>
 				<tr class="employee_table">
 				 <th> </th>
-                  <th>NAME</th>
-                  <th>GENDER/AGE</th>
-                  <th>MOBILE</th>
-                  <th>EMAIL</th>
-                  <th>CITY</th>
-				  <th>BLOOD GROUP</th>
-				  <th>ACTION </th>
+                  <th style="width:20%;text-align:center;">NAME</th>
+                  <th style="width:10%;text-align:center;">GENDER/AGE</th>
+                  <th style="width:20%;text-align:center;">MOBILE</th>
+                  <th style="width:25%;text-align:center;">EMAIL</th>
+                  <!--<th style="width:45%;">CITY</th>-->
+				  <!--<th style="width:10%;text-align:center;">BLOOD GROUP</th>-->
+				  <th style="width:15%;text-align:center;"> </th>
 				 
                 </tr>
 				</thead>
@@ -188,6 +190,7 @@ if(!empty($arr_emp))
 	{
 		//+91 9930-7110-84
 		//print_r($row);die;
+		$mobile = '';
 		$mobile_no_code	= (!empty($row['mobile_no_code'])) ? $row['mobile_no_code'] : "+91";
 		$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 		//s$photo	= "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
@@ -218,9 +221,9 @@ if(!empty($arr_emp))
                   <td class="info"><?php echo $row['gender'].$age?></td>
                   <td class="info"><?php echo $mobile_no?></td>
 				  <td class="info"><?php echo $row['professional_email_id']?></td>
-				  <td class="info"><?php echo $row['city_name']?></td>
-				  <td class="info"><?php echo $row['blood_group']?></?></td>
-				  <td>
+				  <!--<td class="info"><?php echo $row['city_name']?></td>
+				  <td class="info"><?php echo $row['blood_group']?></?></td>-->
+				  <td style="text-align:center;vertical-align: middle;">
 						
 						<div class="btn-group emp_action_btn">
 					  <button type="button" class="btn btn-success btn-flat">Action</button>

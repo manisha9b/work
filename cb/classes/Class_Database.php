@@ -1752,7 +1752,7 @@ class Database {
 		}
 		
 		unset($this->result);
-		$sql="SELECT
+		 $sql="SELECT
 				hsp.hsp_count,
 				a.cluster_id,
 				a.hsp_id,
@@ -2161,7 +2161,6 @@ if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 			a.professional_email_id,
 			a.personal_email_id,
 			a.emp_designation,
-			b.city_name,
 			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,a.emp_dob,'') as dob,
 			if(a.emp_dob<>'0000-00-00' or a.emp_dob is not null,DATE_FORMAT(a.emp_dob,'%d %b %Y'),'') as emp_dob,
 			if(a.anniversary_date<>'0000-00-00' or a.anniversary_date is not null,DATE_FORMAT(a.anniversary_date,'%d %b %Y'),'') as anniversary_date,
@@ -2173,22 +2172,27 @@ if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 		from tbl_cluster_employee as a
 		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id
 		
-		left join tbl_appointments ap on ap.ebh_customer_id = c.ebh_customer_id 
-		left join (select r.appointment_id,r.bmi_category,r.bp_category,r.bs_result,
+		left join 
+		(
+				select r.ebh_customer_id,r.bmi_category,r.bp_category,r.bs_result,
+				 
 				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
 					if(r.bp_category='Normal Blood pressure range' , 'H', 
 				if (r.bp_category='Lower than Normal'
 					or r.bp_category='Prehypertension'
 					or r.bp_category='Stage 1 Hypertension'
 					or r.bp_category='Stage 2 Hypertension'
-					 ,'UH','')) as bp_status,
+					,'UH','')) as bp_status,
 				if(r.bs_result='Normal' , 'H', 
-					if (r.bs_result='Prediabetes'
+					if(r.bs_result='Prediabetes'
 					or r.bs_result='Diabetes'
 					,'UH','')) as bs_status 
-				from tbl_appointments_report r) rp on rp.appointment_id = ap.appointment_id
-				
-				left join cities b on b.id = a.city where a.cluster_id='".$clusterId."' ".$where_qry.' '.$limit;
+				from tbl_ebh_customer_health_readings r
+				group by r.ebh_customer_id
+				order by r.sr_no desc 
+		) as rp on c.ebh_customer_id = rp.ebh_customer_id
+
+		where a.cluster_id='".$clusterId."' ".$where_qry.' '.$limit;
 
 		$this->select($sql);
         return $this->result;
@@ -3674,6 +3678,25 @@ function checkSampleData($type,$data,$chart_type,$returnArr){
 	print_R($returnArr);
 	echo "</pre>";die;*/
     return $returnArr;
+}
+
+
+function getTestByPacckage($package_id){
+    $sql = "SELECT X.ebh_package_id,
+					Y.lab_test_id ,
+					z.test_name 
+				FROM
+					tbl_ebh_pc_packages AS X
+				LEFT JOIN tbl_ebh_pc_packages_tests AS Y
+				ON
+					X.ebh_package_id = Y.ebh_package_id
+				LEFT JOIN tbl_preventive_care_tests AS z
+				ON
+					Y.lab_test_id = z.lab_test_id
+			where  X.ebh_package_id=$package_id";
+	unset($this->result);
+	$this->select($sql);
+	return $this->result;
 }
 }
 

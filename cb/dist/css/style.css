@@ -5320,10 +5320,10 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .pack_details .title a{color:#fff;}
 .start_btn_area{padding:0px;}
 .start_btn_area .start_btn{border-radius: 2px;background-color: #59ba5a;border: none;width:100%;padding:10px}
-.call_back_btn{border: 1px solid #2e9bc4;padding:10px}
+.call_back_btn{border: 1px solid #2e9bc4;padding:10px;}
 .call_back_btn:hover{color:#2e9bc4}
 .package_info p{font-size: 18px;line-height: 1.5;margin-bottom: 25px;}
-.health_package_title{background: #59bb5a;padding: 35px;}
+.health_package_title{background: #59bb5a;padding: 35px;height: 320px;}
 .health_package_title h1{font-size:45px;color:#fff;font-weight:bold;}
 
 .health_package_title p{font-size: 20px;color: #fff;font-weight:bold;    margin: 0px;}
@@ -5483,7 +5483,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .test_complete{/* box-shadow: 0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23) *//* ;top:57%;position: absolute; */
     width: 100%; background: #ffff;  /* margin-left: 0px; */  margin: -8px;z-index:1;/* padding-left: 100px;padding-right: 75px; */}
 .test_undertaken_employees .box{border-top:none;}
-.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
+.emp_action_btn .btn{padding:6px 6px!important;font-size:12px!important;}
 .emp_action_btn .dropdown-menu{right:0!important;left: unset;}
 
 .employee_info .left-addon .fa{right:0px!important;left: unset;color: #3db6c1;}
@@ -5958,7 +5958,7 @@ label:hover:before {
 	
 	.test_complete{/* box-shadow: 0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23);top: 67%;position: absolute; */
     width: 100%; background: #ffff;  /* margin-left: 0px; */  margin: -8px;z-index:1;/* padding-left: 100px;padding-right: 75px; */}
-	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
+	.emp_action_btn .btn{padding:6px 6px!important;font-size:12px!important;}
 	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}
 	.company_summary .info-box{min-height: 134px!important;}
 	
