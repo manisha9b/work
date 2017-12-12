@@ -1,5 +1,34 @@
+<?php 
 
-   <div class="clearfix"></div>
+//session_start();
+
+//include_once 'includes/define.php';
+//include 'classes/Class_Database.php';
+
+//global $database;
+//$database = new Database();
+//$database->connect();
+//date_default_timezone_set('Asia/Calcutta');
+//$created_by		=	$_SESSION['ref_id'];
+//$created_on		=	date("Y-m-d H:i:s");
+$cluster_package_id = isset($_POST['cpid'])?$_POST['cpid']:$first_cluster_package_id;;
+//$arr_appt = '';
+if(!empty($cluster_package_id)){
+	$arr_appt	=	$database->getAppointmentList($cluster_package_id);
+}
+ini_set("display_errors", "1");
+  error_reporting(E_ALL);
+  echo "<pre>";
+print_R($arr_appt[0]);
+ print_R($arr_appt[1]);
+  echo "</pre>";
+?>
+<style>
+.emp_info_data .info{
+	text-align:left!important;
+}
+</style>
+  <div class="clearfix"></div>
    <div id="appointments" class="nav-tabs-custom employee_info">
       <ul class="nav nav-tabs">
 	   <li class="all active"><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab" style="padding:12.5px;">All</a></li>
@@ -28,187 +57,54 @@
          <li class="pull-right nohover1">
             <!-- search form -->                  
             <form action="#" method="get" class="employee_search sidebar-form1" style="display: inline-block;border-bottom: 1px solid #ccc;">
-               <div class=" inner-addon left-addon">                      <i class="fa fa-search"></i>                      <input type="text" name="q" class="form-control" placeholder="Search">                    </div>
+               <div class=" inner-addon left-addon">                      <i class="fa fa-search"></i>                      <input type="text" id="search_name" name="q" class="form-control" placeholder="Search">                    </div>
             </form>
             <!-- /.search form -->                
          </li>
       </ul>
    </div>
-   <div class="box no-border">
+      <div class="box no-border">
       <!-- /.box-header -->            
       <div class="box-body table-responsive emp_detail ">
          <div class="table-responsive">
-            <table class="table table-hover employee_details_area">
-               <tbody>
+            <table class="table table-hover employee_details_area" <?php if(!empty($arr_appt)){ echo "id='appt_datatables'";} ?>>
+               <thead>
                   <tr class="employee_table employee_heading">
-                     <th> </th>
+                     <!-- <th> </th> -->
                      <th> </th>
                      <th>FILL NAME</th>
-                     <th>DEPARTMENT <span class="caret"></span></th>
-                     <th>WHERE <span class="caret"></span> </th>
-                     <th>TEST</th>
+                     <th>WHERE  </th>
+                     <th>DATE</th>
                      <th>STATUS</th>
                   </tr>
+				   </thead>
+				   <tbody>
+				  <?php //if(isset($arr_appt)){foreach($arr_appt as $key=>$value){
+
+ if(isset($arr_appt)){foreach($arr_appt as $key=>$value){
+ $photo	= (!empty($value['photo_thumb'])) ? $value['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
+				  ?>
                   <tr class="emp_info_data">
-                     <td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td>
-                     <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Danish Rao</td>
-                     <td class="info">Business Developement</td>
-                     <td class="info">Suburban Diagnostics Andheri</td>
-                     <td class="info">CBC Test</td>
-                     <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
+                     <!-- <td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td> -->
+                     <td class="table_circle emp_pic"><img src="<?php echo $photo?>"  class="img-circle"></td>
+                     <td class="info" align="Left"><?php echo $value['visitor_name'];?></td>
+                     <td class="info"><img src="<?php echo EBH_HTTP_SERVER."app/portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""></td>
+                     <td class="info"><?php echo $value['appointment_datetime'];?></td>
+                     <td class="info confirmed">
+					 <?php if($value['is_confirmed']==1){?>
+					 <i class="fa fa-check" aria-hidden="true"></i> CONFIRMED
+					 <?php }else{ ?>
+					 <i class="fa fa-clock-o" aria-hidden="true"></i> PENDING
+					 <?php } ?>
+					 </td>
                   </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">						<input type="checkbox" id="test2"/>						<label for="test2"></label>					</td>
-                     <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Anisha Peters</td>
-                     <td class="info" >Design & Visualisation</td>
-                     <td class="info">Metropolis Clinic Lower Parel</td>
-                     <td class="info">RBC Test</td>
-                     <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">						<input type="checkbox" id="test3"/>						<label for="test3"></label>					</td>
-                     <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Danish Rao</td>
-                     <td class="info">Business Developement</td>
-                     <td class="info">Suburban Diagnostics Andheri</td>
-                     <td class="info">CBC Test</td>
-                     <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test4"/>					<label for="test4"></label>				</td>
-                     <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Anisha Peters</td>
-                     <td class="info" >Design & Visualisation</td>
-                     <td class="info">Metropolis Clinic Lower Parel</td>
-                     <td class="info">RBC Test</td>
-                     <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test5"/>					<label for="test5"></label>				</td>
-                     <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Danish Rao</td>
-                     <td class="info">Business Developement</td>
-                     <td class="info">Suburban Diagnostics Andheri</td>
-                     <td class="info">CBC Test</td>
-                     <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  </tr>
-                  <div class="clearfix"></div>
-                  <tr class="emp_info_data" data-toggle="modal" data-target="#health_checkup_status">
-                     <td class="info">						<input type="checkbox" id="test6"/>						<label for="test6"></label>					</td>
-                     <td  class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>
-                     <td class="info">Anisha Peters						<span class="app_scheduled">Scheduled</span>					  </td>
-                     <td class="info" >Design & Visualisation</td>
-                     <td class="info">Metropolis Clinic Lower Parel</td>
-                     <td class="info">RBC Test</td>
-                     <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test7" />					<label for="test7"></label>				</td>
-                     <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Danish Rao</td>
-                     <td class="info">Business Developement</td>
-                     <td class="info">Suburban Diagnostics Andheri</td>
-                     <td class="info">CBC Test</td>
-                     <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test8" />					<label for="test8"></label>				</td>
-                     <td  class="table_circle emp_pic info"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Anisha Peters</td>
-                     <td class="info" >Design & Visualisation</td>
-                     <td class="info">Metropolis Clinic Lower Parel</td>
-                     <td class="info">RBC Test</td>
-                     <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test7" />					<label for="test7"></label>				</td>
-                     <td class="table_circle emp_pic"><img src="dist/img/user2-160x160.jpg" class="img-circle"></td>
-                     <td class="info">Danish Rao</td>
-                     <td class="info">Business Developement</td>
-                     <td class="info">Suburban Diagnostics Andheri</td>
-                     <td class="info">CBC Test</td>
-                     <td class="info confirmed"><i class="fa fa-check" aria-hidden="true"></i> CONFIRMED</td>
-                  </tr>
-                  <tr class="emp_info_data">
-                     <td class="info">					<input type="checkbox" id="test6">					<label for="test6"></label>				</td>
-                     <td class="table_circle emp_pic info"><img src="dist/img/sneha.png" class="img-circle"></td>
-                     <td class="info">Anisha Peters</td>
-                     <td class="info">Design &amp; Visualisation</td>
-                     <td class="info">Metropolis Clinic Lower Parel</td>
-                     <td class="info">RBC Test</td>
-                     <td class="info pending"><i class="fa fa-clock-o" aria-hidden="true"></i> PENDING</td>
-                  </tr>
+				  <?php   }}else{  ?>
+				   <tr class="emp_info_data"><td colspan="7" align="center">No records found</td></tr>
+				  <?php  } ?>
+                 
                </tbody>
             </table>
-            <div class="box-header employee_pagination mt-20 pt-20 pb-20">
-               <div class="col-md-12 total_entry">
-                  <tr>
-                     <td>Showing 8 out of 34 entries</td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td>
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                           <li><a href="#">«</a></li>
-                           <li><a href="#">1</a></li>
-                           <li><a href="#">2</a></li>
-                           <li><a href="#">3</a></li>
-                           <li><a href="#">»</a></li>
-                        </ul>
-                     </td>
-                  </tr>
-               </div>
-            </div>
+           
          </div>
       </div>
    </div>
-   <div class="row">
-      <div class="col-md-6 employee_chart_area">
-         <div class="nav-tabs-custom ">
-            <ul class="nav nav-tabs">
-               <li class=""><a href="#region" data-toggle="tab" aria-expanded="false">TOP REGIONS</a></li>
-               <li  class="active"><a href="#hsp" data-toggle="tab" aria-expanded="false">TOP HSP'S</a></li>
-            </ul>
-            <div class="tab-content">
-               <div class="tab-pane" id="region">
-                  <div class="user-block">                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">                        <span class="username">                          <a href="#">Adam Jones</a>                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>                        </span>                    <span class="description">Posted 5 photos - 5 days ago</span>                  </div>
-               </div>
-               <!-- /.tab-pane -->              
-               <div class="tab-pane active" id="hsp">
-                  <!-- The timeline -->                
-                  <div class="box-body">					<img src="images/map.png">				</div>
-               </div>
-               <!-- /.tab-pane -->                         
-            </div>
-            <!-- /.tab-content -->          
-         </div>
-      </div>
-      <div class="col-md-6 test_undertaken_employees">
-         <div class="box undertaken_employees">
-            <div class="box-header with-border">
-               <h4 class="pull-left margin0"><strong>TEST UNDERTAKEN BY EMPLOYEES</strong></h4>
-            </div>
-            <!-- /.box-header -->            
-            <div class="box-body profileimg">
-               <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                
-               <hr>
-               <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                
-               <hr>
-               <img src="dist/img/user2-160x160.jpg" class="img-circle" style="">			  <span class="profile_info" style="">			  <span class="name" style=""><strong>John Fernandes</strong></span>			  <span class="info" style="display:block">					Lorem Ipsum is simply dummy text              </span>			  </span>				<a class="pull-right" style="margin-top: 15px;">Male,28 yrs</a>                
-               <hr>
-               <a href="#" class="btn2-lg">
-                  <h5 class="margin0">View All</h5>
-               </a>
-               <!-- /.box-body -->          
-            </div>
-            <!-- /.box -->        
-         </div>
-      </div>
-   </div>
-
-

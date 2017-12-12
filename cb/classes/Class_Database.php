@@ -3698,6 +3698,49 @@ function getTestByPacckage($package_id){
 	$this->select($sql);
 	return $this->result;
 }
+
+function getAppointmentList($cluster_package_id){
+	echo $sql = "SELECT X.cluster_package_id,e.first_name,e.middle_name,e.last_name,e.emp_designation,X.package_id,ebh_pack_test.lab_test_id_arr,
+                ebh_pack_test.lab_test_name_arr,ec.salutation,ec.photo,
+                    (Y.emp_id) AS total_invited,
+                    (IF(Y.is_confirmed = 1, 1, 0)) AS appt_confirmed,
+                    (IF(z.appt_status <> 'New', 1, 0)) AS visited,e.ebh_customer_id,h.name,h.logo,
+					concat(DATE_FORMAT(z.appt_request_date,'%d %b, %Y'),' ', TIME_FORMAT(z.appt_request_time,'%h:%i %p')) as appointment_datetime,
+					concat(DATE_FORMAT(z.appt_request_date,'%d %b, %Y'),' ', TIME_FORMAT(z.appt_request_time,'%h:%i %p')) as appointment_datetime,
+				Concat(tcase(e.first_name),' ',tcase(e.last_name)) as visitor_name,is_report_uploaded,Y.is_confirmed,ec.photo_thumb
+                FROM
+                    tbl_cluster_packages AS X
+                LEFT JOIN tbl_cluster_employee_pack AS Y
+                join tbl_cluster_employee e on e.emp_id=Y.emp_id
+                ON
+                    X.cluster_package_id = Y.cluster_package_id
+                LEFT JOIN tbl_appointments AS z
+                ON
+                    Y.appointment_id = z.appointment_id
+                    left join tbl_ebh_customer ec on e.ebh_customer_id=ec.ebh_customer_id
+					LEFT JOIN tbl_hsps as h on z.hsp_id = h.id
+                    LEFT JOIN(
+                SELECT X.ebh_package_id,
+                    GROUP_CONCAT(Y.lab_test_id) AS lab_test_id_arr,
+                    GROUP_CONCAT(z.test_name) AS lab_test_name_arr
+                FROM
+                    tbl_ebh_pc_packages AS X
+                LEFT JOIN tbl_ebh_pc_packages_tests AS Y
+                ON
+                    X.ebh_package_id = Y.ebh_package_id
+                LEFT JOIN tbl_preventive_care_tests AS z
+                ON
+                    Y.lab_test_id = z.lab_test_id
+                GROUP BY
+                    X.ebh_package_id
+            ) AS ebh_pack_test
+            ON
+                X.package_id = ebh_pack_test.ebh_package_id where X.cluster_package_id = ".$cluster_package_id;
+	unset($this->result);
+	$this->select($sql);
+	return $this->result;
+}
+
 }
 
 ?>

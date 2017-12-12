@@ -333,7 +333,9 @@ $bg_color="cursor:pointer;";
 		$package_nm				= $arr_ebh_pack[$i]['package_nm'];
 		$hsp_count				= $arr_ebh_pack[$i]['hsp_count'];
 		$cluster_package_id		= $arr_ebh_pack[$i]['cluster_package_id'];
-		
+		if($i==0){
+			$first_cluster_package_id = $cluster_package_id;
+		}
 
 		$package_unit			= $arr_ebh_pack[$i]['package_unit'];
 
@@ -423,7 +425,7 @@ $bg_color="cursor:pointer;";
                       </tr>
 					  <tr style="<?php echo $bg_color?>">
                           <td colspan="4" align="center" style="border:0;padding-top:0">
-                                <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showHideDiv('divMsg')"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                                <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
                            <!-- <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a> -->
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
@@ -458,7 +460,81 @@ $bg_color="cursor:pointer;";
 
   
 </div>
-<!-- ./wrapper --> <!-- Modal -->  <div class="modal fade" id="health_checkup_status">    <div class="modal-dialog">          <!-- Modal content-->      <div class="modal-content">        <div class="modal-header">          <button type="button" class="close" data-dismiss="modal">&times;</button>          <h4 class="modal-title">Modal Header</h4>        </div>        <div class="modal-body">          <div class="col-md-12 test_complete box-body p0">			<div class="text-center"><i class="fa fa-caret-down" aria-hidden="true"></i></div>			<div class="nav-tabs-custom wizard-content">            <ul class="nav nav-tabs">				<li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a></li>				<li class="com_sent"><a href="#comm_sent" data-toggle="tab" aria-expanded="false" class="border_two">COMMUNICATION SENT</a></li>				<li class="lin_clik"><a href="#link_click" data-toggle="tab" aria-expanded="false" class="border_three">LINK CLICKED</a></li>				<li class="app_send"><a href="#app_sent" data-toggle="tab" aria-expanded="false" class="border_four">APPOINTMENT SENT</a></li>				<li class="test_complet"><a href="#test_done" data-toggle="tab" aria-expanded="false" class="border_five">TEST DONE</a></li>				<li class="report_complete"><a href="#report_receiv" data-toggle="tab" aria-expanded="false" class="border_six">REPORTS RECEIVED</a></li>            </ul>            <div class="tab-content">				<div class="tab-pane on_board active " id="emp_on_board">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">2nd Oct,</b> Monday <br>11.30AM</span>					</div> 					<div class="clearfix"></div>									</div>             				<div class="tab-pane com_sent clr_orange" id="comm_sent">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">14 Oct</b>,Thursday <br>2.15PM</span>					</div>				</div>				<div class="tab-pane lin_clik" id="link_click">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">18 Oct,</b> Wednesday <br>11.20AM</span>					</div>				</div>				<div class="tab-pane app_send" id="app_sent">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>				<div class="tab-pane test_complet" id="test_done">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>				<div class="tab-pane report_complete" id="report_receiv">					<div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>				</div>              <!-- /.tab-pane -->                         </div>          </div>		  <div class="clearfix"></div>		  <div class="col-md-12 p0 employee_profile">			<div class="col-md-8">			<div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span></div>			<br>			<div class="employee_file ">				<ul>					<li class="blue_clr"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</li>					<li class="blue_clr"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> APPOINTMENT HISTORY</li>					<li class="green_clr"><i class="fa fa-download" aria-hidden="true"></i> ARCHIEVE</li>					<li class="green_clr"><i class="fa fa-envelope-o" aria-hidden="true"></i> SEND MESSAGE</li>					<li class="grey_clr"><i class="fa fa-file-text-o" aria-hidden="true"></i> VIEW REPORT</li>				</ul>			</div>			</div>			<div class="col-md-4 p0">				<div class="time_limit">					<div class="start_to_end">						<span class="number">6</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span class="">Start to finish</span>						</span>											</div>										<div class="company_avg">						<span class="number">4</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span>Company Avg</span>						</span>					</div>					<div class="caret_down"><i class="fa fa-caret-down" aria-hidden="true"></i></div>				</div>			</div>					  </div>		</div>		<div class="clearfix"></div>        </div>        <div class="modal-footer">          <a href="#" class="btn btn-info pull-right" data-dismiss="modal" aria-label="Close">Close</a>        </div>      </div>          </div>  </div>
+<!-- ./wrapper --> 
+<!-- Modal -->  
+<div class="modal fade" id="health_checkup_status">
+<div class="modal-dialog">
+   <!-- Modal content-->      
+   <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>          
+         <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+         <div class="col-md-12 test_complete box-body p0">
+            <div class="text-center"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+            <div class="nav-tabs-custom wizard-content">
+               <ul class="nav nav-tabs">
+                  <li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a></li>
+                  <li class="com_sent"><a href="#comm_sent" data-toggle="tab" aria-expanded="false" class="border_two">COMMUNICATION SENT</a></li>
+                  <li class="lin_clik"><a href="#link_click" data-toggle="tab" aria-expanded="false" class="border_three">LINK CLICKED</a></li>
+                  <li class="app_send"><a href="#app_sent" data-toggle="tab" aria-expanded="false" class="border_four">APPOINTMENT SENT</a></li>
+                  <li class="test_complet"><a href="#test_done" data-toggle="tab" aria-expanded="false" class="border_five">TEST DONE</a></li>
+                  <li class="report_complete"><a href="#report_receiv" data-toggle="tab" aria-expanded="false" class="border_six">REPORTS RECEIVED</a></li>
+               </ul>
+               <div class="tab-content">
+                  <div class="tab-pane on_board active " id="emp_on_board">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">2nd Oct,</b> Monday <br>11.30AM</span>					</div>
+                     <div class="clearfix"></div>
+                  </div>
+                  <div class="tab-pane com_sent clr_orange" id="comm_sent">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">14 Oct</b>,Thursday <br>2.15PM</span>					</div>
+                  </div>
+                  <div class="tab-pane lin_clik" id="link_click">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">18 Oct,</b> Wednesday <br>11.20AM</span>					</div>
+                  </div>
+                  <div class="tab-pane app_send" id="app_sent">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
+                  </div>
+                  <div class="tab-pane test_complet" id="test_done">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
+                  </div>
+                  <div class="tab-pane report_complete" id="report_receiv">
+                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
+                  </div>
+                  <!-- /.tab-pane -->                         
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12 p0 employee_profile">
+               <div class="col-md-8">
+                  <div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span></div>
+                  <br>			
+                  <div class="employee_file ">
+                     <ul>
+                        <li class="blue_clr"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</li>
+                        <li class="blue_clr"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> APPOINTMENT HISTORY</li>
+                        <li class="green_clr"><i class="fa fa-download" aria-hidden="true"></i> ARCHIEVE</li>
+                        <li class="green_clr"><i class="fa fa-envelope-o" aria-hidden="true"></i> SEND MESSAGE</li>
+                        <li class="grey_clr"><i class="fa fa-file-text-o" aria-hidden="true"></i> VIEW REPORT</li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-4 p0">
+                  <div class="time_limit">
+                     <div class="start_to_end">						<span class="number">6</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span class="">Start to finish</span>						</span>											</div>
+                     <div class="company_avg">						<span class="number">4</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span>Company Avg</span>						</span>					</div>
+                     <div class="caret_down"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">          <a href="#" class="btn btn-info pull-right" data-dismiss="modal" aria-label="Close">Close</a>        </div>
+   </div>
+</div>
+</div>
 
 
 <?php include_once('partials/footer.php'); ?>
@@ -469,6 +545,30 @@ $bg_color="cursor:pointer;";
 <script src="dist/js/chart.js"></script>
 <script>
   $(function () {
+	  	rtable = $('#appt_datatables').dataTable({
+		'lengthChange'      : false,
+		 'searching'   : false,
+		"sPaginationType": "bootstrap",
+		"aoColumnDefs": [
+			{"bSortable": false,"aTargets": [1]}
+		]
+	});
+		$('#appt_datatables_filter').hide();
+	$('#appt_datatables_length').hide();
+	$('#appt_datatables_info').css('padding','10px');
+	$('.dataTables_paginate ').css('padding','10px');
+	$('#search_name').keyup(function(){
+		rtable.fnFilter($(this).val());	
+
+	/*$('#reportsdatatables_filter').hide();
+	$('#reportsdatatables_length').hide();
+	$('#reportsdatatables_info').css('padding','10px');
+	$('.dataTables_paginate ').css('padding','10px');
+	$('#search_name').keyup(function(){
+		ptable.fnFilter($(this).val());
+		/*$('#excel_btn').attr('data-filter-name', $(this).val());
+ 		$('#reset_btn').show();*/
+	});
     /*
      * Flot Interactive Chart
      * -----------------------
