@@ -563,19 +563,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		
             <div class="box-body profileimg">
 				<?php foreach($emp_arr['healty'] as $row){ 
-				
+				$age = '';
 				if((!empty($row['dob']))){
 					$age = $database->ageCalculator($row['dob']). ' Yrs';
 				}
 				$report ='';
 				if($row['bmi_status']=='H'){
-						$report[] = "BMI: ".$row['bmi_category'];
+						$report[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='H'){
-						$report[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='H'){
-						$report[] = "Blood Sugar: ".$row['bs_result'];
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report[] =$database->getMessage('Blood Sugar',$row['bs_result']);
 					}
 					$report = implode(', ',$report);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
@@ -610,20 +612,23 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		
             <div class="box-body profileimg">
 				<?php foreach($emp_arr['unhealty'] as $row){ 
-				
+				$age = '';
 				if((!empty($row['dob']))){
 					$age = $database->ageCalculator($row['dob']). ' Yrs';
 				}
 				$report_arr ='';
-				if($row['bmi_status']=='UH'){
-						$report_arr[] = "BMI: ".$row['bmi_category'];
+					if($row['bmi_status']=='UH'){
+						$report_arr[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='UH'){
-						$report_arr[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report_arr[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='UH'){
-						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report_arr[] =$database->getMessage('Blood Sugar',$row['bs_result']);
 					}
+		
 					$report = implode(', ',$report_arr);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 					
@@ -689,11 +694,53 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							Males
 						</div>
 						<div class="age">
-							<?php echo $arr_count['male_employee']?>
+							<?php echo $arr_count['male_employee'];
+							$male_per = ( $arr_count['male_employee']>0)?round(( $arr_count['male_employee']/$arr_count['total_employees'])*100):0;
+				            $female_per = ( $arr_count['female_employee']>0)?round(( $arr_count['female_employee']/$arr_count['total_employees'])*100):0;
+				            $male_per2 = round(($male_per*40)/100);
+				             $female_per2 = round(($female_per*40)/100);
+							?>
 						</div>
 						</div>
 						<div class="ratio_percent total_percent">
 							<a href="#" class="show_digit">
+							   <?php
+							   $n = 1;
+							   echo '<span style="display:block;float:left">';
+							   for($i=1;$i<=$male_per2;$i++){
+							   if(($i%10)==1){
+							       echo '<span style="display:block;float:left">';
+							      
+							   }
+							    echo '<div class="circle_percentage"></div>';
+							   
+							       
+							   }
+							   ?>
+						
+						<!--	<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
 							<span style="display:block;float:left">
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
@@ -717,32 +764,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
-							</span>
-							<span style="display:block;float:left">
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							</span>
-							<span style="display:block;float:left">
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							</span>
-							<div id="show_percent" style="display:none">100%</div>
+							</span> -->
+							<div id="show_percent" style="display:none"><?php echo $male_per;?>%</div>
 							</a>
 							
 						</div>
@@ -762,7 +785,22 @@ $goal_arr = $database->getClusterGoal($clusterId);
 						</div>
 						<div class="ratio_percent total_percent female_ratio">
 							<a href="#" class="show_digit">
-							<span class="female_ratio_per" style="display:block;float:left">
+							    <span class="female_ratio_per" style="display:block;float:left">
+							     <?php
+							   $n = 1;
+							   echo '<span class="female_ratio_per" style="display:block;float:left">';
+							   for($i=1;$i<=$male_per2;$i++){
+							   if(($i%10)==1){
+							       echo '<span style="display:block;float:left">';
+							      
+							   }
+							    echo '<div class="circle_percentage"></div>';
+							   
+							       
+							   }
+							   ?>
+						
+							<!-- <span class="female_ratio_per" style="display:block;float:left">
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
@@ -809,7 +847,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
-							</span>
+							</span> -->
 							<div id="show_percent" style="display:none">100%</div>
 							</a>
 						

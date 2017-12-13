@@ -61,35 +61,36 @@ $visited_per		= ($visited*100)/$appt_confirmed;
  if(!empty($cluster_package_id))
 {
 ?>
+<style>
+    .progress{
+        background-color:#f5f5f5!important;
+    }
+</style>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="15%" height="60px" class="text-center" valign="middle"><?php echo $created_on; ?></td>
-<td width="15%" height="60px" class="text-center" valign="middle"><a href="#"><img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle pull-left" alt=""></a></td>
-<td width="70%">
+
+<td width="100%">
 
 	<div class="list-group list-projects" style="margin-top:5px;margin-bottom:5px;margin:10px;padding:10px;">
 		<div class="row" style="padding-top:5px;">
-			<div class="col-md-12">
-				<?php echo $package_nm;?>
-			</div>
+		<center>
 			<div class="col-md-4">
 				<span class="help-block"> <?php echo ($total_invited>0)?$total_invited." / ".$package_unit." Employees Invited":"No Invitation sent";?> </span>
-				<div class="progress" style="height:10px; width:50%;margin-bottom:8px;">
+				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $package_unit;?>" style="width: <?php echo $invited_per;?>%;"></div>
 			   </div>
 			</div>
 			<div class="col-md-4">
 				<span class="help-block"> <?php echo ($appt_confirmed>0)?$appt_confirmed." / ".$total_invited." Booked Appointments":"No Bookings";?> </span>
-				<div class="progress" style="height:10px; width:50%;margin-bottom:8px;">
+				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $total_invited;?>" style="width: <?php echo $confirmed_per;?>%;"></div>
 			   </div>
 			</div>
 			<div class="col-md-4">
 				<span class="help-block"> <?php echo ($visited>0)?$visited." / ".$appt_confirmed." Utilized Package":"No Utilization";?> </span>
-				<div class="progress" style="height:10px; width:50%;margin-bottom:8px;">
+				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $appt_confirmed;?>" style="width: <?php echo $visited_per;?>%;"></div>
 			   </div>
-			</div>
+			</div></center>
 		</div>
 	</div>
 
@@ -134,7 +135,7 @@ if($po_char_arr[0]['total_invites'] != 0)
 {	
 	$com_per = (($po_char_arr[0]['total_invites']*100)/$package_unit);
 ?>
-                <canvas id="chart-area1" style="height:250px"></canvas>
+                <canvas id="chart-area1" style="height:230px"></canvas>
 				<strong style="text-align:center;display:block;padding:7px;">Package Offered to<br /><?php echo round($com_per, 1) ?>% of employee on-boarded</strong>
 <?php }else
 {

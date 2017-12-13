@@ -51,7 +51,7 @@ include_once('partials/askme.php');
 		<div class="row">
 		<div class="col-md-12">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box box2 bg_dark_blue">
+          <div class="info-box box2 bg_dark_blue" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self');">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
 
             <div class="info-box-content">
@@ -63,7 +63,7 @@ include_once('partials/askme.php');
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self');">
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-heartbeat"></i></span>
 
@@ -76,7 +76,7 @@ include_once('partials/askme.php');
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self');">
           <div class="info-box box4 unhealthy_employee">
             <span class="info-box-icon icon3"><img src="images/logo/unhealthy_icon.png" width="35"></span>
 
@@ -89,7 +89,7 @@ include_once('partials/askme.php');
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-		  <div class="col-md-3 col-sm-6 col-xs-12"  data-toggle="modal" data-target="#myModal">
+		  <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" data-toggle="modal" data-target="#myModal">
           <div class="info-box box4 bg-yellow">
             <span class="info-box-icon icon4"><i class="ion ion-person-add"></i></span>
 
@@ -301,14 +301,16 @@ else
 					$age = $database->ageCalculator($row['dob']). ' Yrs';
 				}
 				$report ='';
-				if($row['bmi_status']=='H'){
-						$report[] = "BMI: ".$row['bmi_category'];
+					if($row['bmi_status']=='H'){
+						$report[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='H'){
-						$report[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='H'){
-						$report[] = "Blood Sugar: ".$row['bs_result'];
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report[] =$database->getMessage('Blood Sugar',$row['bs_result']);
 					}
 					$report = implode(', ',$report);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
@@ -350,13 +352,15 @@ else
 				}
 				$report_arr ='';
 				if($row['bmi_status']=='UH'){
-						$report_arr[] = "BMI: ".$row['bmi_category'];
+						$report_arr[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='UH'){
-						$report_arr[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report_arr[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='UH'){
-						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report_arr[] =$database->getMessage('Blood Sugar',$row['bs_result']);
 					}
 					$report = implode(', ',$report_arr);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";

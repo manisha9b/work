@@ -43,12 +43,12 @@
           </a>
         </li>
         <li>
-          <a class="cb-menu" href="my-family.html">
+          <a class="disable">
             <i class="fa fa-heartbeat"></i> <span>Health Index</span>
           </a>
         </li>
-		<li>
-          <a href="appointment.php">
+		<li class="appointment_menu cb-menu">
+          <a href="appointment.php" >
             <i class="cb-menu fa fa-calendar"></i> <span>Appointments</span>
           </a>
         </li>

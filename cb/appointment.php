@@ -394,7 +394,7 @@ function appointmentLoad(){
       return res
     } 
    
-	   $('.package_menu').addClass('active');
+	   $('.appointment_menu').addClass('active');
       // -------------
   // - PIE CHART -
   // -------------

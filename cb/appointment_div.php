@@ -90,7 +90,7 @@ print_R($arr_appt[0]);
                      <!-- <td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td> -->
                      <td class="table_circle emp_pic"><img src="<?php echo $photo?>"  class="img-circle"></td>
                      <td class="info" align="Left"><?php echo $value['visitor_name'];?></td>
-                     <td class="info"><img src="<?php echo EBH_HTTP_SERVER."app/portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""></td>
+                     <td class="info"><?php if($hsp_logo!=''){?><img src="<?php echo EBH_HTTP_SERVER."app/portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""><?php } else {echo $value['name'] ;}?></td>
                      <td class="info"><?php echo $value['appointment_datetime'];?></td>
                    
 					 <?php if($value['is_confirmed']==1){?>

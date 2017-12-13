@@ -26,9 +26,9 @@
 			<div class="row">
 			<div class="row">
 			<div class="form-group">
-                <label class="col-md-2 control-label" style="font-size:13px!important">Package
+                <label class="col-md-2 control-label" style="font-size:13px!important">Health Package
 				</label>
-				<div class="col-sm-3 ">
+				<div class="col-sm-4 ">
 	<?php
 	if(!empty($arr_cluster_pack))
 	{

@@ -3625,14 +3625,14 @@ function getDashboardChart($clusterId){
 	$gender_wise_bs_chart = $this->getAvgBSCountGroupByGenderforChart($clusterId);
 	$returnArr['bs']['table'] = $this->getAvgBSCountGroupByGender($clusterId);
 	$returnArr['bs']['label'] = "'Normal','Prediabetic', 'Diabetic'";
-//	foreach($gender_wise_bs_chart as $key=>$value){
-		//	$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
+	foreach($gender_wise_bs_chart as $key=>$value){
+			$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
 	//	$returnArr =	$this->checkSampleData('BS',$value,'bar',$returnArr);
 				/*if(empty($value['normal']) && empty($value['pre_diabetic']) && empty($value['diabetic'])){
 			    	$returnArr['bs'][$value['gender']] = "10,5,2";
 			    	$returnArr['bs']['sample'] = "1";
 			}*/
-	//	}
+		}
 
 	
 /*	echo "<pre>";
@@ -3735,7 +3735,7 @@ function getAppointmentList($cluster_package_id){
                     X.ebh_package_id
             ) AS ebh_pack_test
             ON
-                X.package_id = ebh_pack_test.ebh_package_id where X.cluster_package_id = ".$cluster_package_id;
+                X.package_id = ebh_pack_test.ebh_package_id where X.cluster_package_id = ".$cluster_package_id ." and Y.sr_no>0";
 	unset($this->result);
 	$this->select($sql);
 	return $this->result;
@@ -3853,6 +3853,20 @@ group by a.cluster_id";
 unset($this->result);
 	$this->select($sql);
 	return $this->result;
+	}
+	function getMessage($type,$category){
+	    // echo $category.' '.$type;
+	    $category2 = trim($val);
+	    switch($category){
+	        case 'Normal': $category = $category.' '.$type;
+	       // echo "dfasdfasd".$category.' '.$type;
+	        break;
+	        case 'Lower than Normal': $category = $type.' '.$category;
+	       // echo "dfasdfasd".$category.' '.$type;
+	        break;
+	    }
+	  //  echo $category;
+	    return $category;
 	}
 }
 
