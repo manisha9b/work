@@ -1,27 +1,28 @@
 <?php 
+if(isset($_POST['appt_id'])){
+session_start();
 
-//session_start();
+include_once 'includes/define.php';
+include 'classes/Class_Database.php';
 
-//include_once 'includes/define.php';
-//include 'classes/Class_Database.php';
-
-//global $database;
-//$database = new Database();
-//$database->connect();
-//date_default_timezone_set('Asia/Calcutta');
-//$created_by		=	$_SESSION['ref_id'];
-//$created_on		=	date("Y-m-d H:i:s");
-$cluster_package_id = isset($_POST['cpid'])?$_POST['cpid']:$first_cluster_package_id;;
+global $database;
+$database = new Database();
+$database->connect();
+date_default_timezone_set('Asia/Calcutta');
+$created_by		=	$_SESSION['ref_id'];
+$created_on		=	date("Y-m-d H:i:s");
+}
+$cluster_package_id = isset($_POST['appt_id'])?$_POST['appt_id']:$first_cluster_package_id;;
 //$arr_appt = '';
 if(!empty($cluster_package_id)){
 	$arr_appt	=	$database->getAppointmentList($cluster_package_id);
 }
-ini_set("display_errors", "1");
+/*ini_set("display_errors", "1");
   error_reporting(E_ALL);
   echo "<pre>";
 print_R($arr_appt[0]);
  print_R($arr_appt[1]);
-  echo "</pre>";
+  echo "</pre>";*/
 ?>
 <style>
 .emp_info_data .info{
@@ -31,7 +32,7 @@ print_R($arr_appt[0]);
   <div class="clearfix"></div>
    <div id="appointments" class="nav-tabs-custom employee_info">
       <ul class="nav nav-tabs">
-	   <li class="all active"><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab" style="padding:12.5px;">All</a></li>
+	   <li class="all active"><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab" style="padding:12.5px;">All Appointments</a></li>
          <!-- <li class="active">
             <div class="dropdown">
                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background:#04092f;padding:12px;border-radius: 0!important;">PRE EMPLOYMENT<span class="caret"></span></a>				  
@@ -64,6 +65,7 @@ print_R($arr_appt[0]);
       </ul>
    </div>
       <div class="box no-border">
+	 
       <!-- /.box-header -->            
       <div class="box-body table-responsive emp_detail ">
          <div class="table-responsive">
@@ -84,19 +86,23 @@ print_R($arr_appt[0]);
  if(isset($arr_appt)){foreach($arr_appt as $key=>$value){
  $photo	= (!empty($value['photo_thumb'])) ? $value['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				  ?>
-                  <tr class="emp_info_data">
+                  <tr class="emp_info_data" onclick="viewApptSummary(<?php echo $value['sr_no'];?> )">
                      <!-- <td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td> -->
                      <td class="table_circle emp_pic"><img src="<?php echo $photo?>"  class="img-circle"></td>
                      <td class="info" align="Left"><?php echo $value['visitor_name'];?></td>
                      <td class="info"><img src="<?php echo EBH_HTTP_SERVER."app/portal/".$hsp_logo;?>" data-src="holder.js/90x90" style="width: 90px; height: 90px;" class="main-avatar img-rectangle" alt=""></td>
                      <td class="info"><?php echo $value['appointment_datetime'];?></td>
-                     <td class="info confirmed">
+                   
 					 <?php if($value['is_confirmed']==1){?>
+					   <td class="info confirmed">
 					 <i class="fa fa-check" aria-hidden="true"></i> CONFIRMED
-					 <?php }else{ ?>
-					 <i class="fa fa-clock-o" aria-hidden="true"></i> PENDING
-					 <?php } ?>
 					 </td>
+					 <?php }else{ ?>
+					  <td class="info pending">
+					 <i class="fa fa-clock-o" aria-hidden="true"></i> PENDING
+					 </td>
+					 <?php } ?>
+					 
                   </tr>
 				  <?php   }}else{  ?>
 				   <tr class="emp_info_data"><td colspan="7" align="center">No records found</td></tr>

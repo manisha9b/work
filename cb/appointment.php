@@ -9,181 +9,10 @@ else
 {
 	$arr_ebh_pack	=	$database->getclusterEbhPackageDetail($clusterId);
 }
+$appt_count_arr	=	$database->getAppointmentCount($clusterId);
+$appt_count_arr[0]['onboard'] = 10;
 ?>
-<div class="wrapper">
-
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="./" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src="images/logo/EBH-small.png" alt="EasyByHealth" style="max-width: 100%;" /></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="images/logo/EBH.png" alt="EasyByHealth" style="max-width: 90%;" /></span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form1" style="display: inline-block;">
-        <div class=" inner-addon left-addon">
-          <i class="fa fa-search"></i>
-          <input type="text" name="q" class="form-control" placeholder="Type To Search">
-        </div>
-      </form>
-      <!-- /.search form -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-			<li class="login_user">
-				<a href="#"> <i class="fa fa-user-o" aria-hidden="true"></i> <span>Hi Priyanka</span></a>
-			</li>
-          <li>
-            <a href="#">About EBH</a>
-          </li>
-          <li>
-            <a href="#">How it Works</a>
-          </li>
-          <li class="nohover">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-facebook"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nohover">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-instagram"></i>
-              </div>
-            </a>
-          </li>
-          <li class="nohover nav-space">
-            <a href="#">
-              <div class="social">
-                <i class="fa fa-twitter"></i>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="image" style="padding-top:25px;">
-          <img src="images/dr.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="clearfix clear"></div>
-        <div class="info">
-          <p>Digital Republik</p>
-        </div>
-        <div class="prof">
-          <div class="progress xs1 mb-0">
-            <!-- Change the css width attribute to simulate progress -->
-            <div class="progress-bar progress-bar-cgreen" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="progresscomplete mb-10" style="margin-top: 9px;">80% complete profile</div>
-          <p style="color: #b7bbc2;">
-            Digital Republik Pvt.Ltd<br/>
-            Mumbai
-          </p>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li>
-          <a href="cluster_dashboard.html">
-            <i class="fa fa-th-large"></i> <span>Health Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="health_package.html">
-            <i class="fa ion-ios-medkit-outline"></i> <span>Health Packages</span>
-          </a>
-        </li>
-        <li>
-          <a href="employee_information.html">
-            <i class="fa fa-address-card-o"></i> <span>Employees</span>
-          </a>
-        </li>
-        <li>
-          <a href="my-family.html">
-            <i class="fa fa-heartbeat"></i> <span>Health Index</span>
-          </a>
-        </li>
-		<li class="active">
-          <a href="#">
-            <i class="fa fa-calendar"></i> <span>Appointments</span>
-          </a>
-        </li>
-		<li>
-          <a href="#">
-            <i class="fa fa-file-text-o"></i> <span>Reports</span>
-          </a>
-        </li>
-        <div class="nav-divider"></div>        
-        <li>
-          <a class="disable">
-            <i class="fa ion-ios-list"></i> <span>Worth Reading</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-shield"></i> <span>Diet Plan</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-heartbeat"></i> <span>Fitness Services</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-user"></i> <span>Nutritionists</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-heart"></i> <span>Health Equipments</span>
-          </a>
-        </li>
-        <li>
-          <a class="disable">
-            <i class="fa fa-file-text"></i> <span>Pharmacy & Chemists</span>
-          </a>
-        </li>
-        <!--<li>
-          <a class="disable">
-            <i class="fa fa-gift"></i> <span>Rewards</span>
-          </a>
-        </li>-->
-        <div class="nav-divider"></div>
-        <li>
-          <a href="my-profile.html">
-            <i class="fa fa-user"></i> <span>Company Profile</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-info-circle"></i> <span>About EBH</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
      <section class="content-header">
@@ -204,13 +33,13 @@ else
     <section class="content">
 		
 		<div class="col-md-12">
-		<div class="pull-right">
+		<!-- <div class="pull-right">
 			<span>Timeframe<span> :
 				<select style="font-weight: bold;background: transparent;border:none;display: inline-block;width: 125px;height: auto;padding: 0 5px;">
 					<option>Last 6 months</option>
 					<option>Last 12 months</option>
 				</select>
-		</div>        
+		</div>    -->    
 		</div>
 		<div class="col-md-12 mb-10">
 		  <h4><b>Summary</b></h4>
@@ -221,12 +50,12 @@ else
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1">78</span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
               <span class="info-box-number text-white">ONBOARDED <span style="font-size: 12px;">EMPLOYEES</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
+		 <!--  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -234,12 +63,12 @@ else
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1">39</span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
               <span class="info-box-number text-white">APPOINTMENTS <span style="font-size: 12px;">BOOKED</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
+		  <!-- <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -248,12 +77,12 @@ else
             <span class="info-box-icon icon3 text-white"><i class="fa fa-download"></i></span></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1">26</span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
               <span class="info-box-number text-white">eVOUCHERS <span style="font-size: 12px;">DOWNLOADED</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		   <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
+		   <!-- <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -262,12 +91,12 @@ else
             <span class="info-box-icon icon3"><img src="images/ecg_icon.png" width="35"></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1">25</span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
               <span class="info-box-number text-white">TESTS <span style="font-size: 12px;">TAKEN</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <div class="summary_add text-center"><a href="#">Say Congratulations</a></div>
+		  <!-- <div class="summary_add text-center"><a href="#">Say Congratulations</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -276,12 +105,12 @@ else
             <span class="info-box-icon icon3 text-white"><i class="fa fa-file-text-o"></i></span></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1">19</span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['total_report_available']?></span>
               <span class="info-box-number text-white">REPORTS <span style="font-size: 12px;">AVAILABLE</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
+		  <!-- <div class="summary_add text-center"><a href="#">Add more employees</a></div>
           <!-- /.info-box -->
         </div>
 		<!-- /.col -->
@@ -290,11 +119,11 @@ else
 	  
 		
 		<div class="col-md-12 mt-20 purchase_pack">
-			<div class="pagination">
+			<!-- <div class="pagination">
 				<span>1-2 of 18</span>
 			  <a href="#"><</a>
 			  <a href="#">></a>
-			</div>
+			</div> -->
 			
 			<div class="mb-10">
 				<h4><b>Purchased Packages</b></h4>
@@ -425,7 +254,7 @@ $bg_color="cursor:pointer;";
                       </tr>
 					  <tr style="<?php echo $bg_color?>">
                           <td colspan="4" align="center" style="border:0;padding-top:0">
-                                <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> MANAGE PURCHASE</a>
+                                <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> VIEW APPOINTMETS</a>
                            <!-- <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a> -->
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
@@ -458,84 +287,12 @@ $bg_color="cursor:pointer;";
 
   </div>
 
-  
-</div>
-<!-- ./wrapper --> 
-<!-- Modal -->  
-<div class="modal fade" id="health_checkup_status">
-<div class="modal-dialog">
-   <!-- Modal content-->      
-   <div class="modal-content">
-      <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal">&times;</button>          
-         <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-         <div class="col-md-12 test_complete box-body p0">
-            <div class="text-center"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-            <div class="nav-tabs-custom wizard-content">
-               <ul class="nav nav-tabs">
-                  <li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a></li>
-                  <li class="com_sent"><a href="#comm_sent" data-toggle="tab" aria-expanded="false" class="border_two">COMMUNICATION SENT</a></li>
-                  <li class="lin_clik"><a href="#link_click" data-toggle="tab" aria-expanded="false" class="border_three">LINK CLICKED</a></li>
-                  <li class="app_send"><a href="#app_sent" data-toggle="tab" aria-expanded="false" class="border_four">APPOINTMENT SENT</a></li>
-                  <li class="test_complet"><a href="#test_done" data-toggle="tab" aria-expanded="false" class="border_five">TEST DONE</a></li>
-                  <li class="report_complete"><a href="#report_receiv" data-toggle="tab" aria-expanded="false" class="border_six">REPORTS RECEIVED</a></li>
-               </ul>
-               <div class="tab-content">
-                  <div class="tab-pane on_board active " id="emp_on_board">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">2nd Oct,</b> Monday <br>11.30AM</span>					</div>
-                     <div class="clearfix"></div>
-                  </div>
-                  <div class="tab-pane com_sent clr_orange" id="comm_sent">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">14 Oct</b>,Thursday <br>2.15PM</span>					</div>
-                  </div>
-                  <div class="tab-pane lin_clik" id="link_click">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">18 Oct,</b> Wednesday <br>11.20AM</span>					</div>
-                  </div>
-                  <div class="tab-pane app_send" id="app_sent">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
-                  </div>
-                  <div class="tab-pane test_complet" id="test_done">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
-                  </div>
-                  <div class="tab-pane report_complete" id="report_receiv">
-                     <div class="user-block">                                       						<span class="description"><b style="color: #000;">21 Oct,</b> Monday <br>12.00PM</span>					</div>
-                  </div>
-                  <!-- /.tab-pane -->                         
-               </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-12 p0 employee_profile">
-               <div class="col-md-8">
-                  <div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span></div>
-                  <br>			
-                  <div class="employee_file ">
-                     <ul>
-                        <li class="blue_clr"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</li>
-                        <li class="blue_clr"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> APPOINTMENT HISTORY</li>
-                        <li class="green_clr"><i class="fa fa-download" aria-hidden="true"></i> ARCHIEVE</li>
-                        <li class="green_clr"><i class="fa fa-envelope-o" aria-hidden="true"></i> SEND MESSAGE</li>
-                        <li class="grey_clr"><i class="fa fa-file-text-o" aria-hidden="true"></i> VIEW REPORT</li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="col-md-4 p0">
-                  <div class="time_limit">
-                     <div class="start_to_end">						<span class="number">6</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span class="">Start to finish</span>						</span>											</div>
-                     <div class="company_avg">						<span class="number">4</span>						<span class="number_of_days">							<span class="day">DAYS</span>							<span>Company Avg</span>						</span>					</div>
-                     <div class="caret_down"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="clearfix"></div>
-      </div>
-      <div class="modal-footer">          <a href="#" class="btn btn-info pull-right" data-dismiss="modal" aria-label="Close">Close</a>        </div>
-   </div>
-</div>
+  <!-- Modal -->  
+<div id="appt_summary">
 </div>
 
+</div>
+<!-- ./wrapper --> 
 
 <?php include_once('partials/footer.php'); ?>
 
@@ -544,8 +301,33 @@ $bg_color="cursor:pointer;";
 <script src="dist/js/cluster.js"></script>
 <script src="dist/js/chart.js"></script>
 <script>
-  $(function () {
-	  	rtable = $('#appt_datatables').dataTable({
+function showApptDiv(id){
+	$.ajax({
+				url: 'appointment_div.php',
+				type: 'post',
+				data: 'appt_id='+id,
+				success: function(response) {
+					$('#divMsg').html(response);
+					$('#divMsg').show();
+					 $(document).scrollTo('#divMsg','slow');
+					 appointmentLoad();
+				}
+			})
+}
+function viewApptSummary(id){
+	$.ajax({
+				url: 'portal/appointment_summary.php',
+				type: 'post',
+				data: 'id='+id,
+				success: function(response) {
+					$('#appt_summary').html(response);
+					$('#health_checkup_status').modal('show');
+					
+				}
+			})
+}
+function appointmentLoad(){
+		rtable = $('#appt_datatables').dataTable({
 		'lengthChange'      : false,
 		 'searching'   : false,
 		"sPaginationType": "bootstrap",
@@ -569,6 +351,11 @@ $bg_color="cursor:pointer;";
 		/*$('#excel_btn').attr('data-filter-name', $(this).val());
  		$('#reset_btn').show();*/
 	});
+}
+</script>
+<script>
+  $(function () {
+	  appointmentLoad();
     /*
      * Flot Interactive Chart
      * -----------------------

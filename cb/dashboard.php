@@ -258,6 +258,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="chart">
                 <canvas id="barChart" style="height:250px"></canvas>
               </div>
+              <br/>
+              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
+              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
               </div>
                <div class="col-md-4">
 				  <div class="chart">
@@ -289,7 +292,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 
                 <tr>
                   
-                  <td> <?php echo $value['reading']?></td>
+                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>  <?php echo $value['reading']?></td>
                   <td>
                       <?php echo $value['male_count']?>
                   </td>
@@ -336,7 +339,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 <div class="col-md-4">
               <div class="chart">
                 <canvas id="barChart_bmi" style="height:250px"></canvas>
-              </div>
+              </div><br/>
+              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
+              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
               </div>
                <div class="col-md-4">
 				  <div class="chart">
@@ -368,7 +373,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 
                 <tr>
                   
-                  <td> <?php echo $value['reading']?></td>
+                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <?php echo $value['reading']?></td>
                   <td>
                       <?php echo $value['male_count']?>
                   </td>
@@ -382,6 +387,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 
               </table> 
            <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bmi_per?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> are  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bmi_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> are <span class="text-danger">Underweight</span></h5>
+           
                 </div>
                 </div>
             </div>
@@ -397,13 +403,14 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			 <!-- BAR CHART -->
-			 	
+			 	<?php if(!empty($chartdata['bs']['table']) ){?>
 			  <div class="box box-success">
             <div class="box-header with-border">
  <div class="pre-header" style="margin: 8px 0;">
                       <h5 class="margin0 text-uppercase2"><b>Blood Sugar Observations</b></h5>
                       <!--<a href="#" class="btn2">BMI</a>-->
                     </div>
+                    
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -416,11 +423,15 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="chart">
                 <canvas id="barChart_bs" style="height:250px"></canvas>
               </div>
+              <br/>
+              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
+              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
               </div>
                <div class="col-md-4">
 				  <div class="chart">
 					<canvas id="chart-area_bs" style="height:230px"></canvas>
 				  </div>
+				  
               </div>
 			  <div class="col-md-4">
                  <table class="table table-bordered">
@@ -447,7 +458,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 
                 <tr>
                   
-                  <td> <?php echo $value['reading']?></td>
+                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <?php echo $value['reading']?></td>
                   <td>
                       <?php echo $value['male_count']?>
                   </td>
@@ -467,8 +478,25 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <!-- /.box-body -->
           </div>
          
-           
-          
+           <?php }else{ ?>
+            <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>Blood Sugar Observations</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+                   <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Seems you have not subscribed for Blood Sugar test for your calleages! Otherwise you could have access the Sugar Level of your organization as well"</center><br/><br/><br/>
+                    </div></div></div>
+                    </div>
+           <?php }?>
                
 		  </div>
            
@@ -1053,7 +1081,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (Fasting):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="80 mm" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="80 mm" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-5">
@@ -1061,7 +1089,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (After Eating):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="120 hg" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="120 hg" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-3">
@@ -1084,7 +1112,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (Fasting):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="00 mm" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="00 mm" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-5">
@@ -1092,7 +1120,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (After Eating):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="00 hg" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="00 hg" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-3">
@@ -1386,7 +1414,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
     barChart_bmi.Bar(barChartData_bmi, barChartOptions)
 	
 	//Blood sugar
-	 
+	 <?php if(!empty($chartdata['bs']['table']) ) {?>
     var areaChartData_bs = {
       labels  : [<?php echo $chartdata['bs']['label']?>],
       datasets: [
@@ -1416,6 +1444,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
     var barChart_bs                = new Chart(barChartCanvas_bs)
      var barChartData_bs                     = areaChartData_bs
     barChart_bs.Bar(barChartData_bs, barChartOptions)
+    <?php } ?>
 	//end Blood sugar
     window.chartColors = {
 	red: 'rgb(255, 99, 132)',
@@ -1452,8 +1481,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
             ?>
 				{
 					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $colorarray[$key]['color']?>",
-					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					color:"<?php echo $value['chart_regular_color']?>",
+					highlight: "<?php echo $value['chart_highlight_color']?>",
 					label: "<?php echo $value['reading']?>"
 				},
 				<?php } ?>
@@ -1469,8 +1498,8 @@ var pieData2 = [
             ?>
 				{
 					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $colorarray[$key+1]['color']?>",
-					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					color:"<?php echo $value['chart_regular_color']?>",
+					highlight: "<?php echo $value['chart_highlight_color']?>",
 					label: "<?php echo $value['reading']?>"
 				},
 				<?php } ?>
@@ -1481,13 +1510,14 @@ var pieData2 = [
         <?php 
         
         foreach($chartdata['bs']['table'] as $key=>$value) { 
-            
+            //$value['chart_regular_color'] = (empty($value['chart_regular_color']))?$colorarray[$key+1]['color']:$value['chart_regular_color'];
+           // $value['chart_highlight_color'] = (empty($value['chart_highlight_color']))?$colorarray[$key+1]['color']:$value['chart_highlight_color'];
             
             ?>
 				{
 					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $colorarray[$key+1]['color']?>",
-					highlight: "<?php echo $colorarray[$key]['highlight']?>",
+					color:"<?php echo $value['chart_regular_color']?>",
+					highlight: "<?php echo $value['chart_highlight_color']?>",
 					label: "<?php echo $value['reading']?>"
 				},
 				<?php } ?>
@@ -1502,11 +1532,13 @@ var pieData2 = [
 				window.myDoughnut = new Chart(ctx2).Doughnut(pieData2, {
 					responsive:true
 				})	
+				<?php if(!empty($chartdata['bs']['table']) ) {?>
 				var ctx3 = document.getElementById("chart-area_bs").getContext("2d");
 			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
 				window.myDoughnut = new Chart(ctx3).Doughnut(pieData3, {
 					responsive:true
 				});
+					<?php } ?>
 			};
   })
 </script>

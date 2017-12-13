@@ -2027,7 +2027,7 @@ class Database {
 	{
 		unset($this->result);
 
-		$sql="SELECT
+		$sql="SELECT c.photo_thumb,
 		a.cluster_package_id,
 		concat(tcase(c.salutation),' ',tcase(c.first_name),' ',tcase(c.last_name)) AS employee_name,
 		c.salutation,
@@ -2844,7 +2844,7 @@ b.organization_name,a.user_email FROM tbl_user_mst as a LEFT JOIN tbl_accounts_m
 
 		}
 
-		$sql="SELECT
+		echo $sql="SELECT
 				a.sr_no,a.cluster_package_id,a.emp_id,a.cluster_id,a.appointment_id,
 				j.hr_full_name,j.hr_email_id,
 				b.ebh_customer_id,b.appt_request_date,
@@ -3485,20 +3485,20 @@ public function getClusterGoal($clusterId){
 
 
 function getAvgBPCountGroupByGenderforChart($clusterId){
-	 $sql = "SELECT 
+	  $sql = "SELECT 
 \"Male\" as gender,
-sum(if(a.bp_level='High',1,0)) as high_bp,
-sum(if(a.bp_level='Normal',1,0)) as normal_bp,
-sum(if(a.bp_level='Low',1,0)) as low_bp
+ifnull(sum(if(a.bp_level='High',1,0)),0) as high_bp,
+ifnull(sum(if(a.bp_level='Normal',1,0)),0) as normal_bp,
+ifnull(sum(if(a.bp_level='Low',1,0)),0) as low_bp
 from tbl_ebh_customer_health_readings as a
 left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
 where b.cluster_id=$clusterId and b.salutation in('Mr.') 
 UNION ALL 
 SELECT 
 \"Female\" as gender,
-sum(if(a.bp_level='High',1,0)) as high_bp,
-sum(if(a.bp_level='Normal',1,0)) as normal_bp,
-sum(if(a.bp_level='Low',1,0)) as low_bp
+ifnull(sum(if(a.bp_level='High',1,0)),0) as high_bp,
+ifnull(sum(if(a.bp_level='Normal',1,0)),0) as normal_bp,
+ifnull(sum(if(a.bp_level='Low',1,0)),0) as low_bp
 from tbl_ebh_customer_health_readings as a
 left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
 where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
@@ -3509,10 +3509,10 @@ where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
 }
 function getAvgBPCountGroupByGender($clusterId){
 	 $sql = "SELECT 
-a.reading,a.cat_id, 
+a.reading,a.cat_id, chart_regular_color,chart_highlight_color,
 count(b.ebh_customer_id) as total_cnt,
-sum(if(c.salutation in('Mr.'),1,0)) as male_count,
-sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
+(sum(if(c.salutation in('Mr.'),1,0))) as male_count,
+(sum(if(c.salutation in('Mrs.','Ms.'),1,0))) as female_count
 from view_blood_pressure as a 
 left join tbl_ebh_customer_health_readings as b on BINARY  a.`bp_result`= BINARY b.`bp_category`
 left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
@@ -3527,20 +3527,20 @@ GROUP BY a.reading;	";;
 function getAvgBMICountGroupByGenderforChart($clusterId){
 	 $sql = "SELECT 
 \"Male\" as gender,
-sum(if(a.bmi_category='Normal',1,0)) as normal_bmi,
-sum(if(a.bmi_category='Underweight',1,0)) as underwght_bmi,
-sum(if(a.bmi_category='Overweight',1,0)) as overwght_bmi
+ifnull(sum(if(a.bmi_category='Normal',1,0)),0) as normal_bmi,
+ifnull(sum(if(a.bmi_category='Underweight',1,0)),0) as underwght_bmi,
+ifnull(sum(if(a.bmi_category='Overweight',1,0)),0) as overwght_bmi
 from tbl_ebh_customer_health_readings as a
-left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
+left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id 
 where b.cluster_id=$clusterId and b.salutation in('Mr.') 
 
 UNION ALL 
 
 SELECT 
 \"Female\" as gender,
-sum(if(a.bmi_category='Normal',1,0)) as normal_bmi,
-sum(if(a.bmi_category='Underweight',1,0)) as underwght_bmi,
-sum(if(a.bmi_category='Overweight',1,0)) as overwght_bmi
+ifnull(sum(if(a.bmi_category='Normal',1,0)),0) as normal_bmi,
+ifnull(sum(if(a.bmi_category='Underweight',1,0)),0) as underwght_bmi,
+ifnull(sum(if(a.bmi_category='Overweight',1,0)),0) as overwght_bmi
 from tbl_ebh_customer_health_readings as a
 left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
 where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.');";;
@@ -3551,7 +3551,7 @@ where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.');";;
 }
 function getAvgBMICountGroupByGender($clusterId){
 	 $sql = "SELECT 
-a.reading, a.cat_id, 
+a.reading, a.cat_id,chart_regular_color,chart_highlight_color, 
 count(b.ebh_customer_id) as total_cnt,
 sum(if(c.salutation in('Mr.'),1,0)) as male_count,
 sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
@@ -3567,20 +3567,20 @@ GROUP BY a.reading;	";;
 		return $this->result;
 }
 function getAvgBSCountGroupByGenderforChart($clusterId){
-	 $sql = "SELECT 
+	$sql = "SELECT 
 \"Male\" as gender,a.bs_result,
-sum(if(a.bs_result='Normal',1,0)) as normal,
-sum(if(a.bs_result='Prediabetes',1,0)) as pre_diabetic,
-sum(if(a.bs_result='Diabetes',1,0)) as diabetic
+ifnull(sum(if(a.bs_result='Normal',1,0)),0) as normal,
+ifnull(sum(if(a.bs_result='Prediabetes',1,0)),0) as pre_diabetic,
+ifnull(sum(if(a.bs_result='Diabetes',1,0)),0) as diabetic
 from tbl_ebh_customer_health_readings as a
 left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
 where b.cluster_id=$clusterId and b.salutation in('Mr.') 
 UNION ALL 
 SELECT 
 \"Female\" as gender,a.bs_result,
-sum(if(a.bs_result='Normal',1,0)) as normal,
-sum(if(a.bs_result='Prediabetes',1,0)) as pre_diabetic,
-sum(if(a.bs_result='Diabetes',1,0)) as diabetic
+ifnull(sum(if(a.bs_result='Normal',1,0)),0) as normal,
+ifnull(sum(if(a.bs_result='Prediabetes',1,0)),0) as pre_diabetic,
+ifnull(sum(if(a.bs_result='Diabetes',1,0)),0) as diabetic
 from tbl_ebh_customer_health_readings as a
 left join tbl_cluster_employee as b on a.ebh_customer_id = b.ebh_customer_id
 where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
@@ -3591,7 +3591,7 @@ where b.cluster_id=$clusterId and b.salutation in('Mrs.','Ms.')";;
 }
 function getAvgBSCountGroupByGender($clusterId){
 	 $sql = "SELECT 
-a.reading,a.cat_id, 
+a.reading,a.cat_id, chart_regular_color,chart_highlight_color, 
 count(b.ebh_customer_id) as total_cnt,
 sum(if(c.salutation in('Mr.'),1,0)) as male_count,
 sum(if(c.salutation in('Mrs.','Ms.'),1,0)) as female_count
@@ -3625,14 +3625,14 @@ function getDashboardChart($clusterId){
 	$gender_wise_bs_chart = $this->getAvgBSCountGroupByGenderforChart($clusterId);
 	$returnArr['bs']['table'] = $this->getAvgBSCountGroupByGender($clusterId);
 	$returnArr['bs']['label'] = "'Normal','Prediabetic', 'Diabetic'";
-	foreach($gender_wise_bs_chart as $key=>$value){
+//	foreach($gender_wise_bs_chart as $key=>$value){
 		//	$returnArr['bs'][$value['gender']] = $value['normal'].','.$value['pre_diabetic'].','.$value['diabetic'];
-		$returnArr =	$this->checkSampleData('BS',$value,'bar',$returnArr);
+	//	$returnArr =	$this->checkSampleData('BS',$value,'bar',$returnArr);
 				/*if(empty($value['normal']) && empty($value['pre_diabetic']) && empty($value['diabetic'])){
 			    	$returnArr['bs'][$value['gender']] = "10,5,2";
 			    	$returnArr['bs']['sample'] = "1";
 			}*/
-		}
+	//	}
 
 	
 /*	echo "<pre>";
@@ -3653,7 +3653,7 @@ function checkSampleData($type,$data,$chart_type,$returnArr){
 		            	}  else{
 		            	    	$returnArr['bs'][$data['gender']] = $data['normal'].','.$data['pre_diabetic'].','.$data['diabetic'];
 		            	};
-		            	$table[0]['reading'] =  'Normal';
+		            /*	$table[0]['reading'] =  'Normal';
                         $table[0]['cat_id'] =  1;
                         $table[0]['total_cnt'] =  20;
                         $table[0]['male_count'] =  9;
@@ -3668,7 +3668,7 @@ function checkSampleData($type,$data,$chart_type,$returnArr){
                         $table[2]['total_cnt'] =  4;
                         $table[2]['male_count'] =  3;
                         $table[2]['female_count'] =  4;
-                        $returnArr['bs']['table'] = $table;
+                        $returnArr['bs']['table'] = $table;*/
 		            	break;
 	            	
                 }
@@ -3700,7 +3700,7 @@ function getTestByPacckage($package_id){
 }
 
 function getAppointmentList($cluster_package_id){
-	echo $sql = "SELECT X.cluster_package_id,e.first_name,e.middle_name,e.last_name,e.emp_designation,X.package_id,ebh_pack_test.lab_test_id_arr,
+	 $sql = "SELECT Y.sr_no,z.appointment_id,X.cluster_package_id,e.first_name,e.middle_name,e.last_name,e.emp_designation,X.package_id,ebh_pack_test.lab_test_id_arr,
                 ebh_pack_test.lab_test_name_arr,ec.salutation,ec.photo,
                     (Y.emp_id) AS total_invited,
                     (IF(Y.is_confirmed = 1, 1, 0)) AS appt_confirmed,
@@ -3741,6 +3741,119 @@ function getAppointmentList($cluster_package_id){
 	return $this->result;
 }
 
+
+public function getAppointmentDetailsBySrNo($sr_no)
+	{
+		unset($this->result);
+		$where_qry	=	" WHERE a.sr_no='".$sr_no."'";
+	
+
+		 $sql="SELECT
+				a.sr_no,a.cluster_package_id,a.emp_id,a.cluster_id,a.appointment_id,a.created_on as commmuncation_on,a.confirmed_on,b.verified_on as testdone_on, b.report_uploaded_on,concat((b.appt_request_date),' ', (b.appt_request_time)) as appointment_sent,
+				j.hr_full_name,j.hr_email_id,
+				b.ebh_customer_id,b.appt_request_date,
+				concat(DATE_FORMAT(b.appt_request_date,'%d %b %Y'),' ', TIME_FORMAT(b.appt_request_time,'%h %i %p')) as appointment_datetime,
+				b.appt_request_time,b.appt_voucher_code,
+				tcase(CONCAT(c.first_name,' ',c.last_name)) as customer_name,c.mobile_no as customer_mobile,em.created_on as onboard,
+				tcase(d.package_nm) as package_nm,
+				e.`name` as hsp_name,
+				f.branch_name,k.ebh_client_code,
+				concat(f.br_address,' ', f.br_locality,' ',f.br_landmark,' ', f.br_pin_code,' ',g.city_name,h.state_name) as branch_address,
+				f.br_general_email_id,	f.br_helpline_number1 ,lab_test.lab_test_name_arr,
+				d.expected_medical_reports_title,
+				b.recommendations
+			FROM
+				tbl_cluster_employee_pack AS a
+				LEFT JOIN tbl_cluster_employee as em on a.emp_id=em.emp_id
+			LEFT JOIN tbl_appointments as b on a.appointment_id=b.appointment_id
+			LEFT JOIN tbl_ebh_customer as c on b.ebh_customer_id = c.ebh_customer_id
+			LEFT JOIN tbl_ebh_pc_packages as d on b.ebh_package_id = d.ebh_package_id
+			LEFT JOIN tbl_hsps as e on b.hsp_id = e.id
+			LEFT JOIN tbl_hsp_branchs as f on b.hsp_branch_id = f.branch_id
+			LEFT JOIN cities as g on f.br_city = g.id
+			LEFT JOIN states as h on f.br_state = h.id
+			LEFT JOIN tbl_hsp_business_details as i on e.id = i.hspid
+			LEFT JOIN tbl_clusters as j on a.cluster_id = j.cluster_id
+			left join tbl_hsp_apis as k on b.hsp_id = k.hsp_id 
+			left JOIN
+			(
+				SELECT
+				x.ebh_package_id,
+				GROUP_CONCAT(x.lab_test_id) AS lab_test_id_arr,
+				GROUP_CONCAT(y.test_name) AS lab_test_name_arr
+
+				from tbl_ebh_pc_packages_tests AS x
+				LEFT JOIN tbl_preventive_care_tests AS y ON x.lab_test_id = y.lab_test_id
+				group by x.ebh_package_id
+			) as lab_test on d.ebh_package_id = lab_test.ebh_package_id
+
+			".$where_qry;
+
+		$this->select($sql);
+        return $this->result;
+	}
+	
+	 public function getApptDate($date) { // mysql date to date
+        if ($timeStamp = strtotime($date)) {
+           // if ($seperator != '') {
+                $returnArr['date'] = date('d M',$timeStamp);
+                $returnArr['day'] = date('D',$timeStamp);
+                $returnArr['time'] = date('h:i A',$timeStamp);
+				//$result = $date;
+				 $result  = '<b style="color: #000;">'.$returnArr['date'].',</b> '.$returnArr['day'].' <br>'.$returnArr['time'];
+				 return $result;
+           // } else {
+           //     return date($format, $timeStamp);
+          //  }
+        } else {
+            return '';
+        }
+    }
+	
+	function getAppointmentCount($clusterId){
+		$sql = "SELECT 
+a.cluster_id,
+cluster_pack.total_packages,
+cluster_emp.total_employees,
+cluster_emp.male_employee,
+cluster_emp.female_employee,
+cluster_report.total_report_available
+from tbl_clusters as a
+left join 
+(
+	select 
+	x.cluster_id, count(x.cluster_package_id) as total_packages
+	from tbl_cluster_packages as x
+	group by x.cluster_id 
+) as cluster_pack on a.cluster_id = cluster_pack.cluster_id
+left join 
+(
+	select 
+	x.cluster_id, 
+	count(x.emp_id) as total_employees, 
+	sum(if(x.salutation in ('Mr.'),1,0)) as male_employee,
+	sum(if(x.salutation in ('Ms.','Mrs.'),1,0)) as female_employee
+	from tbl_cluster_employee as x 
+	group by x.cluster_id
+) as cluster_emp on a.cluster_id = cluster_emp.cluster_id
+left join 
+(
+	SELECT
+	e.cluster_id,count(b.appointment_id) as total_report_available
+	FROM tbl_appointments as b 
+	LEFT JOIN tbl_ebh_customer as c on b.ebh_customer_id = c.ebh_customer_id 
+	LEFT JOIN tbl_ebh_pc_packages as d on b.ebh_package_id = d.ebh_package_id
+	LEFT JOIN tbl_cluster_employee as e on c.ebh_customer_id = e.ebh_customer_id
+	LEFT JOIN tbl_clusters as f on e.cluster_id = f.cluster_id
+	where b.is_report_uploaded=1
+	GROUP BY e.cluster_id
+) as cluster_report on a.cluster_id = cluster_report.cluster_id
+where a.cluster_id=$clusterId
+group by a.cluster_id";
+unset($this->result);
+	$this->select($sql);
+	return $this->result;
+	}
 }
 
 ?>

@@ -460,6 +460,8 @@ a:focus {
   }
 }
 @media (max-width: 767px) {
+	.user-panel{margin-top: 30px!important;}
+	
   .sidebar-open .main-sidebar,
   .sidebar-open .left-side {
     -webkit-transform: translate(0, 0);
@@ -492,7 +494,7 @@ a:focus {
 }
 .user-panel > .image > img {
   width: 100%;
-  max-width: 60px;
+  /* max-width: 60px; */
   height: auto;
 }
 .user-panel > .info {
@@ -593,6 +595,7 @@ a:focus {
  * Component: Sidebar Mini
  */
 @media (min-width: 768px) {
+	.user-panel{margin-top: 30px!important;}
   .sidebar-mini.sidebar-collapse .content-wrapper,
   .sidebar-mini.sidebar-collapse .right-side,
   .sidebar-mini.sidebar-collapse .main-footer {

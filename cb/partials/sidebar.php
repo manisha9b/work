@@ -3,7 +3,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="image" style="padding-top:25px;">
+        <div class="image" style="padding-top:25px;width: 70px;height: 100px;overflow: hidden;">
           <img src="<?php echo EBH_WEBSITE_URL.$arr_cluster['logo']?>" class="img-circle" alt="User Image">
         </div>
         <div class="clearfix clear"></div>
@@ -48,12 +48,12 @@
           </a>
         </li>
 		<li>
-          <a href="#">
+          <a href="appointment.php">
             <i class="cb-menu fa fa-calendar"></i> <span>Appointments</span>
           </a>
         </li>
-		<li>
-          <a href="#">
+		<li class="cb-menu report_menu">
+          <a href="reports.php">
             <i class="fa fa-file-text-o"></i> <span>Reports</span>
           </a>
         </li>
