@@ -1,0 +1,18 @@
+[11-Dec-2017 06:08:16 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:09:30 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:09:47 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:10:28 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:11:01 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:11:12 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 16
+[11-Dec-2017 06:12:43 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 11
+[11-Dec-2017 06:13:13 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 11
+[11-Dec-2017 06:13:23 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 12
+[11-Dec-2017 06:13:41 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 12
+[11-Dec-2017 06:30:43 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 18
+[11-Dec-2017 06:30:48 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 18
+[11-Dec-2017 07:54:34 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/easybuyhealth/public_html/cb/portal/view_summary.php:9) in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 12
+[11-Dec-2017 07:54:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/easybuyhealth/public_html/cb/portal/view_summary.php:9) in /home/easybuyhealth/public_html/cb/includes/define.php on line 13
+[11-Dec-2017 08:23:23 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 59
+[11-Dec-2017 08:23:24 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 59
+[11-Dec-2017 08:23:51 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 58
+[11-Dec-2017 08:23:52 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/easybuyhealth/public_html/cb/portal/view_summary.php on line 58
