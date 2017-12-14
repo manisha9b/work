@@ -1647,11 +1647,13 @@ class Database {
 		unset($this->result);
 
 
-		 $sql="SELECT b.name,b.logo,a.price_per_unit,tcase(d.package_nm) AS package_nm,d.sales_price_type,
+		 $sql="SELECT b.name,e.hsp_logo as logo,a.price_per_unit,tcase(d.package_nm) AS package_nm,d.sales_price_type,
 			c.package_unit,c.price_per_unit, c.total_price,c.cluster_contribution				FROM tbl_cluster_packages_hsp a
 				LEFT JOIN tbl_hsps b ON a.hsp_id=b.id
+				
 				LEFT JOIN tbl_cluster_packages c ON c.cluster_package_id=a.cluster_package_id
 				LEFT JOIN tbl_ebh_pc_packages d ON d.ebh_package_id=c.package_id
+				LEFT join tbl_hsp_business_details as e on b.id = e.hspid
 				WHERE c.cluster_package_id=".$cluster_package_id;
 
 		$this->select($sql);
@@ -3813,17 +3815,20 @@ public function getAppointmentDetailsBySrNo($sr_no)
 	function getAppointmentCount($clusterId){
 		$sql = "SELECT 
 a.cluster_id,
+cluster_emp.total_employees as onboarded_employee,
 cluster_pack.total_packages,
-cluster_emp.total_employees,
-cluster_emp.male_employee,
-cluster_emp.female_employee,
-cluster_report.total_report_available
+((LENGTH(cluster_pack.total_tests) - LENGTH(REPLACE(cluster_pack.total_tests, ',', '')))+1) as tests_taken_count,
+cluster_report.total_appointment,
+cluster_appt.appointment_confirmed as voucher_downloaded,
+cluster_report.total_report_available 
 from tbl_clusters as a
 left join 
 (
 	select 
-	x.cluster_id, count(x.cluster_package_id) as total_packages
+	x.cluster_id, count(x.cluster_package_id) as total_packages,
+	GROUP_CONCAT(distinct(y.lab_test_id)) as total_tests
 	from tbl_cluster_packages as x
+	left join tbl_ebh_pc_packages_tests as y on x.package_id = y.ebh_package_id
 	group by x.cluster_id 
 ) as cluster_pack on a.cluster_id = cluster_pack.cluster_id
 left join 
@@ -3839,17 +3844,23 @@ left join
 left join 
 (
 	SELECT
-	e.cluster_id,count(b.appointment_id) as total_report_available
+	e.cluster_id,
+	sum(if(b.is_report_uploaded=1,1,0)) as total_report_available,
+	count(b.appointment_id) as total_appointment
 	FROM tbl_appointments as b 
 	LEFT JOIN tbl_ebh_customer as c on b.ebh_customer_id = c.ebh_customer_id 
 	LEFT JOIN tbl_ebh_pc_packages as d on b.ebh_package_id = d.ebh_package_id
 	LEFT JOIN tbl_cluster_employee as e on c.ebh_customer_id = e.ebh_customer_id
 	LEFT JOIN tbl_clusters as f on e.cluster_id = f.cluster_id
-	where b.is_report_uploaded=1
 	GROUP BY e.cluster_id
 ) as cluster_report on a.cluster_id = cluster_report.cluster_id
-where a.cluster_id=$clusterId
-group by a.cluster_id";
+left join 
+(
+	SELECT 
+	a.cluster_id, sum(if(a.is_confirmed=1,1,0)) as appointment_confirmed
+	from tbl_cluster_employee_pack as a 
+	group by a.cluster_id
+) as cluster_appt on a.cluster_id = cluster_appt.cluster_id where a.cluster_id=$clusterId";
 unset($this->result);
 	$this->select($sql);
 	return $this->result;

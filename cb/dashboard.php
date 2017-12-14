@@ -789,7 +789,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							     <?php
 							   $n = 1;
 							   echo '<span class="female_ratio_per" style="display:block;float:left">';
-							   for($i=1;$i<=$male_per2;$i++){
+							   for($i=1;$i<=$female_per2;$i++){
 							   if(($i%10)==1){
 							       echo '<span style="display:block;float:left">';
 							      
@@ -848,7 +848,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							</span> -->
-							<div id="show_percent" style="display:none">100%</div>
+							<div id="show_percent" style="display:none"><?php echo $female_per2;?>%</div>
 							</a>
 						
 						</div>

@@ -10,7 +10,7 @@ else
 	$arr_ebh_pack	=	$database->getclusterEbhPackageDetail($clusterId);
 }
 $appt_count_arr	=	$database->getAppointmentCount($clusterId);
-$appt_count_arr[0]['onboard'] = 10;
+//$appt_count_arr[0]['onboarded_employee'] = 10;
 ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -50,7 +50,7 @@ $appt_count_arr[0]['onboard'] = 10;
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboarded_employee']?></span>
               <span class="info-box-number text-white">ONBOARDED <span style="font-size: 12px;">EMPLOYEES</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -63,7 +63,7 @@ $appt_count_arr[0]['onboard'] = 10;
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['total_appointment']?></span>
               <span class="info-box-number text-white">APPOINTMENTS <span style="font-size: 12px;">BOOKED</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -77,7 +77,7 @@ $appt_count_arr[0]['onboard'] = 10;
             <span class="info-box-icon icon3 text-white"><i class="fa fa-download"></i></span></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['voucher_downloaded']?></span>
               <span class="info-box-number text-white">eVOUCHERS <span style="font-size: 12px;">DOWNLOADED</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -91,7 +91,7 @@ $appt_count_arr[0]['onboard'] = 10;
             <span class="info-box-icon icon3"><img src="images/ecg_icon.png" width="35"></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboard']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['tests_taken_count']?></span>
               <span class="info-box-number text-white">TESTS <span style="font-size: 12px;">TAKEN</span></span>
             </div>
             <!-- /.info-box-content -->

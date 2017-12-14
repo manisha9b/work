@@ -249,7 +249,7 @@ $bg_color="cursor:pointer;";
                      <tr style="<?php echo $bg_color?>">
                           <td colspan="4" align="left" style="border:0;padding-top:0">
                               
-                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
+                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="viewPackage(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->
@@ -748,7 +748,7 @@ keeps one more focussed and <br> productiev at work</span>
 			$.ajax({
 				url: 'portal/view_summary.php',
 				type: 'post',
-				data: 'cpid='+cpid,
+				data: 'id='+cpid,
 				success: function(response) {
 					$('#package_summary').html(response);
 					$('#view_package_summary').modal('show');

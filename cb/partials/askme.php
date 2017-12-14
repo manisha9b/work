@@ -1,6 +1,6 @@
-<div class="navbar-custom-menu">
+<!-- <div class="navbar-custom-menu">
 			  <ul class="nav navbar-nav">
-				<!-- Messages: style can be found in dropdown.less-->
+				
 				<li>
 				  <a class="btn3 ask_Any" href="#">
 					<img src="dist/img/ask.png"> Ask me anything
@@ -14,9 +14,9 @@
 				  <ul class="dropdown-menu">
 					<li class="header">You have 6 messages</li>
 					<li>
-					  <!-- inner menu: contains the actual data -->
+					  
 					  <ul class="menu">
-						<li><!-- start message -->
+						<li>
 						  <a href="#">
 							<div class="pull-left">
 							  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -28,12 +28,12 @@
 							<p>Lorem Ipsum is simply dummy text</p>
 						  </a>
 						</li>
-						<!-- end message -->
+						
 					  </ul>
 					</li> 
 					<li class="footer"><a href="#">See All Messages</a></li>
 				  </ul>
 				</li>
 			  </ul>
-			</div>  
+			</div>  -->
 		 
