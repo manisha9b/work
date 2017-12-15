@@ -148,16 +148,17 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Sort By <span class="caret"></span>
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu"> 
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sort By</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Date &amp; Time</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Location</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Status</a></li>
-                  </ul>
+                  </ul> 
                 </li>   -->             
             </ul>
 			<div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
+                    <?php //echo "<pre>".print_R($arr_cluster_empl)."</pre>" ?>
                    <table class="table table-hover" <?php if(!empty($arr_cluster_empl)){ echo "id='reportsdatatables'";} ?>>
                    <thead>
                       <tr style="background: transparent;">
@@ -181,6 +182,7 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
 
 	if(!empty($row['report_name']))
 	{
+	    $reports_list_arr = '';
 		$employee_name = "".$row['salutation']." ".$row['first_name']." ".$row['last_name']."";
 		//$reports_list_arr = "<div class='media'>";
 		$reports_name_list_arr = explode(',', $row['report_name']);

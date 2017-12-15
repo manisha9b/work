@@ -595,7 +595,7 @@ a:focus {
  * Component: Sidebar Mini
  */
 @media (min-width: 768px) {
-	.user-panel{margin-top: 30px!important;}
+/* 	.user-panel{margin-top: 30px!important;} */
   .sidebar-mini.sidebar-collapse .content-wrapper,
   .sidebar-mini.sidebar-collapse .right-side,
   .sidebar-mini.sidebar-collapse .main-footer {

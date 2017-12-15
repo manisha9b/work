@@ -2059,7 +2059,7 @@ class Database {
 		x.appointment_id
 		) AS report ON b.appointment_id = report.appointment_id
 		WHERE a.cluster_id='".$cluster_id."' AND b.appt_status <> 'New'";
-
+//echo "</pre>";
 		$this->select($sql);
         return $this->result;
 	}

@@ -155,10 +155,10 @@ $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3
 //$charts = $chartdata['chart'];
 $goal_arr = $database->getClusterGoal($clusterId);
 //$database->getclusterEbhPackageList($cluster_id);
-//echo "<pre>";
-//print_R($arr_count);
-//print_R($goal_arr);
-//echo "</pre>";//die;
+/*echo "<pre>";
+print_R($arr_cluster);
+print_R($empty);
+echo "</pre>";//die;*/
 ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -182,7 +182,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		<div class="col-md-12">
 		  <h4><b>Quick Summary</b></h4><br>
 		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/package.php','_self')">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
@@ -193,7 +193,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			</div>		
 		</div>
         <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')">
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
@@ -205,7 +205,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/reports.php','_self')">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
 				<div class="info-box-content">
@@ -848,7 +848,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							</span> -->
-							<div id="show_percent" style="display:none"><?php echo $female_per2;?>%</div>
+							<div id="show_percent" style="display:none"><?php echo $female_per;?>%</div>
 							</a>
 						
 						</div>

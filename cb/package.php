@@ -287,7 +287,7 @@ $form_action =  "portal/invite.php";
 								<div id="fileupload">
 									<label class="filebutton"><i class="fa fa-upload"></i> Upload Employee Data <span>
 										<input type="file" id="fileupload" name="fileupload" required accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"></span>
-										<span class="help-block">Upload Only .xlsx</span>
+										<span class="help-block text-center">Upload Only .xlsx</span>
 									</label>
 								</div>
 							</div>

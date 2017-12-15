@@ -1,6 +1,7 @@
  <?php
  $row = mysql_fetch_assoc($result); 
-$profileArr = array('cluster_business_name','about','business_email_id','contact_mobile','contact_landline','logo','sms_mobile_no','communication_email','hr_full_name','hr_email_id','cluster_page_name','address','pincode','state','city','missed_calls_no');
+ //'about','sms_mobile_no','communication_email','cluster_page_name','missed_calls_no'
+$profileArr = array('cluster_business_name','business_email_id','contact_mobile','contact_landline','logo','hr_full_name','hr_email_id','address','pincode','state','city');
 $maximumPoints  = count($profileArr); 
 $point = 0; 
 foreach($profileArr as $pValue){
@@ -12,14 +13,13 @@ foreach($profileArr as $pValue){
 
 $percentage = round(($point/$maximumPoints)*100); 
 
- ?>
- <aside class="main-sidebar">
+ ?> <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="image" style="padding-top:25px;width: 70px;height: 100px;overflow: hidden;">
-          <img src="<?php echo EBH_WEBSITE_URL.$arr_cluster['logo']?>" class="img-circle" alt="User Image">
+        <div class="image" style="padding-top: 0px;overflow: hidden;border-radius:10px;">
+          <img src="<?php echo EBH_WEBSITE_URL.$arr_cluster['logo']?>" class="img-responsive" alt="User Image">
         </div>
         <div class="clearfix clear"></div>
         <div class="info">
@@ -28,10 +28,10 @@ $percentage = round(($point/$maximumPoints)*100);
         <div class="prof cluster_progress_bar">
           <div class="progress xs1 mb-0" style="height:3px;margin:0;">
             <!-- Change the css width attribute to simulate progress -->
-            <div class="progress-bar progress-bar-cgreen" style="width: 80%;height:3px;margin:0;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar progress-bar-cgreen" style="width: <?php echo $percentage."%";?>;height:3px;margin:0;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
 		  <div class="clearfix"></div>
-          <div class="progresscomplete mb-10" style="margin-top: 9px;white-space: normal;"><?php echo $percentage."%";?>  complete profile</div>
+          <div class="progresscomplete mb-10" style="margin-top: 9px;white-space: normal;"><?php echo $percentage."%";?> complete profile</div>
           <p style="color: #b7bbc2;">
             <?php echo $arr_cluster['address']?><br/>
            

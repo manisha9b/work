@@ -490,7 +490,7 @@ a:focus {
 }
 .user-panel > .image > img {
   width: 100%;
-  max-width: 60px;
+ /*  max-width: 60px; */
   height: auto;
 }
 .user-panel > .info {

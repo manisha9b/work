@@ -52,7 +52,7 @@ echo "</pre>";*/
 	echo ($package_arr[0]['package_nm'] != '') ? $package_arr[0]['package_nm']." " : "  ";
 	?>
 	</td></tr>
-<tr><td valign="top" style="padding-top:2px;padding-bottom:2px;""><b>Test Includes:</b></td>
+<tr ><td valign="top" style="padding-top:2px;padding-bottom:2px;""><b>Test Includes:</b></td>
 	<td><div class="row">
 	    <?php 
 	    $service_info_popover ='';
@@ -62,9 +62,9 @@ foreach($test_arr  as $key=>$val)
 			{
             //if($i==$n){
             //    $i=0;
-                $service_info_popover .= '	<div class="col-xs-6">';
+                $service_info_popover .= '	<div class="col-xs-6" style="line-height:25px;">';
            // }
-				$service_info_popover.= "<i class='fa fa-check text-success'></i> ".$val['test_name'];
+				$service_info_popover.= "<i class='fa fa-check-circle text-success fa-lg'></i> ".$val['test_name'];
 				if($k<count($test_arr))
 				{
 				//	$service_info_popover.="<hr style='margin-top:2px;margin-bottom:2px;'>";
@@ -77,7 +77,7 @@ foreach($test_arr  as $key=>$val)
 <p>&nbsp;</p>
 <table class="table table-bordered">
 		<thead>
-			<tr>
+			<tr class="bg-blue text-white">
 				
 				<th >Purchase Date</th>
 				<th >Fixed Purchase Price</th>
@@ -100,13 +100,13 @@ foreach($test_arr  as $key=>$val)
 $arr_hsp	=	$database->getEbhClusterPackageHSP($cluster_package_id); 
 ?>
 <div class="form-group no-bottom-margin">
-	<div class="col-xs-2"><b>Available Provider</b></div>
-	<div class="col-xs-10"><table  class="table table-condensed" style="width:80%" id="hsp_table">
+	
+	<div class="col-xs-12"><table  class="table table-condensed" style="width:60%" id="hsp_table">
 			  <thead>
 				<tr>
 		
 				  
-				  <th width="20%" class="text-center" >Provider</th>      
+				  <th width="20%" class="text-center" >Available Provider</th>      
 				  <th width="12%" class="text-center">Price/Unit(<i class="fa fa-inr"></i>) <span class="text-danger">*</span></th>
 				  
 				 </tr>
@@ -126,7 +126,7 @@ if(!empty($hsp_logo)){
 			?>
 	
 			
-				<td ><span class="help-block"><?php if(!empty($hsp_logo)){?><img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width:50px;text-align:center;margin-left:30%;"  alt="<?php echo $hsp_name;?>"> <?php } else {echo $hsp_name; }?></span></td>
+				<td ><span class="help-block text-center"><?php if(!empty($hsp_logo)){?><img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width:50px;text-align:center;"  alt="<?php echo $hsp_name;?>"> <?php } else {echo $hsp_name; }?></span></td>
 				<td align="center" style="<?php echo $valign ?>"><?php echo $price;?><span class="help-block"> </span></td>
 				
 				
