@@ -1,3 +1,18 @@
+ <?php
+ $row = mysql_fetch_assoc($result); 
+$profileArr = array('cluster_business_name','about','business_email_id','contact_mobile','contact_landline','logo','sms_mobile_no','communication_email','hr_full_name','hr_email_id','cluster_page_name','address','pincode','state','city','missed_calls_no');
+$maximumPoints  = count($profileArr); 
+$point = 0; 
+foreach($profileArr as $pValue){
+	if(isset($arr_cluster[$pValue]) && $arr_cluster[$pValue] != '') 
+	{$point++; }else{
+		$empty[] = $pValue;
+	}
+}
+
+$percentage = round(($point/$maximumPoints)*100); 
+
+ ?>
  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -16,7 +31,7 @@
             <div class="progress-bar progress-bar-cgreen" style="width: 80%;height:3px;margin:0;" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
 		  <div class="clearfix"></div>
-          <div class="progresscomplete mb-10" style="margin-top: 9px;white-space: normal;">80% complete profile</div>
+          <div class="progresscomplete mb-10" style="margin-top: 9px;white-space: normal;"><?php echo $percentage."%";?>  complete profile</div>
           <p style="color: #b7bbc2;">
             <?php echo $arr_cluster['address']?><br/>
            

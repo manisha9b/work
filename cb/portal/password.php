@@ -1,8 +1,8 @@
 <?php
 ob_start(); 
 session_start();
-include_once '../../../includes/define.php';
-include '../../../classes/Class_Database.php';
+include_once '../includes/define.php';
+include '../classes/Class_Database.php';
 
 global $database;
 $database=new Database();

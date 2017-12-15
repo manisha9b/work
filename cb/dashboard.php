@@ -1410,7 +1410,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
       barDatasetSpacing       : 1,
       //String - A legend template
       legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-	   multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+	   multiTooltipTemplate: "<%if (label){%> <%}%><%= value %>",
       //Boolean - whether to make the chart responsive
       responsive              : true,
       maintainAspectRatio     : true

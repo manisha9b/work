@@ -2,8 +2,18 @@
 include_once('partials/header2.php'); 
 unset($arr_ebh_pack);
   $health = '';
+  $all = '';
+  $healthy = '';
+  $unhealthy = '';
   if(isset($_GET['health']) && ($_GET['health']=='H' || $_GET['health']=='UH')){
 	  $health = $_GET['health'];
+	  if($_GET['health']=='H'){
+		  $healthy = 'active';
+	  }else{
+		  $unhealthy = 'active';
+	  }
+  }else{
+	  $all = 'active';
   }
 $arr_emp	=	$database->getClusterEmpDetails($clusterId,$health);
   //ini_set("display_errors", "1");
@@ -131,9 +141,12 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
 					<li><a href="#">Add Tabs</a></li>
 				  </ul>
 				</div>				
-			</li>
-                <li><a href="#tab_2-2" onclick="return hidesummary()" data-toggle="tab" aria-expanded="false">CURRENT EMPLOYEES</a></li>
-                <li><a href="#tab_3-2" onclick="return hidesummary()" data-toggle="tab">All</a></li> -->	
+			</li>-->
+               
+                <li class="<?php echo $all?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php" data-toggle="tab">All</a></li>
+				
+				 <li class="<?php echo $healthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=H" data-toggle="tab">HEALTHY CURRENT EMPLOYEES</a></li>
+				  <li class="<?php echo $unhealthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=UH" data-toggle="tab" aria-expanded="false">UNHEALTHY EMPLOYEES</a></li>
                 <li class="pull-right nohover1">
                   <!-- search form -->
                   <form action="#" method="get" class="sidebar-form1" style="display: inline-block;background: #FFFFFF;">
