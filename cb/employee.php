@@ -183,7 +183,8 @@ if(isset($_REQUEST['m']))
  }
 ?>
             <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding emp_detail">
+            <div class="box-body no-padding emp_detail">
+			<div class="table-responsive">
               <table class="table table-hover" <?php if(!empty($arr_emp)){ echo "id='reportsdatatables'";} ?> >
                 <thead>
 				<tr class="employee_table">
@@ -270,7 +271,8 @@ else
 	
 } ?>
                   </tbody>
-			  </table>	
+			  </table>
+				
 				<!-- <div class="box-header employee_pagination mt-20 pt-20 pb-20">
 					<div class="col-md-12 total_entry">
 					<tr>

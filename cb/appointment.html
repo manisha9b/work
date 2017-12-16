@@ -26,91 +26,10 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <style>
-	.on_board{    background-image: url(images/arr-new.jpg);
-    background-position:128% 97%;
-    background-repeat: no-repeat;}
-	
-	
-	.com_sent{background-image: url(images/arr-new1.jpg);
-    background-position:128% 97%;
-    background-repeat: no-repeat;}
-	.com_sent:before{content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 5px solid #df8335!important;
-    position: absolute;
-    bottom: -13%!important;
-    /* margin-top: -19px; */
-    margin-left:0px;
-    left: 100%;
-    z-index: 1;}
-	
-	.lin_clik{border-bottom:3px solid #a080c4!important}
-	.lin_clik:before{content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 5px solid #a080c4!important;
-    position: absolute;
-    bottom: -13%!important;
-    /* margin-top: -19px; */
-    margin-left:0px;
-    left: 100%;
-    z-index: 1;}
 	
 	
 	
-	.app_send{border-bottom:3px solid #5cbb5d!important}
-	.app_send:before{content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 5px solid #5cbb5d!important;
-    position: absolute;
-    bottom: -13%!important;
-    /* margin-top: -19px; */
-    margin-left:0px;
-    left: 100%;
-    z-index: 1;}
 	
-	
-	.test_complet{border-bottom:3px solid #ccc!important}
-	.test_complet:before{content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 5px solid #ccc!important;
-    position: absolute;
-    bottom: -13%!important;
-    /* margin-top: -19px; */
-    margin-left:0px;
-    left: 100%;
-    z-index: 1;}
-	
-	
-	.report_complete{border-bottom:3px solid #ccc!important}
-	.report_complete:before{content: " ";
-    display: block;
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 3px solid transparent;
-    border-left: 5px solid #ccc!important;
-    position: absolute;
-    bottom: -13%!important;
-    /* margin-top: -19px; */
-    margin-left:0px;
-    left: 100%;
-    z-index: 1;}
   
   </style>
 </head>
@@ -716,14 +635,33 @@
             <div class="modal-body">
                 <div class="col-md-12 test_complete box-body p0">
 					<div class="col-md-12 mt-20">
-					<div class="col-md-2 text-style on_board" style="width:14%;    margin-right: 10px;"><h4 style="font-size:12px">ONBOARDED</h4></div>
-					<div class="col-md-3 com_sent" style="width:17%;    margin-right: 10px;"><h4 style="font-size:12px">COMMUNICATION SENT</h4></div>
-					<div class="col-md-3 lin_clik" style="width:11%;    margin-right: 10px;"><h4 style="font-size:12px">LINK CLICKED</h4></div>
-					<div class="col-md-3 app_send" style="width:15%;    margin-right: 10px;"><h4 style="font-size:12px">APPOINTMENT SENT</h4></div>
-					<div class="col-md-2 test_complet" style="width:10%;    margin-right: 10px;"><h4 style="font-size:12px">TEST DONE</h4></div>
-					<div class="col-md-2 report_complete" style="width:14%;    margin-right: 10px;"><h4 style="font-size:12px">REPORT COMPLETE</h4></div>
+					<div class="col-md-2 text-style on_board p0" style="width:14%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">ONBOARDED</h4>
+						<span><img src="images/aqua2.jpg"></span>
+					</div>
+					<div class="col-md-3 com_sent p0" style="width:15%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">COMMUNICATION SENT</h4>
+						<span><img src="images/ora2.jpg"></span>
+					</div>
+					<div class="col-md-3 lin_clik p0" style="width:15%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">LINK CLICKED</h4>
+						<span><img src="images/purple2.jpg"></span>
+					</div>
+					<div class="col-md-3 app_send p0" style="width:15%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">APPOINTMENT SENT</h4>
+						<span><img src="images/green1.jpg"></span>
+					</div>
+					<div class="col-md-2 test_complet p0" style="width:14%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">TEST DONE</h4>
+						<span><img src="images/grey1.jpg"></span>
+					</div>
+					<div class="col-md-2 report_complete p0" style="width:14%;text-align: center;">
+						<h4 style="font-size:12px;margin-bottom: 0px;color:#999">REPORT COMPLETE</h4>
+						<span><img src="images/grey1.jpg"></span>
+					</div>
 					</div>
 					<br>
+					<div class="clearfix"></div>
                    <!-- <div class="nav-tabs-custom wizard-content">
                         <ul class="nav nav-tabs">
                             <li class="on_board"><a href="#emp_on_board" data-toggle="tab" aria-expanded="false" class="border_one">ONBOARDED</a>
@@ -761,9 +699,9 @@
                             </div>
                             
                         </div>
-                    </div>  -->
+                    </div> -->  
                     <div class="clearfix"></div>
-                    <!-- <div class="col-md-12 p0 employee_profile">
+                    <div class="col-md-12 p0 employee_profile mt-20">
                         <div class="col-md-8">
                             <div class="health_status"><span class="current_status">Current Health Status:</span></span><span class="profile_person"> Unknown</span><span class="profile_pic"><img src="images/unknown_icon.gif" style=""></span>
                             </div>
@@ -778,7 +716,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-4 p0">
+                        <div class="col-md-4 p0 mt-20">
                             <div class="time_limit">
                                 <div class="start_to_end"> <span class="number">6</span> <span class="number_of_days">							<span class="day">DAYS</span> <span class="">Start to finish</span> </span>
                                 </div>
@@ -788,7 +726,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>

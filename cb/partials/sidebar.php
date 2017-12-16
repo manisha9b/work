@@ -119,7 +119,7 @@ $percentage = round(($point/$maximumPoints)*100);
             <i class="fa fa-user"></i> <span>Company Profile</span>
           </a>
         </li>
-        <li>
+        <li class="hidden-xs">
           <a href="#">
             <i class="fa fa-info-circle"></i> <span>About EBH</span>
           </a>

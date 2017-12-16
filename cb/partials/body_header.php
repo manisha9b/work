@@ -17,8 +17,8 @@
         <span class="icon-bar"></span>
       </a>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form1" style="display: inline-block;">
-        <div class=" inner-addon left-addon">
+      <form action="#" method="get" class="sidebar-form1 hidden-xs" style="display: inline-block;">
+        <div class=" inner-addon left-addon ">
           <i class="fa fa-search"></i>
           <input type="text" name="q" class="form-control" placeholder="Type To Search">
         </div>
@@ -30,10 +30,10 @@
           <a href="#"> <i class="fa fa-user-o" aria-hidden="true"></i> <span>Hi  <?php echo $_SESSION['user_display_name'];?></span></a>
           </li>
 		  
-          <li>
+          <li class="hidden-xs">
             <a href="#">About EBH</a>
           </li>
-          <li>
+          <li class="hidden-xs">
             <a href="#">How it Works</a>
           </li>
           <li>

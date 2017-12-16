@@ -47,7 +47,8 @@ else
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">	
 	<?php
 	if($url_page == 'profile'){ ?>
-		 <link rel="stylesheet" href="dist/css/select2.css">
+		 <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<?php 
 	include_once('profile_css.php');
 	$page_id='myprofile'; 

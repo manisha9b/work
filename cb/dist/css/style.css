@@ -1178,6 +1178,13 @@ a:focus {
     margin-top: -8px;
     line-height: 10px;
   }
+  
+  /*company-profile-page*/
+	.company_profile_nav .com_pro{width:100%!important}
+	.company_profile_nav ul li{width:100%;}
+	.mob-p15{padding-left:15px!important;padding-right:15px!important;}
+	.create_com_info .title{text-align:center}
+	
 }
 /* Add fade animation to dropdown menus by appending
  the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
@@ -5159,6 +5166,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
   #addfamily .modal-dialog {width: 450px;margin: 9% auto 0;}
 }
 @media screen and (max-width: 767px){
+	.slider, .slider > div{height:0px;!important}
   .navbar.navbar-static-top{padding: 0 2%;}
   .nav-space{margin-right: 0px;}
   .col-dm-5{width: 100%;}
@@ -5235,6 +5243,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 @media screen and (max-width: 320px){
   .resright{margin-top: 15px; float: left !important;}
   #disp-table .col-md-11{padding:0;}
+  .emp_com_info_form{height:auto!important;}
 }
 /*INPUTS*/
 .input__1, .textarea__1,.select__1{
@@ -5424,6 +5433,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .emp_action_btn .dropdown-menu>li>a{padding:8px 20px;}
 
 .employee_pagination .pagination > li > a:hover{background-color:#31b3c0;color:#fff;}
+.box .emp_detail{padding-top:63px!important;}
 .emp_action_btn .btn-success,.emp_action_btn .btn-success:hover,.emp_action_btn .btn-success:focus{background-color:#43ce5b;border:1px solid #43ce5b;text-transform: uppercase;font-weight: bold;}
 
 .emp_detail{overflow:hidden;}
@@ -5482,6 +5492,144 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 
 
+/*My Profile Page*/ 
+.com_pro_search_bar i{float: right;
+    right:-33px;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    border-radius:50%;
+    padding: 10px;box-shadow:0 7px 10px -6px #6e6c6c;color:#ccc;
+	top:-5px;
+	}
+	
+	
+.com_pro_search_bar input{position: relative!important;z-index:0!important;background: none;
+    border: none!important;border-bottom: 1px solid #ccc!important;
+}
+
+.company_profile_nav ul .user_icon{width: 50px;text-align:center;margin-left: 45px!important;}
+.company_profile_nav ul .user_icon,#appointments ul .setting_icon{margin-top: 1%;font-size: 18px;color: #898886;}
+
+
+.company_profile_nav .nav-tabs{background:none!important;}
+
+.com_pro_search_bar input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:#626461;
+}
+.com_pro_search_bar input::-moz-placeholder { /* Firefox 19+ */
+  color:#626461;
+}
+.com_pro_search_bar input:-ms-input-placeholder { /* IE 10+ */
+  color:#626461;
+}
+.com_pro_search_bar input:-moz-placeholder { /* Firefox 18- */
+  color:#626461;
+}
+.grey_btn{border: 1px solid #ccc; color: #a7a2a2;width: 115px; border-radius: 10px;}
+.green_btn{width: 115px;border-radius: 9px;background: #4bcf59;}
+.company_profile_nav{box-shadow:none;}
+.company_profile_nav .nav-tabs{border-bottom: none;}
+.emp_com_info_form{background:#fff;box-shadow: none;height:575px;}
+.create_com_info h4{color:#6d6e69;}
+.create_com_info .input__1_placeholder {color:#7c7d77;}
+.create_com_info .input__1, .create_com_info .textarea__1, .create_com_info .select__1{border-bottom:1px solid #d3d1d1;}
+.create_com_info .input__1_blurred, .textarea__1_blurred{font-size: 16px;}
+.create_com_info .input__1, .create_com_info .textarea__1, .create_com_info .select__1{font-size: 16px;}
+.emp_profile_area .user-pic{background-color: #36c74e;position: relative;height: 80px;}
+.emp_profile_area .profile_pic{text-align: center; margin: 0 auto;width: 100px;padding-top:25px;}
+.emp_profile_area .profile_pic img{width: 100%;}
+.emp_profile_area .user-details h3{font-weight: bold;font-size:18px;}
+.emp_profile .post{}
+.emp_profile .name{margin: 0px; font-weight: bold;}
+.next_user_profile{box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);}
+.next_user-detail {padding:12px 10px!important;margin-top: 13px;box-shadow:0 4px 1px rgba(0, 0, 0, 0.1)!important;}
+.pb-60{padding-bottom:60px;}
+.mb-15{margin-bottom: 15px;}
+.emp_profile_area .user-details{background: #fff;}
+.emp_bill_detail .emp_info_data td{padding:15px!important;}
+.emp_profile_nav ul li{width: 50px;text-align: center; font-size: 18px!important;color: #898886;padding: 10px;}
+
+.billing_opt{background: #28a8b5;border-radius:5px;width: 92%; margin: 0 auto;overflow: hidden; height:75px;box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);text-align: center;padding-top: 25px;color: #fff;position: absolute;z-index: 1;left:4%;margin-top: -40px;}
+.billing_opt .btn-primary{margin-top: -5px;/* padding-top: 0px; */ background: #32cedb; border: none;}
+.package_count_area{background-color:#3e4150;border-radius: 7px;height: 75px;padding: 10px;width: 80%; position: absolute; z-index: 1;margin: 0px 30px;}
+.package_count_area span{display: block; color: #fff;text-align:center;}
+.package_detail_btn .btn{font-size: 10px; background-color: #464e50;border-radius: 10px; color: #fff;padding: 5px;}
+.package_detail_btn .view_detail{background-color:#929697!important;}
+.fs27{font-size:27px;}
+.fs13{font-size:13px!important;}
+.mt-40{margin-top:40px;}
+.mt30{margin-top:30px;}
+.text-bold{font-weight:bold;}
+.email_id_clr{color: #42bbc5;text-decoration: underline;font-size: 17px;}
+	a:hover, a:active, a:focus{color: #098994;}
+.active_status{color: #8b8686;font-size: 15px;margin-top: 5px;}
+.my_pro_detail .pro_pics{margin-right: 0px;text-align: center;}
+.password h3{color: #8b8d8c;font-size: 18px;}
+.password .change_pass,.password .cur_pass{padding-right: 15px;padding-left: 15px;}
+
+.password .change_pass h3{margin-top: 11px;color: #3db6c1;}
+.password .change_pass h3 a{color: #3db6c1;}
+#appointments .setting_icon .fa{color: #3db6c1;font-size: 20px;}
+.invite_member ul{left: -130px;box-shadow:1px 1px 11px 0px rgba(0, 0, 0, 0.5);}
+.invite_member ul li{width:100%;padding: 10px;}
+.invite_member ul li:hover{width:100%;background-color:#f5f5f6;}
+.invite_member ul li a:hover{background-color:#f5f5f6;}
+.invite_member .add_member{color:#898886;}
+.fs13{font-size:13px;}
+.fs12{font-size:12px!important;}
+.fs14{font-size:14px!important}
+.fs16{font-size:16px;}
+.cancel_btn{border:1px solid #ccc;color: #a7a2a2;border-radius:3px!important;color: #a7a2a2!important;width:35%;}
+.save_btn{width: 35%;
+background: #4bcf59;
+border: 1px solid #4bcf59;
+color: #fff !important;
+border-radius: ;
+margin-right: 10px;}
+.save_btn:hover{color:#fff!important;}
+.cancel_btn:hover{color:#807d7d!important;border:1px solid #807d7d;}
+.mb-25{margin-bottom:25px;}
+.login{width: 100%;text-align: center;}
+.login i{width: 22%;font-size: 20px;}
+.company_profile_nav .nav-tabs>li.active{border-bottom:3px solid #43ce5a;}
+.company_profile_nav .nav-tabs li a:hover{color:#fff!important;}
+.invite_member .fa:hover,.invite_member .fa:focus,.invite_member .fa:visited ,.invite_member .fa:active{color:#3db6c1}
+.black a,a:hover{color:#000!important;}
+.green{color:#62bd63!important;}
+
+.res_password .facebook_btn{color:#fff;}
+.facebook_btn{
+	background: #3a5999;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    border-color: #3a5999;border-radius:7px!important;width:55%;font-size: 13px;}
+
+	.res_password .gmail_btn{color:#fff;}
+	
+.gmail_btn{
+	padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    border-color: #3a5999;
+	background:#d34836;
+	border-radius:7px!important;
+	width:55%;    font-size: 13px;
+	}
+	
+.facebook_btn i{padding-right:15px;}
+	
+.res_password{
+	
+	background: url(../images/checkout_option.png) no-repeat center center;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.res_pass_field input{height: 45px;}
+.res_pass_field	.form-group{width: 75%;margin-top: 10px;margin-bottom: 0px;}
+.res_pass_field .app_form_button{height: 35px!important;width:100%;}
 
 .test_complete{/* box-shadow: 0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23) *//* ;top:57%;position: absolute; */
     width: 100%; background: #ffff;  /* margin-left: 0px; */  margin: -8px;z-index:1;/* padding-left: 100px;padding-right: 75px; */}
@@ -5988,6 +6136,8 @@ label:hover:before {
 .tag_options .search-query:focus + button {
         z-index: 3;   
     }
+	
+.package_box{padding-top:100px !important;}
 
 
 @media screen and (max-width:1366px){
@@ -6335,10 +6485,69 @@ label:hover:before {
 .test_complete .nav-tabs-custom > .nav-tabs > li.on_board a::after{margin-top: 12px!important;margin-left:6px!important;}
 .current_status{font-size: 16px!important;}
 .profile_person{font-size: 16px!important;}
-.profile_pic img{width: 20px!important;}
+
 
 .company_summary .info-box-content{padding:0px;}
 
+.mob-mb-10{margin-bottom:10px;}
+.mob-p0{padding-right:0px;padding-left:0px;}
+.fs13{font-size:13px;}
+.fs12{font-size:12px!important;}
+.grey{color:#8d8c8c;}
+.black a,a:hover{color:#000!important;}
+.green{color:#62bd63;}
+.rescenter .green_btn{width:50%;border-radius:3px!important;color:#fff!important;}
+.rescenter .grey_btn{width: 50%;border:1px solid #ccc;color: #a7a2a2;border-radius:3px!important;color: #a7a2a2!important}
+.cancel_btn{border:1px solid #ccc;color: #a7a2a2;border-radius:3px!important;color: #a7a2a2!important;width:35%;}
+.save_btn{width: 35%;
+background: #4bcf59;
+border: 1px solid #4bcf59;
+color: #fff !important;
+border-radius: ;
+margin-right: 10px;}
+.save_btn:hover{color:#fff!important;}
+.cancel_btn:hover{color:#807d7d!important;border:1px solid #807d7d;}
+.email_id_clr{font-size: 14px;}
+.emp_name h3{font-size:20px;}
+.cur_pass h3{font-size:14px!important;}
+.change_pass h3{font-size:15px!important;}
+
+.res_password .facebook_btn{color:#fff;}
+.facebook_btn{
+	background: #3a5999;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    border-color: #3a5999;border-radius:7px!important;width:55%;font-size: 13px;}
+
+	.res_password .gmail_btn{color:#fff;}
+	
+.gmail_btn{
+	padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    border-color: #3a5999;
+	background:#d34836;
+	border-radius:7px!important;
+	width:55%;    font-size: 13px;
+	}
+	
+.facebook_btn i{padding-right:15px;}
+	
+.res_password{
+	
+	background: url(../images/checkout_option.png) no-repeat center center;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.res_pass_field input{height: 45px;}
+.res_pass_field	.form-group{float: right; width: 75%;margin: 0 auto; margin-top: 10px;}
+.res_pass_field .app_form_button{height: 35px!important;width:100%;}
+
+.package_box{padding-top: 79px !important;}
+
+.box .emp_detail{padding-top:114px!important}
 }
 
 @media screen and (max-width:1280px){
@@ -6356,7 +6565,7 @@ label:hover:before {
 
 @media screen and (max-width: 767px){
 .company_summary .summary_opt{width:100%!important;}
-
+.emp_com_info_form{height:auto!important;}
 
 /*appointment-page*/
 
@@ -6399,6 +6608,18 @@ label:hover:before {
 	.test_complete .nav-tabs-custom > .nav-tabs > li.on_board{width:100%;}
 	
 	.test_complete .nav-tabs-custom > .nav-tabs > li.com_sent{width:100%;}
+	
+	/*profile page*/ 
+	
+	#appointments ul .setting_icon{width: 100%!important;text-align: center!important;}
+	#appointments ul .user_icon{text-align: center;width: 100%;}
+	
+	/*profile page*/
+	.billing_opt{height:auto}
+	.cancel_btn{width:auto}
+	.package_box{padding-top:50px!important;}
+	.res_pass_field	.form-group{float:none!important}
+	
 }
 
 

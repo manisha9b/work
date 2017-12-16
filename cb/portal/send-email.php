@@ -4,7 +4,7 @@ $vcode 			= sha1($cluster_package_id."~".$emp_id."~".$cluster_id);
 $arr_emp_mail	=	$database->getClusterEmp($cluster_id,$emp_id);
 $first_name = $arr_emp_mail[0]['first_name'];
 
-$verification_link = "<a href='".WEBSITE_URL."verify.php?v=".$vcode."'>Download eVoucher</a>";
+$verification_link = "<a href='".WEBSITE_URL_INVITE."verify.php?v=".$vcode."&r=d8b0oe890'>Download eVoucher</a>";
 
 $email_header="<html><head></head><body>";
 
