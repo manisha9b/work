@@ -187,7 +187,7 @@ echo "</pre>";//die;*/
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
 				<span class="info-box-text"><?php echo $arr_count['total_packages']?> Health Package(s)</span>
-				<span class="info-box-number">Purchase</span>
+				<span class="info-box-number">Purchased</span>
 			</div>
 			<!-- /.info-box-content -->
 			</div>		
@@ -197,8 +197,8 @@ echo "</pre>";//die;*/
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
-				  <span class="info-box-text"><?php echo $arr_count['total_employees']?> Employees</span>
-				  <span class="info-box-number">Onboarded</span>
+				  <span class="info-box-text"><?php echo $arr_count['total_employees']?> Employee(s)</span>
+				  <span class="info-box-number">Added</span>
 				</div>
             <!-- /.info-box-content -->
           </div>
@@ -209,8 +209,8 @@ echo "</pre>";//die;*/
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-text"><?php echo $arr_count['total_report_available']?> Reports</span>
-					<span class="info-box-number">Health Index</span>
+					<span class="info-box-text"><?php echo $arr_count['total_report_available']?> Report(s)</span>
+					<span class="info-box-number">Uploaded</span>
 				</div>
             <!-- /.info-box-content -->
 			</div>
@@ -271,7 +271,7 @@ echo "</pre>";//die;*/
                  <table class="table table-bordered">
 				 <tr class="bg-blue text-white">
                  
-                  <th>Reading</th>
+                  <th>Readings</th>
                   <th>Male</th>
                   <th>Female</th>
                 </tr>
@@ -305,7 +305,7 @@ echo "</pre>";//die;*/
                 
                 
               </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bp_per?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bp_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> has <span class="text-danger">Low Blood Pressure Levels</span></h5>
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bp_per?>%</b></span> of company has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bp_count?>%</span> of company has <span class="text-danger">Low Blood Pressure Levels</span></h5>
                 </div>
                 </div>
             </div>
@@ -352,7 +352,7 @@ echo "</pre>";//die;*/
                  <table class="table table-bordered">
 				 <tr class="bg-blue text-white">
                  
-                  <th>Reading</th>
+                  <th>Readings</th>
                   <th>Male</th>
                   <th>Female</th>
                 </tr>
@@ -386,7 +386,7 @@ echo "</pre>";//die;*/
                 
                 
               </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bmi_per?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> are  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bmi_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> are <span class="text-danger">Underweight</span></h5>
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bmi_per?>%</b></span> of company is  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bmi_count?>%</span> of company is <span class="text-danger">Underweight</span></h5>
            
                 </div>
                 </div>
@@ -437,7 +437,7 @@ echo "</pre>";//die;*/
                  <table class="table table-bordered">
 				 <tr class="bg-blue text-white">
                  
-                  <th>Reading</th>
+                  <th>Readings</th>
                   <th>Male</th>
                   <th>Female</th>
                 </tr>
@@ -471,7 +471,7 @@ echo "</pre>";//die;*/
                 
                 
               </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $pre_diabetic_count?>%</b></span> of <?php echo  $arr_cluster['cluster_business_name']?> are  <span class="text-danger">Prediabetic</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $diabetic_count?>%</span> of <?php echo $arr_cluster['cluster_business_name']?> are <span class="text-danger">Diabetic</span></h5>
+           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $pre_diabetic_count?>%</b></span> of company is  <span class="text-danger">Prediabetic</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $diabetic_count?>%</span> of company is <span class="text-danger">Diabetic</span></h5>
                 </div>
                 </div>
             </div>
@@ -493,7 +493,7 @@ echo "</pre>";//die;*/
             </div>
             <div class="box-body">
                 <div class="row">
-                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Seems you have not subscribed for Blood Sugar test for your calleages! Otherwise you could have access the Sugar Level of your organization as well"</center><br/><br/><br/>
+                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Sugar Testing. To Add a Blood Sugar Test/Package Click "Add"</center><br/><br/><br/>
                     </div></div></div>
                     </div>
            <?php }?>

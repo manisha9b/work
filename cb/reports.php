@@ -3,6 +3,9 @@ unset($arr_ebh_pack);
 $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
 ?>
+<style>
+
+</style>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -161,16 +164,16 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
                     <?php //echo "<pre>".print_R($arr_cluster_empl)."</pre>" ?>
                    <table class="table table-hover" <?php if(!empty($arr_cluster_empl)){ echo "id='reportsdatatables'";} ?>>
                    <thead>
-                      <tr style="background: transparent;">
+                      <tr style="background: transparent;" >
 					  <th width="5%"></th>
-                        <th style="text-align:left!important;">
+                        <th style="text-align:left!important;padding-bottom:20px!important">
                          Employee
                         </th>
 						
-                       <th>Date of visit</th>
-<th style="text-align:left!important;padding-left:50px;">Package</th>
-<th>Health Report</th>
-<th>Vital Information</th>
+                       <th style="padding-bottom:20px!important">Date of visit</th>
+<th style="text-align:left!important;padding-left:50px;padding-bottom:20px!important">Package</th>
+<th style="padding-bottom:20px!important">Health Report</th>
+<th style="padding-bottom:20px!important">Vital Information</th>
                       </tr> </thead> <tbody>
 					    <?php
 					//  echo ' <tr><td>';

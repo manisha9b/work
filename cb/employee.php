@@ -26,7 +26,12 @@ $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3
 //print_R($arr_emp);//die;
 //echo "</pre>";
 ?>
-
+<style>
+    .info{
+        text-align:left!important;
+    }
+    
+</style>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -179,14 +184,14 @@ if(isset($_REQUEST['m']))
 ?>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding emp_detail">
-              <table class="table table-hover" <?php if(!empty($arr_emp)){ echo "id='reportsdatatables'";} ?>>
+              <table class="table table-hover" <?php if(!empty($arr_emp)){ echo "id='reportsdatatables'";} ?> >
                 <thead>
 				<tr class="employee_table">
 				 <th> </th>
-                  <th style="width:20%;text-align:center;">NAME</th>
-                  <th style="width:10%;text-align:center;">GENDER/AGE</th>
-                  <th style="width:20%;text-align:center;">MOBILE</th>
-                  <th style="width:25%;text-align:center;">EMAIL</th>
+                  <th style="width:20%;">Name</th>
+                  <th style="width:15%;">Gender, Age</th>
+                  <th style="width:15%;">Mobile</th>
+                  <th style="width:25%;">Email</th>
                   <!--<th style="width:45%;">CITY</th>-->
 				  <!--<th style="width:10%;text-align:center;">BLOOD GROUP</th>-->
 				  <th style="width:15%;text-align:center;"> </th>
@@ -214,7 +219,7 @@ if(!empty($arr_emp))
 		$mobile_no	= (!empty($mobile)) ? $mobile_no_code." ".$mobile : "";
 		$age = '';
 		if((!empty($row['dob']))){
-			$age = ' ,'.$database->ageCalculator($row['dob']). ' Yrs';
+			$age = ' ,'.$database->ageCalculator($row['dob']). 'Yrs';
 		}
 		$row['age'] = $age;
 		$row['contact_no'] = $mobile_no;
@@ -230,8 +235,8 @@ if(!empty($arr_emp))
 		?>
                 <tr class="emp_info_data">
                   <td class="table_circle emp_pic" style="padding-left:2px;padding-right:2px;"><img src="<?php echo $photo?>"  class="img-circle"></td>
-                  <td class="info" style="text-align:left;"><?php echo $row['emp_name']?></td>
-                  <td class="info"><?php echo $row['gender'].$age?></td>
+                  <td class="info"><?php echo $row['emp_name']?></td>
+                  <td class="info" style="padding-left:10px;"><?php echo $row['gender'].$age?></td>
                   <td class="info"><?php echo $mobile_no?></td>
 				  <td class="info"><?php echo $row['professional_email_id']?></td>
 				  <!--<td class="info"><?php echo $row['city_name']?></td>

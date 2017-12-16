@@ -96,7 +96,7 @@ if(isset($_REQUEST['m']))
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
 				<div id="div-list">
-                  <table id="appttab" class="package_list table table-appointment2 responsive-table">
+                  <table id="appttab" class="package_list table table-appointment2 responsive-table" >
                     <tbody>
                       <tr style="background: transparent;">
                         <th>

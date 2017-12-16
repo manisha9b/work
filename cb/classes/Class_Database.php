@@ -3817,10 +3817,10 @@ public function getAppointmentDetailsBySrNo($sr_no)
 a.cluster_id,
 cluster_emp.total_employees as onboarded_employee,
 cluster_pack.total_packages,
-((LENGTH(cluster_pack.total_tests) - LENGTH(REPLACE(cluster_pack.total_tests, ',', '')))+1) as tests_taken_count,
-cluster_report.total_appointment,
-cluster_appt.appointment_confirmed as voucher_downloaded,
-cluster_report.total_report_available 
+LPAD(((LENGTH(cluster_pack.total_tests) - LENGTH(REPLACE(cluster_pack.total_tests, ',', '')))+1),2,0) as tests_taken_count,
+LPAD(cluster_report.total_appointment,2,0) as total_appointment,
+LPAD(cluster_appt.appointment_confirmed,2,0) as voucher_downloaded,
+LPAD(cluster_report.total_report_available ,2,0) as total_report_available
 from tbl_clusters as a
 left join 
 (

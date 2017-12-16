@@ -6397,6 +6397,8 @@ label:hover:before {
 	.content{padding-right: 0px!important;padding-left:0px!important;}
 	
 	.test_complete .nav-tabs-custom > .nav-tabs > li.on_board{width:100%;}
+	
+	.test_complete .nav-tabs-custom > .nav-tabs > li.com_sent{width:100%;}
 }
 
 

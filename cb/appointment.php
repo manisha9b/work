@@ -12,13 +12,18 @@ else
 $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 //$appt_count_arr[0]['onboarded_employee'] = 10;
 ?>
+<style>
+    .table_area2{
+        padding-bottom:0!important;
+    }
+</style>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
      <section class="content-header">
 		<div class="col-md-12">
       <h3 class="pull-left">
-        <b>My Company's Appointments</b>
+        <b>Appointments</b>
       </h3>
       <div class="pull-right resright">
 	  <?php include_once('partials/askme.php')       ;?>
@@ -131,20 +136,20 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 			<div id="appointments" class="nav-tabs-custom mb-65">
 			<div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
-                  <table id="appttab" class="table table-appointment2 responsive-table">
+                  <table id="appttab" class="table table-appointment responsive-table" >
                     <tbody>
                       <tr style="background: transparent;">
                         <th>
-                          PURCHASED ON
+                          Purchased On
                         </th>
                         <th>
-                          PACKAGE NAME
+                          Pacage Name
                         </th>
                         <th>
-                          HSP
+                          Health Service PRovider
                         </th>
                         <th class="text-center">
-                          ANALYTICS
+                          Analytics
                         </th>
                       </tr>
 					    <?php
@@ -225,13 +230,14 @@ $bg_color="cursor:pointer;";
 			$hsp_name				=	$arr_hsp[0]['hsp_name'];
 			$hsp_address			=	$arr_hsp[0]['hsp_address'];
 			 ?>
-                       <tr style="<?php echo $bg_color?>">
-                        <td width="150" class="table_area" style="padding-bottom:0;">
+                       <tr >
+                        <td width="170" class="table_area" style="padding-bottom:0;">
                           <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
                           
                           <div class="pt-10">
 							<div class="num_package">
 								<!-- <a href="#"><span>40</span>PACKAGE PURCHASED</a> -->
+								  <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> VIEW APPOINTMETS</a>
 							</div>
 						  </div>
                         </td>
@@ -252,17 +258,7 @@ $bg_color="cursor:pointer;";
                   </div>
                         </td>
                       </tr>
-					  <tr style="<?php echo $bg_color?>">
-                          <td colspan="4" align="center" style="border:0;padding-top:0">
-                                <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> VIEW APPOINTMETS</a>
-                           <!-- <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="showPackageSummary(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a> -->
-                           <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
-                            <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
-                            <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->
-                           
-                        
-                          </td>
-                      </tr>
+					
 <?php  } } ?>
 				
                      </tbody>
