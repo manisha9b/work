@@ -13,11 +13,15 @@ if(!isset($_SESSION['ref_id']) || !isset($_SESSION['cluster_type']) || !isset($_
 }
 else
 {
+	$url_filename = basename($_SERVER['REQUEST_URI'], '?'.$_SERVER['QUERY_STRING']);
+	$url_page = explode('.',$url_filename);
+	$url_page = $url_page[0];
 	$user_id						=	$_SESSION['ref_id'];
 	$user_group_id					=	$_SESSION['user_group_id'];	
 	$clusterId						=	$_SESSION['cluster_id'];
 	$arr_cluster	=	$database->getClusters($clusterId);	
 	$arr_cluster	=	$arr_cluster[0];	
+	$page_id= 'home';
 }
  ?>
 <!DOCTYPE html>
@@ -41,6 +45,15 @@ else
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="dist/css/animate.css">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">	
+	<?php
+	if($url_page == 'profile'){ ?>
+		  <link rel="stylesheet" href="dist/css/select2.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<?php 
+	include_once('profile_css.php');
+	$page_id='myprofile'; 
+	}
+	?>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -48,7 +61,7 @@ else
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body id="home" class="hold-transition skin-blue sidebar-mini">
+<body id="<?php echo $page_id?>" class="hold-transition skin-blue sidebar-mini">
 <?php 
 include_once('body_header.php');
 include_once('sidebar.php');
