@@ -66,7 +66,7 @@ include_once('partials/askme.php');
 
             <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo $arr_emp_count['total']?></span>
-              <span class="info-box-number text-white">TOTAL EMPLOYEES</span>
+              <span class="info-box-number text-white">TOTAL EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -79,7 +79,7 @@ include_once('partials/askme.php');
 
             <div class="info-box-content bg_dark_blue1">
               <span class="info-box-text text2 clr_effect1 text-white"><?php echo $arr_emp_count['healthy']?></span>
-              <span class="info-box-number text-white">HEALTHY EMPLOYEES</span>
+              <span class="info-box-number text-white">HEALTHY EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -92,7 +92,7 @@ include_once('partials/askme.php');
 
             <div class="info-box-content">
               <span class="info-box-text text2 text-white clr_effect1"><?php echo $arr_emp_count['unhealthy']?></span>
-              <span class="info-box-number text-white">UNHEALTHY EMPLOYEE</span>
+              <span class="info-box-number text-white">UNHEALTHY EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -145,8 +145,8 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
                
                 <li class="<?php echo $all?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php" data-toggle="tab">All</a></li>
 				
-				 <li class="<?php echo $healthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=H" data-toggle="tab">HEALTHY CURRENT EMPLOYEES</a></li>
-				  <li class="<?php echo $unhealthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=UH" data-toggle="tab" aria-expanded="false">UNHEALTHY EMPLOYEES</a></li>
+				 <li class="<?php echo $healthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=H" data-toggle="tab">Healthy Employee(s)</a></li>
+				  <li class="<?php echo $unhealthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=UH" data-toggle="tab" aria-expanded="false">Unhealthy Employee(s)</a></li>
                 <li class="pull-right nohover1">
                   <!-- search form -->
                   <form action="#" method="get" class="sidebar-form1" style="display: inline-block;background: #FFFFFF;">
@@ -214,7 +214,7 @@ if(!empty($arr_emp))
 		$mobile_no	= (!empty($mobile)) ? $mobile_no_code." ".$mobile : "";
 		$age = '';
 		if((!empty($row['dob']))){
-			$age = ' ,'.$database->ageCalculator($row['dob']). 'Yrs';
+			$age = ' ,'.$database->ageCalculator($row['dob']). ' Yrs';
 		}
 		$row['age'] = $age;
 		$row['contact_no'] = $mobile_no;
@@ -230,7 +230,7 @@ if(!empty($arr_emp))
 		?>
                 <tr class="emp_info_data">
                   <td class="table_circle emp_pic" style="padding-left:2px;padding-right:2px;"><img src="<?php echo $photo?>"  class="img-circle"></td>
-                  <td class="info"><?php echo $row['emp_name']?></td>
+                  <td class="info" style="text-align:left;"><?php echo $row['emp_name']?></td>
                   <td class="info"><?php echo $row['gender'].$age?></td>
                   <td class="info"><?php echo $mobile_no?></td>
 				  <td class="info"><?php echo $row['professional_email_id']?></td>

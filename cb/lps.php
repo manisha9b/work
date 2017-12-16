@@ -74,19 +74,19 @@ $visited_per		= ($visited*100)/$appt_confirmed;
 		<div class="row" style="padding-top:5px;">
 		<center>
 			<div class="col-md-4">
-				<span class="help-block"> <?php echo ($total_invited>0)?$total_invited." / ".$package_unit." Employees Invited":"No Invitation sent";?> </span>
+				<span class="help-block"> <?php echo ($total_invited>0)?$total_invited." / ".$package_unit." Employee(s) Invited":"No Invitation sent";?> </span>
 				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $package_unit;?>" style="width: <?php echo $invited_per;?>%;"></div>
 			   </div>
 			</div>
 			<div class="col-md-4">
-				<span class="help-block"> <?php echo ($appt_confirmed>0)?$appt_confirmed." / ".$total_invited." Booked Appointments":"No Bookings";?> </span>
+				<span class="help-block"> <?php echo ($appt_confirmed>0)?$appt_confirmed." / ".$total_invited." Appointment(s) Booked":"No Bookings";?> </span>
 				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $total_invited;?>" style="width: <?php echo $confirmed_per;?>%;"></div>
 			   </div>
 			</div>
 			<div class="col-md-4">
-				<span class="help-block"> <?php echo ($visited>0)?$visited." / ".$appt_confirmed." Utilized Package":"No Utilization";?> </span>
+				<span class="help-block"> <?php echo ($visited>0)?$visited." / ".$appt_confirmed." Completed Appointment(s)  ":"No Utilization";?> </span>
 				<div class="progress" style="height:10px; margin-left:10%;width:80%;margin-bottom:8px;">
 				 <div class="progress-bar three-sec-ease-in-out progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="<?php echo $appt_confirmed;?>" style="width: <?php echo $visited_per;?>%;"></div>
 			   </div>
@@ -134,9 +134,13 @@ if(!empty($po_char_arr))
 if($po_char_arr[0]['total_invites'] != 0)
 {	
 	$com_per = (($po_char_arr[0]['total_invites']*100)/$package_unit);
+	$com_per = round($com_per, 1);
+	$pending_per = 100- $com_per ;
 ?>
                 <canvas id="chart-area1" style="height:230px"></canvas>
-				<strong style="text-align:center;display:block;padding:7px;">Package Offered to<br /><?php echo round($com_per, 1) ?>% of employee on-boarded</strong>
+				<strong style="text-align:center;display:block;padding:5px;">
+				
+				<?php echo $com_per ?>% of Invitations Sent</strong>
 <?php }else
 {
 	echo"<p align=\"center\">No data to display</p>";
@@ -151,7 +155,7 @@ if($po_char_arr[0]['total_confirmed'] != 0)
 	$inv_per = (($po_char_arr[0]['total_confirmed']*100)/$po_char_arr[0]['total_invites']);
 ?>
 					<canvas id="chart-area2" style="height:230px"></canvas>
-					<strong style="text-align:center;display:block;padding:7px;"><?php echo round($inv_per, 1) ?>% of offered employee<br />booked the appointment</strong>
+					<strong style="text-align:center;display:block;padding:7px;"><?php echo round($inv_per, 1) ?>% of Invited Employees<br />Booked the Appointment</strong>
 <?php 
 }
 else
@@ -173,7 +177,7 @@ if($po_char_arr[0]['total_visited'] != 0)
 
 ?>
 					<canvas id="chart-area3" style="height:230px"></canvas>
-					<strong style="text-align:center;display:block;padding:7px;"><?php echo round($vis_per, 1) ?>% of booked appointment<br>have been utilized</strong>
+					<strong style="text-align:center;display:block;padding:7px;"><?php echo round($vis_per, 1) ?>% of Booked Appointments<br>were Completed</strong>
 <?php 
 }
 else

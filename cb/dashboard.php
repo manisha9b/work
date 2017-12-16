@@ -578,7 +578,7 @@ echo "</pre>";//die;*/
 					if($row['bs_status']=='H'){
 					//	$report[] = "Blood Sugar: ".$row['bs_result'];
 						$report[] =$database->getMessage('Blood Sugar',$row['bs_result']);
-					}
+					}  
 					$report = implode(', ',$report);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				?>
@@ -605,7 +605,7 @@ echo "</pre>";//die;*/
 		
 		<div class="col-md-4">
 			<div class="row">
-			  <h4 class="pull-left margin0"><strong>UnHealthy Employees</strong></h4>
+			  <h4 class="pull-left margin0"><strong>Unhealthy Employees</strong></h4>
 			</div>
 		    <div class="box">            
             <!-- /.box-header -->

@@ -9,8 +9,8 @@
         $colorarray[0]['highlight'] = "#FF5A5E";
         $colorarray[1]['color'] = "#46BFBD";
         $colorarray[1]['highlight'] = "#5AD3D1";
-        $colorarray[2]['color'] = "#FDB45C";
-        $colorarray[2]['highlight'] = "#FFC870";
+        $colorarray[2]['color'] = "#F39C12";
+        $colorarray[2]['highlight'] = "#F4A324";
          $colorarray[3]['color'] = "#00a65a";
         $colorarray[3]['highlight'] = "#00c068";
 	if($po_char_arr[0]['total_invites'] != 0)
@@ -20,14 +20,14 @@
  var pieData_pkg1 = [
  {
 					value: <?php echo ($package_unit - $po_char_arr[0]['total_invites']) ?>,
-					color:"<?php echo $colorarray[1]['color']?>",
-					highlight: "<?php echo $colorarray[1]['highlight']?>",
+					color:"<?php echo $colorarray[2]['color']?>",
+					highlight: "<?php echo $colorarray[2]['highlight']?>",
 					label: ""
 				},
 				{
 					value: <?php echo $po_char_arr[0]['total_invites']?>,
-					color:"<?php echo $colorarray[3]['color']?>",
-					highlight: "<?php echo $colorarray[3]['highlight']?>",
+					color:"<?php echo $colorarray[1]['color']?>",
+					highlight: "<?php echo $colorarray[1]['highlight']?>",
 					label: ""
 				},
 				]
@@ -40,14 +40,14 @@ if($po_char_arr[0]['total_confirmed'] != 0)
 var pieData_pkg2 = [
  {
 					value: <?php echo ($po_char_arr[0]['total_invites'] - $po_char_arr[0]['total_confirmed']) ?>,
-					color:"<?php echo $colorarray[1]['color']?>",
-					highlight: "<?php echo $colorarray[1]['highlight']?>",
+					color:"<?php echo $colorarray[2]['color']?>",
+					highlight: "<?php echo $colorarray[2]['highlight']?>",
 					label: ""
 				},
 				{
 					value: <?php echo ceil($po_char_arr[0]['total_confirmed']) ?>,
-					color:"<?php echo $colorarray[3]['color']?>",
-					highlight: "<?php echo $colorarray[3]['highlight']?>",
+					color:"<?php echo $colorarray[1]['color']?>",
+					highlight: "<?php echo $colorarray[1]['highlight']?>",
 					label: ""
 				},
 				]
@@ -65,14 +65,14 @@ var pieData_pkg2 = [
 var pieData_pkg3 = [
  {
 					value:  <?php echo ($appt_confirmed - $po_char_arr[0]['total_visited']); ?>,
-					color:"<?php echo $colorarray[1]['color']?>",
-					highlight: "<?php echo $colorarray[1]['highlight']?>",
+					color:"<?php echo $colorarray[2]['color']?>",
+					highlight: "<?php echo $colorarray[2]['highlight']?>",
 					label: ""
 				},
 				{
 					value: <?php echo ceil($po_char_arr[0]['total_visited']) ?>,
-					color:"<?php echo $colorarray[3]['color']?>",
-					highlight: "<?php echo $colorarray[3]['highlight']?>",
+					color:"<?php echo $colorarray[1]['color']?>",
+					highlight: "<?php echo $colorarray[1]['highlight']?>",
 					label: ""
 				},
 				]

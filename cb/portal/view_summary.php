@@ -52,7 +52,7 @@ echo "</pre>";*/
 	echo ($package_arr[0]['package_nm'] != '') ? $package_arr[0]['package_nm']." " : "  ";
 	?>
 	</td></tr>
-<tr ><td valign="top" style="padding-top:2px;padding-bottom:2px;""><b>Test Includes:</b></td>
+<tr ><td valign="top" style="padding-top:2px;padding-bottom:2px;"><b>Test Includes:</b></td>
 	<td><div class="row">
 	    <?php 
 	    $service_info_popover ='';
@@ -83,7 +83,7 @@ foreach($test_arr  as $key=>$val)
 				<th >Fixed Purchase Price</th>
 				<th >Unit Purchase</th>
 				<th >Purchase Price</th>
-				<th >Total Payble</th>
+				<th >Total Paya	ble</th>
 			</tr>
 		</thead>
 		<tbody>

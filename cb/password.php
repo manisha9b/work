@@ -175,7 +175,9 @@ $(document).ready(function(){
 				success: function(response) {
 
 					$('#message_div_pwd').html(response);
-
+$('old_password').val('');
+$('new_password').val('');
+$('new_re_password').val('');
 
 				}
 			});
@@ -220,7 +222,7 @@ $(document).ready(function(){
       return res
     } 
    
-	   $('.report_menu').addClass('active');
+	   $('.password_menu').addClass('active');
 
 
   
