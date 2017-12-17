@@ -45,7 +45,12 @@ if(isset($_SESSION['cluster_type']) && isset($_SESSION['user_id']) && $_SESSION[
 		<img src="images/logo/EBH.png" alt="EasyByHealth" style="max-width: 90%;">
 	</div>
     <p class="login-box-msg">Sign in to start your session</p>
-
+	<?php if(isset($_GET['rs'])) { ?>
+<div class="alert alert-success alert-dismissable">
+					 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>    
+					 <p>Password changed successfully. Kindly login.</p>
+				   </div>
+	<?php } ?>
    <form name="login-form" id="login-form" method="post" action="">
     <div id="login_message_div"></div>
 			<input type="hidden" name="ajaxlogin" value="on">

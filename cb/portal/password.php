@@ -13,8 +13,9 @@ $current_user_id		=	$database->user_id_pk;
 $current_user_group		=	$database->userGroupId;
 $created_on				=	date("Y-m-d H:i:s");
 
-$old_password			=	$_POST['old_password'];
-$new_password			=	$_POST['new_password'];
+$old_password			=	isset($_POST['old_password'])?$_POST['old_password']:'';
+$new_password			=	isset($_POST['new_password'])?$_POST['new_password']:'';
+$password				=	isset($_POST['password'])?$_POST['password']:'';
 
 if($old_password!='')										
 {
@@ -38,6 +39,12 @@ if($old_password!='')
 					 <p>Old password doesn\'t match. Please try again</p>
 				   </div>';
 	}	 
+}elseif(isset($_POST['confirm_password'])){
+	$database->update("tbl_user_mst",array("login_password"=>$password)," user_id='".$current_user_id."'");
+	session_unset();
+			$redirect_page	=	HTTP_SERVER."?rs=1";
+		 header("location: ".$redirect_page);
+	
 }
 echo $response_html;
 ?>

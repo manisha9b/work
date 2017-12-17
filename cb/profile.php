@@ -1,7 +1,14 @@
 <?php include_once('partials/header3.php'); 
 unset($arr_ebh_pack);
+$data = ($clusterId)?$database->getClusters($clusterId):[];
+$dataUser = ($clusterId)?$database->getTableForHsp('tbl_cluster_users', "cluster_user_id='$cluster_user_id'"):[];
+
+			$login = ($clusterId)?$database->getClusterAdmin($clusterId):[];
+			$photo	= (!empty($dataUser[0]['photo'])) ? $dataUser[0]['photo'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 ?>  <!-- Content Wrapper. Contains page content -->
-  
+  <?php $login_result = $database->getLoginLog($user_id) ;
+				  //print_r($login_result);
+				  ?>
   <div class="content-wrapper">
 	
 	 <section class="content-header">
@@ -11,105 +18,7 @@ unset($arr_ebh_pack);
         <b>My Company Profile</b>
       </h3>
       <div class="pull-right resright">
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- Messages: style can be found in dropdown.less-->
-            <li>
-              <a class="btn3 ask_Any" href="#">
-                <img src="dist/img/ask.png"> Ask me anything
-              </a>
-            </li>
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 10px;">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-danger">6</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 6 messages</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> Today</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 days</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Lorem Ipsum
-                          <small><i class="fa fa-clock-o"></i> 2 days</small>
-                        </h4>
-                        <p>Lorem Ipsum is simply dummy text</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>  
-      </div>
+	  </div>
 	  </div>
       <div class="clearfix"></div>
 	  <hr class="hrdivide">
@@ -117,7 +26,15 @@ unset($arr_ebh_pack);
     </section>
 	
 	<section class="content">			
-		<div class="col-md-12">		
+		<div class="col-md-12">	
+<?php 
+
+if(isset($_SESSION['alert']))
+ {
+	echo $database->show_alert($_SESSION['alert']);
+	unset($_SESSION['alert']);
+ }
+?>		
         <div class="col-sm-9 pt-20 wow bounceInLeft with-nav-tabs" style="padding-left: 0px; visibility: visible; animation-delay: 0.2s; animation-name: bounceInLeft;" data-wow-delay="0.2s">			
 			<div class="col-md-12 p0">
 			<div class="col-md-4 p0">
@@ -133,26 +50,7 @@ unset($arr_ebh_pack);
 			</div>
 			<div class="col-md-8 p0">
 				<div id="appointments" class="company_profile_nav mb-25">				
-				<ul class="nav nav-tabs">
-					<li class="pull-right dropdown nohover1 setting_icon dropdown invite_member">
-						<i class="fa fa fa-user add_member dropdown-toggle" id="menu1" data-toggle="dropdown" aria-hidden="true"></i>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						  <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="fs14">Signed In</a></li>
-						  <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="fs14">Log out</a></li>						  						  
-						  <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="fs14">+ Add Tab</a></li>    
-						</ul>
-					</li>
-					<li class="pull-right dropdown nohover1 user_icon">
-					  
-					   <i class="fa fa-cog" aria-hidden="true"></i>
-					</li>
-					<li class="pull-right">
-					<div class="input-group input-group-noborder hidden-sm com_pro_search_bar">
-						<i class="fa fa-search fa-lg"></i>
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					</li>
-				</ul>
+				
 				</div>
 			</div>			
 			</div>
@@ -160,8 +58,11 @@ unset($arr_ebh_pack);
                 <!-- /.tab-pane -->				
 			<div class="box-layout1 emp_com_info_form"> 
             <!-- Main content -->
-            <section id="smartwatch" class="content pb-60 tab-content" >
+            <section id="smartwatch" class="content pb-60 tab-content" style="background-color:white;">
               <div class="mt-20 create_com_info tab-pane fade in active" id="tab1default">
+			  <form class="form" method="post" enctype="multipart/form-data" autocomplete="off" action="portal/profile_update.php">
+
+			<input type="hidden" name="cluser_user_id" value="<?=$dataUser[0]['cluster_user_id']?>">
                   <h4 class="pull-left m0">
                     Your Company Information
                   </h4>                  
@@ -177,19 +78,25 @@ unset($arr_ebh_pack);
                       </h4>-->
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">Organization Name</div>
-                        <input type="text" name="cluster_business_name" id="cluster_business_name" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="text" name="cluster_business_name" id="cluster_business_name" maxlength="50"   value="<?=$data[0]["cluster_business_name"]?>" required pattern="^[a-zA-Z\s]+$" title="Please  enter only Alphabets">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">Email ID</div>
-                        <input type="text" name="business_email_id" id="business_email_id" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="email" name="business_email_id" id="business_email_id" maxlength="50"   value="<?=$data[0]["business_email_id"]?>" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">Mobile Number</div>
-                        <input type="text" name="contact_mobile" id="contact_mobile" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="text" name="contact_mobile" id="contact_mobile" value="<?=$data[0]["contact_mobile"]?>" required maxlength="50"  pattern="^[\-\+0-9\s]+$" title="Please  enter Correct Mobile Numbers">
+                      </div>
+                    </div
+					><div class="col-sm-6">
+                      <div class="input__1 mb-10">
+                        <div class="input__1_placeholder input__1_blurred">Phone Number</div>
+                        <input type="text" name="contact_landline" id="contact_landline" value="<?=$data[0]["contact_landline"]?>" required maxlength="50" pattern="^[\-\+0-9\s]+$" title="Please  enter Correct Phone Numbers">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -198,13 +105,19 @@ unset($arr_ebh_pack);
                     <div class="col-sm-6"> 
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">HR Full Name.</div>
-                        <input type="text" name="business_email_id" id="hr_full_name" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="text" name="hr_full_name" id="hr_full_name" maxlength="50" value="<?php echo $dataUser[0]['user_name'];?>" required pattern="^[a-zA-Z\.\s]+$" title="Please  enter only Alphabets">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">HR Email ID</div>
-                        <input type="text" name="contact_mobile" id="hr_email_id" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="email" name="hr_email_id" id="hr_email_id" maxlength="50"   value="<?php echo $dataUser[0]['user_email'];?>" required >
+                      </div>
+                    </div>
+					<div class="col-sm-6">
+                      <div class="input__1 mb-10">
+                        <div class="input__1_placeholder input__1_blurred">HR Mobile No.</div>
+                        <input type="text" name="hr_mobile_no" id="hr_mobile_no" maxlength="50"   value="<?php echo $data[0]['hr_mobile_no'];?>" required pattern="^[\-\+0-9\s]+$" title="Please  enter Correct Mobile Numbers">
                       </div>
                     </div>
                   </div>
@@ -218,7 +131,7 @@ unset($arr_ebh_pack);
                       </h4>-->
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">Billing Address</div>
-                        <input type="text" name="address" id="address" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="text" name="address" id="address" maxlength="50"   value="<?=$data[0]["address"]?>" required >
                       </div>
                     </div>
 				  
@@ -226,12 +139,12 @@ unset($arr_ebh_pack);
                   <div class="pt-10">
 				  <div class="col-sm-4">
                       <h4 class="select__1 field-details nosearch mt-0  mb-10" style="padding-bottom: 8px;">
-                        <select class="materializeselect" style="background: transparent;border: none;width: 100%;"    id="state"  name="state"/>
+                        <select class="materializeselect" style="background: transparent;border: none;width: 100%;"    id="state"  name="state" required />
 						<option value="">State</option>
                           <?php 
 						  $cityArr = $database->getTableForHsp('states', "country_id='IN'") ;
-						  foreach($cityArr as $city){?>
-						  <option value="<?php echo $city["id"]?>"><?=$city["state_name"]?></option>
+						  foreach($cityArr as $state){?>
+						  <option value="<?php echo $state["id"]?>" <?php if($data[0]["state_name"] == $state["state_name"]):?>selected<?php endif; ?>><?=$state["state_name"]?></option>
 									
 						  <? }?>
                         </select>
@@ -239,12 +152,12 @@ unset($arr_ebh_pack);
                     </div>
 					<div class="col-sm-4">
                       <h4 class="select__1 field-details nosearch mt-0  mb-10" style="padding-bottom: 8px;" >
-                        <select class="materializeselect" style="background: transparent;border: none;width: 100%;" id="city"  name="city"/>
+                        <select class="materializeselect" style="background: transparent;border: none;width: 100%;" id="city"  name="city" required />
 						<option value="">City</option>
                           <?php 
 						  $cityArr = $database->getTableForHsp('cities', "country_id='IN'") ;
 						  foreach($cityArr as $city){?>
-						  <option value="<?php echo $city["id"]?>"><?=$city["city_name"]?></option>
+						  <option <?php if($data[0]["city_name"] == $city["city_name"]):?>selected<?php endif; ?> value="<?php echo $city["id"]?>"><?=$city["city_name"]?></option>
 									
 						  <? }?>
                         </select>
@@ -254,7 +167,7 @@ unset($arr_ebh_pack);
                     <div class="col-sm-4">
                       <div class="input__1 mb-10">
                         <div class="input__1_placeholder input__1_blurred">Postal Code</div>
-                        <input type="text" name="pincode" id="pincode" maxlength="50" onkeypress="return validData(event,'name')">
+                        <input type="text" name="pincode" id="pincode" maxlength="50"   value="<?=$data[0]["pincode"]?>" required pattern="^[0-9]{6}$" title="Please  enter only 6 digit Numbers">
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -263,50 +176,43 @@ unset($arr_ebh_pack);
 				 
 				  <div class="pt-10 col-md-12">
 					<div class="col-md-6 pull-right rescenter mt-20">
-						<a href="#" class="btn cblack cancel_btn pull-right">CANCEL</a>
-						<a href="#" class="btn save_btn pull-right">SAVE</a>
+						
+						<button type="submit" class="btn save_btn pull-right">SAVE</button>
 					  </div>
 				  </div>
+				  <br/>
+				  </form>
+				  <div class="clearfix"></div>	 
                 </div>
+				<div class="clearfix"></div>	 
 				<div class="tab-pane fade" id="tab2default">						
 					<div class="row">
 						<div class="col-md-12 my_pro_detail pt-30">
 							<div class="col-md-3 pro_pics">							
-								<img src="images/profile_pic.jpg" class="img-circle">
+								<img src="<?php echo $photo?>" class="img-circle">
+								 <form class="form" id="photo_form" method="post" enctype="multipart/form-data" autocomplete="off" action="portal/profile_update.php">
+								 <input name="action" type="hidden" value="upload_photo" />
+								 <input type="hidden" name="cluser_user_id" value="<?=$dataUser[0]['cluster_user_id']?>">
+								  <div class="form-group">
+                <div class="btn btn-default btn-file" style="margin-top:10px;">
+                   Upload Photo
+                  <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/gif">
+                </div>
+                
+              </div></form>
 							</div>
-							<div class="col-md-3 status">							
-								<div class="emp_name"><h3 class="text-bold">Priyanka Shroff</h3></div>
-								<div class="emaiid_link"><a href="mailto:priyanka@digirepublik.com" class="email_id_clr">priyanka@digirepublik.com</a></div>
+							<div class="col-md-5 status">							
+								<div class="emp_name"><h3 class="text-bold"><?php  echo $dataUser[0]['user_name']?></h3></div>
+								<div class="emaiid_link"><a href="mailto:<?php echo $dataUser[0]['user_email'] ?>" class="email_id_clr"><?php echo $dataUser[0]['user_email'] ?></a></div>
 								<div class="active_status">Last active on Nov 21</div>
 							</div>
-							<div class="col-md-3 password">							
+							<div class="col-md-4 password">							
 								<div class="cur_pass mt30"><h3>Password</h3></div>
-								<div class="change_pass"><h3><a href="#">Change Password</a></h3></div>
+								<div class="change_pass"><h3><a href="password.php">Change Password</a></h3></div>
 							</div>
-							<div class="col-md-3 social_icon">							
-								<div class="pull-right login pt-40">
-									<a href="#"><i class="fa fa-facebook" aria-hidden="true" style="color:#3a5999"></i></a>
-									<a href="#"><i class="fa fa-google-plus" aria-hidden="true" style="color:#e62d28"></i></a>
-								</div>
-							</div>	
+								
 						</div>
-						<div class="col-md-12 my_pro_info">
-							<dl class="accordion">
-  <dt class="accordion__title">Activity</dt>
-  <dd class="accordion__content">
-    <p><b>Your latest activity across all projects.</b></p>
-    <p><b>Nov 19</b><span class="fs16" style="color:#646464;"> You posted a message on a Digital Republik's Appointment page</span> </p>
-	<p><b>Nov 11</b><span class="fs16" style="color:#646464;"> You posted a message on a Digital Republik's Appointment page</span> </p>
-	<p><b>Nov 05</b><span class="fs16" style="color:#646464;"> You posted a message on a Digital Republik's Appointment page</span> </p>
-	<p><b>Oct 29</b><span class="fs16" style="color:#646464;"> You posted a message on a Digital Republik's Appointment page</span> </p>
-	<p><b>Oct 21</b><span class="fs16" style="color:#646464;"> You posted a message on a Digital Republik's Appointment page</span> </p>
-	
-	<br>
-	<p><a href="#" style="color: #3fb9c3;text-decoration: underline;">See all of your activity</a></p>
-  </dd>
-
-</dl>
-						</div>	
+						
 					</div>					
 				</div>
               <div class="clearfix"></div>
@@ -319,18 +225,21 @@ unset($arr_ebh_pack);
           <div class="box-layout1">
             <div class="pb-20 emp_profile_area">
                 <div class="user-pic" style="background-color:#62bd63">
-                  <div class="profile_pic"><img src="images/emp.jpg" class="img-circle"></div>
+                  <div class="profile_pic"><img src="<?php echo $photo?>" class="img-circle"></div>
+				
                 </div>
                 <div class="user-details mt-20">
                  
                   <h3 class="text-center m0 pt-10 fs13">
-                    NIKITA RAO
+                    <?php echo $dataUser[0]['user_name'] ?>
                   </h3>
                   <h4 class="text-center pt-20 black">
-                    <a href="mailto:nikita@digirepublik.com">nikita@digirepublik.com</a>
+                   <!-- <a href="mailto:nikita@digirepublik.com"><?php echo $dataUser[0]['user_email'] ?></a> -->
+                   <!-- <a href="mailto:nikita@digirepublik.com"><?php echo $dataUser[0]['user_email'] ?></a> -->
                   </h4>
                   <p class="text-center m0 pb-10 green">
-                   Last active on Nov 10
+				  
+                   Last active on <?php echo $login_result[0]['last_login_date'] ?>
                   </p>
 					               
                 </div>
@@ -402,6 +311,19 @@ unset($arr_ebh_pack);
         });
       }
     });
+	 $(".input__1 input, .textarea__1 textarea").each(function(){
+      if($(this).parent().hasClass("input__1"))
+        $(this).prev().removeClass("input__1_blurred").addClass("input__1_focused");
+      else if($(this).parent().hasClass("textarea__1"))
+        $(this).prev().removeClass("textarea__1_blurred").addClass("textarea__1_focused");
+
+      $(this).prev().parent().css({
+        borderBottom : "1px solid #43ce5a"
+      });
+    });
+	document.getElementById("photo").onchange = function() {
+    document.getElementById("photo_form").submit();
+}
   });
 </script>
 <script>
@@ -429,6 +351,11 @@ $(this).next().show().prev().addClass('active').siblings().removeClass('active')
 });
 
 
+</script>
+<script>
+$(function () {
+	   $('.profile_menu').addClass('active');
+});
 </script>
 </body>
 </html>

@@ -26,7 +26,7 @@ if(!empty($clusterid))
 }
 /*END */
 
-$sql="SELECT
+ /*$sql="SELECT
 	a.user_id,a.ref_id,a.user_display_name,b.user_group,a.user_group_id,
 	case
 		when a.user_group_id=2 then c.emp_email 
@@ -60,8 +60,50 @@ $sql="SELECT
 	left join tbl_hsp_branchs as f on e.branch_id = f.branch_id
 	left join tbl_cluster_users as h on a.ref_id = h.cluster_user_id and a.user_group_id=15 OR a.ref_id = h.cluster_user_id and a.user_group_id=16 
 	left join tbl_clusters as i on h.cluster_id = i.cluster_id 
-	where a.login_username='".$login."' and (a.login_password='".$password."')  and a.is_active=1 OR a.login_username='".$login."' and  a.login_password='".md5($password)."' and a.is_active=1 and (a.user_group_id=2 and a.user_group_id=7 and a.user_group_id=15 and a.user_group_id=16)";
+	where a.login_username='".$login."' and (a.login_password='".$password."')  and a.is_active=1 OR a.login_username='".$login."' and  a.login_password='".md5($password)."' and a.is_active=1 and (a.user_group_id=2 and a.user_group_id=17 and a.user_group_id=15 and a.user_group_id=16)";
+*/
+ $sql = "SELECT
+	a.user_id,a.ref_id,a.user_display_name,b.user_group,a.user_group_id,
+	case
+		when a.user_group_id=2 then c.emp_email 
+		when a.user_group_id=17 then h.user_email  
+		when a.user_group_id=15 then h.user_email 
+		when a.user_group_id=16 then h.user_email
+	end as user_email,
+	case
+		when a.user_group_id=15 then h.user_mobile 
+		when a.user_group_id=16 then h.user_mobile
+		when a.user_group_id=17 then h.user_mobile
+	end as user_mobile,
+	case 
+		when a.user_group_id=17 then h.cluster_id
+		when a.user_group_id=15 then h.cluster_id	
+		when a.user_group_id=16 then h.cluster_id
+	end as cluster_id,
+	case 
+		
+		when a.user_group_id=15 then i.cluster_type	
+		when a.user_group_id=16 then i.cluster_type
+		when a.user_group_id=17 then i.cluster_type
+	 end as cluster_type, 
+	case 
+		
+		when a.user_group_id=15 then h.cluster_user_id	
+		when a.user_group_id=16 then h.cluster_user_id
+		when a.user_group_id=17 then h.cluster_user_id
+	end as cluster_user_id, 
+	e.branch_id as hsp_branch_id,
+	f.branch_name,
+	f.hspid as hsp_id
+	from tbl_user_mst as a
+	left join tbl_user_group as b on a.user_group_id = b.user_group_id
+	left join tbl_ebh_employee_mst as c on a.ref_id = c.employee_id and a.user_group_id=2 
 
+	left Join tbl_hsp_branch_employees as e on a.ref_id= e.id and a.user_group_id=13
+	left join tbl_hsp_branchs as f on e.branch_id = f.branch_id
+	left join tbl_cluster_users as h	 on a.ref_id = h.cluster_user_id and (a.user_group_id=15 or a.user_group_id=16  or a.user_group_id=17)
+	left join tbl_clusters as i on h.cluster_id = i.cluster_id 
+	where a.login_username='".$login."' and (a.login_password='".$password."' or a.login_password='".md5($password)."')  and a.is_active=1  and (a.user_group_id=2 or a.user_group_id=17 or a.user_group_id=15 or a.user_group_id=16 or a.user_group_id=17)";
 $database->select($sql);
 $arr=$database->result;
 //echo "<pre>".print_r($arr)."</pre>";
@@ -79,6 +121,7 @@ if(!empty($arr))
 	$_SESSION['user_email']			=	$arr[0]['user_email'];
 	$_SESSION['user_mobile']		=	$arr[0]['user_mobile'];
 	$_SESSION['cluster_id']			=	$arr[0]['cluster_id'];
+	$_SESSION['cluster_user_id']	=	$arr[0]['cluster_user_id'];
 
 	$_SESSION['hsp_branch_id']		=	$arr[0]['hsp_branch_id'];
 	$_SESSION['hsp_id']				=	$arr[0]['hsp_id'];
@@ -152,6 +195,7 @@ if(!empty($arr))
 		}
 		else
 		{
+			//echo $redirect_page;
 			echo "<script>document.location = '".$redirect_page."'</script>";
 		}
 }

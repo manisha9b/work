@@ -147,6 +147,7 @@ svg {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <?php
+  
 $arr_count = $database->getDashboardCount($clusterId);
 $chartdata = $database->getDashboardChart($clusterId);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');

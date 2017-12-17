@@ -10,6 +10,9 @@ date_default_timezone_set('Asia/Calcutta');
 if(!isset($_SESSION['ref_id']) || !isset($_SESSION['cluster_type']) || !isset($_SESSION['user_id']) || $_SESSION['cluster_type']=='' || $_SESSION['user_id']=='')
 {
 	header("Location: ".HTTP_SERVER);
+}else if(isset($_SESSION['show_reset_password']) && $_SESSION['show_reset_password']==1)
+{
+	header("Location: ".HTTP_SERVER."reset_password.php");
 }
 else
 {

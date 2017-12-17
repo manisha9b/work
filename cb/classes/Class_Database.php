@@ -267,7 +267,8 @@ class Database {
                 }
             }
             $update .= ' WHERE ' . $where;
-           // echo $update;die;
+			//echo "<br/>";
+           // echo $update;
 
             $query = @mysql_query($update);
             if ($query) {
@@ -3879,6 +3880,12 @@ unset($this->result);
 	  //  echo $category;
 	    return $category;
 	}
+function getLoginLog($user_id,$limit='Limit 1',$order =' ORDER BY login_date DESC'){
+		$sql = " select DATE_FORMAT(login_date,'%d %b, %Y %h:%i %p') as last_login_date from  crm_login_details where user_id=$user_id  and logout_date!='0000-00-00 00:00:00' $order $limit";
+		unset($this->result);
+	$this->select($sql);
+	return $this->result;
+}
 }
 
 ?>

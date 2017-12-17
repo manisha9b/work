@@ -114,8 +114,8 @@ $percentage = round(($point/$maximumPoints)*100);
             <i class="fa fa-lock"></i> <span>Change Password</span>
           </a>
         </li>
-        <li>
-          <a href="my-profile.html">
+        <li class="profile_menu">
+          <a href="profile.php">
             <i class="fa fa-user"></i> <span>Company Profile</span>
           </a>
         </li>

@@ -7,6 +7,7 @@ $database=new Database();
 $database->connect();
 date_default_timezone_set('Asia/Calcutta'); 
 //print_r($_SESSION);die;
+echo "I amd here";die;
 if(!isset($_SESSION['ref_id']) || !isset($_SESSION['cluster_type']) || !isset($_SESSION['user_id']) || $_SESSION['cluster_type']=='' || $_SESSION['user_id']=='')
 {
 	header("Location: ".HTTP_SERVER);
@@ -19,9 +20,17 @@ else
 	$user_id						=	$_SESSION['ref_id'];
 	$user_group_id					=	$_SESSION['user_group_id'];	
 	$clusterId						=	$_SESSION['cluster_id'];
-	$arr_cluster	=	$database->getClusters($clusterId);	
+	
+	$dataUser = ($clusterId)?$database->getTableForHsp('tbl_cluster_users', "cluster_id='$clusterId'"):[];
+	print_R($dataUser);die;
+	$clusterUserId						=	$dataUser[0]['cluster_user_id'];
+	$HRdisplayName						=	$dataUser[0]['user_name'];
+	$arr_cluster					=	$database->getClusters($clusterId);	
 	$arr_cluster	=	$arr_cluster[0];	
 	$page_id= 'home';
+	//$clusterDisplayName			=	$arr_cluster['user_display_name'];
+	
+	
 }
  ?>
 <!DOCTYPE html>
