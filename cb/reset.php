@@ -8,10 +8,11 @@ $database=new Database();
 $database->connect();
 date_default_timezone_set('Asia/Calcutta'); 
 $success=0;
-$code = $_POST['txtvcode'];
-$code = '8f69d812ceb00cbedb6b0e1272bf5dc41112e841';
-$sql="SELECT
-	a.user_id,a.ref_id,a.user_display_name,b.user_group,a.user_group_id,
+$code = $_GET['vcode'];
+//$code = 'a3f25a5b41a4011c0ace0d98b59b075c292ebc36';
+
+ $sql="SELECT
+	a.user_id,a.ref_id,a.user_display_name,b.user_group,a.user_group_id,a.is_password_changed,h.cluster_user_id,
 	case
 		when a.user_group_id=2 then c.emp_email 
 		when a.user_group_id=17 then h.user_email  
@@ -69,6 +70,8 @@ $arr=$database->result;
 
 </center>
 <?php
+//var_dump(	$arr[0]['is_password_changed']==1);
+//print_R($arr);die;
 if(!empty($arr))
 {
 	
@@ -103,7 +106,7 @@ if(!empty($arr))
 		$_SESSION['web-login']=1;
 	}
 	
-	echo "<pre>".print_r($_SESSION)."</pre>";//die;
+//	echo "<pre>".print_r($_SESSION)."</pre>";//die;
 	//exit;
 	$j_date=date('Y-m-d H:i:s');
 	$crm_ref_id=$_SESSION['ref_id'];
@@ -119,9 +122,12 @@ if(!empty($arr))
 	$_SESSION['user_session_id']=$sess;
 	$_SESSION['user_session_login_date']=$j_date;
 	$_SESSION['show_reset_password']=1;
-
+if(	$arr[0]['is_password_changed']==1){
+    unset($_SESSION['show_reset_password']);
+    	$redirect_page=HTTP_SERVER."dashboard.php";
+}else{
 	$redirect_page=HTTP_SERVER."reset_password.php";
-	
+}
 
 		if(!isset($_POST['ajaxlogin']))
 		{

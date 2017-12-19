@@ -5458,9 +5458,9 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 
 .company_summary .info-box-icon{font-size:30px;width: 65px;}
-.company_summary .info-box-content{padding: 21px 10px;margin-left: 70px;}
-.company_summary .info-box-text{margin-right: 10px;float:left;}
-.company_summary .info-box-number{font-size: 12px;padding-top:15px;}
+.company_summary .info-box-content{padding:10px 10px;margin-left:65px;}
+.company_summary .info-box-text{float:left;width:100%;}
+.company_summary .info-box-number{font-size: 12px;padding-top:15px;width:100%}
 .company_summary .evoucher_download{background-color:#40484a;}
 .report_present{background-color:#878d89;}
 .company_summary .summary_add a{color:#7b7b7d;text-decoration: underline;}
@@ -5538,7 +5538,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .create_com_info .input__1, .create_com_info .textarea__1, .create_com_info .select__1{font-size: 16px;}
 .emp_profile_area .user-pic{background-color: #36c74e;position: relative;height: 80px;}
 .emp_profile_area .profile_pic{text-align: center; margin: 0 auto;width: 100px;padding-top:25px;}
-.emp_profile_area .profile_pic img{width: 100%;}
+.emp_profile_area .profile_pic img{width: 100%;height:100px;}
 .emp_profile_area .user-details h3{font-weight: bold;font-size:18px;}
 .emp_profile .post{}
 .emp_profile .name{margin: 0px; font-weight: bold;}
@@ -6138,7 +6138,9 @@ label:hover:before {
     }
 	
 .package_box{padding-top:100px !important;}
-
+.fs11{font-size:11px;}
+.test_complete .process_bar{width:16%;text-align: center;}
+.process_bar .description{display:block}
 
 @media screen and (max-width:1366px){
 	
@@ -6466,10 +6468,10 @@ label:hover:before {
     list-style-type: none;
     float: left;
     margin: 1px;
-    padding: 5px;
-        padding-right: 5px;
-        padding-left: 5px;
-    font-size: 12px;
+    padding:3px;
+	padding-right: 5px;
+	padding-left: 5px;
+    font-size: 11px;
     border: 1px solid #000;
     border-radius: 5px;
     cursor: pointer;
@@ -6487,8 +6489,8 @@ label:hover:before {
 .profile_person{font-size: 16px!important;}
 
 
-.company_summary .info-box-content{padding:0px;}
-
+.company_summary .info-box-content{padding:7px;}
+.company_summary .info-box-text{width:100%;}
 .mob-mb-10{margin-bottom:10px;}
 .mob-p0{padding-right:0px;padding-left:0px;}
 .fs13{font-size:13px;}
@@ -6548,6 +6550,8 @@ margin-right: 10px;}
 .package_box{padding-top: 79px !important;}
 
 .box .emp_detail{padding-top:114px!important}
+.fs11{font-size:11px;}
+
 }
 
 @media screen and (max-width:1280px){
@@ -6619,6 +6623,7 @@ margin-right: 10px;}
 	.cancel_btn{width:auto}
 	.package_box{padding-top:50px!important;}
 	.res_pass_field	.form-group{float:none!important}
+	.test_complete .process_bar{width:100%;}
 	
 }
 

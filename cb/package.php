@@ -230,7 +230,7 @@ $bg_color="cursor:pointer;";
 						  </div>
                         </td>
                         <td  width="30%" class="table_area" style="padding-bottom:0;">
-                         <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
+                         <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo str_replace(',',', ',$lab_test_name_arr) ?></span>
 						
                         </td>
 						
@@ -257,7 +257,8 @@ $bg_color="cursor:pointer;";
                         
                           </td>
                       </tr>
-<?php  } } ?>
+<?php  } }else{ ?>
+<tr><td colspan="4" align="center">No Health Package Available</td></tr><?php  } ?>
 					  </tbody>
                   </table>
                 </div>
@@ -561,8 +562,9 @@ $form_action =  "portal/invite.php";
           <div class="box-layout1">
             
             <section id="smartwatch" class="content">
+                
               <div class="col-sm-12" style="padding: 0;">
-                                
+                              
                   <div class="col-sm-3 pt-20" style="margin: 0 auto;text-align: center;">
                     <img src="dist/img/suitcase.png" width="130px">
                   </div>
@@ -571,18 +573,18 @@ $form_action =  "portal/invite.php";
 					<p>We offer custom tailored <b>Personalised Health Checkup Packages</b> to suit your body, fitness, health and lifestyle. You don't have to go through a battery of tests just because it is included in the set package.</p>
 					<div class="rescenter">
 						<div class=" col-md-9 p0" style="padding:0px;">
-							<div class=" col-md-5 start_btn_area">
-						<a href="#" class="btn btn-primary btn-green cwhite start_btn">GET STARTED</a>
+							<div class=" col-md-5 start_btn_area" i>
+						<a href="#" class="btn btn-primary btn-green cwhite start_btn" alt="coming soon" title="coming soon" id="get_started" ><Span id="get_started_text">GET STARTED</span></a>
 							</div>
 							<div class=" col-md-7">
-								<a href="#" class="btn btn-block call_back_btn"><b>REQUEST A CALL BACK</b></a>
+								<a href="#" class="btn btn-block call_back_btn" alt="coming soon" title="coming soon"  id="request_call"><b><Span id="request_call_text">REQUEST A CALL BACK</Span></b></a>
 								<div class="clearfix"></div>
 						</div>
 					  </div>
 					</div>
 				  </div>
                   <div class="clearfix"></div>
-                
+               
               </div>
               <div class="clearfix"></div>
             </section>
@@ -595,7 +597,7 @@ $form_action =  "portal/invite.php";
 				<h1>DID YOU <br>KNOW?</h1>
 				<p>7 out of 10 people</p>
 				<span>believe that being healthy<br>
-keeps one more focussed and <br> productiev at work</span>
+keeps one more focussed and <br> productive at work</span>
             </section>
           </div>
         </div>
@@ -660,6 +662,21 @@ keeps one more focussed and <br> productiev at work</span>
 <script>
   $(function () {
 	   $('.package_menu').addClass('active');
+	   
+                    $( "#request_call" ).hover(
+  function() {
+    $( "#request_call_text" ).text( "COMING SOON" );
+  }, function() {
+    $( "#request_call_text" ).text( "REQUEST A CALL BACK" );
+  }
+);
+                        $( "#get_started" ).hover(
+  function() {
+    $( "#get_started_text" ).text( "COMING SOON" );
+  }, function() {
+    $( "#get_started_text" ).text( "GET STARTED" );
+  }
+);          
       // -------------
   // - PIE CHART -
   // -------------

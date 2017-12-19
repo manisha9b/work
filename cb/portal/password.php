@@ -40,7 +40,7 @@ if($old_password!='')
 				   </div>';
 	}	 
 }elseif(isset($_POST['confirm_password'])){
-	$database->update("tbl_user_mst",array("login_password"=>$password)," user_id='".$current_user_id."'");
+	$database->update("tbl_user_mst",array("login_password"=>$password,'is_password_changed'=>'1')," user_id='".$current_user_id."'");
 	session_unset();
 			$redirect_page	=	HTTP_SERVER."?rs=1";
 		 header("location: ".$redirect_page);

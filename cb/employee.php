@@ -18,13 +18,16 @@ unset($arr_ebh_pack);
 $arr_emp	=	$database->getClusterEmpDetails($clusterId,$health);
   //ini_set("display_errors", "1");
   //error_reporting(E_ALL);
-
-$arr_emp_count	=	$database->getClusterEmpCount($clusterId);
+$emp_healthy_Count	 =	$database->getClusterEmpDetailsCount($clusterId,'H');
+$emp_unhealthy_Count =	$database->getClusterEmpDetailsCount($clusterId,'UH');
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
-//echo "<pre>";
-//print_R($arr_emp);//die;
-//echo "</pre>";
+$emp_Count = count($arr_emp);
+//$emp_healthy_Count = count($emp_arr['healty']);
+//$emp_unhealthy_Count = count($emp_arr['unhealty']);
+/*echo "<pre>";
+print_R($emp_arr);//die;
+echo "</pre>";die;*/
 ?>
 <style>
     .info{
@@ -70,7 +73,7 @@ include_once('partials/askme.php');
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $arr_emp_count['total']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo $emp_Count?></span>
               <span class="info-box-number text-white">TOTAL EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
@@ -83,7 +86,7 @@ include_once('partials/askme.php');
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-heartbeat"></i></span>
 
             <div class="info-box-content bg_dark_blue1">
-              <span class="info-box-text text2 clr_effect1 text-white"><?php echo $arr_emp_count['healthy']?></span>
+              <span class="info-box-text text2 clr_effect1 text-white"><?php echo $emp_healthy_Count[0]['count']?></span>
               <span class="info-box-number text-white">HEALTHY EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
@@ -96,7 +99,7 @@ include_once('partials/askme.php');
             <span class="info-box-icon icon3"><img src="images/logo/unhealthy_icon.png" width="35"></span>
 
             <div class="info-box-content">
-              <span class="info-box-text text2 text-white clr_effect1"><?php echo $arr_emp_count['unhealthy']?></span>
+              <span class="info-box-text text2 text-white clr_effect1"><?php echo $emp_unhealthy_Count[0]['count']?></span>
               <span class="info-box-number text-white">UNHEALTHY EMPLOYEE(S)</span>
             </div>
             <!-- /.info-box-content -->
@@ -308,12 +311,13 @@ else
 		  
 		   <div class="box">  
 			<div class="box-header with-border">
-          <h4 class="pull-left margin0"><strong>Healthy Employees</strong></h4>
+          <h4 class="pull-left margin0"><strong>Healthy Employee(s)</strong></h4>
 		</div>
 		<?php 
 		//	print_R($unhealthy_emp); 
 		?>
             <!-- /.box-header -->
+            <?php if(!empty($emp_arr['healty']) ){?>
             <div class="box-body profileimg">
 			<?php foreach($emp_arr['healty'] as $row){ 
 				
@@ -351,6 +355,9 @@ else
            
             <!-- /.box-body -->
           </div>
+          <?php } else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
           <!-- /.box -->
         </div>
         </div>
@@ -360,10 +367,10 @@ else
 			
 		   <div class="box"> 
 				<div class="box-header with-border">
-			  <h4 class="pull-left margin0"><strong>UnHealthy Employees</strong></h4>
+			  <h4 class="pull-left margin0"><strong>UnHealthy Employee(s)</strong></h4>
 			</div>
             <!-- /.box-header -->
-		
+		 <?php if(!empty($emp_arr['unhealty']) ){?>
             <div class="box-body profileimg">
              <?php foreach($emp_arr['unhealty'] as $row){ 
 				
@@ -401,7 +408,9 @@ else
               
            
             <!-- /.box-body -->
-          </div>
+          </div><?php } else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
           <!-- /.box -->
         </div>
         </div>
@@ -600,7 +609,7 @@ else
 
 
 <div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-lg" style="width:700px;">
 		<div class="modal-content">
 			<div class="modal-body">
 				<!-- Tabs !-->

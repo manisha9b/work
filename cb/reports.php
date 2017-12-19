@@ -44,7 +44,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['onboarded_employee']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['onboarded_employee']>0)?$appt_count_arr[0]['onboarded_employee']:00;?></span>
               <span class="info-box-number text-white">ONBOARDED <span style="font-size: 12px;">EMPLOYEES</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -57,7 +57,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
           <div class="info-box box3 healthy_employee">
             <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['total_appointment']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['total_appointment']>0)?$appt_count_arr[0]['total_appointment']:0;?></span>
               <span class="info-box-number text-white">APPOINTMENTS <span style="font-size: 12px;">BOOKED</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -71,7 +71,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
             <span class="info-box-icon icon3 text-white"><i class="fa fa-download"></i></span></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['voucher_downloaded']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['voucher_downloaded']>0)?$appt_count_arr[0]['voucher_downloaded']:'0&nbsp;&nbsp;&nbsp;';?></span>
               <span class="info-box-number text-white">eVOUCHERS <span style="font-size: 12px;">DOWNLOADED</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -85,7 +85,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
             <span class="info-box-icon icon3"><img src="images/ecg_icon.png" width="35"></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['tests_taken_count']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['tests_taken_count']>0)?$appt_count_arr[0]['tests_taken_count']:'0&nbsp;&nbsp;&nbsp;';?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span class="info-box-number text-white">TESTS <span style="font-size: 12px;">TAKEN</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -99,7 +99,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
             <span class="info-box-icon icon3 text-white"><i class="fa fa-file-text-o"></i></span></span>
 
              <div class="info-box-content">
-              <span class="info-box-text text2 clr_effect1"><?php echo $appt_count_arr[0]['total_report_available']?></span>
+              <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['total_report_available']>0)?$appt_count_arr[0]['total_report_available']:'0&nbsp;&nbsp;&nbsp;';?>&nbsp;&nbsp;</span>
               <span class="info-box-number text-white">REPORTS <span style="font-size: 12px;">AVAILABLE</span></span>
             </div>
             <!-- /.info-box-content -->
@@ -109,7 +109,7 @@ $arr_cluster_empl = $database->getclusterEbhPackageEmployee($clusterId);
         </div>
 		<!-- /.col -->
 		</div>
-      </div>  
+      </div> 
 	  
 	  
 		
@@ -313,7 +313,14 @@ $photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easy
     }
  }
  }
-?>
+	else
+{
+
+	echo'<tr>
+		<td colspan="7"  class="text-center">No Records found!!</td>
+	</tr>';
+	
+} ?>	
 				
                      </tbody>
                   </table>

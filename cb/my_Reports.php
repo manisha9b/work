@@ -5,7 +5,7 @@
  <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			 <!-- BAR CHART -->
-			 	
+			 		<?php if(!empty($arr_cluster_pack) ){?>
 			  <div class="box box-success">
             <div class="box-header with-border">
  <div class="pre-header" style="margin: 8px 0;">
@@ -63,6 +63,25 @@
           
                
 		  </div>
+		  <?php }else{ ?>
+            <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                     
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+                   <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-offset-2 col-md-8"><br/><center>"No Health Package Available"</center><br/>
+                    </div></div></div>
+                    </div>
+           <?php }?>
 		  </div>
 		  </div>
 		  

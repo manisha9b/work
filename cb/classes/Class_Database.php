@@ -577,7 +577,7 @@ class Database {
         //date_default_timezone_set('Etc/UTC');
 
         date_default_timezone_set('Asia/Calcutta');
-        require_once  '../../phpmailer/PHPMailerAutoload.php';
+        require_once  '/home/easybuyhealth/public_html/phpmailer/PHPMailerAutoload.php';
         //Create a new PHPMailer instance
         $mail = new PHPMailer;
         //$mail =	clone $mail;
@@ -2200,7 +2200,44 @@ if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 		$this->select($sql);
         return $this->result;
 	}
-	
+	public function getClusterEmpDetailsCount($clusterId,$health_type = '',$limit = '')
+	{
+		unset($this->result);
+		if($health_type == 'H'){
+			$where_qry = " and rp.bs_status!='UH' and rp.bp_status !='UH' and rp.bmi_status !='UH' and rp.bmi_status !=''";
+		}elseif($health_type == 'UH'){
+			$where_qry = " and (rp.bs_status='UH' or rp.bp_status ='UH' or rp.bmi_status ='UH')";
+		}
+		//concat(a.salutation,'',a.first_name,' ',a.middle_name,' ',a.last_name) as emp_name,
+		$sql="SELECT count(1) as count
+		from tbl_cluster_employee as a
+		left join tbl_ebh_customer as c on a.ebh_customer_id=c.ebh_customer_id
+		
+		left join 
+		(
+				select r.ebh_customer_id,r.bmi_category,r.bp_category,r.bs_result,
+				 
+				if(r.bmi_category='Normal' , 'H', if (r.bmi_category='Underweight' or r.bmi_category='Overweight' ,'UH','')) as bmi_status,
+					if(r.bp_category='Normal Blood pressure range' , 'H', 
+				if (r.bp_category='Lower than Normal'
+					or r.bp_category='Prehypertension'
+					or r.bp_category='Stage 1 Hypertension'
+					or r.bp_category='Stage 2 Hypertension'
+					,'UH','')) as bp_status,
+				if(r.bs_result='Normal' , 'H', 
+					if(r.bs_result='Prediabetes'
+					or r.bs_result='Diabetes'
+					,'UH','')) as bs_status 
+				from tbl_ebh_customer_health_readings r
+				group by r.ebh_customer_id
+				order by r.sr_no desc 
+		) as rp on c.ebh_customer_id = rp.ebh_customer_id
+
+		where a.cluster_id='".$clusterId."' ".$where_qry.' '.$limit;
+
+		$this->select($sql);
+        return $this->result;
+	}
 public function getClusterEmpCount($clusterId)
 	{
 		
@@ -2231,7 +2268,7 @@ if(rp.bp_status is null and rp.bs_status is null and rp.bmi_status is null ,'',
 
 		$this->select($sql);
 		$result = $this->result;
-		//print_R($result);	
+	//	print_R($result);	
 		$returnArr['healthy'] = 0;
 		$returnArr['unhealthy'] = 0;
 		$returnArr['total'] = 0;
@@ -3885,6 +3922,19 @@ function getLoginLog($user_id,$limit='Limit 1',$order =' ORDER BY login_date DES
 		unset($this->result);
 	$this->select($sql);
 	return $this->result;
+}
+
+function getPAckageRequestData($cluster_user_id){
+	$sql = "SELECT * FROM `tbl_package_request` where cluster_user_id = ".$cluster_user_id;
+		unset($this->result);
+	$this->select($sql);
+	$result = array();
+	if(!empty($this->result)){
+	    foreach($this->result as $key=>$val){
+	        $result[$val['type']] = 1;
+	    }
+	}
+	return $result;
 }
 }
 

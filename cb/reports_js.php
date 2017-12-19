@@ -1,3 +1,4 @@
+	<?php if(!empty($arr_cluster_pack) ){?>
 <script>
 		  $(document).ready(function(){
 			
@@ -99,3 +100,4 @@ var pieData_pkg3 = [
 				//}
 	});
 </script>
+	<?php } ?>

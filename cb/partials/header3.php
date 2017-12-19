@@ -19,11 +19,21 @@ if(!isset($_SESSION['ref_id']) || !isset($_SESSION['cluster_type']) || !isset($_
 }
 else
 {
-	
-	$user_id						=	$_SESSION['ref_id'];
+    	$user_id						=	$_SESSION['ref_id'];
+if($url_page=='reset_password' ){
+    
+    $userArr = ($user_id)?$database->getTableForHsp('tbl_user_mst', "user_id='$user_id'"):[];
+    //print_R($userArr);
+    if($userArr[0]['is_password_changed']==1){
+        unset($_SESSION['show_reset_password']);
+        header("Location: ".HTTP_SERVER."dashboard.php");
+    }
+    
+}	
+
 	$user_group_id					=	$_SESSION['user_group_id'];	
 	$clusterId						=	$_SESSION['cluster_id'];
-	$cluster_user_id						=	$_SESSION['cluster_user_id'];
+	$cluster_user_id				=	$_SESSION['cluster_user_id'];
 	$arr_cluster	=	$database->getClusters($clusterId);	
 	$arr_cluster	=	$arr_cluster[0];	
 	$page_id= 'home';

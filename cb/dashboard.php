@@ -147,19 +147,20 @@ svg {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <?php
-  
+  $cluster_user_id						=	$_SESSION['cluster_user_id'];
 $arr_count = $database->getDashboardCount($clusterId);
 $chartdata = $database->getDashboardChart($clusterId);
+$PRdata = $database->getPAckageRequestData($cluster_user_id);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
 
 //$charts = $chartdata['chart'];
 $goal_arr = $database->getClusterGoal($clusterId);
 //$database->getclusterEbhPackageList($cluster_id);
-/*echo "<pre>";
-print_R($arr_cluster);
-print_R($empty);
-echo "</pre>";//die;*/
+//echo "<pre>";
+//print_R($PRdata);
+//print_R($empty);
+//echo "</pre>";//die;*/
 ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -187,7 +188,7 @@ echo "</pre>";//die;*/
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
-				<span class="info-box-text"><?php echo $arr_count['total_packages']?> Health Package(s)</span>
+				<span class="info-box-text"><?php echo( $arr_count['total_packages']>0)?$arr_count['total_packages']:0;?> Health Package(s)</span>
 				<span class="info-box-number">Purchased</span>
 			</div>
 			<!-- /.info-box-content -->
@@ -198,7 +199,7 @@ echo "</pre>";//die;*/
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
-				  <span class="info-box-text"><?php echo $arr_count['total_employees']?> Employee(s)</span>
+				  <span class="info-box-text"><?php echo( $arr_count['total_employees']>0)?$arr_count['total_employees']:0;?>  Employee(s)</span>
 				  <span class="info-box-number">Added</span>
 				</div>
             <!-- /.info-box-content -->
@@ -210,7 +211,7 @@ echo "</pre>";//die;*/
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-text"><?php echo $arr_count['total_report_available']?> Report(s)</span>
+					<span class="info-box-text"><?php echo( $arr_count['total_report_available']>0)?$arr_count['total_report_available']:0;?> Report(s)</span>
 					<span class="info-box-number">Uploaded</span>
 				</div>
             <!-- /.info-box-content -->
@@ -240,7 +241,7 @@ echo "</pre>";//die;*/
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			 <!-- BAR CHART -->
-			 	
+			 		<?php if(!empty($chartdata['bp']['table']) ){?>
 			  <div class="box box-success">
             <div class="box-header with-border">
  <div class="pre-header" style="margin: 8px 0;">
@@ -312,7 +313,33 @@ echo "</pre>";//die;*/
             </div>
             <!-- /.box-body -->
           </div>
-         
+         <?php }else{ ?>
+            <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>Blood Pressure Observations</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+                   <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Pressure Testing. 
+                
+                <?php if(!isset($PRdata['bp'])){?>To Add a Blood Pressure Test/Package Click "Add"
+                <br/><br/>
+                 <button type="button" onclick="sendPackageRequest('bp');" class="btn btn-info" >Add</button>
+                 
+                 <?php } else{
+                     echo "<br/>We have recived your request to add Blood Pressure Test/Package.";
+                 }?></center><br/><br/><br/>
+                    </div></div></div>
+                    </div>
+           <?php } ?>
            
           
                
@@ -322,7 +349,7 @@ echo "</pre>";//die;*/
       <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			 <!-- BAR CHART -->
-			 	
+			 		<?php if(!empty($chartdata['bmi']['table']) ){?>
 			  <div class="box box-success">
             <div class="box-header with-border">
  <div class="pre-header" style="margin: 8px 0;">
@@ -394,7 +421,33 @@ echo "</pre>";//die;*/
             </div>
             <!-- /.box-body -->
           </div>
-         
+          <?php }else{ ?>
+            <div class="box box-success">
+            <div class="box-header with-border">
+ <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase2"><b>BMI Observations</b></h5>
+                      <!--<a href="#" class="btn2">BMI</a>-->
+                    </div>
+                   <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include BMI Calculation. 
+                
+                <?php if(!isset($PRdata['bmi'])){?>To Add a BMI Calculation/Package Click "Add"
+                <br/><br/>
+                 <button type="button" onclick="sendPackageRequest('bmi');" class="btn btn-info" >Add</button>
+                 
+                 <?php } else{
+                     echo "<br/>We have recived your request to add BMI Calculation Test/Package.";
+                 }?></center><br/><br/><br/>
+                    </div></div></div>
+                    </div>
+           <?php } ?>
            
           
                
@@ -494,7 +547,14 @@ echo "</pre>";//die;*/
             </div>
             <div class="box-body">
                 <div class="row">
-                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Sugar Testing. To Add a Blood Sugar Test/Package Click "Add"</center><br/><br/><br/>
+                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Sugar Testing. 
+                <?php if(!isset($PRdata['bs'])){?>To Add a Blood Sugar Test/Package Click "Add" 
+                <br/><br/>
+                 <button type="button" onclick="sendPackageRequest('bs');" class="btn btn-info" >Add</button>
+                 
+                 <?php } else{
+                     echo "<br/>We have recived your request to add Blood Sugar Test/Package.";
+                 }?></center><br/><br/><br/>
                     </div></div></div>
                     </div>
            <?php }?>
@@ -562,7 +622,9 @@ echo "</pre>";//die;*/
 		   <div class="box">            
             <!-- /.box-header -->
 		
-            <div class="box-body profileimg">
+            
+                <?php if(!empty($emp_arr['healty']) ){?>
+                <div class="box-body profileimg">
 				<?php foreach($emp_arr['healty'] as $row){ 
 				$age = '';
 				if((!empty($row['dob']))){
@@ -592,12 +654,16 @@ echo "</pre>";//die;*/
 			  </span>
 				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
                 <hr>
-				<?php } ?>
-		
-               <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+                	<?php } ?>
+                 <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a></div>
+			<?php
+				}else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
+              
            
             <!-- /.box-body -->
-          </div>
+          
           <!-- /.box -->
 
         </div>
@@ -610,7 +676,7 @@ echo "</pre>";//die;*/
 			</div>
 		    <div class="box">            
             <!-- /.box-header -->
-		
+		 <?php if(!empty($emp_arr['healty']) ){?>
             <div class="box-body profileimg">
 				<?php foreach($emp_arr['unhealty'] as $row){ 
 				$age = '';
@@ -648,7 +714,9 @@ echo "</pre>";//die;*/
                <a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
            
             <!-- /.box-body -->
-          </div>
+          </div>	<?php } else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
           <!-- /.box -->
 
         </div>
@@ -1348,7 +1416,7 @@ echo "</pre>";//die;*/
     //- AREA CHART -
     //--------------
 
-
+<?php if(!empty($chartdata['bp']['table']) ){?>
     var areaChartData = {
       labels  : [<?php echo $chartdata['bp']['label']?>],
       datasets: [
@@ -1388,6 +1456,7 @@ echo "</pre>";//die;*/
     barChartData.datasets[1].fillColor   = '#00a65a'
     barChartData.datasets[1].strokeColor = '#00a65a'
     barChartData.datasets[1].pointColor  = '#00a65a'
+    <?php } ?>
     var barChartOptions                  = {
       //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
       scaleBeginAtZero        : true,
@@ -1419,9 +1488,11 @@ echo "</pre>";//die;*/
     }
 
     barChartOptions.datasetFill = false
-    
+    <?php if(!empty($chartdata['bp']['table']) ){?>
      barChart.Bar(barChartData, barChartOptions)
+     <?php } ?>
     ///bmi chart
+    <?php if(!empty($chartdata['bmi']['table']) ){?>
     var areaChartData_bmi = {
       labels  : [<?php echo $chartdata['bmi']['label']?>],
       datasets: [
@@ -1451,7 +1522,7 @@ echo "</pre>";//die;*/
     var barChart_bmi                = new Chart(barChartCanvas_bmi)
      var barChartData_bmi                     = areaChartData_bmi
     barChart_bmi.Bar(barChartData_bmi, barChartOptions)
-	
+		 <?php } ?>
 	//Blood sugar
 	 <?php if(!empty($chartdata['bs']['table']) ) {?>
     var areaChartData_bs = {
@@ -1564,13 +1635,17 @@ var pieData2 = [
 
 			];
 			window.onload = function(){
+			    <?php if(!empty($chartdata['bp']['table']) ){?>
 				var ctx = document.getElementById("chart-area").getContext("2d");
 				window.myPie = new Chart(ctx).Doughnut(pieData);
+				<?php } ?>
+				<?php if(!empty($chartdata['bmi']['table']) ){?>
 					var ctx2 = document.getElementById("chart-area_bmi").getContext("2d");
 			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
 				window.myDoughnut = new Chart(ctx2).Doughnut(pieData2, {
 					responsive:true
 				})	
+				<?php } ?>
 				<?php if(!empty($chartdata['bs']['table']) ) {?>
 				var ctx3 = document.getElementById("chart-area_bs").getContext("2d");
 			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
@@ -1774,6 +1849,24 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
 			
 			$('#steps_goal').html(response.steps);
 			$('#sleep_goal').html(response.sleep);
+			
+		}
+	})
+   }
+   function sendPackageRequest(obs_type){
+	   	 
+		  // alert("t--"+$('#goal-form').serialize());
+	   	$.ajax({				
+		url: 'operation.php',				
+		type: 'POST',				
+		dataType: 'json',				
+		async: false,				
+		data: 'action=package_request&type='+obs_type,				
+		success: function(response) {	
+//alert("t"+response);
+			document.location = '';
+		//	$('#steps_goal').html(response.steps);
+		//	$('#sleep_goal').html(response.sleep);
 			
 		}
 	})
