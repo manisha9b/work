@@ -6145,8 +6145,7 @@ label:hover:before {
 @media screen and (max-width:1366px){
 	
 	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
-	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}
-	
+	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}	
 	
 	
 	/*appointment-page*/

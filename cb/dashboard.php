@@ -566,7 +566,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 	  <?php include_once('my_Reports.php') ?>
 	  <!-- end of my report -->
       <!-- /.row -->
-     <!-- <div class="row">
+     <div class="row">
         <div class="col-sm-12">
           <div class="configure" style="padding-top: 10px;margin-bottom: 5px;margin-top: 50px;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);">
             <div class="pull-left re_arrange_dashboard">
@@ -578,9 +578,9 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div> -->
+      </div> 
       <!-- /.row -->
-      <!-- <div class="row wow bounceInleft" data-wow-delay="0.8s">
+       <div class="row wow bounceInleft" data-wow-delay="0.8s">
         <div class="col-sm-12">
           <div class="configure digonalsection pt-0 pb-0">
             <div class="col-md-5 padding0 pt-20 pb-20">
@@ -611,7 +611,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div> -->
+      </div> 
       <!-- /.row -->
     <div class="row pt-20">		
         <div class="employe_health_area">
@@ -619,7 +619,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		  <div class="row">
           <h4 class="pull-left margin0"><strong>Healthy Employees</strong></h4>
 		</div>
-		   <div class="box">            
+		
+		   <div class="box emp_ratio_status">            
             <!-- /.box-header -->
 		
             
@@ -674,7 +675,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<div class="row">
 			  <h4 class="pull-left margin0"><strong>Unhealthy Employees</strong></h4>
 			</div>
-		    <div class="box">            
+		    <div class="box emp_ratio_status">            
             <!-- /.box-header -->
 		 <?php if(!empty($emp_arr['healty']) ){?>
             <div class="box-body profileimg">
@@ -726,6 +727,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="row">
 				<h4 class="pull-left margin0"><strong>Quick Stats</strong></h4>
 			</div> 
+			<div class="emp_ratio_status">
 			<div class="smoking_per">
 				<div class="blue-band-home">
                     Coming Soon
@@ -753,7 +755,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 				  <div class="result"><span class="blue"><i class="fa fa-circle" aria-hidden="true"></i> Cardivascular Disease Risk 35%</span><span class="aqua"><i class="fa fa-circle" aria-hidden="true"></i> Diabetes 30%</span></div>
 				</div>
 			</div>	
-			<div class="">
+			<div class="ratio">
 				<div class="box box-solid sex_ratio">
 					<h5 class="margin0 text-uppercase"><b>SEX RATIO</b></h5>
 					  <div class="male_Area mt-20 mob-mt10">
@@ -924,6 +926,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					  </div>
                 </div>
 			</div>
+			</div>
 		</div>
     </div>
       <!-- /.row -->
@@ -965,6 +968,17 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 </div>
               </div>
 			     
+			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
+                <div class="box box-solid" style="border:1px solid #43ce5a">
+					<div class="blue-band-home">
+                    Coming Soon
+                  </div>
+				<span class="add_new_tab"><i class="fa fa-plus"></i></span>
+					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"><b>ADD A GOAL</b></h5>
+                  
+                </div>
+              </div>
+			  
 			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
                 <div class="box box-solid" style="border:1px solid #43ce5a">
 					<div class="blue-band-home">
@@ -1040,7 +1054,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		</div>
         <!-- /.col -->
         <div class="col-md-4 wow bounceInUp  pt-20" data-wow-delay="0.4s">
-			<h4 class="pull-left margin0"><strong>Pick a challenge</strong></h4>
+			<h4 class="pull-left margin0"><strong>Pick a Challenge</strong></h4>
 			<div class="clearfix"></div><br/>
 			<div class="box box-solid">
 				<div class="blue-band-home">

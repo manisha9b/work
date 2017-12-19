@@ -1,24 +1,23 @@
 <?php
 $message;
-define('HTTP_SERVER', 'https://'.$_SERVER['HTTP_HOST'].'/cb/');//local
-define('EBH_HTTP_SERVER', 'https://'.$_SERVER['HTTP_HOST'].'/');//local
+define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/work/cb/');//local
+define('EBH_HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/easybuyhealth/');//local
 //define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/ebh-console/');//live
 
 define("IMG_PATH",HTTP_SERVER."administrator/");
-define("WEBSITE_URL","https://www.easybuyhealth.com/cb/");
-define("WEBSITE_URL_INVITE","https://www.easybuyhealth.com/");
-define("EBH_WEBSITE_URL","https://www.easybuyhealth.com/app/portal/");
+define("WEBSITE_URL","http://localhost/work/cb");
+define("EBH_WEBSITE_URL","http://localhost/easybuyhealth/app/portal/");
 
 define("MODULE_PATH",HTTP_SERVER."portal/modules/");
 
 setcookie("HTTP_SERVER",HTTP_SERVER);
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'easybuyh_liveusr');
-define('DB_PASSWORD', '42ve4^2QLtrQ');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'easybuyh_livedb');
 
-define('DOC_ROOT',$_SERVER['DOCUMENT_ROOT']."/cb/");
+define('DOC_ROOT',$_SERVER['DOCUMENT_ROOT']."/work/cb/");
 
 define("WRONG_PASSWORD","Invalid Login Credentials");
 

@@ -5180,8 +5180,25 @@ padding: 5px;}
 
 
 .health_goal_area{color:#ccc;width:24%!important;}
+.emp_ratio_status .smoking_per{min-height:200px!important;max-height: 241px !important;}
+.emp_ratio_status{max-height: 402px!important;min-height: 402px!important;}
+
+@media screen and (max-width:1366px){
+	.employe_health_area .emp_ratio_status{min-height: 403px!important;max-height: 403px!important;}
+	.emp_ratio_status .smoking_per{min-height:223px !important;max-height:223px !important;}
+	.emp_ratio_status .ratio{min-height:223px !important;max-height:223px !important;}
+	
+	
+}
+
 
 @media screen and (min-width:1366px){
+	/*dashboard-page*/
+	
+	.sign_up_area h3{font-size: 28px!important;}
+	.sign_up_news{font-size: 20px!important;}
+	.stest_icon i{font-size: 80px!important;}
+	
 	
 .sex_ratio .text-uppercase {
    font-size: 13px!important;
@@ -5224,6 +5241,15 @@ padding: 5px;}
 
 }
 @media screen and (max-width: 1280px){
+	/*dashboard-page*/
+	.sign_up_area h3{font-size: 28px!important;}
+	.sign_up_news{font-size: 20px!important;}
+	.stest_icon i{font-size: 80px!important;}
+	.employe_health_area .emp_ratio_status{min-height: 403px!important;max-height: 403px!important;}
+	.emp_ratio_status .smoking_per{min-height:223px !important;max-height:223px !important;}
+	.emp_ratio_status .ratio{min-height:223px !important;max-height:223px !important;}
+	
+	
   .gresult{font-size: 15px;}
   .gsmallresult{font-size: 12px;}
   #vitalstatsfrm > .col-sm-12 .col-sm-1{width: 15%; }
