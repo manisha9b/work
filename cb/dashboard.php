@@ -952,7 +952,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                 </div>
               </div>
                <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.6s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">					
+                <div class="box box-solid hrs_progress_bar" style="border:1px solid #43ce5a">					
 					<div class="progress">
 					  <div class="barOverflow">
 						<div class="bar"></div>
@@ -1004,11 +1004,11 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		<div class="col-md-4 wow bounceInLeft  pt-20" data-wow-delay="0.2s">
 			<h4 class="pull-left margin0"><strong>Corporate Diet Plans</strong></h4>
 			<div class="clearfix"></div><br/>
-			<div class="box box-solid">
+			<div class="box box-solid cor_plans">
 				<div class="blue-band-home">
                     Coming Soon
                   </div>
-				<div class="p-20">
+				<div class="p-20 snacks_detail">
 					<div class="mt-20">
 						<div class="col-sm-12">
 						<h4 class="pull-left margin0"><b>HEALTHY SNACKS</b></h4>
@@ -1045,11 +1045,11 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					</div>
 					<div class="clearfix"></div>
 					<hr class="hrdivide">
-					<div class="clearfix"></div>
-					<div class="pt-20 mt-10">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View full plan</h5></a>
-					</div>
-				</div>  
+					<div class="clearfix"></div>					
+				</div> 
+				<div class="plan_btn" style="padding-left: 15px;padding-right: 15px;">
+					<a href="#" class="btn2-lg"><h5 class="margin0">View full plan</h5></a>
+				</div>
 			</div>
 		</div>
         <!-- /.col -->
@@ -1060,7 +1060,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 				<div class="blue-band-home">
                     Coming Soon
                   </div>
-				<div class="p-20 pick_challege_img">
+				<div class="pick_challege_img">
 					<ul>
 						<h3>WEEK 1</h3>
 					  <li class="passed">Eat vegetables with every meal</li>
@@ -1071,8 +1071,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					  <li class="passed">Write down everything you eat or drink: Track down your caloires too</li>
 					  <li class="passed">Exercise for 20 minutes in a day</li>
 					</ul>
-					<div class="allarticle">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+					<div class="view_btn" style="padding-left:15px;padding-right:15px;">
+						<a href="#" class="mt-20 btn2-lg"><h5 class="margin0">View All</h5></a>
 					</div>			   
 				</div>
 			</div>
@@ -1082,11 +1082,11 @@ $goal_arr = $database->getClusterGoal($clusterId);
 			<h4 class="pull-left margin0"><strong>Worth Reading</strong></h4>
 			<div class="clearfix"></div>
 			<br/>
-			<div class="box box-solid">
+			<div class="box box-solid reading_section">
 				<div class="blue-band-home">
                     Coming Soon
                   </div>
-				<div class="col-md-12">
+				<div class="col-md-12 worth_rading_sec">
 					<div class="article">
 						<h4 class="mt-0"><span style="font-size:18px;1.5">How I Finally Got Serious <br>About My Health</span></h4>
 						<img src="images/articles/1.png" />
@@ -1094,11 +1094,12 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					<div class="article">
 						<h4 class="mt-10"><span style="font-size:18px;">When your health costs <br>you your job</span></h4>
 						<img src="images/articles/2.png" />
-					</div>
-					<div class="allarticle">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-					</div>  
+					</div>					
 				</div> 
+				<div class="clearfix"></div>
+				<div class="allarticle">
+					<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+				</div>  
 			</div>
 		</div>
         <!-- /.col -->

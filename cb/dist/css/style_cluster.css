@@ -5183,11 +5183,20 @@ padding: 5px;}
 .emp_ratio_status .smoking_per{min-height:200px!important;max-height: 241px !important;}
 .emp_ratio_status{max-height: 402px!important;min-height: 402px!important;}
 
+.pick_challege_img .view_btn{padding-top:45px!important;}
+.cor_plans .plan_btn{padding-top:6px;}
+.reading_section .allarticle{padding-top:25px;}
+.hrs_progress_bar .progress{position:relative;}
+.hrs_progress_bar .health_goal_info{position:absolute;margin-top:86px;width:100%;}
+
 @media screen and (max-width:1366px){
+	.reading_section .allarticle{padding-top:0px;}
+	.worth_rading_sec{min-height:536px;max-height:536px;}
+	.pick_challege_img .view_btn{padding-top:0px!important;}
 	.employe_health_area .emp_ratio_status{min-height: 403px!important;max-height: 403px!important;}
 	.emp_ratio_status .smoking_per{min-height:223px !important;max-height:223px !important;}
 	.emp_ratio_status .ratio{min-height:223px !important;max-height:223px !important;}
-	
+	.snacks_detail{min-height: 527px;max-height: 527px;}
 	
 }
 
