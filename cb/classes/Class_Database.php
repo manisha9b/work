@@ -3423,13 +3423,13 @@ public function getControllerAction($default) {
 
 function getDashboardDataOld($clusterId){
 unset($this->result);
-	$weight_sql = "SELECT  monthname(a.recorded_on) as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
+	$weight_sql = "SELECT  DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
 
 				if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) )  as  gender1
 				from tbl_ebh_customer_health_readings as a
 				left join tbl_ebh_customer as b on a.ebh_customer_id = b.ebh_customer_id 
 				left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
-				where  c.cluster_id=".$clusterId." and a.recorded_on  > DATE_SUB(now(), INTERVAL 12 MONTH) and bmi>0 group by gender1, month(a.recorded_on)";
+				where  c.cluster_id=".$clusterId." and a.recorded_on  > DATE_SUB(now(), INTERVAL 12 MONTH) and bmi>0 group by gender1, DATE_FORMAT(a.recorded_on,'%b')";
 	//AND y.cluster_id=".$clusterId."
 	// c.cluster_id=".$clusterId." and
 		$this->select($weight_sql);
@@ -3454,7 +3454,10 @@ unset($this->result);
        
 }
 function getDashboardChartOld($clusterId){
-	$data = $this->getDashboardData($clusterId);
+	$data = $this->getDashboardDataOld($clusterId);
+	//echo "<pre>";
+	//print_R($data);
+	//echo "</pre>";
 	$result = array();
 	$avg_bmi = 0;
 	$avg_weight = 0;
@@ -3465,18 +3468,28 @@ function getDashboardChartOld($clusterId){
 	$n_bmi = 0;
 	$n_bp = 0;
 	$n_sugar = 0;
+	$result['chart']['male_bmi_chart_month'] = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 	foreach($data['weight'] as $key=>$value){
 		if($value['gender1']!=''){
-			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_bmi'];
+			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_weight'];
 			//[["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-			$bmi_chart[$value['gender1']][] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
+			//$bmi_chart[$value['gender1']][] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
+			$bmi_chart[$value['gender1']][$value['recording_month']] = $value['avg_weight'] ;
+			//$bmi_chart[$value['gender1'].'_month'][] = '"'.$value['recording_month'].'"' ;
 			$avg_bmi += $value['avg_bmi'];
 			$avg_weight += $value['avg_weight'];
 			$n_bmi++;
 		}
 	}
-	$result['chart']['male_bmi_chart'] = '['.implode(', ',$bmi_chart['Male']).']';
-	$result['chart']['female_bmi_chart'] = '['.implode(', ',$bmi_chart['Female']).']';
+	foreach($result['chart']['male_bmi_chart_month'] as $month){
+		$bmi_chart2['Male'][] = isset($bmi_chart['Male'][$month])?$bmi_chart['Male'][$month]:0;
+		$bmi_chart2['Female'][] = isset($bmi_chart['Female'][$month])?$bmi_chart['Female'][$month]:0;
+	}
+	$result['chart']['male_bmi_chart'] = '['.implode(', ',$bmi_chart2['Male']).']';
+	$result['chart']['female_bmi_chart'] = '['.implode(', ',$bmi_chart2['Female']).']';	
+	$result['chart']['male_bmi_chart_month'] = '["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]';
+	//$result['chart']['male_bmi_chart_month'] = '['.implode(', ',$bmi_chart['Male_month']).']';
+	//$result['chart']['female_bmi_chart_month'] = '['.implode(', ',$bmi_chart['Female_month']).']';
 if($n_bmi>0){
 		$result['chart']['avg_bmi'] = round($avg_bmi/$n_bmi) ;
 		$result['chart']['avg_weight'] = round($avg_weight/$n_bmi) ;
@@ -3520,7 +3533,7 @@ public function getClusterGoal($clusterId){
 	  $sql = "select * from tbl_cluster_goal where cluster_id =".$clusterId;
 		unset($this->result);
 		$this->select($sql);
-		return $this->result;
+		//return $this->result;
 }
 
 
@@ -3905,7 +3918,7 @@ unset($this->result);
 	}
 	function getMessage($type,$category){
 	    // echo $category.' '.$type;
-	    $category2 = trim($val);
+	    $category2 = trim($category);
 	    switch($category){
 	        case 'Normal': $category = $category.' '.$type;
 	       // echo "dfasdfasd".$category.' '.$type;

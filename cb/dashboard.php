@@ -149,18 +149,20 @@ svg {
   <?php
   $cluster_user_id						=	$_SESSION['cluster_user_id'];
 $arr_count = $database->getDashboardCount($clusterId);
-$chartdata = $database->getDashboardChart($clusterId);
+  //ini_set("display_errors", "1");
+  //error_reporting(E_ALL);
+$chartdata = $database->getDashboardChartOld($clusterId);
 $PRdata = $database->getPAckageRequestData($cluster_user_id);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
 
-//$charts = $chartdata['chart'];
+$charts = $chartdata['chart'];
 $goal_arr = $database->getClusterGoal($clusterId);
 //$database->getclusterEbhPackageList($cluster_id);
-//echo "<pre>";
-//print_R($PRdata);
+/*echo "<pre>";
+print_R($chartdata);
 //print_R($empty);
-//echo "</pre>";//die;*/
+echo "</pre>";//die;*/
 ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -395,7 +397,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
      
       </div>
       <!-- sho my report data -->
-	  <?php// include_once('my_Reports.php') ?>
+	  <?php // include_once('my_Reports.php') ?>
 	  <!-- end of my report -->
       <!-- /.row -->
      <div class="row">
@@ -1183,7 +1185,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
     var areaChart       = new Chart(areaChartCanvas)
 		    
   	var areaChartData = {
-			labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+			labels : <?php echo $charts['male_bmi_chart_month']?>,
 			datasets : [
 				{
 					label: "My First dataset",
@@ -1193,7 +1195,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					 data                : [70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30, 60],
+					 data:  <?php echo $charts['male_bmi_chart']?>,
 					 
 				},
 				{
@@ -1204,7 +1206,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					  data                : [30,70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30]
+					  data:  <?php echo $charts['female_bmi_chart']?>,
 				},
 				
 			]
@@ -1354,11 +1356,11 @@ var line_data1 = {
     });
 	//LINE randomly generated data
     var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  <?php echo $charts['ppbs_chart']?>,
       color: "#31b3bf"
     };
     var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+       data:  <?php echo $charts['fbs_chart']?>,
       color: "#ccafaa"
     };
     $.plot("#line-chart2", [line_data2,line_data21], {
@@ -1392,11 +1394,11 @@ var line_data1 = {
     });
 	//LINE randomly generated data
     var line_data2 = {
-      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      data:  <?php echo $charts['systolic_chart']?>,
       color: "#31b3bf"
     };
     var line_data21 = {
-      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      data:  <?php echo $charts['diastolic_chart']?>,
       color: "#ccafaa"
     };
     $.plot("#line-chart3", [line_data2,line_data21], {
