@@ -69,8 +69,8 @@ include_once('partials/askme.php');
 		<div class="row">
 		<div class="col-md-12">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box box2 bg_dark_blue" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self');">
-            <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
+          <div class="info-box box2 bg_dark_blue total_employee" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self');">
+            <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user" style="font-size:40px;"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo $emp_Count?></span>
@@ -83,7 +83,11 @@ include_once('partials/askme.php');
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self');">
           <div class="info-box box3 healthy_employee">
-            <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-heartbeat"></i></span>
+            <span class="info-box-icon icon2 bg_dark_blue1 text-white">
+				<span style="position:relative;font-size: 40px;"><i class="fa fa-heart-o"></i></span>
+				<span style="position:absolute;left: 51px;font-size: 20px;"><i class="fa fa-check"></i></span>
+				
+			</span>
 
             <div class="info-box-content bg_dark_blue1">
               <span class="info-box-text text2 clr_effect1 text-white"><?php echo $emp_healthy_Count[0]['count']?></span>
@@ -96,7 +100,7 @@ include_once('partials/askme.php');
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self');">
           <div class="info-box box4 unhealthy_employee">
-            <span class="info-box-icon icon3"><img src="images/logo/unhealthy_icon.png" width="35"></span>
+            <span class="info-box-icon icon3"><img src="images/logo/unhealthy_icon.png" width="28"></span>
 
             <div class="info-box-content">
               <span class="info-box-text text2 text-white clr_effect1"><?php echo $emp_unhealthy_Count[0]['count']?></span>
@@ -109,11 +113,11 @@ include_once('partials/askme.php');
         <!-- /.col -->
 		  <div class="col-md-3 col-sm-6 col-xs-12" style="cursor:pointer;" data-toggle="modal" data-target="#myModal">
           <div class="info-box box4 bg-yellow">
-            <span class="info-box-icon icon4"><i class="ion ion-person-add"></i></span>
+            <span class="info-box-icon icon4"><i class="ion ion-person-add" style="font-size:40px;"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text text2 text-white clr_effect1"></span>
-              <span class="info-box-number text-white" style="margin-top:15px;">ADD NEW EMPLOYEE</span>
+              <span class="info-box-number text-white" style="margin-top:30px;">ADD NEW</span>
             </div>
             <!-- /.info-box-content -->
           </div>

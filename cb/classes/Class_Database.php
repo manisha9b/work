@@ -3423,13 +3423,14 @@ public function getControllerAction($default) {
 
 function getDashboardDataOld($clusterId){
 unset($this->result);
-	 $weight_sql = "SELECT  DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
+ $weight_sql = "SELECT  DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
 
 				if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) )  as  gender1
 				from tbl_ebh_customer_health_readings as a
 				left join tbl_ebh_customer as b on a.ebh_customer_id = b.ebh_customer_id 
 				left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id 
 				where  c.cluster_id=".$clusterId." and a.recorded_on  > DATE_SUB(now(), INTERVAL 12 MONTH) and bmi>0 group by gender1, DATE_FORMAT(a.recorded_on,'%b')";
+	
 	//AND y.cluster_id=".$clusterId."
 	// c.cluster_id=".$clusterId." and
 		$this->select($weight_sql);
@@ -3461,9 +3462,6 @@ unset($this->result);
 }
 function getDashboardChartOld($clusterId){
 	$data = $this->getDashboardDataOld($clusterId);
-	//echo "<pre>";
-	//print_R($data);
-	//echo "</pre>";
 	$result = array();
 	$avg_bmi = 0;
 	$avg_weight = 0;
@@ -3471,11 +3469,11 @@ function getDashboardChartOld($clusterId){
 	$avg_ppbs = 0;
 	$avg_systolic = 0;
 	$avg_diastolic = 0;
+	$avg_bmi2 = 0;
 	$n_bmi = 0;
 	$n_bmi2 = 0;
 	$n_bp = 0;
 	$n_sugar = 0;
-	$avg_bmi2 = 0;
 	$result['chart']['male_bmi_chart_month'] = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 	foreach($data['weight'] as $key=>$value){
 		if($value['gender1']!=''){
@@ -3489,6 +3487,7 @@ function getDashboardChartOld($clusterId){
 			$n_bmi++;
 		}
 	}
+	
 	foreach($result['chart']['male_bmi_chart_month'] as $month){
 		$bmi_chart2['Male'][] = isset($bmi_chart['Male'][$month])?$bmi_chart['Male'][$month]:0;
 		$bmi_chart2['Female'][] = isset($bmi_chart['Female'][$month])?$bmi_chart['Female'][$month]:0;
@@ -3502,18 +3501,20 @@ if($n_bmi>0){
 		$result['chart']['avg_bmi'] = round($avg_bmi/$n_bmi) ;
 		$result['chart']['avg_weight'] = round($avg_weight/$n_bmi) ;
 	}
-	foreach($data['avg_bmi'] as $key=>$value){
+	$avg_weight =0;
+		foreach($data['avg_bmi'] as $key=>$value){
 			$result['bmi2'][$value['recording_month']]['bmi'] = $value['avg_bmi'];
 			//$result['sugar'][$value['recording_month']]['fbs'] = $value['avg_fbs'];
 			$bmi_chart3[] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
 			$avg_bmi2 += $value['avg_bmi'];
-			
+		$avg_weight += $value['avg_weight'];
 			$n_bmi2++;
 	}
 	$result['chart']['bmi_chart'] = '['.implode(', ',$bmi_chart3).']';
 	//$result['chart']['fbs_chart'] = '['.implode(', ',$fbs_chart).']';
 	if($n_bmi2>0){
 		$result['chart']['avg_bmi'] = round($avg_bmi2/$n_bmi2) ;
+			$result['chart']['avg_weight'] = round($avg_weight/$n_bmi2) ;
 		
 	}
 	foreach($data['sugar'] as $key=>$value){
@@ -3546,10 +3547,43 @@ if($n_bmi>0){
 		$result['chart']['avg_systolic'] = round($avg_systolic/$n_bp) ;
 		$result['chart']['avg_diastolic'] = round($avg_diastolic/$n_bp) ;
 	}
-	echo "<pre>";
-	print_R($result);
-	echo "</pre>";
+	/*echo "<pre>";
+	print_R($result['chart']);
+	echo "</pre>";*/
+	$result['chart'] = $this->getSample($result['chart']);
+		/*echo "<pre>";
+	print_R($result['chart']);
+	echo "</pre>";*/
 	return $result;
+}
+public function getSample($chart){
+    if($chart['ppbs_chart'] == '[]'){
+        $chart['ppbs_chart'] = '[["Jan", 140], ["Feb", 100], ["Mar", 110], ["Apr", 100], ["May", 120], ["June", 140]]';
+        $chart['fbs_chart'] = '[["Jan", 110], ["Feb", 70], ["Mar", 80], ["Apr", 70], ["May", 90], ["June", 100]]';
+        
+        $chart['avg_ppbs'] = 118;
+        $chart['avg_fbs'] = 87;
+        $chart['sugar_sample'] = 1;
+    }
+    if($chart['systolic_chart'] == '[]'){
+        $chart['ppbs_chart'] = '[["Jan", 140], ["Feb", 100], ["Mar", 110], ["Apr", 100], ["May", 120], ["June", 140]]';
+        $chart['diastolic_chart'] = '[["Jan", 110], ["Feb", 70], ["Mar", 80], ["Apr", 70], ["May", 90], ["June", 100]]';
+        
+        $chart['avg_systolic'] = 118;
+        $chart['avg_diastolic'] = 87;
+        $chart['bp_sample'] = 1;
+    }
+     if($chart['bmi_chart'] == '[]'){
+        $chart['bmi_chart'] = '[["Jan", 25], ["Feb", 23], ["Mar", 22], ["Apr", 23], ["May", 24], ["June", 25]]';
+       
+        
+        $chart['avg_bmi'] = 23;
+        $chart['avg_weight'] = 87;
+        $chart['bmi_sample'] = 1;
+        $chart['male_bmi_chart'] = '[26, 22, 24, 27, 24, 28,  24, 27, 22, 26, 21, 24]';
+        $chart['female_bmi_chart'] = '[22,26, 22, 24, 27, 24, 28,  24, 27, 22, 26, 21]';
+    }
+    return $chart;
 }
 public function getClusterGoal($clusterId){
 	  $sql = "select * from tbl_cluster_goal where cluster_id =".$clusterId;
@@ -3557,6 +3591,7 @@ public function getClusterGoal($clusterId){
 		$this->select($sql);
 		//return $this->result;
 }
+
 
 
 function getAvgBPCountGroupByGenderforChart($clusterId){
@@ -3940,7 +3975,7 @@ unset($this->result);
 	}
 	function getMessage($type,$category){
 	    // echo $category.' '.$type;
-	    $category2 = trim($category);
+	    $category2 = trim($val);
 	    switch($category){
 	        case 'Normal': $category = $category.' '.$type;
 	       // echo "dfasdfasd".$category.' '.$type;

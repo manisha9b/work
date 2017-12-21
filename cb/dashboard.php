@@ -255,6 +255,11 @@ echo "</pre>";//die;*/
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
 			<div class="box box-primary">
+			    <?php if(isset($charts['bmi_sample']) && $charts['bmi_sample']==1){ ?>
+                    <div class="blue-band-home">
+                    Sample
+                  </div>
+                  <?php } ?>
 			    <div class="box-header with-border">
                     <div class="pre-header" style="margin: 8px 0;">
                           <h5 class="margin0 text-uppercase"><b>AVERAGE WEIGHT&nbsp;&nbsp;&nbsp;<Span style="border:1px #000 solid">AVERAGE BMI</Span></Span> </b></h5>
@@ -284,6 +289,14 @@ echo "</pre>";//die;*/
                     <!-- Sales Chart Canvas -->
                     <canvas id="salesChart2" style="height: 250px;"></canvas>
                   </div>
+                   <div class="clearfix"></div>
+                    <div class="pre-header mb-0">
+                      <div style="min-height: 58px;padding-top: 10px;">
+                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
+                       <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
+                        <h5 class="gresult margin0" style="font-size: 0.9em;">61% of <?php echo $arr_cluster['cluster_business_name']?>  is Overwieght & average weight is <?php echo $charts['avg_weight']?> kgs</h5>
+                      </div>
+                    </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -294,9 +307,11 @@ echo "</pre>";//die;*/
               <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <!-- <div class="blue-band-home">
+                    <?php if(isset($charts['bmi_sample']) && $charts['bmi_sample']==1){ ?>
+                    <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
+                  <?php } ?>
                   <div class="box-header with-border">
                     <div class="pre-header" style="margin: 8px 0;">
                       <h5 class="margin0 text-uppercase"><b>AVG. BMI</b></h5>
@@ -326,7 +341,7 @@ echo "</pre>";//die;*/
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
                        <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?>  are Overwieght</h5>
+                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?>  is Overwieght</h5>
                       </div>
                     </div>
                   </div>
@@ -340,9 +355,11 @@ echo "</pre>";//die;*/
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                   <!-- <div class="blue-band-home">
+                    <?php if(isset($charts['sugar_sample']) && $charts['sugar_sample']==1){ ?>
+                    <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
+                  <?php } ?>
                   <div class="box-header with-border">
                     <div class="pre-header">
                       <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
@@ -377,9 +394,11 @@ echo "</pre>";//die;*/
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                   <!-- <div class="blue-band-home">
+                   <?php if(isset($charts['bp_sample']) && $charts['bp_sample']==1){ ?>
+                    <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
+                  <?php } ?>
                   <div class="box-header with-border">
                     <div class="pre-header">
                       <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
@@ -1330,12 +1349,10 @@ echo "</pre>";//die;*/
 		  });
 </script>
 <script src="plugins/flot/jquery.flot.min.js"></script>
- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized 
+
 <script src="plugins/flot/jquery.flot.resize.min.js"></script>
- FLOT PIE PLUGIN - also used to draw donut charts 
 <script src="plugins/flot/jquery.flot.pie.min.js"></script>
- FLOT CATEGORIES PLUGIN - Used to draw bar charts 
-<script src="plugins/flot/jquery.flot.categories.min.js"></script>
+ <script src="plugins/flot/jquery.flot.categories.min.js"></script>
 <script>
  $(document).ready(function(){
 var line_data1 = {
@@ -1656,7 +1673,7 @@ jQuery.validator.addMethod("bponly", function(value, element) {
     easing: "swing",
     step: function(p) {
       $bar.css({
-        transform: "rotate("+ (14+(p*1.8)) +"deg)", // 100%=180¡Æ so: ¡Æ = % * 1.8
+        transform: "rotate("+ (14+(p*1.8)) +"deg)", // 100%=180Â¡Ã† so: Â¡Ã† = % * 1.8
         // 45 is to add the needed rotation to have the green borders at the bottom
       });
       $val.text(p|0);

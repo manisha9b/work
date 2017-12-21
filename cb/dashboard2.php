@@ -12,8 +12,8 @@
 
 .progressbar-text{font-size:3rem!important;color:rgb(15, 14, 14)!important;}
 .swiper-slide .box .date{color:#717171;font-size:14px;}
-.health_goal_area{color:#ccc;width:24%!important;}
-.health_goal_area .box-solid{border:none!important;padding:15px;height: 250px;}
+
+.health_goal_area .box-solid{border:none!important;padding:15px;overflow:hidden;margin: 0 auto;text-align: center;}
 .add_new_tab{display: block;
     background: #67c100 !important;
     border-radius: 85%;
@@ -27,7 +27,7 @@
     text-align: center;
     color: #fff}
 	
-	.progress{
+.progress{
   position: relative;
   margin: 4px;
   float:left;
@@ -47,7 +47,7 @@
 .bar{
   position: absolute;
   top: 10px; left: 0;
-  width:100%; height:270px; /* full circle! */
+  width:100%; height:265px; /* full circle! */
   border-radius: 50%;
   box-sizing: border-box;
   border:25px solid #eee;     /* half gray, */
@@ -81,10 +81,64 @@ svg {
   
 #container .progressbar-text{visibility:hidden!important;}
 
-.health_goal_info .value{font-size:35px;}
+.health_goal_info .value{font-size:20px;}
 
+/* .disabled:hover { 
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border:1px solid #25729a; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family:arial, helvetica, sans-serif; 
+    padding: 10px 10px 10px 10px; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    text-align: center; 
+    color: #FFFFFF; 
+    background-color: #3093c7;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
+    background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -moz-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -ms-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
+    background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+} */
 
+.disabled {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
 
+@media screen and (max-width:1366px){
+	.bar{
+  position: absolute;
+  top: 10px; left: 0;
+  width:100%; height:212px; /* full circle! */
+  border-radius: 50%;
+  box-sizing: border-box;
+  border:25px solid #eee;     /* half gray, */
+ border-bottom-color: #58d76c;
+    border-right-color: #58d76c;
+}
+}
+
+@media only screen and (max-width: 320px){
+	
+	.bar{position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height:310px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border:30px solid #eee;
+    border-bottom-color: #58d76c;
+    border-right-color: #58d76c;}
+	
+}
+	
+	
 
   </style>
 
@@ -93,23 +147,25 @@ svg {
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <?php
+  $cluster_user_id						=	$_SESSION['cluster_user_id'];
 $arr_count = $database->getDashboardCount($clusterId);
 $chartdata = $database->getDashboardChart($clusterId);
+$PRdata = $database->getPAckageRequestData($cluster_user_id);
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
 
-$charts = $chartdata['chart'];
+//$charts = $chartdata['chart'];
 $goal_arr = $database->getClusterGoal($clusterId);
 //$database->getclusterEbhPackageList($cluster_id);
 //echo "<pre>";
-//print_R($arr_count);
-//print_R($goal_arr);
-//echo "</pre>";//die;
+//print_R($PRdata);
+//print_R($empty);
+//echo "</pre>";//die;*/
 ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
 		<div class="col-md-12">
-		  <h3 class="pull-left">
+		  <h3 class="pull-left black">
 			<b> <?php echo $arr_cluster['cluster_business_name']?> Dashboard</b>
 		  </h3>
 		  <div class="pull-right resright">
@@ -120,52 +176,64 @@ $goal_arr = $database->getClusterGoal($clusterId);
 	  <hr class="hrdivide" />
     </section>
 	
-    
+    <section class="content">
+			<div class="col-md-12">
+			<div class="pull-right" style="margin-top: -10px;">
+				<span style="color:#848383">Timeframe</span> : 
+				<select style="font-weight: bold;background: transparent;border:none;display: inline-block;width: 125px;height: auto;padding: 0 5px;">
+					<option>Last 6 months</option>
+					<option>Last 12 months</option>
+				</select>
+			</span></span></div>
+            <div class="pt-20"></div>
+            
+              </div>
+    </section>
     <!-- Main content -->	
     <section class="content">
       <!-- Small boxes (Stat box) -->
      <div class="row">
 		<div class="col-md-12">
-		  <h4><b>Quick Summary</b></h4><br>
+		  <h4 class="black"><b>Quick Summary</b></h4><br>
 		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="col-md-3 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/package.php','_self')">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
 			<div class="info-box-content">
-				<span class="info-box-text"><?php echo $arr_count['total_packages']?> Health Package(s)</span>
-				<span class="info-box-number">Purchase</span>
+				<span class="info-box-text"><?php echo( $arr_count['total_packages']>0)?$arr_count['total_packages']:0;?> Health Package(s)</span>
+				<span class="info-box-number">Purchased</span>
 			</div>
 			<!-- /.info-box-content -->
 			</div>		
 		</div>
         <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')">
           <div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 				<div class="info-box-content">
-				  <span class="info-box-text"><?php echo $arr_count['total_employees']?> Employees</span>
-				  <span class="info-box-number">Onboarded</span>
+				  <span class="info-box-text"><?php echo( $arr_count['total_employees']>0)?$arr_count['total_employees']:0;?>  Employee(s)</span>
+				  <span class="info-box-number">Added</span>
 				</div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/reports.php','_self')">
 			<div class="info-box dashboard_summary_view">
 				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
 				<div class="info-box-content">
-					<span class="info-box-text"><?php echo $arr_count['total_report_available']?> Reports</span>
-					<span class="info-box-number">Health Index</span>
+					<span class="info-box-text"><?php echo( $arr_count['total_report_available']>0)?$arr_count['total_report_available']:0;?> Report(s)</span>
+					<span class="info-box-number">Uploaded</span>
 				</div>
             <!-- /.info-box-content -->
 			</div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-       <!--  <div class="col-md-3 col-sm-6 col-xs-12">
+         <div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="info-box dashboard_summary_view">
-				<span class="info-box-icon bg-red add_tab_top"><i class="fa fa-plus"></i></span>
+				<span class="info-box-icon bg-dark-green add_tab_top"><i class="fa fa-plus cwhite"></i></span>
 				<div class="info-box-content">
 					<span class="info-box-text mt-10">Add Tabs</span>
 				</div>
@@ -178,25 +246,16 @@ $goal_arr = $database->getClusterGoal($clusterId);
       <!-- /.row -->
 	  
 		<div class="col-md-12">
-		  <h4><b>Company Health Status</b></h4>
+		  <h4 class="black"><b>Company Health Status</b></h4>
 		</div>
 		<div class="clearfix"></div><br/>
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
-			    <div class="box box-primary">
+			<div class="box box-primary">
             <div class="box-header with-border">
-             
+              <h3 class="box-title">Area Chart</h3>
 
-             
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase"><b>AVG. WEIGHT / AVG. BMI</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-                    <h2 class="box-title pull-left"><?php echo $charts['avg_weight'].' / '.$charts['avg_bmi']?><span style="font-weight: normal;"> </span></h2>
-                      <div class=" pull-right" style="margin-left: 15px;">
-                        <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 12% -->
-                      </div>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -204,18 +263,23 @@ $goal_arr = $database->getClusterGoal($clusterId);
               </div>
             </div>
             <div class="box-body">
-              <div id="line-chart-6" style="height: 300px;"></div>
+               <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart2" style="height: 250px;"></canvas>
+                  </div>
             </div>
-            <!-- /.box-body-->
+            <!-- /.box-body -->
           </div>
-		  </div>
-            <div class="swiper-wrapper pt-20">
+		  <!-- Line chart -->
+          </div> 
+
+		  <div class="swiper-wrapper pt-20">
               <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <!--  <div class="blue-band-home">
+                  <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
                   <div class="box-header with-border">
                     <div class="pre-header" style="margin: 8px 0;">
                       <h5 class="margin0 text-uppercase"><b>AVG. CHOLESTEROL</b></h5>
@@ -231,13 +295,20 @@ $goal_arr = $database->getClusterGoal($clusterId);
                     <h4 class="box-title-sm" style="padding-left: 0px;">100<span style="font-weight: normal;">avg </span></h4>
                   </div>
                   <div class="box-body">
-                    <div id="line-chart" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+				 
+			  <div id="line-chart" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                      <!-- <div class="chart">
+                <canvas id="lineChart" style="height:250px"></canvas>
+              </div>
+                     Sales Chart Canvas 
+                    <canvas id="salesChart" style=" max-width: 90%; margin: 0 auto;"></canvas>
+                 -->
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
                        <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?> has high cholestrol</h5>
+                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of Digital Republik has high cholestrol</h5>
                       </div>
                     </div>
                   </div>
@@ -251,30 +322,30 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                  <!--  <div class="blue-band-home">
+                  <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
                   <div class="box-header with-border">
                     <div class="pre-header">
                       <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
                     </div>
                     <div>
-                      <h2 class="box-title pull-left"><?php echo $charts['avg_fbs'].' / '.$charts['avg_ppbs']?><span style="font-weight: normal;"> <span style="font-weight: normal;">mgdl</span></h2>
+                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
-                       <!-- <i class="fa fa-sort-asc" style="color: red !important;"></i> 16% -->
+                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
                       </div>
                     </div>
                     <div class="clearfix"></div>
-                   <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
+                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
                   </div>
                   <div class="box-body">
-                    <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0px auto; padding: 0px; position: relative;"></div>
+                  <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left">
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
                       </div>
                     </div>
                   </div>
@@ -287,21 +358,21 @@ $goal_arr = $database->getClusterGoal($clusterId);
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
                 <!-- Line chart -->
                 <div class="box box-primary mb-10" style="box-shadow: none;">
-                 <!--  <div class="blue-band-home">
+                  <div class="blue-band-home">
                     Sample
-                  </div> -->
+                  </div>
                   <div class="box-header with-border">
                     <div class="pre-header">
-                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
+                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
                     </div>
                     <div>
-                      <h2 class="box-title pull-left"><?php echo $charts['avg_systolic'].' / '.$charts['avg_diastolic']?><span style="font-weight: normal;">  <span style="font-weight: normal;">mmHg</span></h2>
+                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
                         <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
                       </div>
                     </div>
                     <div class="clearfix"></div>
-                    <!-- <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4> -->
+                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
                   </div>
                   <div class="box-body">
                     <div id="line-chart3" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
@@ -310,7 +381,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left" />
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
                       </div>
                     </div>
                   </div>
@@ -321,9 +392,13 @@ $goal_arr = $database->getClusterGoal($clusterId);
               </div>
               <!-- /.col -->
               </div>
+     
       </div>
+      <!-- sho my report data -->
+	  <?php// include_once('my_Reports.php') ?>
+	  <!-- end of my report -->
       <!-- /.row -->
-     <!-- <div class="row">
+     <div class="row">
         <div class="col-sm-12">
           <div class="configure" style="padding-top: 10px;margin-bottom: 5px;margin-top: 50px;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);">
             <div class="pull-left re_arrange_dashboard">
@@ -335,11 +410,11 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div> -->
+      </div> 
       <!-- /.row -->
-      <!-- <div class="row wow bounceInleft" data-wow-delay="0.8s">
-        <div class="col-sm-12">
-          <div class="configure digonalsection pt-0 pb-0">
+       <div class="row wow bounceInleft" data-wow-delay="0.8s">
+        <div class="col-sm-12 sign_up_free">
+          <div class="configure pt-0 pb-0" style="background-color:#16d4ae!important">
             <div class="col-md-5 padding0 pt-20 pb-20">
               <div class="col-md-12" style="padding-left: 0;    border-right: 1px inset #fff;">
                 <div class="sign_up_news">
@@ -368,36 +443,42 @@ $goal_arr = $database->getClusterGoal($clusterId);
             <div class="clearfix"></div>
           </div>  
         </div>
-      </div> -->
+      </div> 
       <!-- /.row -->
     <div class="row pt-20">		
         <div class="employe_health_area">
           <div class="col-md-4">
 		  <div class="row">
-          <h4 class="pull-left margin0"><strong>Healthy Employees</strong></h4>
+          <h4 class="pull-left margin0 black"><strong>Healthy Employees</strong></h4>
 		</div>
-		   <div class="box">            
+		
+		   <div class="box emp_ratio_status">            
             <!-- /.box-header -->
 		
-            <div class="box-body profileimg">
+            
+                <?php if(!empty($emp_arr['healty']) ){?>
+                <div class="box-body profileimg employee_health_box" style="min-height:81px;">
 				<?php foreach($emp_arr['healty'] as $row){ 
-				
+				$age = '';
 				if((!empty($row['dob']))){
 					$age = $database->ageCalculator($row['dob']). ' Yrs';
 				}
 				$report ='';
 				if($row['bmi_status']=='H'){
-						$report[] = "BMI: ".$row['bmi_category'];
+						$report[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='H'){
-						$report[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='H'){
-						$report[] = "Blood Sugar: ".$row['bs_result'];
-					}
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report[] =$database->getMessage('Blood Sugar',$row['bs_result']);
+					}  
 					$report = implode(', ',$report);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				?>
+				<div class="employe_list" style="min-height: 83px;border-bottom:1px solid #eee;margin-bottom: 20px;">
              <img src="<?php echo $photo?>" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
@@ -405,14 +486,22 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
-                <hr>
-				<?php } ?>
-		
-               <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+				<a class="pull-right aqua" style="top:0px;"> <?php echo $age?></a>
+                
+				</div>
+                	<?php } ?>
+                
+				 </div>
+				
+				 <div class="box-body profileimg"><a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a></div>
+			<?php
+				}else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
+              
            
             <!-- /.box-body -->
-          </div>
+          
           <!-- /.box -->
 
         </div>
@@ -421,31 +510,35 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		
 		<div class="col-md-4">
 			<div class="row">
-			  <h4 class="pull-left margin0"><strong>UnHealthy Employees</strong></h4>
+			  <h4 class="pull-left margin0 black"><strong>Unhealthy Employees</strong></h4>
 			</div>
-		    <div class="box">            
+		    <div class="box emp_ratio_status">            
             <!-- /.box-header -->
-		
-            <div class="box-body profileimg">
+		 <?php if(!empty($emp_arr['healty']) ){?>
+            <div class="box-body profileimg employee_health_box" style="min-height:81px;">
 				<?php foreach($emp_arr['unhealty'] as $row){ 
-				
+				$age = '';
 				if((!empty($row['dob']))){
 					$age = $database->ageCalculator($row['dob']). ' Yrs';
 				}
 				$report_arr ='';
-				if($row['bmi_status']=='UH'){
-						$report_arr[] = "BMI: ".$row['bmi_category'];
+					if($row['bmi_status']=='UH'){
+						$report_arr[] =$database->getMessage('Weight',$row['bmi_category']);
 					}
 					if($row['bp_status']=='UH'){
-						$report_arr[] = "Blood Pressure: ".$row['bp_category'];
+					//	$report[] = "Blood Pressure: ".$row['bp_category'];
+						$report_arr[] =$database->getMessage('Blood Pressure',$row['bp_category']);
 					}
 					if($row['bs_status']=='UH'){
-						$report_arr[] = "Blood Sugar: ".$row['bs_result'];
+					//	$report[] = "Blood Sugar: ".$row['bs_result'];
+						$report_arr[] =$database->getMessage('Blood Sugar',$row['bs_result']);
 					}
+		
 					$report = implode(', ',$report_arr);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 					
 				?>
+			<div class="employe_list" style="min-height: 83px;border-bottom:1px solid #eee;margin-bottom: 20px;">
              <img src="<?php echo $photo?>" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
@@ -453,14 +546,20 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
-                <hr>
+				<a class="pull-right aqua" style="top:0px;"> <?php echo $age?></a>
+               
+			</div>
 				<?php } ?>
 		
-               <a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+               
            
             <!-- /.box-body -->
           </div>
+			<div class="box-body profileimg"><a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a></div>
+			
+			<?php } else{?>
+				<div class="box-body profileimg" style="text-align:center;vertical-align:middle">No records found</div>
+			<?php } ?>
           <!-- /.box -->
 
         </div>
@@ -468,9 +567,13 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		
 		<div class="col-md-4 " data-wow-delay="0.4s">
             <div class="row">
-				<h4 class="pull-left margin0"><strong>Quick Stats</strong></h4>
+				<h4 class="pull-left margin0 black"><strong>Quick Stats</strong></h4>
 			</div> 
-			<div class="">
+			<div class="emp_ratio_status">
+			<div class="smoking_per">
+				<div class="blue-band-home">
+                    Coming Soon
+                  </div>
 				<div class="box box-solid healthy_result">
                   <h5 class="margin0 text-uppercase"><b>SMOKING</b></h5> 
                   <div class="progress xs1 mb-10 mt-10">
@@ -494,7 +597,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 				  <div class="result"><span class="blue"><i class="fa fa-circle" aria-hidden="true"></i> Cardivascular Disease Risk 35%</span><span class="aqua"><i class="fa fa-circle" aria-hidden="true"></i> Diabetes 30%</span></div>
 				</div>
 			</div>	
-			<div class="">
+			<div class="ratio">
 				<div class="box box-solid sex_ratio">
 					<h5 class="margin0 text-uppercase"><b>SEX RATIO</b></h5>
 					  <div class="male_Area mt-20 mob-mt10">
@@ -504,11 +607,53 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							Males
 						</div>
 						<div class="age">
-							<?php echo $arr_count['male_employee']?>
+							<?php echo $arr_count['male_employee'];
+							$male_per = ( $arr_count['male_employee']>0)?round(( $arr_count['male_employee']/$arr_count['total_employees'])*100):0;
+				            $female_per = ( $arr_count['female_employee']>0)?round(( $arr_count['female_employee']/$arr_count['total_employees'])*100):0;
+				            $male_per2 = round(($male_per*40)/100);
+				             $female_per2 = round(($female_per*40)/100);
+							?>
 						</div>
 						</div>
 						<div class="ratio_percent total_percent">
 							<a href="#" class="show_digit">
+							   <?php
+							   $n = 1;
+							   echo '<span style="display:block;float:left">';
+							   for($i=1;$i<=$male_per2;$i++){
+							   if(($i%10)==1){
+							       echo '<span style="display:block;float:left">';
+							      
+							   }
+							    echo '<div class="circle_percentage"></div>';
+							   
+							       
+							   }
+							   ?>
+						
+						<!--	<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
 							<span style="display:block;float:left">
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
@@ -532,32 +677,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
 							<div class="circle_percentage"></div>
-							</span>
-							<span style="display:block;float:left">
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							</span>
-							<span style="display:block;float:left">
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							<div class="circle_percentage"></div>
-							</span>
-							<div id="show_percent" style="display:none">100%</div>
+							</span> -->
+							<div id="show_percent" style="display:none"><?php echo $male_per;?>%</div>
 							</a>
 							
 						</div>
@@ -565,7 +686,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
 												
 						</div>
 					  </div>
-					  <div class="male_Area mt-10">
+					  <div class="male_Area female_area">
 						<img src="images/female.png" class="female_icon"></i>
 						<div class="person_info">
 						<div class="name">
@@ -575,9 +696,78 @@ $goal_arr = $database->getClusterGoal($clusterId);
 							<?php echo $arr_count['female_employee']?>
 						</div>
 						</div>
-						<div class="ratio_percent"><img src="images/average2.png" style="    margin-left:-22px;"></div>
+						<div class="ratio_percent total_percent female_ratio">
+							<a href="#" class="show_digit">
+							    <span class="female_ratio_per" style="display:block;float:left">
+							     <?php
+							   $n = 1;
+							   echo '<span class="female_ratio_per" style="display:block;float:left">';
+							   for($i=1;$i<=$female_per2;$i++){
+							   if(($i%10)==1){
+							       echo '<span style="display:block;float:left">';
+							      
+							   }
+							    echo '<div class="circle_percentage"></div>';
+							   
+							       
+							   }
+							   ?>
+						
+							<!-- <span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span>
+							<span class="female_ratio_per" style="display:block;float:left">
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							<div class="circle_percentage"></div>
+							</span> -->
+							<div id="show_percent" style="display:none"><?php echo $female_per;?>%</div>
+							</a>
+						
+						</div>
 					  </div>
                 </div>
+			</div>
 			</div>
 		</div>
     </div>
@@ -585,70 +775,83 @@ $goal_arr = $database->getClusterGoal($clusterId);
 		
       <div class="row pt-20">
 		<div class="col-md-12">
-		  <h4><strong>My Health Goals</strong></h4>          
+		  <h4 class="black"><strong>Company Health Goals</strong></h4>          
 		</div>		
 		<div class="clearfix"></div>
+		<div class="health_goals_slider">
         <div id="graph3" class="package-container">
           <div class="swiper-container graph-container3">
             <div class="swiper-wrapper">
               <!-- /.col -->
-              <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
-					<div id="container"></div>
+              <div class="col-md-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
+                <div class="box box-solid">					
+					<!-- <div id="container"></div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
+						 <h5 class="margin0 text-uppercase text-center text-black value"><b><span id="steps_goal"><?php echo $goal_arr[0]['steps'];?></span></b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>STEPS / DAY</b></h5>
 						<h4 class="mb-10 text-center date">By Jan 2018</h4>
-					</div>
+						
+					</div> -->
+					
+					<img src="images/graph45.jpg">
                 </div>
               </div>
-               <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.6s" style="margin:20px;">
-                <div class="box box-solid" style="border:1px solid #43ce5a">
-					<div class="progress">
+               <div class="col-md-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.6s" style="margin:20px;">
+                <div class="box box-solid hrs_progress_bar">					
+					<!-- <div class="progress">
 					  <div class="barOverflow">
 						<div class="bar"></div>
 					  </div>
 					  <span>67</span>%
 					</div>
 					<div class="health_goal_info">
-						<h5 class="margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
+						 <h5 class="fs20 margin0 text-uppercase text-center text-black value"><b><span id="sleep_goal"><?php echo $goal_arr[0]['sleep'];?></span> Hrs</b></h5>
 						<h5 class="text-uppercase text-center text-black margin0" style="font-weight: bold;font-size:20px;"><b>SLEEP / Night</b></h5>
-						<h4 class="mb-10 text-center date">By Jan 2018</h4>
-					</div>
+						<h4 class="mb-10 text-center date">By Jan 2018</h4> 
+						
+					</div>-->
+					<img src="images/graph333.jpg">
                 </div>
               </div>
 			     
-			   <div class="col-dm-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;cursor:pointer;" onClick="openGoalForm();">
+			   <div class="col-md-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
                 <div class="box box-solid" style="border:1px solid #43ce5a">
-					<span class="add_new_tab"><i class="fa fa-plus"></i></span>
-					  <h5 class="text-uppercase text-center text-black" style="font-weight: bold;font-size:18px;"  ><b>ADD A GOAL</b></h5>
+					<img src="images/add-tab-original.jpg">
                   
+                </div>
+              </div>
+			  
+			   <div class="col-md-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;" ><!--onClick="openGoalForm();"-->
+                <div class="box box-solid" style="border:1px solid #43ce5a">
+					<img src="images/add-tab-original.jpg">                  
                 </div>
               </div>
 			
               <!-- /.col -->              
             </div>
             <div class="swiper-pagination3"></div>
-           <!-- <div class="swiper-button-next packages_next3"></div>
-            <div class="swiper-button-prev packages_prev3"></div> -->
+			<div class="swiper-button-next packages_next3"></div>
+            <div class="swiper-button-prev packages_prev3"></div>
           </div>
-        </div>  
+        </div>
+			</div>
       </div>
       <!-- /.row -->
 
       <div id="others" class="row" >
 		<div class="col-md-4 wow bounceInLeft  pt-20" data-wow-delay="0.2s">
-			<h4 class="pull-left margin0"><strong>Corporate Diet Plans</strong></h4>
+			<h4 class="pull-left margin0 black"><strong>Corporate Diet Plans</strong></h4>
 			<div class="clearfix"></div><br/>
 			<div class="box box-solid">
-				<div class="p-20">
-					<div class="mt-20">
+				
+				<div class="p-20 snacks_detail">
+					<div class="mt-20 snack_info" style="min-height: 175px;border-bottom: 1px solid #eee;">
 						<div class="col-sm-12">
 						<h4 class="pull-left margin0"><b>HEALTHY SNACKS</b></h4>
 						</div>
 						<div class="clearfix"></div>  
 						<div class="p-20">
-						<div class="col-sm-5">
+						<div class="col-sm-5 text-center">
 						<img src="images/diet/1.png" />
 						<div class="task done"></div>
 						</div>
@@ -658,16 +861,15 @@ $goal_arr = $database->getClusterGoal($clusterId);
 						<div class="clearfix"></div>
 						</div>
 					</div>
-					<div class="clearfix"></div>
-					<hr class="hrdivide">
-					<div class="clearfix"></div>
-					<div class="mt-20">
+					<div class="clearfix"></div>			
+					
+					<div class="mt-20" style="min-height: 175px;border-bottom: 1px solid #eee;">
 						<div class="col-sm-12">
 						<h4 class="pull-left margin0"><b>HEALTHY LUNCH</b></h4>
 						</div>
 						<div class="clearfix"></div>  
 						<div class="p-20">
-							<div class="col-sm-5">
+							<div class="col-sm-5 text-center" style="">
 								<img src="images/lunch_img.png"/>                    
 							</div>
 							<div class="col-sm-7 snack_font">
@@ -677,20 +879,20 @@ $goal_arr = $database->getClusterGoal($clusterId);
 						</div>
 					</div>
 					<div class="clearfix"></div>
-					<hr class="hrdivide">
-					<div class="clearfix"></div>
-					<div class="pt-20 mt-10">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View full plan</h5></a>
-					</div>
-				</div>  
+				</div> 
+				<div class="clearfix"></div>
+				<div class="plan_btn" style="padding-left: 15px;padding-right: 15px;">
+					<a href="#" class="btn2-lg"><h5 class="margin0">View full plan</h5></a>
+				</div>
 			</div>
 		</div>
         <!-- /.col -->
         <div class="col-md-4 wow bounceInUp  pt-20" data-wow-delay="0.4s">
-			<h4 class="pull-left margin0"><strong>Pick a challenge</strong></h4>
+			<h4 class="pull-left margin0 black"><strong>Pick a Challenge</strong></h4>
 			<div class="clearfix"></div><br/>
 			<div class="box box-solid">
-				<div class="p-20 pick_challege_img">
+				
+				<div class="p-20 snacks_detail pick_challege_img">
 					<ul>
 						<h3>WEEK 1</h3>
 					  <li class="passed">Eat vegetables with every meal</li>
@@ -700,32 +902,34 @@ $goal_arr = $database->getClusterGoal($clusterId);
 					  <li class="current">Drink atleast 8 glasses of water in a day</li>
 					  <li class="passed">Write down everything you eat or drink: Track down your caloires too</li>
 					  <li class="passed">Exercise for 20 minutes in a day</li>
-					</ul>
-					<div class="allarticle">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-					</div>			   
+					</ul>							   
 				</div>
+				<div class="plan_btn" style="padding-left:15px;padding-right:15px;">
+						<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+				</div>	
 			</div>
         </div>
         <!-- /.col -->
 		<div class="col-md-4 wow bounceInRight  pt-20" data-wow-delay="0.5s">
-			<h4 class="pull-left margin0"><strong>Worth Reading</strong></h4>
+			<h4 class="pull-left margin0 black"><strong>Worth Reading</strong></h4>
 			<div class="clearfix"></div>
 			<br/>
-			<div class="box box-solid">
-				<div class="col-md-12">
+			<div class="box box-solid reading_section">
+				
+				<div class="col-md-12 worth_rading_sec">
 					<div class="article">
-						<h4 class="mt-0"><span style="font-size:18px;1.5">How I Finally Got Serious <br>About My Health</span></h4>
+						<h4 class="mt-0"><span style="font-size:18px;1.5">How I Finally Got Serious About My Health</span></h4>
 						<img src="images/articles/1.png" />
 					</div>
 					<div class="article">
-						<h4 class="mt-10"><span style="font-size:18px;">When your health costs <br>you your job</span></h4>
+						<h4 class="mt-10"><span style="font-size:18px;">When your health costs you your job</span></h4>
 						<img src="images/articles/2.png" />
-					</div>
-					<div class="allarticle">
-						<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-					</div>  
+					</div>					
 				</div> 
+				<div class="clearfix"></div>
+				<div class="col-md-12 allarticle">
+					<a href="#" class="btn2-lg"><h5 class="margin0">View All</h5></a>
+				</div>  
 			</div>
 		</div>
         <!-- /.col -->
@@ -829,7 +1033,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (Fasting):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="80 mm" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="80 mm" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-5">
@@ -837,7 +1041,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (After Eating):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="120 hg" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="120 hg" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-3">
@@ -860,7 +1064,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (Fasting):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="00 mm" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="00 mm" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-5">
@@ -868,7 +1072,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
               Blood Sugar (After Eating):
             </div>
             <h4 class="field-details pb-10">
-              <input type="text" name="bp" value="00 hg" style="background: transparent;border: none;width: 100%;" />
+              <input type="text" name="bp" value="00 hg" style="background: tranbsparent;border: none;width: 100%;" />
             </h4>
           </div>
            <div class="col-sm-3">
@@ -956,22 +1160,293 @@ $goal_arr = $database->getClusterGoal($clusterId);
         </div>
   
 <?php include_once('partials/footer.php'); ?>
-<!-- FLOT CHARTS -->
+<!-- FLOT CHARTS 
 <script src="plugins/flot/jquery.flot.min.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+ FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized 
 <script src="plugins/flot/jquery.flot.resize.min.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+ FLOT PIE PLUGIN - also used to draw donut charts 
 <script src="plugins/flot/jquery.flot.pie.min.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="plugins/flot/jquery.flot.categories.min.js"></script>
+ FLOT CATEGORIES PLUGIN - Used to draw bar charts 
+<script src="plugins/flot/jquery.flot.categories.min.js"></script> -->
 <!--<script src="plugins/datepicker/bootstrap-datepicker.js"></script>-->
 <script src="plugins/swiper/swiper.js"></script>
 <!-- Page script -->
 <script src="plugins/materialize/materialize.js"></script>
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
-<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 
+<script src="dist/js/chart.js"></script>
 <script>
+		  $(document).ready(function(){
+	// Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#salesChart2').get(0).getContext('2d')
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas)
+		    
+  	var areaChartData = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(235, 235, 235,0.7)",
+					strokeColor : "rgba(235, 235, 235,1)",
+					pointColor : "rgba(235, 235, 235,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					 data                : [70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30, 60],
+					 
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(225, 243, 231,0.7)",
+					strokeColor : "rgba(225, 243, 231,1)",
+					pointColor : "rgba(225, 243, 231,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					  data                : [30,70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30]
+				},
+				
+			]
+
+		}
+ var areaChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale               : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : false,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve             : true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension      : 0.4,
+      //Boolean - Whether to show a dot for each point
+      pointDot                : false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius          : 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth     : 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke           : true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth      : 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill             : true,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio     : true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive              : true,
+	   
+      scales: {
+                   
+                    yAxes: [{
+                        ticks: {
+        	beginAtZero: true
+        }
+                    }]
+                }
+    
+    }
+	areaChart.Line(areaChartData, areaChartOptions)
+	//window.onload = function(){
+		/*var ctx = document.getElementById("salesChart2").getContext("2d");
+		var salesChart2       = new Chart(ctx);
+		salesChart2.Line(lineChartData, {
+			responsive: true
+		});*/
+		    //-------------
+    //- LINE CHART -
+    //--------------
+  
+			var lineChartData2 = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					 data                : [65, 59, 80, 81, 56, 55]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					 data                : [28, 48, 40, 19, 86, 27]
+				}
+			]
+
+		}
+		/*  var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
+    var lineChart                = new Chart(lineChartCanvas)
+    var lineChartOptions         = areaChartOptions
+    lineChartOptions.datasetFill = false
+    lineChart.Line(lineChartData2, lineChartOptions)*/
+
+			//	var ctx2 = document.getElementById("salesChart").getContext("2d");
+		//var salesChart      = new Chart(ctx2);
+		//salesChart.Line(lineChartData2, {
+		//	responsive: true
+		//});
+		
+		
+		  });
+</script>
+<script src="plugins/flot/jquery.flot.min.js"></script>
+ FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized 
+<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+ FLOT PIE PLUGIN - also used to draw donut charts 
+<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+ FLOT CATEGORIES PLUGIN - Used to draw bar charts 
+<script src="plugins/flot/jquery.flot.categories.min.js"></script>
+<script>
+ $(document).ready(function(){
+var line_data1 = {
+      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    $.plot("#line-chart", [line_data1], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 70, to: 70} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#f56954"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+	//LINE randomly generated data
+    var line_data2 = {
+      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    var line_data21 = {
+      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      color: "#ccafaa"
+    };
+    $.plot("#line-chart2", [line_data2,line_data21], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#ccafaa"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+	//LINE randomly generated data
+    var line_data2 = {
+      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    var line_data21 = {
+      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      color: "#ccafaa"
+    };
+    $.plot("#line-chart3", [line_data2,line_data21], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#ccafaa"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+    });
+</script>
+<script>
+		  $(document).ready(function(){
+			  //alert("d2");
+		  	$('#change_package').change(function(){
+				//alert("d");
+		$('#change_package option:selected').each(function(){
+		$('#last_package_statistics').html('<br /><br /><br /><p class="text-center text-muted"><i class="fa fa-rotate-right fa-spin fa-4x"></i></p><br /><br /><br />');
+			var id = $(this).val();
+        	$.ajax({
+			url: 'lps.php?package_id='+id,
+			success: function(response){
+					$('#last_package_statistics').html(response);
+				}
+			});
+		});
+	});
+	});
   $(document).ready(function() {
 	  $('.dashboard_menu').addClass('active');
 	$("#goal-form").validate({        
@@ -1024,446 +1499,8 @@ $goal_arr = $database->getClusterGoal($clusterId);
         $('body').addClass('modal-open');
       }
     }
-    /*
-     * LINE CHART 1
-     * ----------
-     */
-	   var line_data2 = {
-      data:  <?php echo $charts['male_bmi_chart']?>,
-      color: "#bad0d2"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['female_bmi_chart']?>,
-      color: "#ccafaa"
-    };
-    $.plot("#line-chart-6", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-       
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#bad0d2", "#ccafaa"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //LINE randomly generated data
-    var line_data1 = {
-      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart", [line_data1], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 70, to: 70} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.9
-    }).appendTo("body");
-    $("#line-chart").bind("plothover", function (event, pos, item) {
 
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 2
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data2 = {
-      data:  <?php echo $charts['ppbs_chart']?>,
-      color: "#31b3bf"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['fbs_chart']?>,
-      color: "#dd4b39"
-    };
-    $.plot("#line-chart2", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip2"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart2").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip2").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /* END LINE CHART */
-    /*
-     * LINE CHART 3
-     * ----------
-     */
-    //LINE randomly generated data
-	 var line_data2 = {
-      data:  <?php echo $charts['systolic_chart']?>,
-      color: "#31b3bf"
-    };
-    var line_data21 = {
-      data:  <?php echo $charts['diastolic_chart']?>,
-      color: "#dd4b39"
-    };
-    $.plot("#line-chart3", [line_data2,line_data21], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    var line_data3 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart33", [line_data3], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * LINE CHART 4
-     * ----------
-     */
-    //LINE randomly generated data
-    var line_data4 = {
-      data:  [["Mar", 150], ["Apr", 165], ["May", 140], ["Jun", 135], ["Jul", 120], ["June", 149]],
-      color: "#31b3bf"
-    };
-    $.plot("#line-chart4", [line_data4], {
-      grid: {
-        hoverable: true,
-        borderColor: "#f3f3f3",
-        borderWidth: 1,
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 135, to: 135} }]
-      },
-      series: {
-        shadowSize: 0,
-        lines: {
-          show: true
-        },
-        points: {
-          show: true
-        }
-      },
-      lines: {
-        fill: true,
-        color: ["#31b3bf", "#f56954"]
-      },
-      yaxis: {
-        show: true,
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-    });
-    //Initialize tooltip on hover
-    /*$('<div class="tooltip-inner" id="line-chart-tooltip3"></div>').css({
-      position: "absolute",
-      display: "none",
-      opacity: 0.8
-    }).appendTo("body");
-    $("#line-chart3").bind("plothover", function (event, pos, item) {
-
-      if (item) {
-        var x = item.datapoint[0],
-            y = item.datapoint[1].toFixed(2);
-
-        $("#line-chart-tooltip").html(x + " = " + y)
-            .css({top: item.pageY + 5, left: item.pageX + 5})
-            .fadeIn(200);
-      } else {
-        $("#line-chart-tooltip3").hide();
-      }
-
-    });*/
-    /* END LINE CHART */
-    /*
-     * BAR CHART
-     * ---------
-     */
-
-    var bar_data = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#43ce5a"
-    };
-    $.plot("#bar-chart", [bar_data], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-            
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * bar-chart2
-     * ---------
-     */
-
-    var bar_data2 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#ff6184"
-    };
-    $.plot("#bar-chart2", [bar_data2], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data3 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart3", [bar_data3], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
-    /*
-     * BAR CHART 3
-     * ---------
-     */
-
-    var bar_data4 = {
-      data: [["Mon", 4005], ["Tue", 3500], ["Wed", 4000], ["Thu", 5500], ["Fri", 3800], ["Sat", 1800], ["Sun", 2200]],
-      color: "#3b39b5"
-    };
-    $.plot("#bar-chart4", [bar_data4], {
-      grid: {
-        borderWidth: 1,
-        borderColor: "#f3f3f3",
-        tickColor: "#f3f3f3",
-        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 2500, to: 2500} }]
-      },
-      series: {
-        bars: {
-          show: true,
-          barWidth: 0.09,
-          borderRadius: 15,
-          align: "center"
-        }
-      },
-      xaxis: {
-        mode: "categories",
-        tickLength: 0
-      }
-      
-    });
-    /* END BAR CHART */
+    
   });
   
 </script>
@@ -1586,102 +1623,7 @@ jQuery.validator.addMethod("bponly", function(value, element) {
   });
 </script>
 
-<script>
-	// progressbar.js@1.0.0 version is used
-// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
 
-var bar = new ProgressBar.SemiCircle(containercircle, {
-  strokeWidth:10,
-  color: '#FFEA82',
-  trailColor: '#eee',
-  trailWidth: 1,
-  easing: 'easeInOut',
-  duration: 1400,
-  svgStyle: null,
-  text: {
-    value: '',
-    alignToBottom: false
-  },
-  from: {color: '#FFEA82'},
-  to: {color: '#21bcc1'},
-  // Set default step function for all animate calls
-  step: (state, bar) => {
-    bar.path.setAttribute('stroke', state.color);
-    var value = Math.round(bar.value() * 10000);
-    if (value === 0) {
-      bar.setText('');
-    } else {
-      bar.setText(value);
-    }
-
-    bar.text.style.color = state.color;
-  }
-});
-bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-bar.text.style.fontSize = '2rem';
-
-bar.animate(1.0);  // Number from 0.0 to 1.0
-
-
-    $( document ).ready(function() { // 6,32 5,38 2,34
-        $("#test-circle").circliful({
-            animation: 1,
-            animationStep: 5,
-            foregroundBorderWidth: 15,
-            backgroundBorderWidth: 15,
-            percent: 38,
-            textSize: 28,
-            textStyle: 'font-size: 12px;',
-            textColor: '#666',
-            multiPercentage: 1,
-            percentages: [10, 20, 30]
-        });
-        $("#test-circle2").circliful({
-            animation: 0,
-            animationStep: 6,
-            foregroundBorderWidth: 5,
-            backgroundColor: "none",
-            fillColor: '#eee',
-            percent: 50,
-            iconColor: '#3498DB',
-            icon: 'f206',
-            iconSize: '40',
-            iconPosition: 'middle'
-        });
-        $("#test-circle3").circliful({
-            animation: 1,
-            animationStep: 6,
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 1,
-            percent: 88,
-            iconColor: '#3498DB',
-            icon: 'f004',
-            iconSize: '40',
-            iconPosition: 'middle'
-        });
-        $("#test-circle4").circliful({
-            animation: 1,
-            animationStep: 1,
-            start: 2,
-            showPercent: 1,
-            backgroundColor: '#000',
-            foregroundColor: '#A8C64A',
-            fontColor: '#000',
-            multiPercentage: 1,
-            text: 'No Kids',
-            foregroundBorderWidth: 15,
-            backgroundBorderWidth: 15,
-        });
-        $("#test-circle5").circliful({
-          animationStep: 5,
-          foregroundBorderWidth: 5,
-          backgroundBorderWidth: 15,
-          percent: 80,
-          halfCircle: 1,
-        });
-    });
-
-</script>
 
 <script>
 	$(".progress").each(function(){
@@ -1758,8 +1700,25 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
 		}
 	})
    }
+   function sendPackageRequest(obs_type){
+	   	 
+		  // alert("t--"+$('#goal-form').serialize());
+	   	$.ajax({				
+		url: 'operation.php',				
+		type: 'POST',				
+		dataType: 'json',				
+		async: false,				
+		data: 'action=package_request&type='+obs_type,				
+		success: function(response) {	
+//alert("t"+response);
+			document.location = '';
+		//	$('#steps_goal').html(response.steps);
+		//	$('#sleep_goal').html(response.sleep);
+			
+		}
+	})
+   }
 </script>
-
 <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
@@ -1774,6 +1733,7 @@ bar.animate(0.68);  // Number from 0.0 to 1.0
     });
   </script>
 
+  
 
 </body>
 </html>

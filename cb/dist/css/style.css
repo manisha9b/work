@@ -240,9 +240,15 @@ a:focus {
   float: right;
 }
 
-.pur_option a, .pur_option a:hover{color:#fff!important;}
+.pur_option a:hover{color:#fff!important;}
 .package_btns a:hover{color:#fff!important;}
 .packagehealth_title {font-size: 17px;color: #6d6d6a;}
+
+
+/*health-package*/
+
+.health_package_page .box-layout1{box-shadow:none}
+
 @media (max-width: 991px) {
   .main-header .navbar-custom-menu a,
   .main-header .navbar-right a {
@@ -2084,9 +2090,17 @@ a:focus {
   max-width: 100%;
 }
 .info-box-content {
-  padding: 5px 10px;
-  margin-left: 90px;
+ /*  padding: 5px 10px; */
+  /* margin-left: 90px; */
+  padding: 24px 10px;
 }
+
+.healthy_employee .info-box-content{margin-left: 100px!important;}
+.total_employee .info-box-content{margin-left: 100px!important;}
+.total_employee .dark_blue_clr{border-right: 1px inset #b7e4e9;}
+.healthy_employee .info-box-icon{border-right: 1px inset#f0f8fa;}
+.unhealthy_employee .info-box-content{margin-left: 100px!important;}
+.unhealthy_employee .info-box-icon{border-right: 1px inset #f5fcf5;}
 .info-box-number {
   display: block;
   /* font-weight: bold; */
@@ -5055,10 +5069,10 @@ a.user-reports:hover{color: #43ce5a;}
 .relevant-reading{border-top: 1px solid #848491;padding: 20px 0 10px 0;margin-top: 10px;color: #656363; }
 .alignleft{float: left;margin:0 10px 15px 0;}
 #appointments.nav-tabs-custom{background: transparent;}
-#appointments.nav-tabs-custom > .tab-content{margin: 25px 0;box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);overflow: hidden;}
+#appointments.nav-tabs-custom > .tab-content{margin: 25px 0;box-shadow:0 4px 11px rgba(0, 0, 0, 0.1);overflow: hidden;}
 #appointments.nav-tabs-custom > .nav-tabs{border-bottom-color: transparent;background: #e8eaed;}
 #appointments.nav-tabs-custom > .nav-tabs > li.active > a,#appointments.nav-tabs-custom > .nav-tabs > li.active:hover > a,#appointments.nav-tabs-custom > .nav-tabs > li:hover > a
-{background: #3D4452;color: #FFFFFF;border-top:none;border-left: 0;border-right: 0;}
+{background: #03092f;color: #FFFFFF!important;border-top:none;border-left: 0;border-right: 0;}
 #appointments.nav-tabs-custom > .nav-tabs > li{border-top:none;border-bottom:3px solid transparent;margin-right: 0;margin-bottom: -2px;}
 #appointments.nav-tabs-custom > .nav-tabs > li.active, #appointments.nav-tabs-custom > .nav-tabs > li.active:hover, #appointments.nav-tabs-custom > .nav-tabs > li:hover {border-bottom-color: #43ce5a;}
 #appointments.nav-tabs-custom > .nav-tabs > li.nohover1 form{margin-top: 4px;margin-bottom: 2px;}
@@ -5319,15 +5333,22 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .type_variety{background: #fff;
     padding: 10px;
     text-align: center;
-    font-size: 18px;border-top: 1px solid #ccc}
+    font-size: 18px;border-top: 1px solid #ccc;height:150px;}
+
+.consult_area{background: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;border-top: 1px solid #ccc;height:50px;}
 	
 	
 .health_pack_page{ box-shadow:0 9px 6px rgba(0,0,0,0.16), 0 5px 70px rgba(0,0,0,0.23);padding-top: 0px;
     padding-bottom: 0px;}
 	
 .pack_details{background-color: #04092f;padding:12px;text-align:center;background-color:#47a8cb;color:#fff;}
-.pack2 .user-summary{background-color:#0d6f94;}
-.pack3 .user-summary{background-color:#758c94;}
+.pack2 .user-summary{background-color:#0d6f94;height:100px;}
+.pack1 .user-summary{height:100px;}
+
+.pack3 .user-summary{background-color:#758c94;height:100px;}
 
 .health_pack_page .user-info{padding:12px 0 12px 0;}
 
@@ -5398,7 +5419,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 .dark_blue_clr1{background-color:#08909c!important;border-right: 1px solid #fff;}
 .bg_dark_blue1{background-color:#08909c!important;}
-.clr_effect1{margin-top: 15px;color: #fff;font-size: 30px;font-weight: bold;
+.clr_effect1{color: #fff;font-size: 30px;font-weight: bold;
 }
 
 .healthy_employee{background-color:#08909c!important}
@@ -5649,8 +5670,7 @@ margin-right: 10px;}
 .employee_info .dropdown a{padding-left: 28px!important;padding-right: 28px!important;}
 .employee_info ul li a{padding-left: 28px!important;padding-right: 28px!important;}
 .employee_info ul .upcoming a:hover,.employee_info ul .all a:hover{background-color:#04092f!important;}
-.sort_by_btn{width: 16%!important;background: #fff;margin-top: 5px;margin-right: 5px!important;border:1px solid #ccc!important;}
-
+.sort_by_btn{/* width: 16%!important */ background: #fff;margin-top: 5px;margin-right: 5px!important;border:1px solid #ccc!important;}
 
 .employee_summary .pagination a {
     color: #635f60;
@@ -6145,10 +6165,19 @@ label:hover:before {
 .fs11{font-size:11px;}
 .test_complete .process_bar{width:16%;text-align: center;}
 .process_bar .description{display:block}
+.recomend_package_plans{margin-left:15px;margin-right:15px;width:25%;}
 
+/*health package css*/
+
+.start_btn:hover,.start_btn:visited,.start_btn:focus{color:#fff!important;}
+
+.call_back_btn:hover,.call_back_btn:visited,.call_back_btn:focus{color:#2e9bc4!important;}
 
 @media screen and (max-width:1366px){
-	
+	.info-box-content{padding-top:25px!important;min-height: 110px;max-height: 110px;}
+	.info-box-number{font-size:12px;}
+	.info-box{max-height: 110px;min-height: 110px;}
+	.info-box-icon{height: 110px;margin-top:0px;padding: 10px;}
 	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
 	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}	
 	
@@ -6574,9 +6603,10 @@ margin-right: 10px;}
 
 
 @media screen and (max-width: 767px){
+
 .company_summary .summary_opt{width:100%!important;}
 .emp_com_info_form{height:auto!important;}
-
+.recomend_package_plans{margin-left:15px;margin-right:15px;width:100%;}
 /*appointment-page*/
 
 
@@ -6631,6 +6661,12 @@ margin-right: 10px;}
 	.res_pass_field	.form-group{float:none!important}
 	.test_complete .process_bar{width:100%;}
 	
+}
+
+
+@media screen and (max-width:767px){
+	
+	.recomend_package_plans{width:100%;}
 }
 
 
