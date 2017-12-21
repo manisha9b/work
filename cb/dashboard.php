@@ -252,14 +252,10 @@ $goal_arr = $database->getClusterGoal($clusterId);
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
-			 <!-- BAR CHART -->
-			 		<?php if(!empty($chartdata['bp']['table']) ){?>
-			  <div class="box box-success">
+			<div class="box box-primary">
             <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>Blood Pressure Observations</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
+              <h3 class="box-title">Area Chart</h3>
+
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -267,315 +263,139 @@ $goal_arr = $database->getClusterGoal($clusterId);
               </div>
             </div>
             <div class="box-body">
-                <div class="row">
-                <div class="col-md-4">
-              <div class="chart">
-                <canvas id="barChart" style="height:250px"></canvas>
-              </div>
-              <br/>
-              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
-              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
-              </div>
-               <div class="col-md-4">
-				  <div class="chart">
-					<canvas id="chart-area" style="height:230px"></canvas>
-				  </div>
-              </div>
-			  <div class="col-md-4">
-                 <table class="table table-bordered">
-				 <tr class="bg-blue text-white">
-                 
-                  <th>Readings</th>
-                  <th>Male</th>
-                  <th>Female</th>
-                </tr>
-				 <?php 
-				     $high_bp_count = 0;
-				     $low_bp_count = 0;
-				 foreach($chartdata['bp']['table'] as $key=>$value) { 
-				     
-				if($value['cat_id']==2 || $value['cat_id']==3 || $value['cat_id']==4 ){
-				    $high_bp_count +=$value['total_cnt'];
-				}
-				if($value['cat_id']==5){
-				    $low_bp_count +=$value['total_cnt'];
-				}
-			
-				 
-				 ?>
-                
-                <tr>
-                  
-                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>  <?php echo $value['reading']?></td>
-                  <td>
-                      <?php echo $value['male_count']?>
-                  </td>
-                  <td><?php echo $value['female_count']?></td>
-                </tr>
-				 <?php }
-				 $high_bp_per = ($high_bp_count>0)?round(($high_bp_count/$arr_count['total_employees'])*100):0;
-				 $low_bp_per = ($low_bp_count>0)?round(($low_bp_count/$arr_count['total_employees'])*100):0;
-				 ?>
-                
-                
-              </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bp_per?>%</b></span> of company has <span class="text-danger">High Blood Pressure Levels</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bp_count?>%</span> of company has <span class="text-danger">Low Blood Pressure Levels</span></h5>
-                </div>
-                </div>
+               <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart2" style="height: 250px;"></canvas>
+                  </div>
             </div>
             <!-- /.box-body -->
           </div>
-         <?php }else{ ?>
-            <div class="box box-success">
-            <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>Blood Pressure Observations</b></h5>
+		  <!-- Line chart -->
+          </div> 
+
+		  <div class="swiper-wrapper pt-20">
+              <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
+                <!-- Line chart -->
+                <div class="box box-primary mb-10" style="box-shadow: none;">
+                  <div class="blue-band-home">
+                    Sample
+                  </div>
+                  <div class="box-header with-border">
+                    <div class="pre-header" style="margin: 8px 0;">
+                      <h5 class="margin0 text-uppercase"><b>AVG. CHOLESTEROL</b></h5>
                       <!--<a href="#" class="btn2">BMI</a>-->
                     </div>
-                   <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Pressure Testing. 
-                
-                <?php if(!isset($PRdata['bp'])){?>To Add a Blood Pressure Test/Package Click "Add"
-                <br/><br/>
-                 <button type="button" onclick="sendPackageRequest('bp');" class="btn btn-info" >Add</button>
-                 
-                 <?php } else{
-                     echo "<br/>We have recived your request to add Blood Pressure Test/Package.";
-                 }?></center><br/><br/><br/>
-                    </div></div></div>
+                    <div>
+                      <h2 class="box-title pull-left">160-189<span style="font-weight: normal;">mg /dL </span></h2>
+                      <div class=" pull-right" style="margin-left: 15px;">
+                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 12%
+                      </div>
                     </div>
-           <?php } ?>
-           
-          
-               
-		  </div>
-           
-      </div>
-      <div class="swiper-container graph-container">
-			<div class="col-md-12">
-			 <!-- BAR CHART -->
-			 		<?php if(!empty($chartdata['bmi']['table']) ){?>
-			  <div class="box box-success">
-            <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>BMI Observations</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                <div class="col-md-4">
-              <div class="chart">
-                <canvas id="barChart_bmi" style="height:250px"></canvas>
-              </div><br/>
-              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
-              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
-              </div>
-               <div class="col-md-4">
-				  <div class="chart">
-					<canvas id="chart-area_bmi" style="height:230px"></canvas>
-				  </div>
-              </div>
-			  <div class="col-md-4">
-                 <table class="table table-bordered">
-				 <tr class="bg-blue text-white">
-                 
-                  <th>Readings</th>
-                  <th>Male</th>
-                  <th>Female</th>
-                </tr>
-				 <?php 
-				     $high_bmi_count = 0;
-				     $low_bmi_count = 0;
-				 foreach($chartdata['bmi']['table'] as $key=>$value) { 
-				     
-				if($value['cat_id']==2 ){
-				    $high_bmi_count +=$value['total_cnt'];
-				}
-				if($value['cat_id']==3){
-				    $low_bmi_count +=$value['total_cnt'];
-				}
-			
+                    <div class="clearfix"></div>
+                    <h4 class="box-title-sm" style="padding-left: 0px;">100<span style="font-weight: normal;">avg </span></h4>
+                  </div>
+                  <div class="box-body">
 				 
-				 ?>
-                
-                <tr>
+			  <div id="line-chart" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                      <!-- <div class="chart">
+                <canvas id="lineChart" style="height:250px"></canvas>
+              </div>
+                     Sales Chart Canvas 
+                    <canvas id="salesChart" style=" max-width: 90%; margin: 0 auto;"></canvas>
+                 -->
+                    <div class="clearfix"></div>
+                    <div class="pre-header mb-0">
+                      <div style="min-height: 58px;padding-top: 10px;">
+                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
+                       <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
+                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of Digital Republik has high cholestrol</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body-->
                   
-                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <?php echo $value['reading']?></td>
-                  <td>
-                      <?php echo $value['male_count']?>
-                  </td>
-                  <td><?php echo $value['female_count']?></td>
-                </tr>
-				 <?php }
-				 $high_bmi_per = ($high_bmi_count>0)?round(($high_bmi_count/$arr_count['total_employees'])*100):0;
-				 $low_bmi_per = ($low_bmi_count>0)?round(($low_bmi_count/$arr_count['total_employees'])*100):0;
-				 ?>
-                
-                
-              </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $high_bmi_per?>%</b></span> of company is  <span class="text-danger">Overweight</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $low_bmi_count?>%</span> of company is <span class="text-danger">Underweight</span></h5>
-           
                 </div>
-                </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <?php }else{ ?>
-            <div class="box box-success">
-            <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>BMI Observations</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-                   <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <!-- /.box -->
+
               </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include BMI Calculation. 
-                
-                <?php if(!isset($PRdata['bmi'])){?>To Add a BMI Calculation/Package Click "Add"
-                <br/><br/>
-                 <button type="button" onclick="sendPackageRequest('bmi');" class="btn btn-info" >Add</button>
-                 
-                 <?php } else{
-                     echo "<br/>We have recived your request to add BMI Calculation Test/Package.";
-                 }?></center><br/><br/><br/>
-                    </div></div></div>
+              <!-- /.col -->
+              <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
+                <!-- Line chart -->
+                <div class="box box-primary mb-10" style="box-shadow: none;">
+                  <div class="blue-band-home">
+                    Sample
+                  </div>
+                  <div class="box-header with-border">
+                    <div class="pre-header">
+                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
                     </div>
-           <?php } ?>
-           
-          
-               
-		  </div>
-           
+                    <div>
+                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
+                      <div class=" pull-right" style="margin-left: 15px;">
+                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
+                  </div>
+                  <div class="box-body">
+                  <div id="line-chart2" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                    <div class="clearfix"></div>
+                    <div class="pre-header mb-0">
+                      <div style="min-height: 58px;padding-top: 10px;">
+                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left">
+                      <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+
+              </div>
+              <!-- /.col -->
+              <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
+                <!-- Line chart -->
+                <div class="box box-primary mb-10" style="box-shadow: none;">
+                  <div class="blue-band-home">
+                    Sample
+                  </div>
+                  <div class="box-header with-border">
+                    <div class="pre-header">
+                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD SUGAR LEVELS</b></h5>
+                    </div>
+                    <div>
+                      <h2 class="box-title pull-left">161 <span style="font-weight: normal;">mg</span></h2>
+                      <div class=" pull-right" style="margin-left: 15px;">
+                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="box-title-sm" style="padding-left: 5px;">157 <span style="font-weight: normal;">avg</span></h4>
+                  </div>
+                  <div class="box-body">
+                    <div id="line-chart3" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
+                    <div class="clearfix"></div>
+                    <div class="pre-header mb-0">
+                      <div style="min-height: 58px;padding-top: 10px;">
+                        <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left" />
+                      <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of Digital Republik has high Blood Sugar Levels</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+
+              </div>
+              <!-- /.col -->
+              </div>
+     
       </div>
-            <div class="swiper-container graph-container">
-			<div class="col-md-12">
-			 <!-- BAR CHART -->
-			 	<?php if(!empty($chartdata['bs']['table']) ){?>
-			  <div class="box box-success">
-            <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>Blood Sugar Observations</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-                    
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                <div class="col-md-4">
-              <div class="chart">
-                <canvas id="barChart_bs" style="height:250px"></canvas>
-              </div>
-              <br/>
-              <center><div style="font-size:12px;"><div style="background-color:#00c0ef;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> Male &nbsp;&nbsp;&nbsp;
-              <div style="background-color:#00a65a;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;</div> Female</div></center><br/>
-              </div>
-               <div class="col-md-4">
-				  <div class="chart">
-					<canvas id="chart-area_bs" style="height:230px"></canvas>
-				  </div>
-				  
-              </div>
-			  <div class="col-md-4">
-                 <table class="table table-bordered">
-				 <tr class="bg-blue text-white">
-                 
-                  <th>Readings</th>
-                  <th>Male</th>
-                  <th>Female</th>
-                </tr>
-				 <?php 
-				     $pre_diabetic_count = 0;
-				     $diabetic_count = 0;
-				 foreach($chartdata['bs']['table'] as $key=>$value) { 
-				     
-				if($value['cat_id']==2 ){
-				    $pre_diabetic_count +=$value['total_cnt'];
-				}
-				if($value['cat_id']==3){
-				    $diabetic_count +=$value['total_cnt'];
-				}
-			
-				 
-				 ?>
-                
-                <tr>
-                  
-                  <td><div style="background-color:<?php echo $value['chart_regular_color']?>;width: 18px;height: 28px;display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <?php echo $value['reading']?></td>
-                  <td>
-                      <?php echo $value['male_count']?>
-                  </td>
-                  <td><?php echo $value['female_count']?></td>
-                </tr>
-				 <?php } 
-				 $pre_diabetic_count = ($pre_diabetic_count>0)?round(($pre_diabetic_count/$arr_count['total_employees'])*100):0;
-				 $diabetic_count = ($diabetic_count>0)?round(($diabetic_count/$arr_count['total_employees'])*100):0;
-				 ?>
-                
-                
-              </table> 
-           <h5 class="gsmallresult margin0" style="font-size: 12px;line-height:15px;"><span class="badge1 bg-danger1" style="font-size:13px"><b><?php echo $pre_diabetic_count?>%</b></span> of company is  <span class="text-danger">Prediabetic</span> <br/><br/> <span class="badge1 bg-danger1" style="font-size:13px;font-weight:strong;"><?php echo $diabetic_count?>%</span> of company is <span class="text-danger">Diabetic</span></h5>
-                </div>
-                </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-         
-           <?php }else{ ?>
-            <div class="box box-success">
-            <div class="box-header with-border">
- <div class="pre-header" style="margin: 8px 0;">
-                      <h5 class="margin0 text-uppercase2"><b>Blood Sugar Observations</b></h5>
-                      <!--<a href="#" class="btn2">BMI</a>-->
-                    </div>
-                   <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                <div class="col-md-offset-2 col-md-8"><br/><br/><br/><center>"Your current Preventive Healthcare Package does not include Blood Sugar Testing. 
-                <?php if(!isset($PRdata['bs'])){?>To Add a Blood Sugar Test/Package Click "Add" 
-                <br/><br/>
-                 <button type="button" onclick="sendPackageRequest('bs');" class="btn btn-info" >Add</button>
-                 
-                 <?php } else{
-                     echo "<br/>We have recived your request to add Blood Sugar Test/Package.";
-                 }?></center><br/><br/><br/>
-                    </div></div></div>
-                    </div>
-           <?php }?>
-               
-		  </div>
-           
-      </div>
-	  <!-- sho my report data -->
-	  <?php include_once('my_Reports.php') ?>
+      <!-- sho my report data -->
+	  <?php// include_once('my_Reports.php') ?>
 	  <!-- end of my report -->
       <!-- /.row -->
      <div class="row">
@@ -1355,7 +1175,261 @@ $goal_arr = $database->getClusterGoal($clusterId);
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
 
 <script src="dist/js/chart.js"></script>
+<script>
+		  $(document).ready(function(){
+	// Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#salesChart2').get(0).getContext('2d')
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas)
+		    
+  	var areaChartData = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(235, 235, 235,0.7)",
+					strokeColor : "rgba(235, 235, 235,1)",
+					pointColor : "rgba(235, 235, 235,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					 data                : [70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30, 60],
+					 
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(225, 243, 231,0.7)",
+					strokeColor : "rgba(225, 243, 231,1)",
+					pointColor : "rgba(225, 243, 231,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					  data                : [30,70, 40, 40, 70, 40, 80,  40, 70, 40, 80, 30]
+				},
+				
+			]
 
+		}
+ var areaChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale               : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : false,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve             : true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension      : 0.4,
+      //Boolean - Whether to show a dot for each point
+      pointDot                : false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius          : 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth     : 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke           : true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth      : 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill             : true,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio     : true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive              : true,
+	   
+      scales: {
+                   
+                    yAxes: [{
+                        ticks: {
+        	beginAtZero: true
+        }
+                    }]
+                }
+    
+    }
+	areaChart.Line(areaChartData, areaChartOptions)
+	//window.onload = function(){
+		/*var ctx = document.getElementById("salesChart2").getContext("2d");
+		var salesChart2       = new Chart(ctx);
+		salesChart2.Line(lineChartData, {
+			responsive: true
+		});*/
+		    //-------------
+    //- LINE CHART -
+    //--------------
+  
+			var lineChartData2 = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					 data                : [65, 59, 80, 81, 56, 55]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					 data                : [28, 48, 40, 19, 86, 27]
+				}
+			]
+
+		}
+		/*  var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
+    var lineChart                = new Chart(lineChartCanvas)
+    var lineChartOptions         = areaChartOptions
+    lineChartOptions.datasetFill = false
+    lineChart.Line(lineChartData2, lineChartOptions)*/
+
+			//	var ctx2 = document.getElementById("salesChart").getContext("2d");
+		//var salesChart      = new Chart(ctx2);
+		//salesChart.Line(lineChartData2, {
+		//	responsive: true
+		//});
+		
+		
+		  });
+</script>
+<script src="plugins/flot/jquery.flot.min.js"></script>
+ FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized 
+<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+ FLOT PIE PLUGIN - also used to draw donut charts 
+<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+ FLOT CATEGORIES PLUGIN - Used to draw bar charts 
+<script src="plugins/flot/jquery.flot.categories.min.js"></script>
+<script>
+ $(document).ready(function(){
+var line_data1 = {
+      data:  [["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    $.plot("#line-chart", [line_data1], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 70, to: 70} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#f56954"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+	//LINE randomly generated data
+    var line_data2 = {
+      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    var line_data21 = {
+      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      color: "#ccafaa"
+    };
+    $.plot("#line-chart2", [line_data2,line_data21], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#ccafaa"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+	//LINE randomly generated data
+    var line_data2 = {
+      data:  [["Jan", 110], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
+      color: "#31b3bf"
+    };
+    var line_data21 = {
+      data:  [["Jan", 165], ["Feb", 166.5], ["Mar", 169.5], ["Apr", 169.8], ["May", 171], ["June", 171.8]],
+      color: "#ccafaa"
+    };
+    $.plot("#line-chart3", [line_data2,line_data21], {
+      grid: {
+        hoverable: true,
+        borderColor: "#f3f3f3",
+        borderWidth: 1,
+        tickColor: "#f3f3f3",
+        markings: [{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 80, to: 80} },{ color: "#ffb4cd", lineWidth: 2, yaxis: { from: 160, to: 160} }]
+      },
+      series: {
+        shadowSize: 0,
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      lines: {
+        fill: true,
+        color: ["#31b3bf", "#ccafaa"]
+      },
+      yaxis: {
+        show: true,
+      },
+      xaxis: {
+        mode: "categories",
+        tickLength: 0
+      }
+    });
+    });
+</script>
 <script>
 		  $(document).ready(function(){
 			  //alert("d2");
@@ -1430,258 +1504,6 @@ $goal_arr = $database->getClusterGoal($clusterId);
   });
   
 </script>
-<script>
-  $(function () {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-
-    //--------------
-    //- AREA CHART -
-    //--------------
-
-<?php if(!empty($chartdata['bp']['table']) ){?>
-    var areaChartData = {
-      labels  : [<?php echo $chartdata['bp']['label']?>],
-      datasets: [
-        {
-          label               : 'Male',
-          fillColor           : '#00c0ef',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [<?php echo $chartdata['bp']['Male']?>]
-        },
-        {
-          label               : 'Female',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php echo $chartdata['bp']['Female']?>]
-        }
-      ]
-    }
-
-   
-
-
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[1].fillColor   = '#00a65a'
-    barChartData.datasets[1].strokeColor = '#00a65a'
-    barChartData.datasets[1].pointColor  = '#00a65a'
-    <?php } ?>
-    var barChartOptions                  = {
-      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-      scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-	   multiTooltipTemplate: "<%if (label){%> <%}%><%= value %>",
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-	  
-    }
-
-    barChartOptions.datasetFill = false
-    <?php if(!empty($chartdata['bp']['table']) ){?>
-     barChart.Bar(barChartData, barChartOptions)
-     <?php } ?>
-    ///bmi chart
-    <?php if(!empty($chartdata['bmi']['table']) ){?>
-    var areaChartData_bmi = {
-      labels  : [<?php echo $chartdata['bmi']['label']?>],
-      datasets: [
-        {
-          label               : 'Male',
-          fillColor           : '#00c0ef',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [<?php echo $chartdata['bmi']['Male']?>]
-        },
-        {
-          label               : 'Female',
-          fillColor           : '#00a65a',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php echo $chartdata['bmi']['Female']?>]
-        }
-      ]
-    }
-    var barChartCanvas_bmi          = $('#barChart_bmi').get(0).getContext('2d')
-    var barChart_bmi                = new Chart(barChartCanvas_bmi)
-     var barChartData_bmi                     = areaChartData_bmi
-    barChart_bmi.Bar(barChartData_bmi, barChartOptions)
-		 <?php } ?>
-	//Blood sugar
-	 <?php if(!empty($chartdata['bs']['table']) ) {?>
-    var areaChartData_bs = {
-      labels  : [<?php echo $chartdata['bs']['label']?>],
-      datasets: [
-        {
-          label               : 'Male',
-          fillColor           : '#00c0ef',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [<?php echo $chartdata['bs']['Male']?>]
-        },
-        {
-          label               : 'Female',
-          fillColor           : '#00a65a',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php echo $chartdata['bs']['Female']?>]
-        }
-      ]
-    }
-    var barChartCanvas_bs          = $('#barChart_bs').get(0).getContext('2d')
-    var barChart_bs                = new Chart(barChartCanvas_bs)
-     var barChartData_bs                     = areaChartData_bs
-    barChart_bs.Bar(barChartData_bs, barChartOptions)
-    <?php } ?>
-	//end Blood sugar
-    window.chartColors = {
-	red: 'rgb(255, 99, 132)',
-	orange: 'rgb(255, 159, 64)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(75, 192, 192)',
-	blue: 'rgb(54, 162, 235)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
-};
-    var pieData = [
-        <?php 
-         $colorarray[4]['color'] = "#4D5360";
-        $colorarray[4]['highlight'] = "#616774";
-        $colorarray[0]['color'] = "#F7464A";
-        $colorarray[0]['highlight'] = "#FF5A5E";
-        $colorarray[1]['color'] = "#46BFBD";
-        $colorarray[1]['highlight'] = "#5AD3D1";
-        $colorarray[2]['color'] = "#FDB45C";
-        $colorarray[2]['highlight'] = "#FFC870";
-         $colorarray[3]['color'] = "#949FB1";
-        $colorarray[3]['highlight'] = "#A8B3C5";
-        /*
-        
-        color:"#F7464A",
-					highlight: "#FF5A5E"
-        color: "#46BFBD",
-					highlight: "#5AD3D1",
-					color: "#FDB45C",
-					highlight: "#FFC870",*/
-        foreach($chartdata['bp']['table'] as $key=>$value) { 
-            
-            
-            ?>
-				{
-					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $value['chart_regular_color']?>",
-					highlight: "<?php echo $value['chart_highlight_color']?>",
-					label: "<?php echo $value['reading']?>"
-				},
-				<?php } ?>
-		
-
-			];
-var pieData2 = [
-        <?php 
-        
-        foreach($chartdata['bmi']['table'] as $key=>$value) { 
-            
-            
-            ?>
-				{
-					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $value['chart_regular_color']?>",
-					highlight: "<?php echo $value['chart_highlight_color']?>",
-					label: "<?php echo $value['reading']?>"
-				},
-				<?php } ?>
-		
-
-			];
-			var pieData3 = [
-        <?php 
-        
-        foreach($chartdata['bs']['table'] as $key=>$value) { 
-            //$value['chart_regular_color'] = (empty($value['chart_regular_color']))?$colorarray[$key+1]['color']:$value['chart_regular_color'];
-           // $value['chart_highlight_color'] = (empty($value['chart_highlight_color']))?$colorarray[$key+1]['color']:$value['chart_highlight_color'];
-            
-            ?>
-				{
-					value: <?php echo $value['total_cnt']?>,
-					color:"<?php echo $value['chart_regular_color']?>",
-					highlight: "<?php echo $value['chart_highlight_color']?>",
-					label: "<?php echo $value['reading']?>"
-				},
-				<?php } ?>
-		
-
-			];
-			window.onload = function(){
-			    <?php if(!empty($chartdata['bp']['table']) ){?>
-				var ctx = document.getElementById("chart-area").getContext("2d");
-				window.myPie = new Chart(ctx).Doughnut(pieData);
-				<?php } ?>
-				<?php if(!empty($chartdata['bmi']['table']) ){?>
-					var ctx2 = document.getElementById("chart-area_bmi").getContext("2d");
-			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
-				window.myDoughnut = new Chart(ctx2).Doughnut(pieData2, {
-					responsive:true
-				})	
-				<?php } ?>
-				<?php if(!empty($chartdata['bs']['table']) ) {?>
-				var ctx3 = document.getElementById("chart-area_bs").getContext("2d");
-			//	window.myPie2 = new Chart(ctx2).Pie(pieData2);
-				window.myDoughnut = new Chart(ctx3).Doughnut(pieData3, {
-					responsive:true
-				});
-					<?php } ?>
-			};
-  })
-</script>
-<?php include_once('reports_js.php'); ?>
 <script>
   $(document).ready(function(){
 	  
