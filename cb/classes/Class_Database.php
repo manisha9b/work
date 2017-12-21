@@ -3423,7 +3423,7 @@ public function getControllerAction($default) {
 
 function getDashboardDataOld($clusterId){
 unset($this->result);
-	$weight_sql = "SELECT  DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
+	 $weight_sql = "SELECT  DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight,
 
 				if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) )  as  gender1
 				from tbl_ebh_customer_health_readings as a
@@ -3434,6 +3434,12 @@ unset($this->result);
 	// c.cluster_id=".$clusterId." and
 		$this->select($weight_sql);
 		$result['weight'] = $this->result;
+		$weight_sql = "SELECT DATE_FORMAT(a.recorded_on,'%b') as recording_month,a.recorded_on,round(avg(bmi)) as avg_bmi,round((weight)) as avg_weight, if( b.salutation = 'Mr.','Male',if( b.salutation = 'Mrs.','Female',if( b.salutation = 'Ms.','Female','')) ) as gender1 from tbl_ebh_customer_health_readings as a left join tbl_ebh_customer as b on a.ebh_customer_id = b.ebh_customer_id left join tbl_cluster_employee as c on b.ebh_customer_id = c.ebh_customer_id where c.cluster_id=".$clusterId." and a.recorded_on > DATE_SUB(now(), INTERVAL 12 MONTH) group by DATE_FORMAT(a.recorded_on,'%b')";
+	//AND y.cluster_id=".$clusterId."
+	// c.cluster_id=".$clusterId." and
+	unset($this->result);
+		$this->select($weight_sql);
+		$result['avg_bmi'] = $this->result;
 		$sugar_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.ppbs))  as avg_ppbs, round(AVG(x.fbs)) as avg_fbs
 		FROM 	tbl_ebh_customer_health_readings x
 		JOIN tbl_cluster_employee y ON x.ebh_customer_id=y.ebh_customer_id
@@ -3466,15 +3472,17 @@ function getDashboardChartOld($clusterId){
 	$avg_systolic = 0;
 	$avg_diastolic = 0;
 	$n_bmi = 0;
+	$n_bmi2 = 0;
 	$n_bp = 0;
 	$n_sugar = 0;
+	$avg_bmi2 = 0;
 	$result['chart']['male_bmi_chart_month'] = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 	foreach($data['weight'] as $key=>$value){
 		if($value['gender1']!=''){
-			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_weight'];
+			$result['bmi'][$value['gender1']][$value['recording_month']] = $value['avg_bmi'];
 			//[["Jan", 65], ["Feb", 66.5], ["Mar", 69.5], ["Apr", 69.8], ["May", 71], ["June", 71.8]],
 			//$bmi_chart[$value['gender1']][] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
-			$bmi_chart[$value['gender1']][$value['recording_month']] = $value['avg_weight'] ;
+			$bmi_chart[$value['gender1']][$value['recording_month']] = $value['avg_bmi'] ;
 			//$bmi_chart[$value['gender1'].'_month'][] = '"'.$value['recording_month'].'"' ;
 			$avg_bmi += $value['avg_bmi'];
 			$avg_weight += $value['avg_weight'];
@@ -3493,6 +3501,20 @@ function getDashboardChartOld($clusterId){
 if($n_bmi>0){
 		$result['chart']['avg_bmi'] = round($avg_bmi/$n_bmi) ;
 		$result['chart']['avg_weight'] = round($avg_weight/$n_bmi) ;
+	}
+	foreach($data['avg_bmi'] as $key=>$value){
+			$result['bmi2'][$value['recording_month']]['bmi'] = $value['avg_bmi'];
+			//$result['sugar'][$value['recording_month']]['fbs'] = $value['avg_fbs'];
+			$bmi_chart3[] = '["'.$value['recording_month'].'", '.$value['avg_bmi'].']' ;
+			$avg_bmi2 += $value['avg_bmi'];
+			
+			$n_bmi2++;
+	}
+	$result['chart']['bmi_chart'] = '['.implode(', ',$bmi_chart3).']';
+	//$result['chart']['fbs_chart'] = '['.implode(', ',$fbs_chart).']';
+	if($n_bmi2>0){
+		$result['chart']['avg_bmi'] = round($avg_bmi2/$n_bmi2) ;
+		
 	}
 	foreach($data['sugar'] as $key=>$value){
 			$result['sugar'][$value['recording_month']]['ppbs'] = $value['avg_ppbs'];
