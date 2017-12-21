@@ -1,4 +1,4 @@
-<!-- <div class="navbar-custom-menu">
+ <div class="navbar-custom-menu">
 			  <ul class="nav navbar-nav">
 				
 				<li>
@@ -8,8 +8,8 @@
 				</li>
 				<li class="dropdown messages-menu">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 10px;" aria-expanded="false">
-					<i class="fa fa-bell-o"></i>
-					<span class="label label-danger">6</span>
+					<i class="fa fa-bell-o fa-2x" style="color:#444"></i>
+					<span class="label bg-pink label-danger">6</span>
 				  </a>
 				  <ul class="dropdown-menu">
 					<li class="header">You have 6 messages</li>
@@ -35,5 +35,5 @@
 				  </ul>
 				</li>
 			  </ul>
-			</div>  -->
+			</div> 
 		 

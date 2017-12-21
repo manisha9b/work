@@ -16,6 +16,7 @@ else
     .table_area{
         padding-bottom:0!important;
     }
+	.bg-pink{background-color:#d92cac!important}
 </style>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -51,7 +52,7 @@ else
             <div id="appointments" class="nav-tabs-custom mb-65">
               <ul class="nav nav-tabs">
                 <li class="active">
-				<div class="dropdown">
+				<div class="dropdown pur_option">
 					  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background: #3D4452;
     padding:9.5px;border-radius: 0!important;">PURCHASED <!-- <span class="caret"></span> --></a>
 					 <!-- <ul class="dropdown-menu purchase_drop_down" style="width: 140%;">
@@ -100,7 +101,7 @@ if(isset($_REQUEST['m']))
                     <tbody>
                       <tr style="background: transparent;">
                         <th>
-                          Date &amp; Time
+                          PURCHASED ON
                         </th>
                         <th>
                           PACKAGE NAME
@@ -137,7 +138,7 @@ $bg_color="cursor:pointer;";
 		$created_on_fulldate	= $arr_ebh_pack[$i]['created_on_date'];
 	//echo	$created_on_date		= $database->mysqlToDateCustom($created_on_date,'d');
 	//echo "<br/>";
-		$created_on_date		= $database->mysqlToDateCustom($created_on_fulldate	,'d|M, D|h:i a');
+		$created_on_date		= $database->mysqlToDateCustom($created_on_fulldate	,'d|M,|l|h:i a');
 		$created_on_date		= explode('|',$created_on_date);
 		//print_r($created_on_date);die;
 		$total_invited			= $arr_ebh_pack[$i]['total_invited'];
@@ -229,16 +230,24 @@ $bg_color="cursor:pointer;";
 							</div>
 						  </div>
                         </td>
-                        <td  width="30%" class="table_area" style="padding-bottom:0;">
+                        <td  width="40%" class="table_area packagehealth_title" style="padding-bottom:0;">
                          <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo str_replace(',',', ',$lab_test_name_arr) ?></span>
-						
+							<div class="package_btns"><a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="viewPackage(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a></div>
                         </td>
 						
                         <td class="wherecenter table_area" style="padding-bottom:0;width:30%;text-align:center;">
-                         
-							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width:30%;text-align:center" class="floatleft" alt="">
+							<div class="row">
+							<div class="col-sm-4">
+							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="text-align:center" class="floatleft" alt="">
+							</div>
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
+							<div class="col-sm-8" style="text-align:left">
+                            <b>Suburban</b> Diagnostics<br>
+                            Andheri (W),<br>
+                            Mumbai
+							</div>
+						  </div>
                         </td>
                         <td class="analytic_area table_area" style="padding-bottom:0;width:15%">                      
                           <div class="chart-responsive" style="text-align: center;">
@@ -249,7 +258,7 @@ $bg_color="cursor:pointer;";
                      <tr style="<?php echo $bg_color?>">
                           <td colspan="4" align="left" style="border:0;padding-top:0">
                               
-                            <a href="javascript:void(0);" class="appointment-act invite" alt="<?php echo $cluster_package_id."~".$package_nm;?>"><i class="fa fa-location-arrow"></i> INVITE</a><a href="javascript:void(0)" onClick="viewPackage(<?php echo $cluster_package_id?>)" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
+                           
                            <!-- <a href="#" class="appointment-act"><i class="fa fa-question-circle"></i> FAQs</a>
                             <a href="#" class="appointment-act"><i class="fa fa-shopping-cart"></i> VIEW PURCHASE SUMMARY</a>
                             <a href="#" class="print_icon"><i class="fa fa-print"></i></a> -->

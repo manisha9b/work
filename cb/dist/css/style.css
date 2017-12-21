@@ -239,6 +239,10 @@ a:focus {
 .main-header .navbar-right {
   float: right;
 }
+
+.pur_option a, .pur_option a:hover{color:#fff!important;}
+.package_btns a:hover{color:#fff!important;}
+.packagehealth_title {font-size: 17px;color: #6d6d6a;}
 @media (max-width: 991px) {
   .main-header .navbar-custom-menu a,
   .main-header .navbar-right a {

@@ -456,6 +456,7 @@ a:focus {
     -o-transform: translate(-230px, 0);
     transform: translate(-230px, 0);
   }
+  
 }
 @media (max-width: 767px) {
   .sidebar-open .main-sidebar,
@@ -465,7 +466,11 @@ a:focus {
     -o-transform: translate(0, 0);
     transform: translate(0, 0);
   }
+ 
 }
+
+
+
 .sidebar {
   padding-bottom: 10px;
   width: 85%;
@@ -1167,12 +1172,19 @@ a:focus {
   margin-top: -2px;
 }
 @media (max-width: 767px) {
+	
   .navbar-nav > .user-menu .user-image {
     float: none;
     margin-right: 0;
     margin-top: -8px;
     line-height: 10px;
+	
   }
+  
+  /*dashboard*/
+	.worth_rading_sec{min-height:445px!important;max-height: 445px!important;}
+	.snacks_detail{min-height:750px!important;max-height: 750px!important;}
+	.sign_up_free .digonalsection{background-color: #16d4ae!important;}
 }
 /* Add fade animation to dropdown menus by appending
  the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
@@ -4399,6 +4411,8 @@ table.text-center th {
 .description-block > .description-text {
   text-transform: uppercase;
 }
+.bg-pink{background-color:#d92cac!important}
+
 .bg-red,
 .bg-yellow,
 .bg-aqua,
@@ -4476,7 +4490,7 @@ table.text-center th {
 .alert-error,
 .label-danger,
 .modal-danger .modal-body {
-  background-color: #67c100 !important;
+  background-color: #e145aa !important;
 }
 .bg-yellow,
 .callout.callout-warning,
@@ -4485,6 +4499,11 @@ table.text-center th {
 .modal-warning .modal-body {
   background-color: #3488ad !important;
 }
+
+.aqua{color:#3bb3bf!important}
+.bg-pink{background-color:#d92cac!important}
+
+.bg-dark-green{background-color: #67c100 !important}
 .bg-aqua,
 .callout.callout-info,
 .alert-info,
@@ -5031,7 +5050,7 @@ table.text-center th {
 .cwhite{color: #FFFFFF;}
 .cgrey{color: #b1b5b2;}
 .cgrey1{color: #534f4f;}
-.content-header .label{position: absolute;top: -1px;right: 5px;text-align: center;font-size: 9px;padding: 2px 3px;line-height: .9;}
+.content-header .label{position: absolute;top: -1px;right: 5px;text-align: center;font-size:12px;padding: 2px 4px;line-height: .9;    border-radius: 50%;}
 .article {padding-top:20px; }
 .divider{width: 95%;border-top: 1px solid #1e2229;margin: 0 auto;margin-bottom: 5px;}
 .nav-divider{width: 95%;border-top: 1px solid #1e2229;margin: 10px auto;}
@@ -5052,6 +5071,7 @@ a.btn3{padding:8px 15px !important;background: #FFFFFF;border-radius: 10px; colo
 
 .btn2-lg{border-radius:20px;padding: 10px 15px;border:1px solid #999; color: #3d4452;margin-bottom: 10px;display: inline-block;
     text-align: center;}
+.btn2-lg:hover,.btn2-lg:focus,.btn2-lg:visited{color: #3d4452}
 #newappnt.btn2-lg{background: #f2fbfc}
 a.btn2-lg:hover, #newappnt.btn2-lg:hover{background: #43ce5a;color: #FFFFFF;}
 
@@ -5187,27 +5207,58 @@ padding: 5px;}
 .cor_plans .plan_btn{padding-top:6px;}
 .reading_section .allarticle{padding-top:25px;}
 .hrs_progress_bar .progress{position:relative;}
-.hrs_progress_bar .health_goal_info{position:absolute;margin-top:86px;width:100%;}
+.hrs_progress_bar .health_goal_info{position:absolute;margin-top:103px;width:100%;}
+.fs20{font-size:20px;}
+.black{color:#000!important}
+.pick_challege_img ul {
+  list-style: none;
+  margin:15px;
+  padding: 0;
+  font: normal 16px/22px Arial;
+  color: #999;
+}
+.health_goals_slider{padding-left:0px!important}
+.snack_font span{font-size:16px;color: #2f2f32;}
+.snacks_detail{min-height: 465px;max-height: 465px;}
+.plan_btn{padding-top: 7px;}
+.snacks_detail {
+    min-height: 455px;
+    max-height: 455px;
+}
+
+
 
 @media screen and (max-width:1366px){
+	
+	.snacks_detail{min-height: 433px!important;max-height: 433px!important;}
 	.reading_section .allarticle{padding-top:0px;}
-	.worth_rading_sec{min-height:536px;max-height:536px;}
-	.pick_challege_img .view_btn{padding-top:0px!important;}
+	.worth_rading_sec{min-height:440px;max-height:440px;}
+	.pick_challege_img .view_btn{padding-top:38px!important;}
 	.employe_health_area .emp_ratio_status{min-height: 403px!important;max-height: 403px!important;}
 	.emp_ratio_status .smoking_per{min-height:223px !important;max-height:223px !important;}
 	.emp_ratio_status .ratio{min-height:223px !important;max-height:223px !important;}
 	.snacks_detail{min-height: 527px;max-height: 527px;}
-	
+	.pick_challege_img ul{margin:0px!important}
+	.pick_challege_img ul li{font-size:13px!important;}
+	.pick_challege_img li {
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 20px 35px!important;
+}
+		.snacks_detail{min-height: 405px;max-height: 405px;}
+		.snack_font span{font-size:14px;}
+		
 }
 
 
 @media screen and (min-width:1366px){
 	/*dashboard-page*/
-	
+	.health_goals_slider .swiper-wrapper{width:94%;}
+	.employe_health_area .box{padding:10px!important}
 	.sign_up_area h3{font-size: 28px!important;}
 	.sign_up_news{font-size: 20px!important;}
 	.stest_icon i{font-size: 80px!important;}
-	
+	#others .box {min-height: 530px!important;}
 	
 .sex_ratio .text-uppercase {
    font-size: 13px!important;
@@ -5247,10 +5298,25 @@ padding: 5px;}
 
 .employee_age{position:absolute;}
 .profileimg .profile_info{width:66%!important;margin-left: 2px!important;}
+.emp_ratio_status .smoking_per{min-height:204px!important}
 
 }
 @media screen and (max-width: 1280px){
 	/*dashboard-page*/
+	.snacks_detail {
+    min-height: 412px !important;
+    max-height: 412px !important;
+}
+
+#others .box {min-height: 500px!important;}
+
+.plan_btn {
+    padding-top: 0px;
+}
+
+	.pick_challege_img .view_btn{padding-top:13px!important;}
+	.reading_section .allarticle{padding-top:0px;}
+	.worth_rading_sec{min-height:410px!important;max-height:410px!important;}
 	.sign_up_area h3{font-size: 28px!important;}
 	.sign_up_news{font-size: 20px!important;}
 	.stest_icon i{font-size: 80px!important;}
@@ -5333,6 +5399,7 @@ padding: 5px;}
 }
 @media screen and (max-width: 899px) and (min-width: 767px){
   .content-wrapper {padding-top: 20px;}
+  
 }
 @media screen and (max-width: 980px){
   .digonalsection{background-color: #3d4452; background-image: -webkit-linear-gradient(90deg, #3d4452 55%, #FFFFFF 40%);}
@@ -5366,6 +5433,7 @@ padding: 5px;}
   #addfamily .modal-dialog {width: 450px;margin: 9% auto 0;}
 }
 @media screen and (max-width: 767px){
+	
   .navbar.navbar-static-top{padding: 0 2%;}
   .nav-space{margin-right: 0px;}
   .col-dm-5{width: 100%;}
@@ -5434,6 +5502,7 @@ padding: 5px;}
   
   .content{padding-right:0px!important;padding-left:0px!important;}
   #graph3{padding:15px!important;}
+  .health_goals_slider{padding-left:15px!important}
   
 }
 @media screen and (max-width: 480px){
@@ -5569,13 +5638,7 @@ padding: 5px;}
 .ratio_percent img{width:70%;}
 
 
-.pick_challege_img ul {
-  list-style: none;
-  margin:15px;
-  padding: 0;
-  font: normal 16px/22px Arial;
-  color: #999;
-}
+
 .pick_challege_img li {
   overflow: hidden;
   position: relative;
@@ -5622,11 +5685,11 @@ padding: 5px;}
 
 .pick_challege_img ul li{font-family:AvenirNextLTPro-Regular;color:#2f2f32;font-size:16px;}
 
-.snack_font span{font-size:16px;}
-	{    color: #2f2f32;
+
+	    
 .pick_challege_img ul .next_week{ font-size: 18px;color: #2f2f32;}
 
-.profileimg a{color: #3fbcc2;}
+/* .profileimg a{color: #3fbcc2;} */
 
 .no-border {border:none;}
 
@@ -5636,12 +5699,13 @@ padding: 5px;}
 
 .health_goal_area .box {padding:35px!important;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);}
 
-
+.health_goals_slider .swiper-wrapper{width:97%;}
 
 .swiper-wrapper{color: #777;
     cursor: not-allowed!important;
-    background-color: #fff;
+    /* background-color: #fff; */
     border-color: #ddd;}
 	
-	
+
+	}
 
