@@ -1671,6 +1671,8 @@ class Database {
 				tcase(b.package_nm) AS package_nm,
 				tcase(c.`name`) AS hsp_name,
 				d.hsp_logo,
+				e.hsp_locality,
+				g.city_name,
 					CONCAT(
 					e.hsp_address,
 					' ',
@@ -3441,19 +3443,19 @@ unset($this->result);
 	unset($this->result);
 		$this->select($weight_sql);
 		$result['avg_bmi'] = $this->result;
-		$sugar_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.ppbs))  as avg_ppbs, round(AVG(x.fbs)) as avg_fbs
+		$sugar_sql = "SELECT DATE_FORMAT(x.recorded_on,'%b') as recording_month, round(AVG(x.ppbs))  as avg_ppbs, round(AVG(x.fbs)) as avg_fbs
 		FROM 	tbl_ebh_customer_health_readings x
 		JOIN tbl_cluster_employee y ON x.ebh_customer_id=y.ebh_customer_id
 		WHERE x.fbs>0 AND x.ppbs>0 and x.recorded_on  > DATE_SUB(now(), INTERVAL 12 MONTH) AND y.cluster_id=".$clusterId."
-		GROUP BY MONTH(x.recorded_on);";
+		GROUP BY DATE_FORMAT(x.recorded_on,'%b');";
 			unset($this->result);
 		$this->select($sugar_sql);
 		$result['sugar'] = $this->result;
-		$bp_sql = "SELECT monthname(x.recorded_on) AS recording_month, round(AVG(x.systolic)) as avg_systolic, round(AVG(x.diastolic)) as avg_diastolic
+		$bp_sql = "SELECT DATE_FORMAT(x.recorded_on,'%b') AS recording_month, round(AVG(x.systolic)) as avg_systolic, round(AVG(x.diastolic)) as avg_diastolic
 		FROM 	tbl_ebh_customer_health_readings x
 		JOIN tbl_cluster_employee y ON x.ebh_customer_id=y.ebh_customer_id
 		WHERE x.systolic>0 AND x.diastolic>0  and x.recorded_on  > DATE_SUB(now(), INTERVAL 12 MONTH) AND y.cluster_id=".$clusterId."
-		GROUP BY MONTH(x.recorded_on)";
+		GROUP BY DATE_FORMAT(x.recorded_on,'%b')";
 			unset($this->result);
 		$this->select($bp_sql);
 		$result['bp'] = $this->result;

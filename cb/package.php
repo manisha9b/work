@@ -265,6 +265,8 @@ $bg_color="cursor:pointer;";
 			$hsp_logo	= $arr_hsp[0]['hsp_logo'];
 			$hsp_name				=	$arr_hsp[0]['hsp_name'];
 			$hsp_address			=	$arr_hsp[0]['hsp_address'];
+			$hsp_city               = 	$arr_hsp[0]['city_name'];  
+			$hsp_locality          = 	$arr_hsp[0]['hsp_locality'];  
 		/* END */
 		//$hsp_name				= $arr_ebh_pack[$i]['hsp_name'];
 		/*$hsp_name				=	$arr_ebh_pack[$i]['hsp_name'];
@@ -323,9 +325,10 @@ $bg_color="cursor:pointer;";
 							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
 							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
 							<div class="col-sm-8" style="text-align:left">
-                            <b>Suburban</b> Diagnostics<br>
-                            Andheri (W),<br>
-                            Mumbai
+                           <!--  <b>	<?php echo $hsp_name ?></b><br>
+                            		<?php echo $hsp_locality ?>,<br>
+                            <?php echo $hsp_city ?> -->
+                            <?php echo $hsp_address?>
 							</div>
 						  </div>
                         </td>
@@ -367,8 +370,7 @@ $form_action =  "portal/invite.php";
 			<div class="panel-body">
 						<div>
 							<label><input type="radio" name="clusterpkg" id="clusterpkgfile" value="fileupload" checked="checked"> Bulk Import Employee</label><br>
-							<label><input type="radio" name="clusterpkg" id="clusterpkgemp" value="
-							"> Select From Employee List</label><br>
+							<label><input type="radio" name="clusterpkg" id="clusterpkgemp" value="emp_list"> Select From Employee List</label><br>
 							<label><input type="radio" name="clusterpkg" id="clusterpkgnewemp" value="newemp"> New Employee</label>
 						</div>
 						<p>&nbsp;</p>
@@ -1011,15 +1013,21 @@ $form_action =  "portal/invite.php";
                     <h3 class="black"><b>Create Your Own Package</b></h3>
 					<p>We offer custom tailored <b>Personalised Health Checkup Packages</b> to suit your body, fitness, health and lifestyle. You don't have to go through a battery of tests just because it is included in the set package.</p>
 					<div class="rescenter">
+						
+								
 						<div class=" col-md-9 p0" style="padding:0px;">
 							<div class=" col-md-5 start_btn_area" i>
 						<a href="#" class="btn btn-primary btn-green cwhite start_btn" alt="coming soon" title="coming soon" id="get_started" ><Span id="get_started_text">GET STARTED</span></a>
 							</div>
 							<div class=" col-md-7">
-								<a href="#" class="btn btn-block call_back_btn" alt="coming soon" title="coming soon"  id="request_call"><b><Span id="request_call_text">REQUEST A CALL</Span></b></a>
+							<a href="#" class="btn btn-block call_back_btn" alt="coming soon" title="coming soon"  id="request_call" data-toggle="modal" data-target="#request_call_modal"><b><Span id="request_call_text">REQUEST A CALL</Span></b></a>
 								<div class="clearfix"></div>
-						</div>
+
 					  </div>
+					  </div>
+					  <div class="row"><div class="col-sm-12">
+					  	<div  id="request_call_msg"></div>
+					  	</div></div>
 					</div>
 				  </div>
                   <div class="clearfix"></div>
@@ -1091,33 +1099,111 @@ keeps one more focussed and <br> productive at work</span>
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="request_call_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="col-sm-12 modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left cblue" id="myModalLabel">Request a call</h4>
+        <!-- <h4 class="modal-title pull-right" id="myModalLabel">Dashboard Update: <span class="cgreen">Blood Sugar</span></h4> -->
+      </div>
+      <div class="modal-body">
+      <form class="form" method="post" enctype="multipart/form-data" id="request_call_form" autocomplete="off" action="operation.php">
+
+			<input type="hidden" name="action" value="request_call">
+                     <div class="col-sm-12">
+                     <h4 class="select__1 field-details nosearch mt-0  mb-10" style="padding-bottom: 8px;">
+                        <select class="materializeselect" style="background: transparent;border: none;width: 100%;"    id="industry"  name="industry" required />
+						<option value="">What are you interested in</option>
+                          <?php 
+						  $valArr = array('Pre-Employment','Pre-Policy','Occupational & Health Screen','General Working Men and Women Health Check-up','General Senior Citizens & Children Screening') ;
+						  foreach($valArr as $val){?>
+						  <option value="<?php echo $val?>"><?=$val?></option>
+									
+						  <? }?>
+                        </select>
+                      </h4>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="input__1 mb-10">
+                        <div class="input__1_placeholder input__1_blurred">Your Employee Size</div>
+                        <input type="number" name="emp_size" id="emp_size" maxlength="50" required>
+                      </div>
+                    </div>
+                   
+                  
+         <div class="pt-10 pb-10 pull-right">
+          <button type="submit" class="btn btn-info btn-s" style="background-color:#43ce5a;border:#43ce5a">Save</button>
+          <button class="btn btn-info btn-s" data-dismiss="modal" aria-label="Close" style="background-color:#31b3bf;border:#31b3bf">Cancel</button>
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
 <!-- ./wrapper -->
 <?php include_once('partials/footer.php'); ?>
 <script src="dist/js/bootstrap-datepicker.min.js"></script>
 
 <script src="dist/js/cluster.js"></script>
 <script src="dist/js/chart.js"></script>
-
+<link rel="stylesheet" href="plugins/materialize/materialize.css">
+<script src="plugins/materialize/materialize.js"></script>
 <script>
+
   $(function () {
 	   $('.package_menu').addClass('active');
-	   
-                    $( "#request_call" ).hover(
-  function() {
-    $( "#request_call_text" ).text( "COMING SOON" );
-  }, function() {
-    $( "#request_call_text" ).text( "REQUEST A CALL" );
-  }
-);
-                        $( "#get_started" ).hover(
+	     $(document).ready(function() {
+    $('select.materializeselect').material_select();
+    $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    })
+  });
+             $( "#get_started" ).hover(
   function() {
     $( "#get_started_text" ).text( "COMING SOON" );
   }, function() {
     $( "#get_started_text" ).text( "GET STARTED" );
   }
 );          
-      // -------------
-  // - PIE CHART -
+$("#request_call_form").validate({
+        rules:{
+            required:{
+                required:true
+            },
+        },
+        errorClass: "help-inline text-danger",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+            $(element).parents('.form-group').addClass('has-error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.form-group').removeClass('has-error');
+            $(element).parents('.form-group').addClass('has-success');
+        },
+		submitHandler: function(form) {
+			$.ajax({
+				url: 'operation.php',
+				type: 'post',
+				data: $(form).serialize(),
+				success: function(response) {
+					$('#request_call_modal').modal('hide');
+				//	if(response == "update_success"){
+						//$("#request_call_form").trigger('reset');
+						$("#emp_size").val('');
+							$("#industry").val('');
+					//	$('#request_call_msg').html('<div class="alert alert-success alert-dismissable" style="width:450px;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><p>Employee details updated successfully!</p></div>');
+						
+				//	}else{
+						$('#request_call_msg').html(response);
+				//	}
+				}
+			});
+		}
+
+    });
+   // - PIE CHART -
   // -------------
   // Get context with jQuery - using jQuery's .get() method.
 

@@ -254,7 +254,7 @@ echo "</pre>";//die;*/
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
 			<div class="col-md-12">
-			<div class="box box-primary">
+			<div class="col-md-12 box no-border pt-20">
 			    <?php if(isset($charts['bmi_sample']) && $charts['bmi_sample']==1){ ?>
                     <div class="blue-band-home">
                     Sample
@@ -262,7 +262,7 @@ echo "</pre>";//die;*/
                   <?php } ?>
 			    <div class="box-header with-border">
                     <div class="pre-header" style="margin: 8px 0;">
-                          <h5 class="margin0 text-uppercase"><b>AVERAGE WEIGHT&nbsp;&nbsp;&nbsp;<Span style="border:1px #000 solid">AVERAGE BMI</Span></Span> </b></h5>
+                          <h5 class="margin0 text-uppercase"><b>AVERAGE WEIGHT&nbsp;&nbsp;&nbsp;<Span style="border:1px #000 solid;padding: 5px;">AVERAGE BMI</Span></Span> </b></h5>
                     <div class=" pull-right" style="margin-left: 15px;">
                        <?php echo  $arr_count['total_employees'] ." employees: ".$arr_count['male_employee'] ." Males | ".$arr_count['female_employee'] ." Females  ";?>
                       </div>
@@ -294,7 +294,7 @@ echo "</pre>";//die;*/
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
                        <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">61% of <?php echo $arr_cluster['cluster_business_name']?>  is Overwieght & average weight is <?php echo $charts['avg_weight']?> kgs</h5>
+                        <h5 class="gresult margin0" style="font-size:16px;color:#5b5353"><b>61%</b> of <span style="font-weight:bold;color:#5b5353"><?php echo $arr_cluster['cluster_business_name']?></span>  is Overweight & <span style="font-weight:bold;color:#5b5353">average weight</span> is <span style="font-weight:bold;color:#5b5353"><?php echo $charts['avg_weight']?></span> kgs</h5>
                       </div>
                     </div>
             </div>
@@ -303,10 +303,10 @@ echo "</pre>";//die;*/
 		  <!-- Line chart -->
           </div> 
 
-		  <div class="swiper-wrapper pt-20">
+		  <div class="swiper-wrapper disbale-swiper pt-20">
               <div class="col-md-4 wow bounceInLeft swiper-slide" data-wow-delay="0.2s">
                 <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
+                <div class="box box-primary mb-10 no-border" style="box-shadow: none;">
                     <?php if(isset($charts['bmi_sample']) && $charts['bmi_sample']==1){ ?>
                     <div class="blue-band-home">
                     Sample
@@ -321,7 +321,7 @@ echo "</pre>";//die;*/
                       
 					  <h2 class="box-title pull-left"><b><?php echo $charts['avg_bmi']?></b></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
-                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 12%
+                        <i class="fa fa-sort-asc" style="color: #e01161 !important;font-size: 22px;"></i> 12%
                       </div>
                     </div><div class="clearfix"></div>
                     <!-- 
@@ -336,12 +336,13 @@ echo "</pre>";//die;*/
                      Sales Chart Canvas 
                     <canvas id="salesChart" style=" max-width: 90%; margin: 0 auto;"></canvas>
                  -->
+
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left;" />
                        <!-- <h4 class="gresult margin0">56% of Digital Republik has high cholestrol</h4>-->
-                        <h5 class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?>  is Overwieght</h5>
+                        <div class="gresult margin0" style="font-size: 0.9em;">56% of <?php echo $arr_cluster['cluster_business_name']?> is Overweight</div>
                       </div>
                     </div>
                   </div>
@@ -354,7 +355,7 @@ echo "</pre>";//die;*/
               <!-- /.col -->
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s" style="width: 421px; visibility: visible; animation-delay: 0.5s; animation-name: bounceInRight;">
                 <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
+                <div class="box box-primary mb-10 no-border" style="box-shadow: none;">
                     <?php if(isset($charts['sugar_sample']) && $charts['sugar_sample']==1){ ?>
                     <div class="blue-band-home">
                     Sample
@@ -368,7 +369,7 @@ echo "</pre>";//die;*/
                        <h2 class="box-title pull-left"><?php echo $charts['avg_fbs'].' / '.$charts['avg_ppbs']?><span style="font-weight: normal;"> <span style="font-weight: normal;">mgdl</span></h2>
                      
                       <div class=" pull-right" style="margin-left: 15px;">
-                        <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
+                        <i class="fa fa-sort-asc" style="color:#e01161 !important;font-size:22px;"></i> <span>16%
                       </div>
                     </div>
                     <div class="clearfix"></div>
@@ -381,7 +382,7 @@ echo "</pre>";//die;*/
                       <div style="min-height: 58px;padding-top: 10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left">
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
-                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Sugar Levels</h5>
+                        <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?>  has high Blood Sugar Levels</h5>
                       </div>
                     </div>
                   </div>
@@ -393,7 +394,7 @@ echo "</pre>";//die;*/
               <!-- /.col -->
               <div class="col-md-4 wow bounceInRight swiper-slide" data-wow-delay="0.5s">
                 <!-- Line chart -->
-                <div class="box box-primary mb-10" style="box-shadow: none;">
+                <div class="col-md-12 box box-primary mb-10 no-border" style="box-shadow: none;">
                    <?php if(isset($charts['bp_sample']) && $charts['bp_sample']==1){ ?>
                     <div class="blue-band-home">
                     Sample
@@ -401,10 +402,10 @@ echo "</pre>";//die;*/
                   <?php } ?>
                   <div class="box-header with-border">
                     <div class="pre-header">
-                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE LEVELS</b></h5>
+                      <h5 class="margin0 text-uppercase"><b>AVG.BLOOD PRESSURE</b></h5>
                     </div>
                     <div>
-                     <h2 class="box-title pull-left"><?php echo $charts['avg_systolic'].' / '.$charts['avg_diastolic']?><span style="font-weight: normal;">  <span style="font-weight: normal;">mmHg</span></h2>
+                     <h2 class="box-title pull-left"><?php echo $charts['avg_systolic'].' / '.$charts['avg_diastolic']?><span style="font-weight: normal;">  <span>mmHg</span></h2>
                       <div class=" pull-right" style="margin-left: 15px;">
                         <i class="fa fa-sort-asc" style="color: red !important;"></i> 16%
                       </div>
@@ -416,7 +417,7 @@ echo "</pre>";//die;*/
                     <div id="line-chart3" style="height: 150px; max-width: 90%; margin: 0 auto;"></div>
                     <div class="clearfix"></div>
                     <div class="pre-header mb-0">
-                      <div style="min-height: 58px;padding-top: 10px;">
+                      <div style="padding-top:10px;">
                         <img src="images/up.png" style="max-width: 8%;margin: 0px 15px 10px;float: left" />
                       <!--  <h4 class="gresult margin0">You have high Blood Sugar Level</h4>-->
                         <h5 class="gsmallresult margin0" style="font-size: 0.9em;">19% of <?php echo $arr_cluster['cluster_business_name']?> has high Blood Pressure Levels</h5>
@@ -439,9 +440,9 @@ echo "</pre>";//die;*/
      <div class="row">
         <div class="col-sm-12">
           <div class="configure" style="padding-top: 10px;margin-bottom: 5px;margin-top: 50px;box-shadow:0 4px 5px rgba(0,0,0,0.14), 0 3px 8px rgba(0, 0, 0, 0);">
-            <div class="pull-left re_arrange_dashboard">
+            <!--<div class="pull-left re_arrange_dashboard">
               <h4 class="margin0" style="line-height: 35px;color=#08A006;"><i class="fa fa-tasks"></i> &nbsp;&nbsp;&nbsp;Rearrange Dashboard</h4>
-            </div>
+            </div>-->
             <div class="pull-right cgreen">
               <h4 class="margin0" style="line-height: 35px;">WELCOME PRIYANKA to your Company Health Management System <i class="fa fa-smile-o"></i></h4>
             </div>
@@ -449,7 +450,7 @@ echo "</pre>";//die;*/
           </div>  
         </div>
       </div> 
-      <!-- /.row -->
+      
        <div class="row wow bounceInleft" data-wow-delay="0.8s">
         <div class="col-sm-12 sign_up_free">
           <div class="configure pt-0 pb-0" style="background-color:#16d4ae!important">
@@ -470,8 +471,9 @@ echo "</pre>";//die;*/
                 
 				<div class="col-md-2 stest_icon"><i class="fa fa-stethoscope" aria-hidden="true"></i></div>
                  <div class="col-md-7 sign_up_area"><h3> Sign up for a <span>FREE Health Checkup</span> Today!</h3></div>                
-                <div class="col-md-3 pt-10 pb-10 text-center last">
-                  <a href="#" class="btn btn-block btn-green cwhite signup_btn">SIGN UP</a>
+                <div class="col-md-3 pt-10 pb-10 text-center last" style="padding:0px;">
+					<p style="font-size:26px;font-weight: bold;color: #fff;text-align:right;">CALL US</p>
+					<p style="font-size:26px;color: #fff;text-align:right;">+91-22-3965-9004</p>
                   <div class="mt-10"></div>
                   
                 </div>
@@ -490,7 +492,7 @@ echo "</pre>";//die;*/
           <h4 class="pull-left margin0 black"><strong>Healthy Employees</strong></h4>
 		</div>
 		
-		   <div class="box emp_ratio_status">            
+		   <div class="box emp_ratio_status no-border">            
             <!-- /.box-header -->
 		
             
@@ -550,7 +552,7 @@ echo "</pre>";//die;*/
 			<div class="row">
 			  <h4 class="pull-left margin0 black"><strong>Unhealthy Employees</strong></h4>
 			</div>
-		    <div class="box emp_ratio_status">            
+		    <div class="box emp_ratio_status no-border">            
             <!-- /.box-header -->
 		 <?php if(!empty($emp_arr['healty']) ){?>
             <div class="box-body profileimg employee_health_box" style="min-height:81px;">
@@ -819,7 +821,7 @@ echo "</pre>";//die;*/
 		<div class="health_goals_slider">
         <div id="graph3" class="package-container">
           <div class="swiper-container graph-container3">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper disable-swiper">
               <!-- /.col -->
               <div class="col-md-4 wow bounceInRight swiper-slide health_goal_area" data-wow-delay="0.7s" style="margin:20px;">
                 <div class="box box-solid">					

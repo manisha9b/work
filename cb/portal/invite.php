@@ -36,7 +36,7 @@ $cluster_id				=	$_POST['cluster_id'];
 	$hr_email_id			= $arr_cluster[0]['hr_email_id'];
 	$hr_mobile_no			= $arr_cluster[0]['hr_mobile_no'];
 /*END */
-//die;
+print_R($_POST);//die;
 
 if($_POST['clusterpkg'] == 'fileupload')
 {
@@ -566,13 +566,11 @@ else
 			$mobile_no = $arr_emp[0]['mobile_no'];
 
 			//Insert record in tbl_cluster_employee_pack
-			$database->insert("tbl_cluster_employee_pack",
-			array($cluster_id,$cluster_package_id,$emp_id,$created_by,$created_on),
-		"cluster_id,cluster_package_id,emp_id,created_by,created_on");
+			$database->insert("tbl_cluster_employee_pack",array($cluster_id,$cluster_package_id,$emp_id,$created_by,$created_on),"cluster_id,cluster_package_id,emp_id,created_by,created_on");
 			
 			//Code to send email to Employee
-		//	include 'send-sms.php';
-		//	include 'send-email.php';
+			include 'send-sms.php';
+			include 'send-email.php';
 			
 			$err_log=fopen("error_logs/error-log.txt", 'a+');
 			fputs($err_log, "<p>".date('Y-m-d H:i:s')." ".$arr_emp[0]['emp_name']." - Added to package</p>");
@@ -585,10 +583,8 @@ else
 			//set message for already invited employees with employee name
 			$err_log=fopen("error_logs/error-log.txt", 'a+');
 			fputs($err_log, "<p>".date('Y-m-d H:i:s')." ".$arr_emp[0]['emp_name']." - The package is already utilized by the employee</p>");
-			
 			fclose($err_log);
 		}
-		//print_r($arr_emp);die;
 	}
 	
 	$redirect_page	=	HTTP_SERVER."package.php?m=isend";

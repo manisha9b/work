@@ -5021,7 +5021,8 @@ table.text-center th {
 .btn2{border-radius:20px;padding: 5px 10px;text-transform: uppercase;border:1px solid #999; color: #3d4452;}
 a.btn3{padding: 8px 15px !important;background: #FFFFFF;border-radius: 10px; color: #000000;}
 
-.btn2-lg{border-radius:20px;padding: 5px 15px;border:1px solid #999; color: #3d4452;margin-bottom: 10px;display: inline-block;}
+.btn2-lg{border-radius:20px;padding:10px 15px;border:1px solid #999; color: #3d4452;margin-bottom: 10px;display: inline-block;}
+.btn2-lg:hover{color:#fff!important;}
 #newappnt.btn2-lg{background: #f2fbfc}
 a.btn2-lg:hover, #newappnt.btn2-lg:hover{background: #43ce5a;color: #FFFFFF;}
 
@@ -5073,9 +5074,9 @@ a.user-reports:hover{color: #43ce5a;}
 #appointments.nav-tabs-custom > .nav-tabs{border-bottom-color: transparent;background: #e8eaed;}
 #appointments.nav-tabs-custom > .nav-tabs > li.active > a,#appointments.nav-tabs-custom > .nav-tabs > li.active:hover > a,#appointments.nav-tabs-custom > .nav-tabs > li:hover > a
 {background: #03092f;color: #FFFFFF!important;border-top:none;border-left: 0;border-right: 0;}
-#appointments.nav-tabs-custom > .nav-tabs > li{border-top:none;border-bottom:3px solid transparent;margin-right: 0;margin-bottom: -2px;}
+#appointments.nav-tabs-custom > .nav-tabs > li{border-top:none;border-bottom:3px solid transparent;margin-right: 0;/* margin-bottom: -2px; */}
 #appointments.nav-tabs-custom > .nav-tabs > li.active, #appointments.nav-tabs-custom > .nav-tabs > li.active:hover, #appointments.nav-tabs-custom > .nav-tabs > li:hover {border-bottom-color: #43ce5a;}
-#appointments.nav-tabs-custom > .nav-tabs > li.nohover1 form{margin-top: 4px;margin-bottom: 2px;}
+#appointments.nav-tabs-custom > .nav-tabs > li.nohover1 form{margin-top:5px;margin-bottom:0px;}
 #appointments.nav-tabs-custom > .nav-tabs > li.nohover1:hover {background: transparent;border-bottom: transparent;}
 
 .table-appointment tr:nth-of-type(2n+1){background: #f5f5f7;}
@@ -5114,6 +5115,9 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 .reporttitle2{margin-top: 5px;margin-bottom: 5px;}
 .allarticle{padding-top: 25px;}
 .bandspace{margin-top: 10px;}
+
+
+
 @media screen and (max-width: 1280px){
   .gresult{font-size: 15px;}
   .gsmallresult{font-size: 12px;}
@@ -5483,7 +5487,7 @@ a.appointment-act:hover{color: #FFFFFF;background: #1a9fad;}
 
 
 .company_summary .info-box-icon{font-size:30px;width: 65px;}
-.company_summary .info-box-content{padding:10px 10px;margin-left:65px;}
+.company_summary .info-box-content{padding:10px 10px;margin-left:65px!important;}
 .company_summary .info-box-text{float:left;width:100%;}
 .company_summary .info-box-number{font-size: 12px;padding-top:15px;width:100%}
 .company_summary .evoucher_download{background-color:#40484a;}
@@ -6172,12 +6176,25 @@ label:hover:before {
 .start_btn:hover,.start_btn:visited,.start_btn:focus{color:#fff!important;}
 
 .call_back_btn:hover,.call_back_btn:visited,.call_back_btn:focus{color:#2e9bc4!important;}
+/*employee page css*/ 
 
+.aqua {color: #3bb3bf!important;}
+.grey_text{color: #6e6e6c;}
+.unemp_pro{padding: 15px;border-bottom: 1px solid #eee;min-height: 100px;max-height: 100px;}
+.unemp_btn {padding:5px;}
+.mt15{margin-top:15px;}
+.heading .title{color:#515151}
 @media screen and (max-width:1366px){
-	.info-box-content{padding-top:25px!important;min-height: 110px;max-height: 110px;}
+	/*app page css*/
+.appointment_page .info-box-content{margin-left: 75px !important;}
+.total_employee .info-box-content{margin-left: 85px !important;}
+.total_employee .info-box-icon{width: 85px;}
+
+
+	.info-box-content{min-height: 110px;max-height: 110px;padding-top:25px;margin-left: 89px !important;}
 	.info-box-number{font-size:12px;}
 	.info-box{max-height: 110px;min-height: 110px;}
-	.info-box-icon{height: 110px;margin-top:0px;padding: 10px;}
+	.info-box-icon{margin-top:15px;}
 	.emp_action_btn .btn{padding:4px 4px!important;font-size:9px!important;}
 	.emp_action_btn .dropdown-menu{right:0!important;left: unset;}	
 	
@@ -6522,7 +6539,8 @@ label:hover:before {
 .profile_person{font-size: 16px!important;}
 
 
-.company_summary .info-box-content{padding:7px;}
+.company_summary .info-box-content{padding-top:15px;}
+.company_summary .info-box-number{padding-top:0px;}
 .company_summary .info-box-text{width:100%;}
 .mob-mb-10{margin-bottom:10px;}
 .mob-p0{padding-right:0px;padding-left:0px;}

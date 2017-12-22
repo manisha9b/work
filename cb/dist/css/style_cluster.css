@@ -5226,10 +5226,11 @@ padding: 5px;}
     max-height: 455px;
 }
 
+.disable-swiper{ cursor: not-allowed!important;}
 
 
 @media screen and (max-width:1366px){
-	
+	.ratio .sex_ratio{min-height: 180px !important;max-height: 180px !important;}
 	.snacks_detail{min-height: 433px!important;max-height: 433px!important;}
 	.reading_section .allarticle{padding-top:0px;}
 	.worth_rading_sec{min-height:440px;max-height:440px;}
@@ -5266,6 +5267,7 @@ padding: 5px;}
 
 .male_Area {
    display: inline-block;
+   width:100%;
 }
 
 .male_Area .male_icon {
@@ -5307,6 +5309,9 @@ padding: 5px;}
     min-height: 412px !important;
     max-height: 412px !important;
 }
+
+
+.ratio .sex_ratio{min-height: 180px!important;max-height:180px!important;}
 
 #others .box {min-height: 500px!important;}
 
@@ -5370,6 +5375,9 @@ padding: 5px;}
    margin-right: 10px;
 }
 .female_area .ratio_percent{margin-left:11px;}
+
+
+
 
 }
 }
@@ -5702,7 +5710,7 @@ padding: 5px;}
 .health_goals_slider .swiper-wrapper{width:97%;}
 
 .swiper-wrapper{color: #777;
-    cursor: not-allowed!important;
+   
     /* background-color: #fff; */
     border-color: #ddd;}
 	

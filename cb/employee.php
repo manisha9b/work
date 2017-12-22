@@ -18,11 +18,12 @@ unset($arr_ebh_pack);
 $arr_emp	=	$database->getClusterEmpDetails($clusterId,$health);
   //ini_set("display_errors", "1");
   //error_reporting(E_ALL);
+  $arr_count = $database->getDashboardCount($clusterId);
 $emp_healthy_Count	 =	$database->getClusterEmpDetailsCount($clusterId,'H');
 $emp_unhealthy_Count =	$database->getClusterEmpDetailsCount($clusterId,'UH');
 $emp_arr['healty'] = $database->getClusterEmpDetails($clusterId,'H',' Limit 3');
 $emp_arr['unhealty'] = $database->getClusterEmpDetails($clusterId,'UH',' Limit 3');
-$emp_Count = count($arr_emp);
+$emp_Count = $arr_count['total_employees'];
 //$emp_healthy_Count = count($emp_arr['healty']);
 //$emp_unhealthy_Count = count($emp_arr['unhealty']);
 /*echo "<pre>";
@@ -58,16 +59,16 @@ include_once('partials/askme.php');
     <section class="content">
 		<div class="col-md-12">
 		<div class="pull-right" style="margin-top: -10px;">
-			<!-- <span>Timeframe<span> :
+			 <span>Timeframe<span> :
 				<select style="font-weight: bold;background: transparent;border:none;display: inline-block;width: 125px;height: auto;padding: 0 5px;">
 					<option>Last 6 months</option>
 					<option>Last 12 months</option>
-				</select> -->
+				</select> 
 		</div>
         <div class="pt-20"></div>
 		</div>
 		<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12 employee_page">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box box2 bg_dark_blue total_employee" style="cursor:pointer;" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self');">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user" style="font-size:40px;"></i></span>
@@ -117,7 +118,7 @@ include_once('partials/askme.php');
 
             <div class="info-box-content">
               <span class="info-box-text text2 text-white clr_effect1"></span>
-              <span class="info-box-number text-white" style="margin-top:30px;">ADD NEW</span>
+              <span class="info-box-number text-white" style="margin-top:25px;">ADD NEW</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -155,10 +156,10 @@ padding:9.5px;border-radius: 0!important;">PRE EMPLOYMENT <span class="caret"></
 				</div>				
 			</li>-->
                
-                <li class="<?php echo $all?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php" data-toggle="tab">All</a></li>
+                <li class="<?php echo $all?>" onClick="window.open('<?php echo WEBSITE_URL?>employee.php','_self')"><a href="<?php echo WEBSITE_URL?>employee.php" data-toggle="tab">ALL</a></li>
 				
-				 <li class="<?php echo $healthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=H','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=H" data-toggle="tab">Healthy Employee(s)</a></li>
-				  <li class="<?php echo $unhealthy?>" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php?health=UH','_self')"><a href="<?php echo WEBSITE_URL?>/employee.php?health=UH" data-toggle="tab" aria-expanded="false">Unhealthy Employee(s)</a></li>
+				 <li class="<?php echo $healthy?>" onClick="window.open('<?php echo WEBSITE_URL?>employee.php?health=H','_self')"><a href="<?php echo WEBSITE_URL?>employee.php?health=H" data-toggle="tab">HEALTHY EMPLOYEE(S)</a></li>
+				  <li class="<?php echo $unhealthy?>" onClick="window.open('<?php echo WEBSITE_URL?>employee.php?health=UH','_self')"><a href="<?php echo WEBSITE_URL?>employee.php?health=UH" data-toggle="tab" aria-expanded="false">UNHEALTHY EMPLOYEE(S)</a></li>
                 <li class="pull-right nohover1">
                   <!-- search form -->
                   <form action="#" method="get" class="sidebar-form1" style="display: inline-block;background: #FFFFFF;">
@@ -190,16 +191,16 @@ if(isset($_REQUEST['m']))
  }
 ?>
             <!-- /.box-header -->
-            <div class="box-body no-padding emp_detail">
+            <div class="box-body no-padding">
 			<div class="table-responsive">
               <table class="table table-hover" <?php if(!empty($arr_emp)){ echo "id='reportsdatatables'";} ?> >
                 <thead>
 				<tr class="employee_table">
 				 <th> </th>
-                  <th style="width:20%;">Name</th>
-                  <th style="width:15%;">Gender, Age</th>
-                  <th style="width:15%;">Mobile</th>
-                  <th style="width:25%;">Email</th>
+                  <th style="width:20%;text-align:center">NAME</th>
+                  <th style="width:15%;text-align:center">GENDER/AGE</th>
+                  <th style="width:15%;text-align:center">MOBILE</th>
+                  <th style="width:25%;text-align:center">EMAIL</th>
                   <!--<th style="width:45%;">CITY</th>-->
 				  <!--<th style="width:10%;text-align:center;">BLOOD GROUP</th>-->
 				  <th style="width:15%;text-align:center;"> </th>
@@ -343,19 +344,23 @@ else
 					$report = implode(', ',$report);
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				?>
+				<div class="unemp_pro">
               <img src="<?php echo $photo?>" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
-			  <span class="info" style="display:block">
+			  <span class="info grey_text" style="display:block">
 					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
-                <hr>
+				<a class="pull-right aqua" style="margin-top:7px;"> <?php echo $age?></a>
+               
+				</div>
 				<?php } ?>
+				
 			
-			 <a href="employee.php?health=H" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-              
+			<div class="box-body">
+			 <a href="employee.php?health=H" class="btn2-lg mt15"><h5 class="margin0 ">View All</h5></a>
+            </div>  
            
             <!-- /.box-body -->
           </div>
@@ -397,19 +402,22 @@ else
 					$photo	= (!empty($row['photo_thumb'])) ? $row['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 					
 				?>
+				<div class="unemp_pro">
              <img src="<?php echo $photo?>" class="img-circle" style="">
 			  <span class="profile_info" style="">
 			  <span class="name" style=""><strong><?php echo $row['emp_name']?></strong></span>
-			  <span class="info" style="display:block">
+			  <span class="info grey_text" style="display:block">
 					<?php echo $report; ?>
               </span>
 			  </span>
-				<a class="pull-right" style="top:0px;"> <?php echo $age?></a>
-                <hr>
+				<a class="pull-right aqua" style="margin-top:7px;"> <?php echo $age?></a>
+                
+				</div>
 				<?php } ?>
 			 
-			 <a href="employee.php?health=UH" class="btn2-lg"><h5 class="margin0">View All</h5></a>
-              
+			 <div class="box-body">
+			 <a href="employee.php?health=UH" class="btn2-lg mt15"><h5 class="margin0">View All</h5></a>
+              </div>
            
             <!-- /.box-body -->
           </div><?php } else{?>
@@ -714,7 +722,7 @@ else
 					<label class="col-xs-3 control-label" style="padding-right: 0px;">&nbsp;</label>
 					<div class="col-xs-9 inline">
 						<input type="submit" class="btn btn-primary" value="Submit">
-						<input type="reset" class="btn btn-warning" value="Reset">
+					<!--	<input type="reset" class="btn btn-warning" value="Reset"> -->
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 					</div>
 				</div>

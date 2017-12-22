@@ -32,7 +32,8 @@ ob_end_clean();
 $subject="Your HEALTH is Important to us!";
 $to_email = $value['user_email'];
 $first_name = $name;
-echo $email_content;
- //$database->sendSmtpEmail('', $email_content, $subject, $to_email, $first_name );	
- print_R($value);
+
+//echo $email_content;
+ $database->sendSmtpEmail('', $email_content, $subject, $to_email, $first_name );	
+ //print_R($value);
 }

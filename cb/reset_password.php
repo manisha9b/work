@@ -15,17 +15,20 @@
 						</div> -->
 						<div class="clearfix"></div>
 						<div class="col-md-12 pl0 pr0">
-							<h2 style="margin-top: 0px;">Hi <?php echo $HRdisplayName;?></h2>
+							<h2 style="margin-top: 0px;">Hi <?php echo $HRdisplayName;?>!</h2>
 						</div>
 													
 						<div class="col-md-12 info_subtitle pl5 appointment_form">
-							<p class="welcome_text">Welcome to your Personal Profile Page on EasyBuyHealth.<br>Please SET your password to access EasyBuyHealth Health Universe<br> for all your health</p>
-							<br>
+							<p class="welcome_text">Your Organisation Health Dashboard is now LIVE on EasyBuyHealth.
+</p>	<p class="welcome_text">
+
+Please UPDATE your Password here. </p>
+							
 						</div>						
 						<div class="clearfix"></div>						
 					</div>
               
-					<div class="col-sm-12 appointment_form res_password"> 						
+					<div class="col-sm-12 appointment_form res_password" style="padding-left:2px;;"> 						
 						<div class="pt-40" style="">							
 							<!-- <div class="col-sm-6 pl0 pt-20">
 							  <a href="#" class="facebook_btn btn"><i class="fa fa-facebook" aria-hidden="true" style="font-size:20px;text-align: center;"></i> Facebook Login </a>
@@ -36,15 +39,15 @@
 	$form_action = "portal/password.php";
 ?><form role="form" class="form-horizontal" method="post" action="<?php echo $form_action;?>" name="frmresetpass" id="frmresetpass"
 	enctype="multipart/form-data" autocomplete="off">
-							<div class="col-sm-6 pl0 pr0 mob_mt10 res_pass_field">
-								<div class="form-group">								  
+							<div class="col-sm-12 pl0 pr0 mob_mt10 res_pass_field">
+								<div class="form-group" style="width:100%">								  
 								  <input type="password" class="form-control" id="password" name="password" placeholder="Enter a New Password"  required>
 								</div>
-								<div class="form-group">								  
-								  <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Re-Enter a New Password" required>
+								<div class="form-group" style="width:100%">								  
+								  <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Re-Enter New Password" required>
 								</div>
 								<div class="clearfix"></div>	
-								<div class="form-group"><button type="submit" class="app_form_button">UPDATE</button></div>
+								<div class="form-group" style="width:100%"><button type="submit" class="app_form_button">UPDATE</button></div>
 							</div>
 							</form>
 							<div class="clearfix"></div>							

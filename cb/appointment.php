@@ -38,42 +38,43 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
     <section class="content">
 		
 		<div class="col-md-12">
-		<!-- <div class="pull-right">
+		 <div class="pull-right">
 			<span>Timeframe<span> :
 				<select style="font-weight: bold;background: transparent;border:none;display: inline-block;width: 125px;height: auto;padding: 0 5px;">
 					<option>Last 6 months</option>
 					<option>Last 12 months</option>
 				</select>
-		</div>    -->    
+		</div>    	  
 		</div>
 		<div class="col-md-12 mb-10">
 		  <h4><b>Summary</b></h4>
 		</div>
-		<div class="row mb-10">
+		<div class="row mb-10 appointment_page">
 		<div class="col-md-12 company_summary">
         <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box2 bg_dark_blue">
             <span class="info-box-icon bg-aqua dark_blue_clr"><i class="fa fa-user"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['onboarded_employee']>0)?$appt_count_arr[0]['onboarded_employee']:00;?></span>
-              <span class="info-box-number text-white">ONBOARDED <span style="font-size: 12px;">EMPLOYEES</span></span>
+              <span class="info-box-number text-white">ONBOARDED <span style="font-size: 11px;">EMPLOYEES</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		 <!--  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
+		  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12 summary_opt">
           <div class="info-box box3 healthy_employee">
-            <span class="info-box-icon icon2 bg_dark_blue1 text-white"><i class="fa fa-calendar-check-o"></i></span>
+            <span class="info-box-icon icon2 bg_dark_blue1"><i class="fa fa-calendar-check-o text-white"></i></span>
             <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['total_appointment']>0)?$appt_count_arr[0]['total_appointment']:0;?></span>
-              <span class="info-box-number text-white">APPOINTMENTS <span style="font-size: 12px;">BOOKED</span></span>
+              <span class="info-box-number text-white">BOOKED <span style="font-size: 11px;">APPOINTMENTS</span></span>
             </div>
+			
             <!-- /.info-box-content -->
           </div>
-		  <!-- <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
+		  <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -83,11 +84,11 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 
              <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['voucher_downloaded']>0)?$appt_count_arr[0]['voucher_downloaded']:'0&nbsp;&nbsp;&nbsp;';?></span>
-              <span class="info-box-number text-white">eVOUCHERS <span style="font-size: 12px;">DOWNLOADED</span></span>
+              <span class="info-box-number text-white">eVOUCHERS <span style="font-size: 11px;">DOWNLOADED</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		   <!-- <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
+		    <div class="summary_add text-center"><a href="#">Send reminders to others</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -97,11 +98,11 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 
              <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['tests_taken_count']>0)?$appt_count_arr[0]['tests_taken_count']:'0&nbsp;&nbsp;&nbsp;';?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span class="info-box-number text-white">TESTS <span style="font-size: 12px;">TAKEN</span></span>
+              <span class="info-box-number text-white">TESTS <span style="font-size: 11px;"><br>TAKEN</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <!-- <div class="summary_add text-center"><a href="#">Say Congratulations</a></div>
+		 <div class="summary_add text-center"><a href="#">Say Congratulations</a></div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -111,11 +112,11 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 
              <div class="info-box-content">
               <span class="info-box-text text2 clr_effect1"><?php echo ($appt_count_arr[0]['total_report_available']>0)?$appt_count_arr[0]['total_report_available']:'0&nbsp;&nbsp;&nbsp;';?>&nbsp;&nbsp;</span>
-              <span class="info-box-number text-white">REPORTS <span style="font-size: 12px;">AVAILABLE</span></span>
+              <span class="info-box-number text-white">REPORTS <span style="font-size: 11px;">AVAILABLE</span></span>
             </div>
             <!-- /.info-box-content -->
           </div>
-		  <!-- <div class="summary_add text-center"><a href="#">Add more employees</a></div>
+		  <div class="summary_add text-center"><a href="#">Add more employees</a></div>
           <!-- /.info-box -->
         </div>
 		<!-- /.col -->
@@ -124,32 +125,32 @@ $appt_count_arr	=	$database->getAppointmentCount($clusterId);
 	  
 		
 		<div class="col-md-12 mt-20 purchase_pack">
-			<!-- <div class="pagination">
+			 <div class="pagination">
 				<span>1-2 of 18</span>
 			  <a href="#"><</a>
 			  <a href="#">></a>
-			</div> -->
+			</div> 
 			
 			<div class="mb-10">
-				<h4><b>Purchased Packages</b></h4>
+				<h4 class="black"><b>Purchased Packages</b></h4>
 			</div>
 			<div id="appointments" class="nav-tabs-custom mb-65">
 			<div class="tab-content">
                 <div class="tab-pane active" id="tab_1-1">
                   <table id="appttab" class="table table-appointment responsive-table" >
                     <tbody>
-                      <tr style="background: transparent;">
-                        <th>
-                          Purchased On
+                      <tr class="heading" style="background: transparent;">
+                        <th class="title">
+                          PURCHASED ON
                         </th>
-                        <th>
-                          Pacage Name
+                        <th class="title">
+                          PACKAGE NAME
                         </th>
-                        <th>
-                          Health Service PRovider
+                        <th class="title">
+                          HSP
                         </th>
-                        <th class="text-center">
-                          Analytics
+                        <th class="text-center title">
+                          ANALYTICS
                         </th>
                       </tr>
 					    <?php
@@ -179,7 +180,7 @@ $bg_color="cursor:pointer;";
 		$created_on_fulldate	= $arr_ebh_pack[$i]['created_on_date'];
 	//echo	$created_on_date		= $database->mysqlToDateCustom($created_on_date,'d');
 	//echo "<br/>";
-		$created_on_date		= $database->mysqlToDateCustom($created_on_fulldate	,'d|M, D|h:i a');
+		$created_on_date		= $database->mysqlToDateCustom($created_on_fulldate	,'d|M,|l|h:i a');
 		$created_on_date		= explode('|',$created_on_date);
 		//print_r($created_on_date);die;
 		$total_invited			= $arr_ebh_pack[$i]['total_invited'];
@@ -231,28 +232,36 @@ $bg_color="cursor:pointer;";
 			$hsp_address			=	$arr_hsp[0]['hsp_address'];
 			 ?>
                        <tr >
-                        <td width="170" class="table_area" style="padding-bottom:0;">
-                          <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
-                          
-                          <div class="pt-10">
-							<div class="num_package">
+                        <td width="15%" class="table_area" style="padding-bottom:0;    text-align: center;">
+                          <h1 class="mt-0" style="display: inline-block;font-weight: bold;font-size: 3em;padding-right: 5px;"><?php echo $created_on_date[0];?></h1><h4 style="display: inline-block;vertical-align: top;margin-top: 2px;text-align:left"><b><?php echo $created_on_date[1];?></b><br><?php echo $created_on_date[2];?></h4>
+                                                    
+                        </td>
+                        <td  width="45%" class="table_area packagehealth_title" style="padding-bottom:0;">
+                         <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
+						<div class="pt-10">
+							<div class="package_btns">
 								<!-- <a href="#"><span>40</span>PACKAGE PURCHASED</a> -->
 								  <a href="javascript:void(0)" class="appointment-act" value="Show/Hide" onclick="showApptDiv(<?php echo $cluster_package_id?>)"><i class="fa fa-clock-o"></i> VIEW APPOINTMETS</a>
 							</div>
 						  </div>
                         </td>
-                        <td  width="300" class="table_area" style="padding-bottom:0;">
-                         <b><?php echo $package_nm;?></b><br/><span style="font-size:11px;"><?php echo $lab_test_name_arr ?></span>
 						
+                        <td class="wherecenter table_area" style="padding-bottom:0;width:30%">
+							<div class="row">
+								<div class="col-sm-4">
+									<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
+									
+								</div>
+								<div class="col-sm-8" style="text-align:left">
+									<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
+									<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
+										<b>Suburban</b> Diagnostics<br>
+									Andheri (W),<br>
+									Mumbai
+								</div>
+							</div>
                         </td>
-						
-                        <td class="wherecenter table_area" style="padding-bottom:0;">
-                         
-							<img src="<?php echo EBH_WEBSITE_URL."".$hsp_logo;?>"  style="width: 100px;" class="floatleft" alt="">
-							<?php echo ($hsp_count>1)?"<br/><a href=\"javascript:void(0)\" onClick=\"showHsp($cluster_package_id)\" class=\" text-info\">more..</a>":'';?>
-							<!-- <img src="images/center.jpg" class="floatleft" style="width: 150px;"> --> 
-                        </td>
-                        <td class="analytic_area table_area" style="padding-bottom:0;">                      
+                        <td class="analytic_area table_area" style="padding-bottom:0;width:15%">                      
                           <div class="chart-responsive" style="text-align: center;">
                     <canvas id="pieChart<?php echo  $cluster_package_id?>" height="75" width="130"></canvas>
                   </div>
@@ -342,7 +351,7 @@ function appointmentLoad(){
 	$('#appt_datatables_length').hide();
 	$('#appt_datatables_info').css('padding','10px');
 	$('.dataTables_paginate ').css('padding','10px');
-	$('#search_name').keyup(function(){
+	/*$('#search_name').keyup(function(){
 		rtable.fnFilter($(this).val());	
 
 	/*$('#reportsdatatables_filter').hide();
@@ -352,8 +361,8 @@ function appointmentLoad(){
 	$('#search_name').keyup(function(){
 		ptable.fnFilter($(this).val());
 		/*$('#excel_btn').attr('data-filter-name', $(this).val());
- 		$('#reset_btn').show();*/
-	});
+ 		$('#reset_btn').show();
+	});*/
 }
 </script>
 <script>

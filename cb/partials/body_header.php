@@ -17,12 +17,12 @@
         <span class="icon-bar"></span>
       </a>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form1 hidden-xs" style="display: inline-block;">
+      <!--<form action="#" method="get" class="sidebar-form1 hidden-xs" style="display: inline-block;">
         <div class=" inner-addon left-addon ">
           <i class="fa fa-search"></i>
           <input type="text" name="q" class="form-control" placeholder="Type To Search">
         </div>
-      </form>
+      </form>-->
       <!-- /.search form -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -30,12 +30,12 @@
           <a href="#"> <i class="fa fa-user-o" aria-hidden="true"></i> <span>Hi  <?php echo $_SESSION['user_display_name'];?></span></a>
           </li>
 		  
-          <li class="hidden-xs">
+          <!--<li class="hidden-xs">
             <a href="#">About EBH</a>
           </li>
           <li class="hidden-xs">
             <a href="#">How it Works</a>
-          </li>
+          </li>-->
           <li>
             <a href="<?php echo HTTP_SERVER?>/scripts/logout_script.php">Sign Out</a>
           </li>

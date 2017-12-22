@@ -1,5 +1,6 @@
 <?php include_once('partials/header3.php'); 
 unset($arr_ebh_pack);
+
 $data = ($clusterId)?$database->getClusters($clusterId):[];
 $dataUser = ($clusterId)?$database->getTableForHsp('tbl_cluster_users', "cluster_user_id='$cluster_user_id'"):[];
 
@@ -15,7 +16,7 @@ $dataUser = ($clusterId)?$database->getTableForHsp('tbl_cluster_users', "cluster
 		
 		  <div class="col-md-12">
       <h3 class="pull-left">
-        <b>My Company Profile</b>
+        <b>My Company Profile </b>
       </h3>
       <div class="pull-right resright">
 	  </div>

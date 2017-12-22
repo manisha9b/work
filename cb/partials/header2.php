@@ -6,7 +6,7 @@ include_once('includes/define.php');
 $database=new Database();
 $database->connect();
 date_default_timezone_set('Asia/Calcutta'); 
-//print_r($_SESSION);die;
+//print_r($_SESSION);//die;
 if(!isset($_SESSION['ref_id']) || !isset($_SESSION['cluster_type']) || !isset($_SESSION['user_id']) || $_SESSION['cluster_type']=='' || $_SESSION['user_id']=='')
 {
 	header("Location: ".HTTP_SERVER);
