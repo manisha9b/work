@@ -80,7 +80,7 @@ print_R($arr_appt[0]);
 					<label for="test4" style="vertical-align: text-top;"></label>
 					Updated
 					</a>
-					<div class="clearfix"></div>
+  <div class="clearfix"></div>
 					<div class="hr-divider" style=" width: 95%;border-top: 1px solid #ccc; margin: 10px auto"></div>				
 					<a href="#" class="box_area" style="border: 0; display: block; width: 100%; float: left; ">	Create New</a>					
 					<a href="#" class="box_area" style="border: 0; display: block; width: 100%; float: left; ">Manage Labels</a>						
@@ -149,7 +149,7 @@ print_R($arr_appt[0]);
  $photo	= (!empty($value['photo_thumb'])) ? $value['photo_thumb'] : "https://www.easybuyhealth.com/beta/public/assets/site/imgs/images.jpg";
 				  ?>
                   <tr class="emp_info_data" onclick="viewApptSummary(<?php echo $value['sr_no'];?> )">
-                    <td class="info"><input type="checkbox" id="test1" /><label for="test1"></label></td>
+                     <!-- <td class="info">						<input type="checkbox" id="test1" />						<label for="test1"></label>					</td> -->
                      <td class="table_circle emp_pic"><img src="<?php echo $photo?>"  class="img-circle"></td>
                      <td class="info" align="Left"><?php echo $value['visitor_name'];?></td>
                      <td class="info" align="Left">Designation</td>
@@ -178,5 +178,3 @@ print_R($arr_appt[0]);
          </div>
       </div>
    </div>
-   
-   <div class="row">          <div class="col-md-6 employee_chart_area">		  		   <div class="nav-tabs-custom ">            <ul class="nav nav-tabs">              <li class="active"><a href="#region" data-toggle="tab" aria-expanded="true">TOP REGIONS</a></li>              <li class=""><a href="#hsp" data-toggle="tab" aria-expanded="false">TOP HSP'S</a></li>                          </ul>            <div class="tab-content">              <div class="tab-pane active" id="region">                   <div class="user-block">                                                           </div>                               </div>              <!-- /.tab-pane -->              <div class="tab-pane" id="hsp">                <!-- The timeline -->                <div class="box-body">									</div>              </div>              <!-- /.tab-pane -->                         </div>            <!-- /.tab-content -->          </div>        </div>						<div class="col-md-6 test_undertaken_employees">					   <div class="box undertaken_employees"> 				<div class="box-header with-border">			  <h4 class="pull-left margin0"><strong>TEST UNDERTAKEN BY EMPLOYEES</strong></h4>			</div>            <!-- /.box-header -->            <div class="box-body profileimg">            		  <span class="profile_info" style="">			  <h4>Graph</h4>                              <!-- /.box-body -->          </div>          <!-- /.box -->        </div>        </div>      </div>
