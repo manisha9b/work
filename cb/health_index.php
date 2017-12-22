@@ -166,10 +166,10 @@ $goal_arr = $database->getClusterGoal($clusterId);
     <section class="content-header">
 		<div class="col-md-12">
 		  <h3 class="pull-left">
-			<b> <?php echo $arr_cluster['cluster_business_name']?> Dashboard</b>
+			<b> <?php echo $arr_cluster['cluster_business_name']?> Health Index</b>
 		  </h3>
 		  <div class="pull-right resright">
-		  <?php include_once('partials/askme.php'); ?>
+		  <?php ///include_once('partials/askme.php'); ?>
 			 </div>
 	  </div>
       <div class="clearfix"></div>
@@ -180,62 +180,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
     <!-- Main content -->	
     <section class="content">
       <!-- Small boxes (Stat box) -->
-     <div class="row">
-		<div class="col-md-12">
-		  <h4><b>Quick Summary</b></h4><br>
-		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/package.php','_self')">
-			<div class="info-box dashboard_summary_view">
-				<span class="info-box-icon bg-aqua"><i class="fa ion-ios-medkit-outline"></i></span>
-			<div class="info-box-content">
-				<span class="info-box-text"><?php echo( $arr_count['total_packages']>0)?$arr_count['total_packages']:0;?> Health Package(s)</span>
-				<span class="info-box-number">Purchased</span>
-			</div>
-			<!-- /.info-box-content -->
-			</div>		
-		</div>
-        <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/employee.php','_self')">
-          <div class="info-box dashboard_summary_view">
-				<span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
-				<div class="info-box-content">
-				  <span class="info-box-text"><?php echo( $arr_count['total_employees']>0)?$arr_count['total_employees']:0;?>  Employee(s)</span>
-				  <span class="info-box-number">Added</span>
-				</div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4 col-sm-6 col-xs-12" onClick="window.open('<?php echo WEBSITE_URL?>/reports.php','_self')">
-			<div class="info-box dashboard_summary_view">
-				<span class="info-box-icon bg-yellow"><i class="fa fa-file-text"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text"><?php echo( $arr_count['total_report_available']>0)?$arr_count['total_report_available']:0;?> Report(s)</span>
-					<span class="info-box-number">Uploaded</span>
-				</div>
-            <!-- /.info-box-content -->
-			</div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-       <!--  <div class="col-md-3 col-sm-6 col-xs-12">
-			<div class="info-box dashboard_summary_view">
-				<span class="info-box-icon bg-red add_tab_top"><i class="fa fa-plus"></i></span>
-				<div class="info-box-content">
-					<span class="info-box-text mt-10">Add Tabs</span>
-				</div>
-			
-			</div>
-        
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-	  
-		<div class="col-md-12">
-		  <h4><b>Company Health Status</b></h4>
-		</div>
+     
 		<div class="clearfix"></div><br/>
         <div id="graph1" class="package-container">
           <div class="swiper-container graph-container">
@@ -563,7 +508,7 @@ $goal_arr = $database->getClusterGoal($clusterId);
            
       </div>
 	  <!-- sho my report data -->
-	  <?php include_once('my_Reports.php') ?>
+	  <?php //include_once('my_Reports.php') ?>
 	  <!-- end of my report -->
       <!-- /.row -->
     
@@ -919,7 +864,7 @@ var pieData2 = [
 			};
   })
 </script>
-<?php include_once('reports_js.php'); ?>
+<?php //include_once('reports_js.php'); ?>
 <script>
   $(document).ready(function(){
 	  

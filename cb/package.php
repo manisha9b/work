@@ -367,7 +367,8 @@ $form_action =  "portal/invite.php";
 			<div class="panel-body">
 						<div>
 							<label><input type="radio" name="clusterpkg" id="clusterpkgfile" value="fileupload" checked="checked"> Bulk Import Employee</label><br>
-							<label><input type="radio" name="clusterpkg" id="clusterpkgemp" value="emp_list"> Select From Employee List</label><br>
+							<label><input type="radio" name="clusterpkg" id="clusterpkgemp" value="
+							"> Select From Employee List</label><br>
 							<label><input type="radio" name="clusterpkg" id="clusterpkgnewemp" value="newemp"> New Employee</label>
 						</div>
 						<p>&nbsp;</p>
